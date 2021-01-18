@@ -39,22 +39,26 @@
       <td width="25%" align="center">
         <span>Detalle de producto</span><br><br><br>
         <img height="600px" width="500px" src="https://i.ibb.co/hXNrfQs/0002.jpg">
+        <a href="https://i.ibb.co/hXNrfQs/0002.jpg">Ver foto completa</a>
       </td>
     </tr>
     <tr valign="top">
       <td width="25%" align="center">
       <span>Carrito de compras</span><br><br><br>
         <img height="600px" width="500px" src="https://i.ibb.co/Sx47W1c/0003.jpg">
+        <a href="https://i.ibb.co/Sx47W1c/0003.jpg">Ver foto completa</a>
         </td>
       <td width="25%" align="center">
       <span>Formulario de registro</span><br><br><br>
         <img height="600px" width="500px" src="https://i.ibb.co/Jj2t5fG/0004.jpg">
+        <a href="https://i.ibb.co/Jj2t5fG/0004.jpg">Ver foto completa</a>
         </td>
     </tr>
     <tr valign="top">
       <td width="25%" align="center">
         <span>Formulario de carga de producto (para el administrador)</span><br><br><br>
         <img height="600px" width="500px" src="https://i.ibb.co/qBmgqNx/0005.jpg">
+        <a href="https://i.ibb.co/qBmgqNx/0005.jpg">Ver foto completa</a>
       </td>
     </tr>
   </tbody>
