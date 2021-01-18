@@ -23,11 +23,9 @@
 
 [![](https://img.shields.io/badge/Por_la_estética_que_presentan-Mercado_Libre-blue)](https://www.mercadolibre.com.ar/gz/cart)
 [![](https://img.shields.io/badge/Tambien-G2A-blue)](https://www.g2a.com/)(Se usa un estilo visual similar a G2A y adaptando los menus de Mercado Libre)
-[![](https://img.shields.io/badge/Por las funcionalidades implementada-G2A-blue)](https://www.g2a.com/)
 
-● Por los clientes a los que apuntan = G2A (Tanto adultos como adolecentes pueden consumir los mismos sitios)
-● Por la estética que presentan = Mercado Libre /  G2A (Se usa un estilo visual similar a G2A y adaptando los menus de Mercado Libre)
-● Por las funcionalidades implementada= Compra gramer/Mercado Libre (Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
+[![](https://img.shields.io/badge/Por_las_funcionalidades_implementada-Compra_gramer-orange)](https://compragamer.com/index.php?seccion=3&cate=30&nro_max=40)
+[![](https://img.shields.io/badge/Tambien-Mercado_Libre-blue)](https://www.mercadolibre.com.ar/gz/cart)(Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
 
 ## My tech stack :mortar_board:
 <table>
