@@ -10,11 +10,11 @@
 
 -:smile: Jose Flores
 
--:notes: Ezequiel Martinez
+-:smile: Ezequiel Martinez
 
--:runner: Stella Medina
+-:smile: Stella Medina
 
--:runner: Cusi David
+-:smile: Cusi David
 
 ## Pagina de referencias: :man:
 
