@@ -33,7 +33,7 @@
     <tr valign="top">
       <td width="25%" align="center">
         <span>HOME</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
+        <img height="100px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
       </td>
       <td width="25%" align="center">
         <span>Detalle de producto</span><br><br><br>
