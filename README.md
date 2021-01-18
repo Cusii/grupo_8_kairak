@@ -2,7 +2,7 @@
                                                                                    
 ## Grupo 8: Kairak :wave:
 
--:computer: Kairak es un sitio web que está basado en una tienda digital, esta ofrecerá venta de películas online a los usuarios 
+-:computer: Kairak es un sitio web que propone ser una tienda digital, esta ofrecerá venta de películas online a los usuarios 
 
 -:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
 
