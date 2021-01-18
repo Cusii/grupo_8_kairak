@@ -34,7 +34,7 @@
       <td width="25%" align="center">
         <span>HOME</span><br><br><br>
         <img height="600px" width="500px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
-        [![](https://i.ibb.co/y5Dzbhz/0001.jpg)
+        <a href="https://i.ibb.co/y5Dzbhz/0001.jpg">Ver foto completa</a>
       </td>
       <td width="25%" align="center">
         <span>Detalle de producto</span><br><br><br>
