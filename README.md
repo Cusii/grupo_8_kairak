@@ -1,4 +1,4 @@
-<img align="right" width="365" height="387" src="https://i.ibb.co/vdJfD3D/kairak-logo-uwu.png">
+<img align="right" width="365" height="387" src="https://i.ibb.co/6sDHGbb/kairak-logo.png">
                                                                                    
 ## Grupo 8: Kairak :wave:
 
