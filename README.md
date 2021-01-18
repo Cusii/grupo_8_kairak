@@ -1,7 +1,3 @@
-
-
-
-
 <img align="right" width="365" height="387" src="https://i.ibb.co/3z8nHJR/cat.jpg">
                                                                                    
 ## Grupo 8: Kairak :wave:
