@@ -16,7 +16,7 @@
 
 -:smile: Cusi David
 
-## Pagina de referencias: :man:
+## Pagina de referencias:
 [![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-red)](https://www.g2a.com/)(Siendo de pelicula es muy similar en servicion a a los video juegos)
 
 [![](https://img.shields.io/badge/Por_los_clientes_los_que_apuntan-G2A-red)](https://www.g2a.com/)(Tanto adultos como adolecentes pueden consumir los mismos sitios)
@@ -27,7 +27,7 @@
 [![](https://img.shields.io/badge/Por_las_funcionalidades_implementada-Compra_gramer-orange)](https://compragamer.com/index.php?seccion=3&cate=30&nro_max=40)
 [![](https://img.shields.io/badge/Tambien-Mercado_Libre-yellow)](https://www.mercadolibre.com.ar/gz/cart)(Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
 
-## Warframe de las pestañas principales :mortar_board:
+## Warframe de las pestañas principales
 <table>
   <tbody>
     <tr valign="top">
@@ -66,6 +66,7 @@
         <img height="64px" src="https://cdn.svgporn.com/logos/git-icon.svg">
       </td>
     </tr>
+    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FPdmS0Iu7ENCchmFy1X9Jsh%2FUntitled%3Fnode-id%3D96%253A0%26scaling%3Dscale-down" allowfullscreen></iframe>
   </tbody>
 </table>
 
