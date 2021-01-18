@@ -17,15 +17,15 @@
 -:smile: Cusi David
 
 ## Pagina de referencias: :man:
-[![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-blue)](https://www.g2a.com/)(Siendo de pelicula es muy similar en servicion a a los video juegos)
+[![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-red)](https://www.g2a.com/)(Siendo de pelicula es muy similar en servicion a a los video juegos)
 
-[![](https://img.shields.io/badge/Por_los_clientes_los_que_apuntan-G2A-blue)](https://www.g2a.com/)(Tanto adultos como adolecentes pueden consumir los mismos sitios)
+[![](https://img.shields.io/badge/Por_los_clientes_los_que_apuntan-G2A-red)](https://www.g2a.com/)(Tanto adultos como adolecentes pueden consumir los mismos sitios)
 
-[![](https://img.shields.io/badge/Por_la_estética_que_presentan-Mercado_Libre-blue)](https://www.mercadolibre.com.ar/gz/cart)
+[![](https://img.shields.io/badge/Por_la_estética_que_presentan-Mercado_Libre-yellow)](https://www.mercadolibre.com.ar/gz/cart)
 [![](https://img.shields.io/badge/Tambien-G2A-blue)](https://www.g2a.com/)(Se usa un estilo visual similar a G2A y adaptando los menus de Mercado Libre)
 
 [![](https://img.shields.io/badge/Por_las_funcionalidades_implementada-Compra_gramer-orange)](https://compragamer.com/index.php?seccion=3&cate=30&nro_max=40)
-[![](https://img.shields.io/badge/Tambien-Mercado_Libre-blue)](https://www.mercadolibre.com.ar/gz/cart)(Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
+[![](https://img.shields.io/badge/Tambien-Mercado_Libre-yellow)](https://www.mercadolibre.com.ar/gz/cart)(Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
 
 ## My tech stack :mortar_board:
 <table>
