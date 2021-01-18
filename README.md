@@ -35,6 +35,24 @@
         <span>HOME</span><br><br><br>
         <img height="64px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
       </td>
+      <td width="25%" align="center">
+        <span>Detalle de producto</span><br><br><br>
+        <img height="64px" src="https://i.ibb.co/hXNrfQs/0002.jpg">
+      </td>
+      <td width="25%" align="center">
+        <span>Carrito de compras</span><br><br><br>
+        <img height="64px" src="https://i.ibb.co/Sx47W1c/0003.jpg">
+      </td>
+      <td width="25%" align="center">
+        <span>Formulario de registro</span><br><br><br>
+        <img height="64px" src="https://i.ibb.co/Jj2t5fG/0004.jpg">
+      </td>
+    </tr>
+    <tr valign="top">
+      <td width="25%" align="center">
+        <span>Formulario de carga de producto (para el administrador)</span><br><br><br>
+        <img height="64px" src="https://i.ibb.co/qBmgqNx/0005.jpg">
+      </td>
     </tr>
   </tbody>
 </table>
