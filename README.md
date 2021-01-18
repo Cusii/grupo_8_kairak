@@ -21,7 +21,7 @@
 
 [![](https://img.shields.io/badge/Por_los_clientes_los_que_apuntan-G2A-blue)](https://www.g2a.com/)(Tanto adultos como adolecentes pueden consumir los mismos sitios)
 
-[![](https://img.shields.io/badge/or la estética que presentan-G2A-blue)](https://www.g2a.com/)
+[![](https://img.shields.io/badge/Por_la_estética_que_presentan-Mercado_Libre-blue)](https://www.mercadolibre.com.ar/gz/cart)[![](https://img.shields.io/badge/ / -G2A-blue)](https://www.g2a.com/)(Se usa un estilo visual similar a G2A y adaptando los menus de Mercado Libre)
 [![](https://img.shields.io/badge/Por las funcionalidades implementada-G2A-blue)](https://www.g2a.com/)
 
 ● Por los clientes a los que apuntan = G2A (Tanto adultos como adolecentes pueden consumir los mismos sitios)
