@@ -6,8 +6,6 @@
 
 -:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
 
--:school: UTN: National Technology University. 
-
 ## Grupo 8: :man:
 
 -:smile: Jose Flores
@@ -20,13 +18,13 @@
 
 ## Pagina de referencias: :man:
 
-● Por los productos o servicios que ofrecen = G2A (Siendo de pelicula es muy similar en servicion a a los video juegos)
+● Por los productos o servicios que ofrecen =[![](https://img.shields.io/badge/LinkedIn-Cusii-blue)](https://www.linkedin.com/in/cusii/)  G2A (Siendo de pelicula es muy similar en servicion a a los video juegos)
 ● Por los clientes a los que apuntan = G2A (Tanto adultos como adolecentes pueden consumir los mismos sitios)
 ● Por la estética que presentan = Mercado Libre /  G2A (Se usa un estilo visual similar a G2A y adaptando los menus de Mercado Libre)
 ● Por las funcionalidades implementada= Compra gramer/Mercado Libre (Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
 
 ## Social media :mailbox_with_no_mail:
-[![](https://img.shields.io/badge/LinkedIn-Cusii-blue)](https://www.linkedin.com/in/cusii/)
+[![](https://img.shields.io/badge/Por los productos o servicios que ofrecen-G2A-blue)](https://www.g2a.com/)
 [![](https://img.shields.io/badge/Gmail-cusidavid01@gmail.com-red)](mailto:cusidavid01@gmail.com)
 
 ## My tech stack :mortar_board:
