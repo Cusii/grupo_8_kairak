@@ -35,40 +35,6 @@
         <span>HOME</span><br><br><br>
         <img height="64px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
       </td>
-      <td width="25%" align="center">
-        <span>𝗖𝗦𝗦𝟯</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/hXNrfQs/0002.jpg">
-      </td>
-      <td width="25%" align="center">
-        <span>𝗝𝗮𝘃𝗮𝗦𝗰𝗿𝗶𝗽𝘁</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/Sx47W1c/0003.jpg">
-      </td>
-      <td width="25%" align="center">
-        <span>𝗻𝗼𝗱𝗲</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/Jj2t5fG/0004.jpg">
-      </td>
-      <td width="25%" align="center">
-        <span>𝗝𝗮𝘃𝗮</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/qBmgqNx/0005.jpg">
-      </td>
-    </tr>
-    <tr valign="top">
-      <td width="25%" align="center">
-        <span>𝗝𝗮𝘃𝗮</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/qBmgqNx/0005.jpg">
-      </td>
-      <td width="25%" align="center">
-        <span>𝗣𝘆𝘁𝗵𝗼𝗻</span><br><br><br>
-        <img height="64px" src="https://cdn.svgporn.com/logos/python.svg">
-      </td>
-      <td width="25%" align="center">
-        <span>𝗠𝘆𝗦𝗤𝗟</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/KGjjgjs/MySQL.jpg">
-      </td>
-      <td width="25%" align="center">
-        <span>𝗚𝗶𝘁</span><br><br><br>
-        <img height="64px" src="https://cdn.svgporn.com/logos/git-icon.svg">
-      </td>
     </tr>
   </tbody>
 </table>
