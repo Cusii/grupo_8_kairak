@@ -32,26 +32,30 @@
   <tbody>
     <tr valign="top">
       <td width="25%" align="center">
-        <span>𝗛𝗧𝗠𝗟𝟱</span><br><br><br>
-        <img height="64px" src="https://cdn.svgporn.com/logos/html-5.svg">
+        <span>HOME</span><br><br><br>
+        <img height="64px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
       </td>
       <td width="25%" align="center">
         <span>𝗖𝗦𝗦𝟯</span><br><br><br>
-        <img height="64px" src="https://cdn.svgporn.com/logos/css-3.svg">
+        <img height="64px" src="https://i.ibb.co/hXNrfQs/0002.jpg">
       </td>
       <td width="25%" align="center">
         <span>𝗝𝗮𝘃𝗮𝗦𝗰𝗿𝗶𝗽𝘁</span><br><br><br>
-        <img height="64px" src="https://cdn.svgporn.com/logos/javascript.svg">
+        <img height="64px" src="https://i.ibb.co/Sx47W1c/0003.jpg">
       </td>
       <td width="25%" align="center">
         <span>𝗻𝗼𝗱𝗲</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/V2C1W2w/Node-logo.jpg">
+        <img height="64px" src="https://i.ibb.co/Jj2t5fG/0004.jpg">
+      </td>
+      <td width="25%" align="center">
+        <span>𝗝𝗮𝘃𝗮</span><br><br><br>
+        <img height="64px" src="https://i.ibb.co/qBmgqNx/0005.jpg">
       </td>
     </tr>
     <tr valign="top">
       <td width="25%" align="center">
         <span>𝗝𝗮𝘃𝗮</span><br><br><br>
-        <img height="64px" src="https://cdn.svgporn.com/logos/java.svg">
+        <img height="64px" src="https://i.ibb.co/qBmgqNx/0005.jpg">
       </td>
       <td width="25%" align="center">
         <span>𝗣𝘆𝘁𝗵𝗼𝗻</span><br><br><br>
