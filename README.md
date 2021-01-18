@@ -17,15 +17,16 @@
 -:smile: Cusi David
 
 ## Pagina de referencias: :man:
+[![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-blue)](https://www.g2a.com/)(Siendo de pelicula es muy similar en servicion a a los video juegos)
 
-[![](https://img.shields.io/badge/LinkedIn-Cusii-blue)](https://www.linkedin.com/in/cusii/) (Siendo de pelicula es muy similar en servicion a a los video juegos)
+[![](https://img.shields.io/badge/Por_los_clientes_los_que_apuntan-G2A-blue)](https://www.g2a.com/)(Tanto adultos como adolecentes pueden consumir los mismos sitios)
+
+[![](https://img.shields.io/badge/or la estética que presentan-G2A-blue)](https://www.g2a.com/)
+[![](https://img.shields.io/badge/Por las funcionalidades implementada-G2A-blue)](https://www.g2a.com/)
+
 ● Por los clientes a los que apuntan = G2A (Tanto adultos como adolecentes pueden consumir los mismos sitios)
 ● Por la estética que presentan = Mercado Libre /  G2A (Se usa un estilo visual similar a G2A y adaptando los menus de Mercado Libre)
 ● Por las funcionalidades implementada= Compra gramer/Mercado Libre (Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
-
-## Social media :mailbox_with_no_mail:
-[![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-blue)](https://www.g2a.com/)
-[![](https://img.shields.io/badge/Gmail-cusidavid01@gmail.com-red)](mailto:cusidavid01@gmail.com)
 
 ## My tech stack :mortar_board:
 <table>
