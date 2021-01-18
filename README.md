@@ -34,7 +34,7 @@
       <td width="25%" align="center">
         <span>HOME</span><br><br><br>
         <img height="600px" width="500px" src="https://i.ibb.co/y5Dzbhz/0001.jpg">
-        [![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-red)](https://www.g2a.com/)
+        [![](https://i.ibb.co/y5Dzbhz/0001.jpg)
       </td>
       <td width="25%" align="center">
         <span>Detalle de producto</span><br><br><br>
