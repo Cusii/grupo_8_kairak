@@ -24,7 +24,7 @@
 ● Por las funcionalidades implementada= Compra gramer/Mercado Libre (Se usa el estilo de compra de Compra Gamer y unas funcionalidades similarew a Mercado Libre)
 
 ## Social media :mailbox_with_no_mail:
-[![](https://img.shields.io/badge/ofrecen-G2A-blue)](https://www.g2a.com/)
+[![](https://img.shields.io/badge/"Por los productos o servicios que ofrecen"-G2A-blue)](https://www.g2a.com/)
 [![](https://img.shields.io/badge/Gmail-cusidavid01@gmail.com-red)](mailto:cusidavid01@gmail.com)
 
 ## My tech stack :mortar_board:
