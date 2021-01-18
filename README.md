@@ -37,7 +37,7 @@
       </td>
       <td width="25%" align="center">
         <span>Detalle de producto</span><br><br><br>
-        <img height="64px" src="https://i.ibb.co/hXNrfQs/0002.jpg">
+        <img height="600px" width="500px" src="https://i.ibb.co/hXNrfQs/0002.jpg">
       </td>
     </tr>
     <tr valign="top">
