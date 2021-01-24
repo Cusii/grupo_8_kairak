@@ -5,7 +5,7 @@
 -:computer: Kairak es un sitio web que propone ser una tienda digital, esta ofrecerá venta de películas online a los usuarios 
 
 -:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
-- Tablero de Trello: [![](https://img.shields.io/badge/Trello-G2A-red)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
+- Tablero de Trello: [![](https://img.shields.io/badge/Trello-Tablero-blue)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
 
 ## Grupo 8: :man:
 
