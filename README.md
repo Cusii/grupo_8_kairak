@@ -5,6 +5,7 @@
 -:computer: Kairak es un sitio web que propone ser una tienda digital, esta ofrecerá venta de películas online a los usuarios 
 
 -:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
+- Tablero de Trello: [![](https://img.shields.io/badge/Trello-G2A-red)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
 
 ## Grupo 8: :man:
 
@@ -27,7 +28,7 @@
 [![](https://img.shields.io/badge/Por_las_funcionalidades_implementada-Compra_gramer-orange)](https://compragamer.com/index.php?seccion=3&cate=30&nro_max=40)
 [![](https://img.shields.io/badge/Tambien-Mercado_Libre-yellow)](https://www.mercadolibre.com.ar/gz/cart)(Se usa el estilo de compra de Compra Gamer y unas funcionalidades similares a Mercado Libre)
 
-## Warframe de las pestañas principales
+## Wireframe de las pestañas principales
 <table>
   <tbody>
     <tr valign="top">
