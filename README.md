@@ -17,6 +17,8 @@
 
 -:smile: Cusi David
 
+-:smile: Belen Medina Roldan
+
 ## Pagina de referencias:
 [![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-red)](https://www.g2a.com/)(Siendo de peliculas, es muy similar en servicio a los videojuegos)
 
