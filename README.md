@@ -1,13 +1,13 @@
 <img align="right" width="365" height="387" src="https://i.ibb.co/6sDHGbb/kairak-logo.png">
                                                                                    
-## Grupo 8: Kairak :wave:
+# Grupo 8: Kairak :wave:
 
 -:computer: Kairak es un sitio web que propone ser una tienda digital, esta ofrecerá venta de películas online a los usuarios 
 
 -:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
 - Tablero de Trello: [![](https://img.shields.io/badge/Trello-Tablero-blue)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
 
-## Grupo 8: :man:
+# Grupo 8: :man:
 
 -:smile: Jose Flores
 
@@ -19,7 +19,7 @@
 
 -:smile: Belen Medina Roldan
 
-## Pagina de referencias:
+# Pagina de referencias:
 [![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-red)](https://www.g2a.com/)(Siendo de peliculas, es muy similar en servicio a los videojuegos)
 
 [![](https://img.shields.io/badge/Por_los_clientes_los_que_apuntan-G2A-red)](https://www.g2a.com/)(Tanto adultos como adolescentes pueden consumir los mismos sitios)
@@ -30,7 +30,7 @@
 [![](https://img.shields.io/badge/Por_las_funcionalidades_implementada-Compra_gramer-orange)](https://compragamer.com/index.php?seccion=3&cate=30&nro_max=40)
 [![](https://img.shields.io/badge/Tambien-Mercado_Libre-yellow)](https://www.mercadolibre.com.ar/gz/cart)(Se usa el estilo de compra de Compra Gamer y unas funcionalidades similares a Mercado Libre)
 
-## Wireframe de las pestañas principales
+# Wireframe de las pestañas principales
 <table>
   <tbody>
     <tr valign="top">
@@ -68,3 +68,5 @@
 </table>
 
 ---
+# :pushpin: Nuestra Retrospectiva:
+[retro.md](https://github.com/Cusii/grupo_8_kairak/blob/master/retro.md)
