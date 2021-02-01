@@ -1,14 +1,113 @@
+/* GENERALES */
 a{
     text-decoration: none;
 }
 
+.fondo-principal{
+    background: #000000;
+    background: -webkit-radial-gradient(center, #000000, #48545A);
+    background: -moz-radial-gradient(center, #000000, #48545A);
+    background: radial-gradient(ellipse at center, #000000, #48545A);
+}
+
+/* HEADER */
 .navbar-negro{
     background-color: #000000;
 }
 
+.search{
+    width: 35%;
+}
+
 .iconosNavbar{
+    color: rgba(255,255,255,.55);;
+    font-size: 2rem;
+}
+
+.iconosNavbar:hover{
+    color: rgba(255,255,255,.75);
+}
+
+header{
+    background-color: black;
+    padding: 10px;
+    width: 100%;
+   
+}
+
+.logo {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;    
+}
+
+.logo img{
+    padding-bottom: 1rem;
+}
+
+.search form{    
+    height: fit-content;
+}
+
+/* BANNER */
+.banner{
+    margin: 3rem 3rem 5rem 3rem;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.banner .carousel-principal{
+    width: 900px;
+}
+
+.banner img{
+    width: 100%;
+}
+
+
+/* SECCIONES HOME */
+
+.seccion-peliculas{
+    margin-bottom: 12rem;
+}
+
+.grilla-peliculas{
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-pelicula{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.contenedor-pelicula img{
+    width: 100%;
+}
+
+.seccion-peliculas h2{
     color: #fa8e00;
-    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2rem;    
+}
+
+.titulo-pelicula{
+    margin: 2rem;
+    color: coral;
+    border: 0.5px solid coral;
+    border-radius: 15px;
+    padding: 0.5em;
 }
 
 
