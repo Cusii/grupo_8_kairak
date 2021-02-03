@@ -2,26 +2,35 @@
                                                                                    
 # Grupo 8: Kairak :wave:
 
--:computer: Kairak es un sitio web que propone ser una tienda digital, esta ofrecerá venta de películas online a los usuarios 
+-:computer: Kairak es un sitio web que propone ser una tienda digital, esta ofrecerá alquiler de películas online a los usuarios 
 
--:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
-- Tablero de Trello: [![](https://img.shields.io/badge/Trello-Tablero-blue)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
+-:blue_book: Teniendo en cuenta que el sitio es de alquiler de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
 
-Recuerden instalar los paquetes de node
 
-```
-npm install
-```
+# Integrantes: :man:
 
-# Grupo 8: :man:
-
--:smile: Jose Flores
+-:smile: [Jose Flores](https://github.com/josejrv)
 
 -:smile: Stella Medina
 
--:smile: Cusi David
+-:smile: [Cusi David](https://github.com/Cusii)
 
--:smile: Belen Medina Roldan
+-:smile: [Belén Medina Roldán](https://github.com/belenmr)
+
+
+# :pushpin: Tablero Trello
+[![](https://img.shields.io/badge/Trello-Tablero-blue)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
+
+
+# :computer: Servidor de desarrollo
+- Clonar el repositorio en la carpeta deseada con el comando: `git clone https://github.com/Cusii/grupo_8_kairak.git`
+- Situarse en la carpeta site (donde se encuentra el package.json): `cd grupo_8_kairak/site`
+- Instalar las dependencias: `npm install`
+- Para correr el proyecto:
+    - Si nodemon está instalado de forma global en su equipo, ejecutar `nodemon`
+    - Si nodemon no  está instalado de forma global en su equipo, ejecutar `npm run dev`
+- En el navegador, ir a `http://localhost:3000/`
+
 
 # Pagina de referencias:
 [![](https://img.shields.io/badge/Por_los_productos_o_servicios_que_ofrecen-G2A-red)](https://www.g2a.com/)(Siendo de peliculas, es muy similar en servicio a los videojuegos)
@@ -72,5 +81,8 @@ npm install
 </table>
 
 ---
-# :pushpin: Nuestra Retrospectiva:
+# :pushpin: Retrospectivas:
 [retro.md](https://github.com/Cusii/grupo_8_kairak/blob/master/retro.md)
+
+
+---
