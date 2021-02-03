@@ -1,0 +1,101 @@
+
+
+/* SECCIONES DETALLE*/
+body{
+    background-color: #000000;/* NO ME TOMA */
+}
+section.row.container-fluid.detalleProducto{
+    margin: 20px 0;
+    padding: 0;
+    background-color: black;
+}
+
+div.imgPro{
+    padding: 0;
+}
+
+section div.compra{
+    margin: auto;
+    text-align: center;
+    padding: 5PX;
+}
+
+section .compra i{
+    margin: 2px;
+    color: white;
+    background-color:black;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 30px;
+}
+
+section .compra h2.valor{
+    font-size: 35px;
+    margin-top: 40px;
+    color: white;
+}
+
+section .compra h2.boton{
+    padding: 5px;
+    margin: 30px auto 0;
+    color: white;
+    background-color: rgb(64, 129, 226);
+    font-weight:bold;
+    border-radius: 10px;
+}
+
+
+/* TRAILER*/
+
+section.row.container-fluid.trailer{
+    margin: 20px 0;
+    padding: 0;
+}
+
+.trailer a{
+    padding: 0;
+}
+
+/* CUERPO */
+
+section.row.container-fluid.descripcion{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.descripcion h1{
+    margin: auto;
+    text-align: center;
+    padding: 5px 0 10px;
+    background: linear-gradient(rgb(36, 36, 36), #000000);
+    border: white solid 1px;
+    font-size: 40px;
+    color: rgb(209,209,209);
+}
+
+.descripcion .sumario{
+    margin: 0;
+    padding: 0;
+    color: black;
+    background: linear-gradient(#6b687a, #444059);
+}
+
+.descripcion .sumario h2{
+    font-size: 20px;
+    padding: 10px auto;
+}
+
+.descripcion .sumario p{
+    color: rgb(138, 20, 20);
+    font-size: 20px;
+}
+
+
+.descripcion .sumario .argumento p{
+    color: black;
+    background: linear-gradient(#676767, #615f6a, #45415a);
+    padding: 10px;
+    text-align:justify;
+}
