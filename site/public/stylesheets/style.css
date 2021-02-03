@@ -200,13 +200,24 @@ footer .ay{
     padding-inline-start: 0px;
 }
 
-footer .link{    
+footer .linkAyuda{    
     padding-left: 0px;
 }
 
 footer div div ul a{
     margin: auto;
     display: none;
+    font-size: 500px;
+    color: red;
+}
+
+.redes{
+    padding: 20px;
+}
+
+.redes i{
+    font-size: 30px;
+    color: rgb(167, 167, 167);
 }
 
 footer .se{
@@ -265,7 +276,7 @@ footer ul li{
         padding-right: 0px;
     }
 
-    footer .link{
+    footer .linkAyuda{
         width: 30%;
         margin: auto;
     }
