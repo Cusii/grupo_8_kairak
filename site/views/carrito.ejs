@@ -3,7 +3,7 @@
 
 <%- include('partials/head')  %>
 
-    <body>
+    <body class="bg-dark">
         <%- include('partials/header')  %>
 
             <section class="container background">
@@ -24,37 +24,46 @@
                         <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
                     </div>
 
-                    <div class="container mb-5">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class=" container">
-                                    <div class="row">
-                                        <img src="/images/portada.jpg " class=" image-carga-product img-fluid mx-auto d-block " alt="logo ">
+                    <div class="container  mb-5">
+                        <div class="row mx-auto">
+                            <div class="col-6 mx-auto">
 
-                                        <div class="col-8">
-                                            <input class=" col-3 form-control mb-3" type="text" placeholder="Precio" disabled>
-                                        </div>
-                                        <div class="col-2">
-                                            <button type="button" class="btn btn-primary">BOR</button>
-                                        </div>
+                                <div class="row mx-auto">
+                                    <img src="/images/portada.jpg " class=" image-carga-product img-fluid mx-auto d-block mb-3" alt="logo ">
 
-                                    </div>
+
+
+
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 ">
                                 <input class="form-control mb-3" type="text" placeholder="Nombre" disabled>
-                                <textarea class="form-control" rows="8" disabled></textarea>
+                                <textarea class="form-control mb-3" rows="8" placeholder="Descipcion" disabled></textarea>
+                                <div class="row  mx-auto">
+                                    <div class="col-8 col-lg-6  mx-auto mb-3">
+                                        <input class=" col-6 form-control mb-3" type="text" placeholder="Precio" disabled>
+                                    </div>
+                                    <div class="col-4 ">
+                                        <button type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                          </svg></button>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row mx-auto ">
-                            <div class="col-6 col-xl-4 mx-auto ">
-                                <input class=" col-3 form-control mb-3" type="text" placeholder="Precio" disabled>
+                            <div class="row">
+
+                                <div class="col-6 col-xl-4 mx-auto ">
+                                    <input class=" col-3 form-control mb-3" type="text" placeholder="Precio total" disabled>
+                                </div>
+                                <div class="col-6 col-xl-4 mx-auto ">
+                                    <input class=" col-12 btn btn-primary " type="submit " value="Comprar">
+                                </div>
+
                             </div>
-                            <div class="col-6 col-xl-4 mx-auto ">
-                                <input class=" col-12 btn btn-primary " type="submit " value="Comprar">
-                            </div>
+
+
 
                         </div>
                     </div>
