@@ -52,8 +52,7 @@ header{
 /* BANNER */
 
 .banner{
-    margin: 3rem 3rem 5rem 3rem;
-    
+    margin: 3rem 3rem 5rem 3rem;    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -66,7 +65,7 @@ header{
     perspective: 1000px;
     position: relative;
     margin-top: 50px;
-    /* display:none; */
+    display:none;
     margin-bottom: 300px;
 }
 
@@ -173,11 +172,10 @@ header{
 
 /* FOOTER */
 
-footer{
-    display: flex;
-    align-items: flex-end;
-}
 
+footer .row{
+    margin: 0;
+}
 
 footer .ka{
     font-size: 40px;
@@ -207,12 +205,12 @@ footer .linkAyuda{
 footer div div ul a{
     margin: auto;
     display: none;
-    font-size: 500px;
-    color: red;
+    font-size: 20px;
 }
 
 .redes{
     padding: 20px;
+    margin: 0;
 }
 
 .redes i{
@@ -239,7 +237,9 @@ footer ul li{
   
 @media (min-width: 1024px){
 
- 
+    .content-all{
+        display:block;
+    } 
   
     footer .ka{
         font-size: 40px;
