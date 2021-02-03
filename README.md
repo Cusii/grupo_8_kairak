@@ -7,11 +7,15 @@
 -:blue_book: Teniendo en cuenta que el sitio es de venta de películas, apunta en su mayoría a las personas adultas por el consumo de películas, pero esto puede variar 
 - Tablero de Trello: [![](https://img.shields.io/badge/Trello-Tablero-blue)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
 
+Recuerden instalar los paquetes de node
+
+```
+npm install
+```
+
 # Grupo 8: :man:
 
 -:smile: Jose Flores
-
--:smile: Ezequiel Martinez
 
 -:smile: Stella Medina
 

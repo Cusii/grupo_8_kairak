@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/header') %>
+
+            <section class="container background">
+                <article class="box-center">
+                    <div class="container">
+                        <div class="row mx-auto ">
+                            <div class="btn-group">
+
+                                <div class="col-xl-2"></div>
+                                <a href="" class="boton-top-one btn btn-outline-primary btn-white col-6 disabled">Registrarse</a>
+                                <a href="/login" class="boton-top-two btn btn-outline-white btn-primary col-6 ">Logearse</a>
+                                <div class="col-xl-2 "></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-top">
+                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="90%" />
+                    </div>
+
+                    <div class="container">
+                        <div class="logo-person mb-3">
+                            <img src="/images/logo-person.png" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo">
+                        </div>
+                        <div class=" container mx-auto">
+                            <div class="row mx-auto mb-3 ">
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input type="text" class="form-control" placeholder="nombre">
+                                </div>
+                            </div>
+                            <div class="row mx-auto mb-3">
+                                <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                                    <input type="mail" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row mx-auto mb-3">
+                                <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container ">
+                            <div class="row mx-auto">
+                                <div class="col-6 col-xl-4 mx-auto">
+                                    <input class=" col-12 btn btn-primary" type="submit" value="Registrarse">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </article>
+            </section>
+
+            <%- include('partials/footer') %>
+                <%- include('partials/scripts')  %>
+    </body>
+
+</html>
