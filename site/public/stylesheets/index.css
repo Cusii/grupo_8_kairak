@@ -1,0 +1,46 @@
+
+.seccion-peliculas{
+    margin-bottom: 12rem;
+}
+
+.grilla-peliculas{
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-pelicula{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.contenedor-pelicula img{
+    width: 100%;
+}
+
+.seccion-peliculas h2{
+    color: #fa8e00;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2rem;    
+}
+
+.titulo-pelicula{
+    margin: 2rem;
+    color: coral;
+    border: 0.5px solid coral;
+    border-radius: 15px;
+    padding: 0.5em;
+}
+
+.titulo-pelicula h4{
+    font-family: 'Advent Pro', sans-serif;
+}
