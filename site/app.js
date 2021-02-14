@@ -9,7 +9,7 @@ const indexRouter = require('./routes/indexRouter')
 const carritoRouter = require('./routes/carritoRouter')
 const loginRouter = require('./routes/loginRouter')
 const registroRouter = require('./routes/registroRouter')
-const productsRouter = require('./routes/productsRouter');
+const moviesRouter = require('./routes/moviesRouter');
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.use('/carrito', carritoRouter)
 app.use('/login', loginRouter)
 app.use('/registro', registroRouter)
 app.use('/users', usersRouter)
-app.use('/products', productsRouter)
+app.use('/movies', moviesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
