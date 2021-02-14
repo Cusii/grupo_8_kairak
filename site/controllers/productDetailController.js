@@ -1,7 +1,8 @@
 module.exports = {
     index: (req, res) => {
         res.render('productDetail', {
-            title: 'Kairak'
+            title: 'Kairak',
+            css: 'productDetail.css'
         })
     }
 }

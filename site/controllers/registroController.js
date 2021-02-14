@@ -1,7 +1,8 @@
 module.exports = {
     index: (req, res) => {
         res.render('registro', {
-            title: 'Kairak'
+            title: 'Kairak',
+            css: 'styleFormularios.css'
         })
     }
 }
