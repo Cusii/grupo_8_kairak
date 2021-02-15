@@ -6,4 +6,4 @@
 
 ## :pushpin: Sprint 2: wireframes + bocetos
 
-![Sprint 2](/retrospective-meetings/sprint-2.png)
+![Sprint 2](/retrospective-meetings/sprint-2.PNG)
