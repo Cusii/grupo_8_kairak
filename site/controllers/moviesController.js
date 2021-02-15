@@ -1,46 +1,110 @@
 const fs = require('fs');
 const path = require('path');
 const moviesDB = require('../data/movies');
-const movies = moviesDB.getProducts();
+const movies = moviesDB.getMovies();
 
 module.exports = {
     getMovies: (req, res) => {
-        res.render('productDetail', {
-            title: 'Kairak',
-            css: 'productDetail'
+        res.render('moviesList', {
+            title: 'nuestras peliculas',
+            css: 'moviesList',
+            movies
         })
     },
+
     detail: (req, res) => {
         const id = Number(req.params.id);
 
-        let movie = products.find(movies => movie.id === id);
+        let movie = movies.find(movie => movie.id === id);
 
-        res.render('productDetail', {
+        res.render('movieDetail', {
             title: 'Kairak',
             css: 'productDetail',
             movie
         });
 
     },
-    toAddMovie: (req, res) => {
+
+    toCreateMovie: (req, res) => {
         res.render('cargaProducto', {
             title: 'Agregar pelicula',
             css: 'styleFormularios'
         })
     },
-    addMovie: (req, res, next) => {
-        
+
+    createMovie: (req, res, next) => {
+        const {title, description, price, year, length, category, genre} = req.body;
+
+        let lastID = 0;
+        movies.forEach(movie => {
+            if (movie.id > lastID) {
+                lastID = movie.id
+            }
+        });
+        lastID++;
+
+        const newMovie = {                           
+            id: lastID,
+            title: title.trim(),
+            description: description.trim(),
+            price: price,
+            year: year,
+            length: length,
+            category: category,
+            genre: genre,
+            image: req.file.filename            
+        };
+
+        movies.push(newMovie);
+
+        moviesDB.setMovies(movies);
+
+        res.redirect(`/movies/${newMovie.id}`);
     },
+
     toEditMovie: (req, res) => {
         const movie = movies.find(movie => movie.id === +req.params.id);
 
-        res.render('',{
+        res.render('editMovie',{
+            title: movie.title,
 
         });
     },
-    updateMovie: (req, res) => {
-        
+
+    updateMovie: (req, res, next) => {
+        const id = +req.params.id;
+        const {title, description, price, year, length, category, genre} = req.body;
+        const imgFile = req.file;
+        let imagePath = "";
+
+        movies.forEach(movie => {
+            if(movie.id === id){
+                imagePath = movie.image;
+
+                if (imgFile) {
+                    if(fs.existsSync(path.join('public','images','movies',movie.image))){
+                        fs.unlinkSync(path.join('public','images','movies',movie.image));
+                    }
+                    imagePath = req.file.filename
+                } 
+                
+                movie.id = id;
+                movie.title = title;
+                movie.description = description;
+                movie.price = price;
+                movie.year = year;
+                movie.length = length;
+                movie.category = category;
+                movie.genre = genre;
+                movie.image = imagePath;
+            }
+        });
+
+        moviesDB.setMovies(movies);
+
+        res.redirect(`/movies/${id}`);
     },
+
     deleteMovie: (req, res) => {
         const id = Number(req.params.id);
 

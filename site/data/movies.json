@@ -7,6 +7,7 @@
         "price": 81.08,
         "category": "ATP",
         "year": 2005,
+        "length": 120,
         "image": "RisusPraesentLectus.png",
         "trailer": "VelDapibusAt..mkv",
         "movie": "VitaeNisl..mkv"
@@ -19,6 +20,7 @@
         "price": 76.40,
         "category": "13+",
         "year": 2012,
+        "length": 120,
         "image": "QuamSapienVarius.jpg",
         "trailer": "OrciLuctus.mkv",
         "movie": "OrciLuctusEt.mov"
@@ -31,6 +33,7 @@
         "price": 65.24,
         "category": "16+",
         "year": 2001,
+        "length": 120,
         "image": "VenenatisTurpis.jpg",
         "trailer": "SagittisNam.mkv",
         "movie": "PedeVenenatis..mkv"
@@ -43,6 +46,7 @@
         "price": 71.95,
         "category": "ATP",
         "year": 1994,
+        "length": 120,
         "image": "IpsumPrimis.jpeg",
         "trailer": "Ante.mkv",
         "movie": "NullaAcEnim.mkv"
@@ -55,6 +59,7 @@
         "price": 67.17,
         "category": "13+",
         "year": 2012,
+        "length": 120,
         "image": "NonVelit.jpeg",
         "trailer": "MagnaVulputate.mkv",
         "movie": "EuInterdum..mkv"
@@ -67,6 +72,7 @@
         "price": 31.93,
         "category": "16+",
         "year": 2012,
+        "length": 120,
         "image": "Eu.jpeg",
         "trailer": "VitaeMattis..mkv",
         "movie": "TemporConvallisNulla.mkv"
@@ -79,6 +85,7 @@
         "price": 35.04,
         "category": "ATP",
         "year": 1998,
+        "length": 120,
         "image": "MorbiAIpsum.jpg",
         "trailer": "DuisAliquamConvallis..mkv",
         "movie": "InHacHabitasse..mkv"
@@ -91,6 +98,7 @@
         "price": 63.53,
         "category": "13+",
         "year": 2005,
+        "length": 120,
         "image": "PorttitorPedeJusto.jpg",
         "trailer": "EtiamPretium.mov",
         "movie": "AtDolor.mkv"
@@ -103,6 +111,7 @@
         "price": 79.30,
         "category": "16+",
         "year": 1988,
+        "length": 120,
         "image": "CurabiturIn.jpeg",
         "trailer": "QuisquePorta..mkv",
         "movie": "LuctusNecMolestie.mkv"
@@ -115,6 +124,7 @@
         "price": 32.21,
         "category": "ATP",
         "year": 2001,
+        "length": 120,
         "image": "Eget.jpeg",
         "trailer": "LaciniaSapien.mkv",
         "movie": "FaucibusOrci..mkv"
@@ -127,6 +137,7 @@
         "price": 70.51,
         "category": "13+",
         "year": 2005,
+        "length": 120,
         "image": "PellentesqueUltrices.jpg",
         "trailer": "IpsumPrimis..mkv",
         "movie": "NibhFusce..mkv"
@@ -139,6 +150,7 @@
         "price": 22.62,
         "category": "16+",
         "year": 2005,
+        "length": 120,
         "image": "NuncViverra.jpeg",
         "trailer": "TurpisEnim.mkv",
         "movie": "SapienALibero.mkv"
@@ -151,6 +163,7 @@
         "price": 73.45,
         "category": "ATP",
         "year": 2006,
+        "length": 120,
         "image": "PedePosuere.jpg",
         "trailer": "Metus..mkv",
         "movie": "VariusIntegerAc..mkv"
@@ -163,6 +176,7 @@
         "price": 36.84,
         "category": "13+",
         "year": 2007,
+        "length": 120,
         "image": "NonPretium.jpeg",
         "trailer": "FelisFusce..mkv",
         "movie": "SapienCursusVestibulum.mkv"
@@ -175,6 +189,7 @@
         "price": 20.58,
         "category": "16+",
         "year": 1994,
+        "length": 120,
         "image": "Nulla.jpg",
         "trailer": "Amet..mkv",
         "movie": "Ut.mkv"
@@ -187,6 +202,7 @@
         "price": 34.96,
         "category": "ATP",
         "year": 2008,
+        "length": 120,
         "image": "Aenean.jpeg",
         "trailer": "NuncVestibulumAnte.mkv",
         "movie": "Pretium..mkv"
@@ -199,6 +215,7 @@
         "price": 60.60,
         "category": "13+",
         "year": 2000,
+        "length": 120,
         "image": "SitAmetSapien.jpg",
         "trailer": "Quisque.mkv",
         "movie": "NuncDonecQuis.mkv"
@@ -211,6 +228,7 @@
         "price": 95.15,
         "category": "16+",
         "year": 2012,
+        "length": 120,
         "image": "InterdumMauris.jpeg",
         "trailer": "Diam..mkv",
         "movie": "Id.mkv"
@@ -223,6 +241,7 @@
         "price": 76.15,
         "category": "ATP",
         "year": 2011,
+        "length": 120,
         "image": "VulputateElementumNullam.jpg",
         "trailer": "JustoSollicitudin.mkv",
         "movie": "EgetRutrum..mkv"
@@ -235,6 +254,7 @@
         "price": 62.32,
         "category": "13+",
         "year": 2005,
+        "length": 120,
         "image": "ProinAtTurpis.jpg",
         "trailer": "TellusSemperInterdum.mkv",
         "movie": "AliquamSit.mov"

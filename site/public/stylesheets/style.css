@@ -3,7 +3,7 @@ a{
     text-decoration: none;
 }
 
-.fondo-principal{
+.main-background{
     background: #000000;
     background: -webkit-radial-gradient(center, #000000, #48545A);
     background: -moz-radial-gradient(center, #000000, #48545A);
