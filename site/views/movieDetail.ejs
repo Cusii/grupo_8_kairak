@@ -1,78 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<%- include('partials/head') %>
-
+	<%- include('partials/head')  %>
 	<body class="main-background">
-		<%- include('partials/header') %>
-			<main>
-				<%- include('partials/banner-carousel') %>
+		<%- include('partials/header')  %> 
+		<main>
+			<%- include('partials/banner-carousel')  %>
 
-					<!-- SECCIONES DETALLE -->
+			<!-- SECCIONES DETALLE -->
 
-					<section class="row container-fluid detalleProducto col-lg-4">
-						<div class="imgPro col-8">
-							<img src="images/movies/imgProducto.jpg" alt="" width="100%">
-						</div>
-						<div class="compra col-4">
-							<div class="log">
-								<i class="fas fa-heart fa-3x"></i>
-								<i class="fas fa-shopping-cart fa-3x"></i>
-							</div>
-							<h2 class="valor">$850,00</h2>
-							<a href="">
-								<h2 class="boton">COMPRAR</h2>
-							</a>
-						</div>
-					</section>
+			<section class="row container-fluid detalleProducto col-lg-4">
+				<div class="imgPro col-8">
+					<img src="images/movies/<%= movie.image %>" alt="" width="100%">
+				</div>
+				<div class="compra col-4">
+					<div class="log">								
+						<i class="fas fa-shopping-cart fa-3x"></i>
+					</div>
+					<h2 class="valor">$<%= movie.price %></h2>
+					<a href="">
+						<h2 class="boton">Alquilar</h2>
+					</a>
+				</div>
+			</section>
 
-					<!-- TRAILER -->
+			<!-- TRAILER -->
 
-					<section class="row container-fluid trailer col-lg-8">
-						<a href=""><iframe width="100%" height="236px" src="https://www.youtube.com/embed/5nOea-_3iKI"
-								frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen></iframe></a>
-					</section>
+			<section class="row container-fluid trailer col-lg-8">
+				<a href=""><iframe width="100%" height="236px" src="https://www.youtube.com/embed/5nOea-_3iKI"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe></a>
+			</section>
 
-					<!-- CUERPO -->
+			<!-- CUERPO -->
 
-					<section class="row container-fluid descripcion">
-						<h1 class="titu">Bloodshot</h1>
-						<div class="sumario">
-							<div class="col-12">
-								<h2>GENERO<p>Fantasía, Acción</p>
-								</h2>
-							</div>
-							<div class="col-12">
-								<h2>ORIGEN<p>Estados Unidos</p>
-								</h2>
-							</div>
-							<div class="col-12">
-								<h2>CALIFICACION<p>Fantasía, Acción</p>
-								</h2>
-							</div>
-							<div class="col-12">
-								<h2>FECHA DE ESTRENO<p>12 de Marzo del 2020</p>
-								</h2>
-							</div>
-							<div class="argumento col-12">
-								<p>Basada en el comic más vendido, Vin Diesel interpreta a Ray Gibson, un soldado
-									recientemente fallecido en combate y resucitado por la compañía RST como el super
-									héroe Bloodshot. Con un ejército de nanotecnología en sus venas, es un ser imparable
-									– más fuerte que nunca y capaz de sanar instantáneamente. Pero con el objetivo de
-									poder controlar su cuerpo la compañía se ha apoderado de su mente y sus recuerdos.
-									Ray ya no sabe qué es real y qué no - pero su misión será averiguarlo.</p>
-							</div>
-						</div>
-					</section>
+			<section class="row container-fluid descripcion">
+				<h1 class="titu"><%= movie.title %></h1>
+				<div class="sumario">
+					<div class="col-12">
+						<h2>GENERO<p><%= movie.genre %></p>
+						</h2>
+					</div>
+					
+					<div class="col-12">
+						<h2>Año de estreno<p><%= movie.year %> </p>
+						</h2>
+					</div>
+					<div class="argumento col-12">
+						<p><%= movie.description %></p>
+					</div>
+				</div>
+			</section>
 
-			</main>
+		</main>
 
 
-			<%- include('partials/scripts') %>
+		<%- include('partials/scripts') %>
 
-				<%- include('partials/footer') %>
+		<%- include('partials/footer') %>
 	</body>
 
 </html>

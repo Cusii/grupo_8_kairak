@@ -1,16 +1,10 @@
 <section class="banner">
     <div class="content-all">
         <div class="content-carrusel">
-            <figura><a href="/"><img  src="images/movies/img1.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img2.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img3.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img4.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img5.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img6.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img7.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img8.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img9.jpg"></a></figura>
-            <figura><a href="/"><img src="images/movies/img10.jpg"></a></figura>
+            <% for( let index = 0; index < 10; index++ ) { %>
+                <figure><a href="/movies/<%= movies[index].id %>"><img  src="/images/movies/<%= movies[index].image %> "></a></figure>
+            
+            <% } %>            
         </div>
     </div>
 </section>

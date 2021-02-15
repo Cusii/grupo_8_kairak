@@ -1,0 +1,8 @@
+.movies-list h1{
+    color: #fa8e00;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 4em;
+    text-transform: uppercase;
+    text-align: center;    
+    margin-bottom: 2rem;
+}

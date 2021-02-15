@@ -1,10 +1,5 @@
-
-
 /* SECCIONES DETALLE*/
-body{
-    background-color: #000000;/* NO ME TOMA */
-}
-section.row.container-fluid.detalleProducto{
+.detalleProducto{
     margin: 20px 0;
     padding: 0;
     background-color: black;
@@ -103,7 +98,7 @@ section.row.container-fluid.descripcion{
 @media (min-width: 1024px){
 
     /* SECCIONES DETALLE */
-    section.row.container-fluid.detalleProducto{
+    .detalleProducto{
         float:right;
         margin-top: 50px;
         padding: 20px;

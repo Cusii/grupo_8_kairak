@@ -18,8 +18,9 @@ module.exports = {
         let movie = movies.find(movie => movie.id === id);
 
         res.render('movieDetail', {
-            title: 'Kairak',
-            css: 'productDetail',
+            title: movie.title,
+            css: 'movieDetail',
+            movies,
             movie
         });
 

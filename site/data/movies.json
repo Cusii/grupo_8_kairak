@@ -8,7 +8,7 @@
         "category": "ATP",
         "year": 2005,
         "length": 120,
-        "image": "RisusPraesentLectus.png",
+        "image": "img2.jpg",
         "trailer": "VelDapibusAt..mkv",
         "movie": "VitaeNisl..mkv"
     },
@@ -21,33 +21,33 @@
         "category": "13+",
         "year": 2012,
         "length": 120,
-        "image": "QuamSapienVarius.jpg",
+        "image": "img3.jpg",
         "trailer": "OrciLuctus.mkv",
         "movie": "OrciLuctusEt.mov"
     },
     {
         "id": 3,
-        "title": "Looking for Cheyenne (Oublier Cheyenne)",
+        "title": "Toy Story 4",
         "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
         "genre": "Drama|Romance",
         "price": 65.24,
         "category": "16+",
         "year": 2001,
         "length": 120,
-        "image": "VenenatisTurpis.jpg",
+        "image": "img4.jpg",
         "trailer": "SagittisNam.mkv",
         "movie": "PedeVenenatis..mkv"
     },
     {
         "id": 4,
-        "title": "Complete History of My Sexual Failures, A",
+        "title": "Pets",
         "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula.",
         "genre": "Comedy|Documentary",
         "price": 71.95,
         "category": "ATP",
         "year": 1994,
         "length": 120,
-        "image": "IpsumPrimis.jpeg",
+        "image": "img5.jpg",
         "trailer": "Ante.mkv",
         "movie": "NullaAcEnim.mkv"
     },
@@ -60,7 +60,7 @@
         "category": "13+",
         "year": 2012,
         "length": 120,
-        "image": "NonVelit.jpeg",
+        "image": "img6.jpg",
         "trailer": "MagnaVulputate.mkv",
         "movie": "EuInterdum..mkv"
     },
@@ -73,7 +73,7 @@
         "category": "16+",
         "year": 2012,
         "length": 120,
-        "image": "Eu.jpeg",
+        "image": "img7.jpg",
         "trailer": "VitaeMattis..mkv",
         "movie": "TemporConvallisNulla.mkv"
     },
@@ -86,7 +86,7 @@
         "category": "ATP",
         "year": 1998,
         "length": 120,
-        "image": "MorbiAIpsum.jpg",
+        "image": "the-lion-king.jpg",
         "trailer": "DuisAliquamConvallis..mkv",
         "movie": "InHacHabitasse..mkv"
     },
@@ -99,7 +99,7 @@
         "category": "13+",
         "year": 2005,
         "length": 120,
-        "image": "PorttitorPedeJusto.jpg",
+        "image": "img4.jpg",
         "trailer": "EtiamPretium.mov",
         "movie": "AtDolor.mkv"
     },
@@ -112,20 +112,20 @@
         "category": "16+",
         "year": 1988,
         "length": 120,
-        "image": "CurabiturIn.jpeg",
+        "image": "img5.jpg",
         "trailer": "QuisquePorta..mkv",
         "movie": "LuctusNecMolestie.mkv"
     },
     {
         "id": 10,
-        "title": "Naked Blood: Megyaku (Nekeddo burâddo: Megyaku)",
+        "title": "Naked Blood: Megyaku",
         "description": "Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         "genre": "Horror",
         "price": 32.21,
         "category": "ATP",
         "year": 2001,
         "length": 120,
-        "image": "Eget.jpeg",
+        "image": "mulan-2020.jpg",
         "trailer": "LaciniaSapien.mkv",
         "movie": "FaucibusOrci..mkv"
     },
@@ -138,7 +138,7 @@
         "category": "13+",
         "year": 2005,
         "length": 120,
-        "image": "PellentesqueUltrices.jpg",
+        "image": "img8.jpg",
         "trailer": "IpsumPrimis..mkv",
         "movie": "NibhFusce..mkv"
     },
@@ -151,7 +151,7 @@
         "category": "16+",
         "year": 2005,
         "length": 120,
-        "image": "NuncViverra.jpeg",
+        "image": "img10.jpg",
         "trailer": "TurpisEnim.mkv",
         "movie": "SapienALibero.mkv"
     },
@@ -164,7 +164,7 @@
         "category": "ATP",
         "year": 2006,
         "length": 120,
-        "image": "PedePosuere.jpg",
+        "image": "img9.jpg",
         "trailer": "Metus..mkv",
         "movie": "VariusIntegerAc..mkv"
     },
@@ -177,7 +177,7 @@
         "category": "13+",
         "year": 2007,
         "length": 120,
-        "image": "NonPretium.jpeg",
+        "image": "toy-story-4.jpg",
         "trailer": "FelisFusce..mkv",
         "movie": "SapienCursusVestibulum.mkv"
     },
@@ -190,7 +190,7 @@
         "category": "16+",
         "year": 1994,
         "length": 120,
-        "image": "Nulla.jpg",
+        "image": "the-lion-king.jpg",
         "trailer": "Amet..mkv",
         "movie": "Ut.mkv"
     },
@@ -203,7 +203,7 @@
         "category": "ATP",
         "year": 2008,
         "length": 120,
-        "image": "Aenean.jpeg",
+        "image": "the-lion-king.jpg",
         "trailer": "NuncVestibulumAnte.mkv",
         "movie": "Pretium..mkv"
     },
@@ -216,7 +216,7 @@
         "category": "13+",
         "year": 2000,
         "length": 120,
-        "image": "SitAmetSapien.jpg",
+        "image": "the-lion-king.jpg",
         "trailer": "Quisque.mkv",
         "movie": "NuncDonecQuis.mkv"
     },
@@ -229,7 +229,7 @@
         "category": "16+",
         "year": 2012,
         "length": 120,
-        "image": "InterdumMauris.jpeg",
+        "image": "the-lion-king.jpg",
         "trailer": "Diam..mkv",
         "movie": "Id.mkv"
     },
@@ -242,7 +242,7 @@
         "category": "ATP",
         "year": 2011,
         "length": 120,
-        "image": "VulputateElementumNullam.jpg",
+        "image": "the-lion-king.jpg",
         "trailer": "JustoSollicitudin.mkv",
         "movie": "EgetRutrum..mkv"
     },
@@ -255,7 +255,7 @@
         "category": "13+",
         "year": 2005,
         "length": 120,
-        "image": "ProinAtTurpis.jpg",
+        "image": "the-lion-king.jpg",
         "trailer": "TellusSemperInterdum.mkv",
         "movie": "AliquamSit.mov"
     }
