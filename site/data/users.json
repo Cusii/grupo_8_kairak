@@ -1,0 +1,11 @@
+[{ "id": 1, "first_name": "David", "last_name": "Cusii", "email": "davidcusi@gmail.com", "password": "123", "role": "admin", "avatar": "user_1.jpg" },
+    { "id": 2, "first_name": "Sabrina", "last_name": "Reggio", "email": "sreggio1@noaa.gov", "password": "SqGF4DdeVBXE", "role": "user", "avatar": "user_2.jpg" },
+    { "id": 3, "first_name": "Barton", "last_name": "McAneny", "email": "bmcaneny2@bandcamp.com", "password": "wTc6WlmB", "role": "user", "avatar": "user_3.jpg" },
+    { "id": 4, "first_name": "Kendal", "last_name": "Seagrave", "email": "kseagrave3@tuttocitta.it", "password": "lSu6PO", "role": "user", "avatar": "user_4.jpg" },
+    { "id": 5, "first_name": "Bobbee", "last_name": "Birtwhistle", "email": "bbirtwhistle4@xrea.com", "password": "OitOK1OX81qj", "role": "user", "avatar": "user_5.jpg" },
+    { "id": 6, "first_name": "Ree", "last_name": "Batchelder", "email": "rbatchelder5@canalblog.com", "password": "bVhxwHFRxXr", "role": "user", "avatar": "user_6.jpg" },
+    { "id": 7, "first_name": "Taite", "last_name": "Simeon", "email": "tsimeon6@ovh.net", "password": "5cXm11IBy", "role": "user", "avatar": "user_7.jpg" },
+    { "id": 8, "first_name": "Lucita", "last_name": "Kingshott", "email": "lkingshott7@wikispaces.com", "password": "wlJHT8lpK", "role": "user", "avatar": "user_8.jpg" },
+    { "id": 9, "first_name": "Corabelle", "last_name": "Gemmell", "email": "cgemmell8@sciencedirect.com", "password": "K3EyoQU", "role": "user", "avatar": "user_9.jpg" },
+    { "id": 10, "first_name": "Granger", "last_name": "Buffin", "email": "gbuffin9@artisteer.com", "password": "Jqx08dp8", "role": "user", "avatar": "user_10.jpg" }
+]

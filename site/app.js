@@ -4,11 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/usersRouter');
 const indexRouter = require('./routes/indexRouter')
 const carritoRouter = require('./routes/carritoRouter')
-const loginRouter = require('./routes/loginRouter')
-const registroRouter = require('./routes/registroRouter')
+    /* const loginRouter = require('./routes/loginRouter')
+    const registroRouter = require('./routes/registroRouter') */
 const moviesRouter = require('./routes/moviesRouter');
 
 var app = express();
@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', indexRouter)
 app.use('/carrito', carritoRouter)
-app.use('/login', loginRouter)
-app.use('/registro', registroRouter)
+    //app.use('/login', loginRouter)
+    //app.use('/registro', registroRouter)
 app.use('/users', usersRouter)
 app.use('/movies', moviesRouter)
 
