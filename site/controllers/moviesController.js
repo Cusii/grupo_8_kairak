@@ -27,14 +27,14 @@ module.exports = {
     },
 
     toCreateMovie: (req, res) => {
-        res.render('cargaProducto', {
+        res.render('createMovie', {
             title: 'Agregar pelicula',
             css: 'styleFormularios'
         })
     },
 
     createMovie: (req, res, next) => {
-        const {title, description, price, year, length, category, genre} = req.body;
+        const {title, description, price, year, length, category, genre, trailer, movie} = req.body;
 
         let lastID = 0;
         movies.forEach(movie => {
@@ -48,12 +48,14 @@ module.exports = {
             id: lastID,
             title: title.trim(),
             description: description.trim(),
-            price: price,
+            price: +price,
             year: year,
-            length: length,
+            length: +length,
             category: category,
             genre: genre,
-            image: req.file.filename            
+            image: req.file.filename,
+            trailer: trailer.trim(),
+            movie: movie.trim()            
         };
 
         movies.push(newMovie);
@@ -68,7 +70,8 @@ module.exports = {
 
         res.render('editMovie',{
             title: movie.title,
-
+            css: 'editForm',
+            movie
         });
     },
 
@@ -121,7 +124,7 @@ module.exports = {
 
         moviesDB.setMovies(movies);
 
-        res.redirect('/');
+        res.redirect('/movies');
 
     }
 }

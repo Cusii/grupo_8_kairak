@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head')  %>
+
+    <body class="bg-dark">
+        <%- include('partials/header') %>
+
+            <section class="container background">
+                <article class="box-center">
+
+                    <div class="container">
+                        <div class="row mx-auto ">
+                            <div class="btn-group">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-top ">
+                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
+                    </div>
+                    <div class="container  mb-3">
+                        <div class="row mx-auto">
+                            <div class="col-6  mx-auto container ">
+                                <img src="/images/movies/<%= movie.image %>" class=" image-carga-product img-fluid mx-auto d-block " alt="logo ">
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <form action="/movies/<%= movie.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="row">
+                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Nombre" name="title" value="<%= movie.title %>">
+                                    <input class="form-control mb-3 form-control-sm " type="text" placeholder="Genero" name="genre" value="<%= movie.genre %>">
+                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Precio" name="price" value="<%= movie.price %>">
+                                    <input class="form-control mb-3 form-control-sm " type="text" placeholder="Edad" name="category" value="<%= movie.category %>">
+                                    <input class="form-control mb-3 form-control-sm " type="text" placeholder="Año" name="year" value="<%= movie.year %>">
+                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Duracion" name="length" value="<%= movie.length %>">
+                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Trailer" name="trailer" value="<%= movie.trailer %>">
+                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Pelicula" name="movie" value="<%= movie.movie %>">
+                                    <input class="form-control mb-3 form-control-sm" type="file" name="img-movie">
+                                    <textarea class="form-control" rows="3" name="description"><%= movie.description %></textarea>
+                                    <div class="container">
+                                        <div class="row mx-auto ">
+                                            <div class="col-6 col-xl-4 mx-auto ">
+                                                
+                                                <button class="btn btn-primary" type="submit">Actualizar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+            </section>
+
+            <%- include('partials/footer') %>
+                <%- include('partials/scripts')  %>
+    </body>
+
+</html>

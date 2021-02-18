@@ -7,15 +7,16 @@ const uploadImg = require('../middlewares/uploadMovieImage');
 
 router.route('/')
     .get(getMovies)
-    .post(uploadImg.single('movie'), createMovie);
+    .post(uploadImg.single('img-movie'), createMovie);
+
+router.route('/create').get(toCreateMovie);
 
 router.route('/:id')
     .get(detail)
-    .put(uploadImg.single('movie') ,updateMovie)
-    .delete(deleteMovie);
+    .put(uploadImg.single('img-movie') ,updateMovie)
+    .delete(deleteMovie)
 
 router.route('/:id/edit').get(toEditMovie);
 
-router.route('/create').get(toCreateMovie);
 
 module.exports = router;
