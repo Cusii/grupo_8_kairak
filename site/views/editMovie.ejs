@@ -11,17 +11,22 @@
                     <div class="container">
                         <div class="row mx-auto ">
                             <div class="btn-group">
-                                
+
                             </div>
                         </div>
                     </div>
                     <div class="line-top ">
+                        <h1 class=" titulo-editar-peliculas mx-auto col-6 bg-dark text-white mt-3 fs-2 "> Editar peliculas</h1>
                         <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
                     </div>
                     <div class="container  mb-3">
                         <div class="row mx-auto">
                             <div class="col-6  mx-auto container ">
-                                <img src="/images/movies/<%= movie.image %>" class=" image-carga-product img-fluid mx-auto d-block " alt="logo ">
+                                <div class="row">
+                                    <h2 class=" titulo-foto mx-auto bg-dark text-white mt-1 col-10">Foto</h2>
+                                    <img src="/images/movies/<%= movie.image %>" class=" mt-3 image-carga-product img-fluid mx-auto d-block " alt="logo ">
+
+                                </div>
 
                             </div>
                             <div class="col-6 mb-3">
@@ -36,17 +41,17 @@
                                     <input class="form-control mb-3 form-control-sm" type="text" placeholder="Pelicula" name="movie" value="<%= movie.movie %>">
                                     <input class="form-control mb-3 form-control-sm" type="file" name="img-movie">
                                     <textarea class="form-control" rows="3" name="description"><%= movie.description %></textarea>
-                                    <div class="container">
-                                        <div class="row mx-auto ">
-                                            <div class="col-6 col-xl-4 mx-auto ">
-                                                
-                                                <button class="btn btn-primary" type="submit">Actualizar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                    <div class="row mx-auto "></div>
+
+                                    <button class=" col-5 btn btn-primary mt-3" type="submit">Actualizar</button>
+                                    <div class="col-2"></div>
+                                    <a href="/movies" class=" col-5 btn btn-danger mt-3">volver</a>
+
                             </div>
+
+                            </form>
                         </div>
+                    </div>
                     </div>
 
                 </article>

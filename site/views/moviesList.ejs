@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
-	<%- include('partials/head')  %> 
+<%- include('partials/head')  %>
+
     <body class="main-background">
-		<%- include('partials/header')  %> 
-		<main>
-			<%- include('partials/banner-carousel')  %>
+        <%- include('partials/header')  %>
+            <main>
 
-			<div class="container movies-list">
-				<h1><%= title %> </h1>
-					<div class="row">
-						<% movies.forEach(movie=> { %>
-							<div class="col-12 col-md-4 col-lg-3 my-3 ">
-								<div class="card mx-auto" style="width: 98%;">
-									<img src="/images/movies/<%= movie.image %> " class="card-img-top" alt="..." />
-									<div class="card-body">
-										<h5 class="card-title">
-											<%= movie.title %>
-										</h5>
-										<p class="card-text">
-											$<%= movie.price %>
-										</p>
-										<a href="/movies/<%= movie.id %> " class="btn btn-primary">Ver más</a>
+                <div class="container movies-list">
+                    <h1>
+                        <%= title %>
+                            <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
 
-										<form action="/movies/<%= movie.id %>/edit">
-											<button class="btn btn-sm btn-success" type="submit">Editar</a></button> 
-										  </form>
-										  <form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
-											<button class="btn btn-sm btn-danger" type="submit">Eliminar</a></button> 
-										  </form>
-									</div>
-								</div>
-							</div>
-	
-							<% }) %>
-				</div>
-			</div>
+                    </h1>
+                    <div class="row">
+                        <% movies.forEach(movie=> { %>
+                            <div class="col-12 col-md-4 col-lg-3 my-3 ">
+                                <div class="card mx-auto" style="width: 98%;">
+                                    <img src="/images/movies/<%= movie.image %> " class="card-img-top" alt="..." />
+                                    <div class="card-body fondo-fotos">
+                                        <h5 class="card-title">
+                                            <%= movie.title %>
+                                        </h5>
+                                        <p class="card-text">
+                                            $
+                                            <%= movie.price %>
+                                        </p>
 
-        </main>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <a href="/movies/<%= movie.id %> " class=" btn btn-outline-primary fs-6">Ver más</a>
+                                            </div>
+                                            <div class="col-4">
+                                                <form action="/movies/<%= movie.id %>/edit">
+                                                    <button class=" btn btn-sm btn-primary" type="submit">Editar</a></button>
+                                                </form>
+                                            </div>
+                                            <div class="col-4">
+                                                <form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
+                                                    <button class=" col-12 btn btn-sm btn-danger" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                          </svg></a></button>
+                                                </form>
+                                            </div>
+                                        </div>
 
-        <%- include('partials/scripts')  %> 
+                                    </div>
+                                </div>
+                            </div>
 
-		<%- include('partials/footer')  %> 
+                            <% }) %>
+                    </div>
+                </div>
+
+            </main>
+
+            <%- include('partials/scripts')  %>
+
+                <%- include('partials/footer')  %>
     </body>
+
 </html>
