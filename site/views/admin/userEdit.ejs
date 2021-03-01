@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('partials/head') %>
+<%- include('partials/headAdmin') %>
 
     <body class="bg-dark">
-        <%- include('partials/header') %>
+        <%- include('partials/headerAdmin') %>
             <section class="container background">
                 <article class="box-center">
+
                     <div class="container">
                         <div class="row mx-auto ">
                             <div class="btn-group">
                                 <div class="col-xl-2"></div>
                                 <a href="" class="boton-top-one btn btn-outline-primary btn-white col-6 disabled">Registrarse</a>
-                                <a href="/users/login" class="boton-top-two btn btn-outline-white btn-primary col-6 ">Logearse</a>
+
                                 <div class="col-xl-2 "></div>
                             </div>
                         </div>
@@ -22,7 +23,8 @@
 
 
 
-                    <form class=" container" action="/admin/users/store" method="POST" enctype="multipart/form-data">
+
+                    <form class="container" action="/admin/users/update/<%=user.id%>?_method=PUT" method="POST">
 
                         <div class="logo-person mb-3">
                             <img src="/images/logo-person.png" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo">
@@ -32,23 +34,30 @@
                         <div class="row mx-auto mb-3 ">
                             <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                <input type="text" class="form-control" id="nomFirs" placeholder=" nombre" name="first_name" required>
-                            </div>
-                        </div>
-
-
-                        <div class="row mx-auto mb-3 ">
-                            <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-
-                                <input type="text" class="form-control" id="nomFirs" placeholder=" apellido" name="last_name" required>
-
+                                <input type="text" class="form-control" id="nomFirs" placeholder=" nombre" name="first_name" value="<%= user.first_name%>">
                             </div>
                         </div>
 
                         <div class="row mx-auto mb-3 ">
                             <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                <input type="text" class="form-control" id="nomFirs" placeholder=" correo" name="email" required>
+                                <input type="text" class="form-control" id="nomFirs" placeholder=" apellido" name="last_name" value="<%= user.last_name%>">
+
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto mb-3 ">
+                            <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+
+                                <input type="text" class="form-control" id="nomFirs" placeholder=" correo" name="email" value="<%= user.email%>">
+
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto mb-3 ">
+                            <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+
+                                <input type="text" class="form-control" id="nomFirs" placeholder=" contraseña" name="password" value="<%= user.password%>">
 
                             </div>
                         </div>
@@ -56,7 +65,7 @@
                         <div class="row mx-auto mb-3">
                             <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                                <input type="text" class="form-control" id="nomFirs" placeholder=" contraseña" name="password" required>
+                                <input type="text" class="form-control" id="nomFirs" placeholder=" rol" name="role" value="<%= user.role%>">
 
 
                             </div>
@@ -64,7 +73,7 @@
                         <div class="row mx-auto mb-3">
                             <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                                <input type="file" class="form-control" id="nomFirs" placeholder=" img" name="avatar">
+                                <input type="text" class="form-control" id="nomFirs" placeholder=" img" name="avatar" value="<%= user.avatar%>">
 
 
                             </div>
@@ -73,21 +82,16 @@
                         </div>
                         <div class="container ">
                             <div class="row mx-auto">
+                                <a class="btn col-6 col-xl-4 bg-danger mx-auto" href="/admin//users/list">volver</a>
                                 <div class="col-6 col-xl-4 mx-auto">
-                                    <button class="btn col-12 btn btn-primary" type="submit">Guardar</button>
-                                    <% if (typeof error != 'undefined') { %>
-                                        <div class="alert alert-danger">
-                                            <span><%= error %> </span>
-                                        </div>
-
-
-                                        <% } %>
+                                    <button class="btn col-12 btn btn-primary" type="submit">Guardar cambios</button>
                                 </div>
                             </div>
 
-
+                        </div>
 
                     </form>
+
 
 
 
@@ -95,8 +99,8 @@
                 </article>
             </section>
 
-            <%- include('partials/footer') %>
-                <%- include('partials/scripts')  %>
+            <%- include('partials/footerAdmin') %>
+                <%- include('partials/scriptsAdmin')  %>
     </body>
 
 </html>

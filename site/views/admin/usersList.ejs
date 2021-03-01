@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/headAdmin')  %>
+
+    <body class="">
+        <%- include('partials/headerAdmin')  %>
+
+            <div class="container">
+                <div class="row">
+                    <h1 class="mx-auto col-12">Vista de todos los usuarios registrados</h1>
+                </div>
+                <div class="row">
+                    <% users.forEach(user => {%>
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="card mx-auto" style="width: 98%; ">
+                                <img src="/images/logo-person.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= user.first_name %>
+                                            <%= user.last_name %>
+                                    </h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <%= user.role %>
+                                    </li>
+                                </ul>
+                                <div class="btn-group mx-auto" role="group">
+                                    <form action="/users/perfil/<%= user.id %> ">
+                                        <button class="card-link btn btn-outline-success" type="submit">Detalles</button>
+                                    </form>
+                                    <form action="/admin/users/edit/<%= user.id %> ">
+                                        <button class="card-link btn btn-outline-primary" type="submit">Editar</button>
+                                    </form>
+
+                                    <form action="/admin/users/delete/<%= user.id %>?_method=DELETE" method="POST">
+                                        <button class="card-link btn btn-outline-danger">Eliminar</button>
+                                    </form>
+
+                                </div>
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+
+                        <% });  %>
+
+                </div>
+            </div>
+
+
+
+
+
+            <%- include('partials/scriptsAdmin')  %>
+
+                <%- include('partials/footerAdmin')  %>
+    </body>
+
+</html>

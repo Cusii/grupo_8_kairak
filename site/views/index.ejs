@@ -1,74 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
-	<%- include('partials/head')  %> 
+<%- include('partials/head')  %>
+
     <body class="main-background">
-		<%- include('partials/header')  %> 
-		<main>
-			<%- include('partials/banner-carousel')  %>
-			
-			<section class="movies-section">
-				<div>
-					<h2>Las más vistas del mes</h2>
-				</div>
-				<div class="movies-grid">
-					<% for( let index = 0; index < 4; index++ ) { %>
-						<article class="col-3 col-md-6 col-lg-4 movie-container">
-							<a href="/movies/<%= movies[index].id %> ">
+        <%- include('partials/header')  %>
+            <main>
+                <%- include('partials/banner-carousel')  %>
+
+                    <section class="movies-section">
+                        <div>
+                            <h2>Las más vistas del mes</h2>
+                        </div>
+                        <div class="movies-grid">
+                            <% for( let index = 0; index < 4; index++ ) { %>
+                                <article class="col-3 col-md-6 col-lg-4 movie-container">
+                                    <a href="/movies/<%= movies[index].id %> ">
 								<img src="images/movies/<%= movies[index].image %>" alt="">
 								<div class="movie-title">
 									<h4><%= movies[index].title %></h4>
 								</div>
 							</a>
-						</article>
-					
-					<% } %>					
-				</div>
-			</section>
-			
-			<section class="movies-section">
-				<div>
-					<h2>Estrenos</h2>
-				</div>
-				<div class="movies-grid">
-					<% for( let index = 0; index < 4; index++ ) { %>
-						<article class="col-3 col-md-6 col-lg-4 movie-container">
-							<a href="/movies/<%= movies[index].id %> ">
+                                </article>
+
+                                <% } %>
+                        </div>
+                    </section>
+
+                    <section class="movies-section">
+                        <div>
+                            <h2>Estrenos</h2>
+                        </div>
+                        <div class="movies-grid">
+                            <% for( let index = 0; index < 4; index++ ) { %>
+                                <article class="col-3 col-md-6 col-lg-4 movie-container">
+                                    <a href="/movies/<%= movies[index].id %> ">
 								<img src="images/movies/<%= movies[index].image %>" alt="">
 								<div class="movie-title">
 									<h4><%= movies[index].title %></h4>
 								</div>
 							</a>
-						</article>
-					
-					<% } %>
-				</div>
-			</section>
+                                </article>
 
-			<section class="movies-section">
-				<div>
-					<h2>Promociones</h2>
-				</div>
-				<div class="movies-grid">
-					<% for( let index = 0; index < 4; index++ ) { %>
-						<article class="col-3 col-md-6 col-lg-4 movie-container">
-							<a href="/movies/<%= movies[index].id %> ">
+                                <% } %>
+                        </div>
+                    </section>
+
+                    <section class="movies-section">
+                        <div>
+                            <h2>Promociones</h2>
+                        </div>
+                        <div class="movies-grid">
+                            <% for( let index = 0; index < 4; index++ ) { %>
+                                <article class="col-3 col-md-6 col-lg-4 movie-container">
+                                    <a href="/movies/<%= movies[index].id %> ">
 								<img src="images/movies/<%= movies[index].image %>" alt="">
 								<div class="movie-title">
 									<h4><%= movies[index].title %></h4>
 								</div>
 							</a>
-						</article>
-					
-					<% } %>
-					
-				</div>
-			</section>
+                                </article>
 
-		</main>
-        
-		
-		<%- include('partials/scripts')  %> 
+                                <% } %>
 
-		<%- include('partials/footer')  %> 
+                        </div>
+                    </section>
+
+            </main>
+
+
+            <%- include('partials/scripts')  %>
+
+                <%- include('partials/footer')  %>
     </body>
+
 </html>

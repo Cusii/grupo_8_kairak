@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/headAdmin')  %>
+
+    <body class="">
+        <%- include('partials/headerAdmin')  %>
+            <h1>perfil de usuarios</h1>
+
+            <div class="card mx-auto" style="width: 98%; ">
+                <img src="/images/logo-person.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= user.first_name %>
+                            <%= user.last_name %>
+                    </h5>
+                    <p class="card-text">
+                        <%= user.role %>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <%= user.email %>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="/users/perfil/<%= user.id %> " class="card-link">ver</a>
+                    <a href="#" class="card-link">editar</a>
+                    <a href="#" class="card-link">eliminar</a>
+                </div>
+            </div>
+
+
+
+
+            <%- include('partials/scriptsAdmin')  %>
+
+                <%- include('partials/footerAdmin')  %>
+    </body>
+
+</html>

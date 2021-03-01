@@ -5,7 +5,7 @@ const movies = moviesDB.getMovies();
 
 module.exports = {
     getMovies: (req, res) => {
-        res.render('moviesList', {
+        res.render('admin/moviesList', {
             title: 'nuestras peliculas',
             css: 'moviesList',
             movies
@@ -17,7 +17,7 @@ module.exports = {
 
         let movie = movies.find(movie => movie.id === id);
 
-        res.render('movieDetail', {
+        res.render('admin/movieDetail', {
             title: movie.title,
             css: 'movieDetail',
             movies,
@@ -27,14 +27,14 @@ module.exports = {
     },
 
     toCreateMovie: (req, res) => {
-        res.render('createMovie', {
+        res.render('admin/createMovie', {
             title: 'Agregar pelicula',
             css: 'styleFormularios'
         })
     },
 
     createMovie: (req, res, next) => {
-        const {title, description, price, year, length, category, genre, trailer, movie} = req.body;
+        const { title, description, price, year, length, category, genre, trailer, movie } = req.body;
 
         let lastID = 0;
         movies.forEach(movie => {
@@ -44,7 +44,7 @@ module.exports = {
         });
         lastID++;
 
-        const newMovie = {                           
+        const newMovie = {
             id: lastID,
             title: title.trim(),
             description: description.trim(),
@@ -55,7 +55,7 @@ module.exports = {
             genre: genre,
             image: req.file.filename,
             trailer: trailer.trim(),
-            movie: movie.trim()            
+            movie: movie.trim()
         };
 
         movies.push(newMovie);
@@ -68,7 +68,7 @@ module.exports = {
     toEditMovie: (req, res) => {
         const movie = movies.find(movie => movie.id === +req.params.id);
 
-        res.render('editMovie',{
+        res.render('admin/editMovie', {
             title: movie.title,
             css: 'editForm',
             movie
@@ -77,21 +77,21 @@ module.exports = {
 
     updateMovie: (req, res, next) => {
         const id = +req.params.id;
-        const {title, description, price, year, length, category, genre} = req.body;
+        const { title, description, price, year, length, category, genre } = req.body;
         const imgFile = req.file;
         let imagePath = "";
 
         movies.forEach(movie => {
-            if(movie.id === id){
+            if (movie.id === id) {
                 imagePath = movie.image;
 
                 if (imgFile) {
-                    if(fs.existsSync(path.join('public','images','movies',movie.image))){
-                        fs.unlinkSync(path.join('public','images','movies',movie.image));
+                    if (fs.existsSync(path.join('public', 'images', 'movies', movie.image))) {
+                        fs.unlinkSync(path.join('public', 'images', 'movies', movie.image));
                     }
                     imagePath = req.file.filename
-                } 
-                
+                }
+
                 movie.id = id;
                 movie.title = title;
                 movie.description = description;
@@ -114,11 +114,11 @@ module.exports = {
 
         movies.forEach(movie => {
             if (movie.id === id) {
-                if(fs.existsSync(path.join('public','images','movies',movie.image))){
-                    fs.unlinkSync(path.join('public','images','movies',movie.image));
+                if (fs.existsSync(path.join('public', 'images', 'movies', movie.image))) {
+                    fs.unlinkSync(path.join('public', 'images', 'movies', movie.image));
                 }
                 let movieToDelete = movies.indexOf(movie);
-                movies.splice(movieToDelete,1);
+                movies.splice(movieToDelete, 1);
             }
         });
 
