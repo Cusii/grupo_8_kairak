@@ -51,8 +51,8 @@ module.exports = {
         let passHash = bcrypt.hashSync(password.trim(), 12)
 
         if (!avatarPath) {
-            avatarPath = 'avatar-default.png'; 
-        } else{
+            avatarPath = 'avatar-default.png';
+        } else {
             avatarPath = req.files[0].filename;
         }
 
@@ -117,12 +117,16 @@ module.exports = {
         let result = users.find(user => user.email === email)
         if (result) {
             if (bcrypt.compareSync(password, result.password)) {
-                return res.redirect('/index/admin')
+                if (result.rol == 'admin') {
+                    return res.redirect('/admin/index')
+                } else {
+                    return res.redirect('/')
+                }
             } else {
                 res.render('login', {
                     title: 'Kairak',
                     css: 'styleFormularios',
-                    error: 'contraseña invalido'
+                    error: 'contraseña invalida'
                 })
             }
         } else {
