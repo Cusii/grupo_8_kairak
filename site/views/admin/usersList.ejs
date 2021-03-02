@@ -13,7 +13,7 @@
                     <% users.forEach(user => {%>
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="card mx-auto" style="width: 98%; ">
-                                <img src="/images/logo-person.png" class="card-img-top" alt="...">
+                                <img src="/images/users/<%= user.avatar %>" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <%= user.first_name %>

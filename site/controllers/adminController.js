@@ -25,6 +25,8 @@ module.exports = {
     proccesRegister: (req, res, next) => {
         const { first_name, last_name, email, password, role, avatar } = req.body
 
+        let avatarPath = req.files[0];
+
         if (!email) {
             return res.redirect('/users/registro')
 
@@ -48,6 +50,12 @@ module.exports = {
 
         let passHash = bcrypt.hashSync(password.trim(), 12)
 
+        if (!avatarPath) {
+            avatarPath = 'avatar-default.png'; 
+        } else{
+            avatarPath = req.files[0].filename;
+        }
+
         let user = {
             id: lastID + 1,
             first_name: first_name.trim(),
@@ -55,10 +63,10 @@ module.exports = {
             email: email.trim(),
             password: passHash,
             role: "user",
-            avatar: req.files[0].filename
+            avatar: avatarPath
         }
         users.push(user);
-        fs.writeFileSync('./data/users.json', JSON.stringify(users), 'utf-8')
+        setUsers(users);
         res.redirect('/admin//users/list')
     },
     edittUser: (req, res) => {
@@ -84,7 +92,7 @@ module.exports = {
                 user.avatar = avatar
             }
         })
-        fs.writeFileSync('./data/users.json', JSON.stringify(users), 'utf-8')
+        setUsers(users);
         res.redirect('/admin//users/list')
 
     },
@@ -96,7 +104,7 @@ module.exports = {
                 users.splice(eliminar, 1)
             }
         });
-        fs.writeFileSync('./data/users.json', JSON.stringify(users), 'utf-8')
+        setUsers(users);
         res.redirect('/admin//users/list')
 
     },
