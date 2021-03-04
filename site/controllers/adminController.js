@@ -37,7 +37,7 @@ module.exports = {
             return res.render('registro', {
                 error: 'El usuario ya existe',
                 title: "kairak",
-                css: 'styleFormularios'
+                css: ''
             })
         }
 
@@ -74,7 +74,7 @@ module.exports = {
         const user = users.find(auto => auto.id === +req.params.id)
         res.render('admin/userEdit', {
             user,
-            css: 'styleFormularios'
+            css: ''
         })
 
     },

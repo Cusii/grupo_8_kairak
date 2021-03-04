@@ -2,60 +2,74 @@
 <html lang="es">
 <%- include('partials/headAdmin')  %>
 
-    <body class="bg-dark">
+    <body class="bg-white mb-5">
         <%- include('partials/headerAdmin') %>
 
-            <section class="container background">
-                <article class="box-center">
+            <section class="container bg-light mb-5 pb-5">
+                <article class="box-center mb-5">
 
-                    <div class="container">
-                        <div class="row mx-auto ">
-                            <div class="btn-group">
-
-                            </div>
-                        </div>
+                    <div class=" text-center mb-5">
+                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                        <h4>Cargar nueva pelicula</h4>
+                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
                     </div>
-                    <div class="line-top ">
-                        <h1 class=" titulo-editar-peliculas mx-auto col-6 bg-dark text-white mt-3 fs-2 "> Editar peliculas</h1>
-                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
-                    </div>
-                    <div class="container  mb-3">
-                        <div class="row mx-auto">
-                            <div class="col-6  mx-auto container ">
-                                <h2 class=" titulo-foto mx-auto bg-dark text-white mt-1 col-10">Foto</h2>
-                                <img src="/images/portada.jpg " class=" image-carga-product img-fluid mx-auto d-block " alt="logo ">
 
-                            </div>
-                            <div class="col-6 mb-3">
-                                <form action="/movies" method="POST" enctype="multipart/form-data" class="row">
-                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Nombre" name="title">
-                                    <input class="form-control mb-3 form-control-sm " type="text" placeholder="Genero" name="genre">
-                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Precio" name="price">
-                                    <input class="form-control mb-3 form-control-sm " type="text" placeholder="Edad" name="category">
-                                    <input class="form-control mb-3 form-control-sm " type="text" placeholder="Año" name="year">
-                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Duracion" name="length">
-                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Trailer" name="trailer">
-                                    <input class="form-control mb-3 form-control-sm" type="text" placeholder="Pelicula" name="movie">
-                                    <input class="form-control mb-3 form-control-sm" type="file" name="img-movie">
-                                    <textarea class="form-control" rows="3" name="description"></textarea>
-                                    <div class="container">
-                                        <div class="row mx-auto ">
-                                            <div class="col-6 col-xl-4 mx-auto ">
+                    <form action="/movies" method="POST" enctype="multipart/form-data" class="container mb-5">
+                        <div class=" bg-white mb-5 border border-1 pt-5">
+                            <div class="row mx-auto mb-5 ">
 
-                                                <button class="btn btn-primary" type="submit">Guardar</button>
-                                            </div>
-                                        </div>
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3 " type="text" placeholder="Genero" name="genre">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="text" placeholder="Precio" name="price">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3 " type="text" placeholder="Edad" name="category">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="text" placeholder="Duracion" name="length">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="text" placeholder="Trailer" name="trailer">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="text" placeholder="Pelicula" name="movie">
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
+                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie"> Subir foto
                                     </div>
-                                </form>
+
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
+                                    <textarea class="form-control" rows="3" name="description"></textarea>
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
+                                    <button class="btn btn-primary s" type="submit">Guardar</button>
+                                </div>
                             </div>
+
                         </div>
-                    </div>
+                    </form>
+
 
                 </article>
             </section>
 
-            <%- include('partials/footerAdmin') %>
-                <%- include('partials/scriptsAdmin')  %>
+            <%- include('partials/scriptsAdmin')  %>
     </body>
 
 </html>

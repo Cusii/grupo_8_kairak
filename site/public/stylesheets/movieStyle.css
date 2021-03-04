@@ -1,0 +1,25 @@
+.titulo-detsalle {
+    background: #E5EBF3;
+    box-sizing: border-box;
+    border-radius: 40px;
+    padding: 2%;
+    text-align: center;
+}
+
+.border-descripcion {
+    box-sizing: border-box;
+    border-radius: 40px;
+    padding: 2%;
+    text-align: center;
+}
+
+.border-detalles {
+    box-sizing: border-box;
+    border-radius: 40px;
+    padding: 2%;
+    text-align: center;
+}
+
+.imag {
+    padding: 100px;
+}

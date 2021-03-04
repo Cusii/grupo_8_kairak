@@ -2,71 +2,117 @@
 <html lang="es">
 <%- include('partials/head')  %>
 
-    <body class="main-background">
+    <body class="bg-white">
         <%- include('partials/header')  %>
-            <main>
-                <%- include('partials/banner-carousel')  %>
+            <main class="container bg-light">
+                <%- include('partials/carousel')  %>
 
-                    <section class="movies-section">
-                        <div>
+                    <section class="las-mas-vistas">
+
+                        <div class=" text-center ">
+                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                             <h2>Las más vistas del mes</h2>
+                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                         </div>
-                        <div class="movies-grid">
+                        <div class="row">
                             <% for( let index = 0; index < 4; index++ ) { %>
-                                <article class="col-3 col-md-6 col-lg-4 movie-container">
-                                    <a href="/movies/<%= movies[index].id %> ">
-								<img src="images/movies/<%= movies[index].image %>" alt="">
-								<div class="movie-title">
-									<h4><%= movies[index].title %></h4>
-								</div>
-							</a>
-                                </article>
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+                                        <div class="card-header bg-transparent  text-center">
+                                            <h4>
+                                                <%= movies[index].title %>
+                                            </h4>
+                                        </div>
+                                        <div class="card-body text-secondary ">
+                                            <a href="/movies/<%= movies[index].id %> ">
+                                                    <img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
+                                                </a>
+                                        </div>
+                                        <div class="card-footer bg-transparent row">
+                                            <p class="col-6 btn">
+                                                <%= movies[index].price %>
+                                            </p>
+                                            <a href="/movies/<%= movies[index].id %>" class="btn col-6 btn-outline-secondary btn-light">Detalles</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                                 <% } %>
                         </div>
+
                     </section>
 
-                    <section class="movies-section">
-                        <div>
+                    <section class="estrenos">
+                        <div class=" text-center">
+                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                             <h2>Estrenos</h2>
+                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                         </div>
-                        <div class="movies-grid">
+                        <div class="row">
                             <% for( let index = 0; index < 4; index++ ) { %>
-                                <article class="col-3 col-md-6 col-lg-4 movie-container">
-                                    <a href="/movies/<%= movies[index].id %> ">
-								<img src="images/movies/<%= movies[index].image %>" alt="">
-								<div class="movie-title">
-									<h4><%= movies[index].title %></h4>
-								</div>
-							</a>
-                                </article>
+                                <div class=" col-12 col-md-4 col-lg-3 ">
+                                    <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+                                        <div class="card-header bg-transparent ">
+                                            <h4>
+                                                <%= movies[index].title %>
+                                            </h4>
+                                        </div>
+                                        <div class="card-body text-secondary ">
+                                            <a href="/movies/<%= movies[index].id %> ">
+                                                    <img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
+                                                </a>
+                                        </div>
+                                        <div class="card-footer bg-transparent row">
+                                            <p class="col-6 mt-2">
+                                                <%= movies[index].price %>
+                                            </p>
+                                            <a href="/movies/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+                                        </div>
 
+                                    </div>
+
+                                </div>
                                 <% } %>
                         </div>
                     </section>
 
-                    <section class="movies-section">
-                        <div>
-                            <h2>Promociones</h2>
+                    <section class="promocion">
+                        <div class=" text-center">
+                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                            <h2>Promocion</h2>
+                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                         </div>
-                        <div class="movies-grid">
+                        <div class="row">
                             <% for( let index = 0; index < 4; index++ ) { %>
-                                <article class="col-3 col-md-6 col-lg-4 movie-container">
-                                    <a href="/movies/<%= movies[index].id %> ">
-								<img src="images/movies/<%= movies[index].image %>" alt="">
-								<div class="movie-title">
-									<h4><%= movies[index].title %></h4>
-								</div>
-							</a>
-                                </article>
+                                <div class=" col-12 col-md-4 col-lg-3 ">
+                                    <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+                                        <div class="card-header bg-transparent ">
+                                            <h4>
+                                                <%= movies[index].title %>
+                                            </h4>
+                                        </div>
+                                        <div class="card-body text-secondary ">
+                                            <a href="/movies/<%= movies[index].id %> ">
+                                                    <img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
+                                                </a>
+                                        </div>
+                                        <div class="card-footer bg-transparent row">
+                                            <p class="col-6 mt-2">
+                                                <%= movies[index].price %>
+                                            </p>
+                                            <a href="/movies/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+                                        </div>
 
+                                    </div>
+
+                                </div>
                                 <% } %>
-
                         </div>
                     </section>
 
             </main>
-
 
             <%- include('partials/scripts')  %>
 

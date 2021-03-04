@@ -2,18 +2,24 @@
 <html lang="en">
 <%- include('partials/headAdmin')  %>
 
-    <body class="">
+    <body class="bg-white">
         <%- include('partials/headerAdmin')  %>
 
-            <div class="container">
-                <div class="row">
-                    <h1 class="mx-auto col-12">Vista de todos los usuarios registrados</h1>
+            <div class="container bg-light">
+                <div class=" text-center ">
+                    <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                    <h2>Vista de todos los usuarios</h2>
+                    <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                 </div>
+
                 <div class="row">
                     <% users.forEach(user => {%>
                         <div class="col-12 col-md-4 col-lg-3">
                             <div class="card mx-auto" style="width: 98%; ">
-                                <img src="/images/users/<%= user.avatar %>" class="card-img-top" alt="...">
+                                <a href="/users/perfil/<%= user.id %> ">
+                                    <img src="/images/users/<%= user.avatar %>" class="card-img-top" alt="...">
+                                </a>
+
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <%= user.first_name %>
@@ -25,12 +31,13 @@
                                         <%= user.role %>
                                     </li>
                                 </ul>
-                                <div class="btn-group mx-auto" role="group">
-                                    <form action="/users/perfil/<%= user.id %> ">
-                                        <button class="card-link btn btn-outline-success" type="submit">Detalles</button>
-                                    </form>
+                                <div class="btn-group mx-auto mt-3" role="group">
+
                                     <form action="/admin/users/edit/<%= user.id %> ">
                                         <button class="card-link btn btn-outline-primary" type="submit">Editar</button>
+                                    </form>
+                                    <form action="">
+                                        <button class="btn" type="submit"></button>
                                     </form>
 
                                     <form action="/admin/users/delete/<%= user.id %>?_method=DELETE" method="POST">
@@ -56,7 +63,7 @@
 
             <%- include('partials/scriptsAdmin')  %>
 
-                <%- include('partials/footerAdmin')  %>
+
     </body>
 
 </html>

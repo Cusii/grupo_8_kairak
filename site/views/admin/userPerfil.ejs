@@ -2,39 +2,46 @@
 <html lang="en">
 <%- include('partials/headAdmin')  %>
 
-    <body class="">
+    <body class="bg-white ">
         <%- include('partials/headerAdmin')  %>
-            <h1>perfil de usuarios</h1>
+            <main class="container bg-light pb-5">
+                <div class="row mx-auto pb-5">
+                    <div class="card mx-auto" style="width: 50%">
+                        <img src="/images/logo-person.png" class="card-img-top" alt="...">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <%= user.first_name %>
+                                    <%= user.last_name %>
+                            </h5>
+                        </div>
+                        <ul class="list-group list-group-flush ">
+                            <li class="list-group-item">
+                                <p class="card-text">
+                                    <%= user.role %>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <p>
+                                    <%= user.email %>
+                                </p>
+                            </li>
+                            <li class="list-group-item pb-5">info</li>
+                        </ul>
+                        <div class="mx-auto">
+                            <a href="/admin//users/list" class="btn btn-danger ">Volver</a>
 
-            <div class="card mx-auto" style="width: 98%; ">
-                <img src="/images/logo-person.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <%= user.first_name %>
-                            <%= user.last_name %>
-                    </h5>
-                    <p class="card-text">
-                        <%= user.role %>
-                    </p>
+                        </div>
+                    </div>
+
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <%= user.email %>
-                    </li>
-                </ul>
-                <div class="card-body">
-                    <a href="/users/perfil/<%= user.id %> " class="card-link">ver</a>
-                    <a href="#" class="card-link">editar</a>
-                    <a href="#" class="card-link">eliminar</a>
-                </div>
-            </div>
 
 
+            </main>
 
 
             <%- include('partials/scriptsAdmin')  %>
 
-                <%- include('partials/footerAdmin')  %>
+
     </body>
 
 </html>

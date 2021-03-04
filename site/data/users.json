@@ -1,110 +1,20 @@
-[
-  {
-    "id": 1,
-    "first_name": "David",
-    "last_name": "Cusi",
-    "email": "davidcusi14@gmail.com",
-    "password": "$2b$12$ZLGr0eCnaM.ShlR4lTJO2O/3b/8pHDHumoTsarZJAeVHqUodfTkZa",
-    "role": "admin",
-    "avatar": "avatar-1614634902827.png"
-  },
-  {
-    "id": 2,
-    "first_name": "Sabrina",
-    "last_name": "Reggio",
-    "email": "sabri",
-    "password": "123",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 3,
-    "first_name": "Barton",
-    "last_name": "McAneny",
-    "email": "bmcaneny2@bandcamp.com",
-    "password": "wTc6WlmB",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 4,
-    "first_name": "Kendal",
-    "last_name": "Seagrave",
-    "email": "kseagrave3@tuttocitta.it",
-    "password": "lSu6PO",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 5,
-    "first_name": "Bobbee",
-    "last_name": "Birtwhistle",
-    "email": "bbirtwhistle4@xrea.com",
-    "password": "OitOK1OX81qj",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 6,
-    "first_name": "Ree",
-    "last_name": "Batchelder",
-    "email": "rbatchelder5@canalblog.com",
-    "password": "bVhxwHFRxXr",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 7,
-    "first_name": "Taite",
-    "last_name": "Simeon",
-    "email": "tsimeon6@ovh.net",
-    "password": "5cXm11IBy",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 8,
-    "first_name": "Lucita",
-    "last_name": "Kingshott",
-    "email": "lkingshott7@wikispaces.com",
-    "password": "wlJHT8lpK",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 9,
-    "first_name": "Corabelle",
-    "last_name": "Gemmell",
-    "email": "cgemmell8@sciencedirect.com",
-    "password": "K3EyoQU",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 10,
-    "first_name": "Granger",
-    "last_name": "Buffin",
-    "email": "gbuffin9@artisteer.com",
-    "password": "Jqx08dp8",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 11,
-    "first_name": "Belen",
-    "last_name": "Medina",
-    "email": "belen@gmail.com",
-    "password": "$2b$12$Hx4ylL024/ewfrWf1nf9OuxITLN09e6RVfhDIrvRRLSNapBCuHRZi",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  },
-  {
-    "id": 12,
-    "first_name": "David",
-    "last_name": "Cusi",
-    "email": "davidcusi15@gmail.com",
-    "password": "$2b$12$253ChZavf1dZRZ1TwdodNuC.ZlyafnuMPbhc/vD4wIG7RW5.G6HrO",
-    "role": "user",
-    "avatar": "avatar-default.png"
-  }
+[{
+        "id": 10,
+        "first_name": "David",
+        "last_name": "Cusi",
+        "email": "davidcusi14@gmail.com",
+        "password": "$2b$12$f1l1.dEY3S8RtDx7jJzs8OW2M8mJcJW4ks0OPqmJz6lEB8lbCnx32",
+        "role": "admin",
+        "avatar": "avatar-default.png"
+    },
+    {
+        "id": 11,
+        "first_name": "Belen",
+        "last_name": "Medina",
+        "email": "belen@gmail.com",
+        "password": "$2b$12$Hx4ylL024/ewfrWf1nf9OuxITLN09e6RVfhDIrvRRLSNapBCuHRZi",
+        "role": "user",
+        "avatar": "avatar-default.png"
+    }
+
 ]

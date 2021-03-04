@@ -7,7 +7,7 @@ module.exports = {
     getMovies: (req, res) => {
         res.render('admin/moviesList', {
             title: 'nuestras peliculas',
-            css: 'moviesList',
+            css: '',
             movies
         })
     },
@@ -17,9 +17,9 @@ module.exports = {
 
         let movie = movies.find(movie => movie.id === id);
 
-        res.render('admin/movieDetail', {
+        res.render('movieDetail', {
             title: movie.title,
-            css: 'movieDetail',
+            css: 'movieStyle',
             movies,
             movie
         });
@@ -29,7 +29,7 @@ module.exports = {
     toCreateMovie: (req, res) => {
         res.render('admin/createMovie', {
             title: 'Agregar pelicula',
-            css: 'styleFormularios'
+            css: 'formStyles'
         })
     },
 
@@ -70,7 +70,7 @@ module.exports = {
 
         res.render('admin/editMovie', {
             title: movie.title,
-            css: 'editForm',
+            css: 'formStyles',
             movie
         });
     },

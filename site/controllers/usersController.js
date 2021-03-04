@@ -7,13 +7,13 @@ module.exports = {
         res.render('login', {
             title: 'Kairak',
             texto: 'lorem*3',
-            css: 'styleFormularios'
+            css: ''
         })
     },
     register: (req, res) => {
         res.render('registro', {
             title: 'Kairak',
-            css: 'styleFormularios'
+            css: 'formStyles'
         })
     },
     usersList: (req, res) => {
