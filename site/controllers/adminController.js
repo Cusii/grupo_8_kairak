@@ -112,27 +112,30 @@ module.exports = {
         res.render('login')
     },
     proccesLogin: (req, res) => {
+
         const { email, password } = req.body
 
         let result = users.find(user => user.email === email)
+
         if (result) {
             if (bcrypt.compareSync(password, result.password)) {
-                if (result.rol == 'admin') {
-                    return res.redirect('/admin/index')
-                } else {
-                    return res.redirect('/')
-                }
+                return res.redirect('/admin/index')
+                    /*   if (result.rol == 'admin') {
+                          return res.redirect('/admin/index')
+                      } else {
+                          return res.redirect('/')
+                      } */
             } else {
                 res.render('login', {
                     title: 'Kairak',
-                    css: 'styleFormularios',
+                    css: '',
                     error: 'contraseña invalida'
                 })
             }
         } else {
             res.render('login', {
                 title: 'Kairak',
-                css: 'styleFormularios',
+                css: '',
                 error: 'mail invalido'
             })
         }
