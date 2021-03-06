@@ -11,8 +11,6 @@
 
 -:smile: [Jose Flores](https://github.com/josejrv)
 
--:smile: Stella Medina
-
 -:smile: [Cusi David](https://github.com/Cusii)
 
 -:smile: [Belén Medina Roldán](https://github.com/belenmr)
@@ -27,8 +25,9 @@
 - Situarse en la carpeta site (donde se encuentra el package.json): `cd grupo_8_kairak/site`
 - Instalar las dependencias: `npm install`
 - Para correr el proyecto:
-    - Si nodemon está instalado de forma global en su equipo, ejecutar `nodemon`
-    - Si nodemon no  está instalado de forma global en su equipo, ejecutar `npm run dev`
+    - En el ambiente de desarrollo, ejecutar `npm run dev`
+    - En el ambiente de QA, ejecutar `npm run test`
+    - En el ambiente de producción, ejecutar `npm start`
 - En el navegador, ir a `http://localhost:3000/`
 
 
