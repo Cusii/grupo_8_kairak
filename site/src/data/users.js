@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const users_db = path.join('data', 'users.json')
+const users_db = path.join(__dirname, 'users.json');
 
 module.exports = {
     getUsers: () => JSON.parse(fs.readFileSync(users_db, 'utf-8')),

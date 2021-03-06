@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "first_name": "David",
+    "last_name": "Cusi",
+    "email": "davidcusi14@gmail.com",
+    "password": "$2b$12$f1l1.dEY3S8RtDx7jJzs8OW2M8mJcJW4ks0OPqmJz6lEB8lbCnx32",
+    "role": "admin",
+    "avatar": "avatar-default.png"
+  },
+  {
+    "id": 2,
+    "first_name": "Belen",
+    "last_name": "Medina",
+    "email": "belen@gmail.com",
+    "password": "$2b$12$fFSa79xobK0mtCrx2ufDQe6IEBkj9k2gU6p9FSULEKFmeyJz941hy",
+    "role": "user",
+    "avatar": "avatar-default.png"
+  }
+]

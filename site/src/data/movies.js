@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require('path');
 
-const movies_db = path.join('data','movies.json');
+const movies_db = path.join(__dirname,'movies.json');
 const encoding = "utf-8";
 
 module.exports = {
