@@ -20,10 +20,11 @@
 [![](https://img.shields.io/badge/Trello-Tablero-blue)](https://trello.com/b/LNaNoQi5/proyecto-integrador-n8)
 
 
-# :computer: Servidor de desarrollo
+# :computer: Configuración de entorno
 - Clonar el repositorio en la carpeta deseada con el comando: `git clone https://github.com/Cusii/grupo_8_kairak.git`
 - Situarse en la carpeta site (donde se encuentra el package.json): `cd grupo_8_kairak/site`
 - Instalar las dependencias: `npm install`
+- Crear y configurar archivo .env en la carpeta site
 - Para correr el proyecto:
     - En el ambiente de desarrollo, ejecutar `npm run dev`
     - En el ambiente de QA, ejecutar `npm run test`
