@@ -1,6 +1,6 @@
 'use strict';
 
-const names = ['ATP', '+13','+16'];
+const names = ['ATP', '+7','+13','+16','+18'];
 const categories = [];
 
 names.forEach(name => {

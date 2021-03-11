@@ -12,7 +12,10 @@ const names = [
 	'bélica',
 	'western',
 	'suspenso',
-	'romance'
+	'thriller',
+	'crimen',
+	'romance',
+	'animación'
 ];
 const genres = [];
 

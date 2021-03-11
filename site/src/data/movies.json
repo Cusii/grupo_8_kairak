@@ -7,7 +7,7 @@
         "length": "123",
         "category": "Todo Publico",
         "genre": "infantil",
-        "image": "img-movie-1614846466637.jpg",
+        "image": "cars.jpg",
         "trailer": "https://www.youtube.com/embed/wTF4G7pXBB8",
         "movie": "123"
     },
@@ -19,7 +19,7 @@
         "length": 123,
         "category": "18+",
         "genre": "accion",
-        "image": "img-movie-1614848318809.jpeg",
+        "image": "bloodshot.jpeg",
         "trailer": "https://www.youtube.com/embed/5nOea-_3iKI",
         "movie": "123"
     },
@@ -31,7 +31,7 @@
         "length": 123,
         "category": "18+",
         "genre": "infantil",
-        "image": "img-movie-1614851644398.jpg",
+        "image": "el-rey-leon-2019.jpg",
         "trailer": "https://www.youtube.com/embed/bjJvvrKl83M",
         "movie": "123"
     },
@@ -43,7 +43,7 @@
         "length": 123,
         "category": "Todo Publico",
         "genre": "infantil",
-        "image": "img-movie-1614851734561.jpg",
+        "image": "toy-story.jpg",
         "trailer": "https://www.youtube.com/embed/VhCDgv4x_pU",
         "movie": "123"
     }, {
@@ -55,7 +55,7 @@
         "length": "123",
         "category": "Todo Publico",
         "genre": "infantil",
-        "image": "img-movie-1614846466637.jpg",
+        "image": "cars.jpg",
         "trailer": "https://www.youtube.com/embed/wTF4G7pXBB8",
         "movie": "123"
     },
@@ -67,7 +67,7 @@
         "length": 123,
         "category": "18+",
         "genre": "accion",
-        "image": "img-movie-1614848318809.jpeg",
+        "image": "bloodshot.jpeg",
         "trailer": "https://www.youtube.com/embed/5nOea-_3iKI",
         "movie": "123"
     },
@@ -79,7 +79,7 @@
         "length": 123,
         "category": "18+",
         "genre": "infantil",
-        "image": "img-movie-1614851644398.jpg",
+        "image": "el-rey-leon-2019.jpg",
         "trailer": "https://www.youtube.com/embed/bjJvvrKl83M",
         "movie": "123"
     },
@@ -91,7 +91,7 @@
         "length": 123,
         "category": "Todo Publico",
         "genre": "infantil",
-        "image": "img-movie-1614851734561.jpg",
+        "image": "toy-story.jpg",
         "trailer": "https://www.youtube.com/embed/VhCDgv4x_pU",
         "movie": "123"
     },
@@ -103,7 +103,7 @@
         "length": 123,
         "category": "18+",
         "genre": "infantil",
-        "image": "img-movie-1614851644398.jpg",
+        "image": "el-rey-leon-2019.jpg",
         "trailer": "https://www.youtube.com/embed/bjJvvrKl83M",
         "movie": "123"
     },
@@ -115,7 +115,7 @@
         "length": 123,
         "category": "Todo Publico",
         "genre": "infantil",
-        "image": "img-movie-1614851734561.jpg",
+        "image": "toy-story.jpg",
         "trailer": "https://www.youtube.com/embed/VhCDgv4x_pU",
         "movie": "123"
     }
