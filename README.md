@@ -25,10 +25,14 @@
 - Situarse en la carpeta site (donde se encuentra el package.json): `cd grupo_8_kairak/site`
 - Instalar las dependencias: `npm install`
 - Crear y configurar archivo .env en la carpeta site
+- Ubicarse en la carpeta site y ejecutar los siguientes comandos para la base de datos MySQL:
+  - `npx sequelize-cli db:create`
+  - `npx sequelize-cli db:migrate`
+  - `npx sequelize-cli db:seed:all`
 - Para correr el proyecto:
-    - En el ambiente de desarrollo, ejecutar `npm run dev`
-    - En el ambiente de QA, ejecutar `npm run test`
-    - En el ambiente de producción, ejecutar `npm start`
+  - En el ambiente de desarrollo, ejecutar `npm run dev`
+  - En el ambiente de QA, ejecutar `npm run test`
+  - En el ambiente de producción, ejecutar `npm start`
 - En el navegador, ir a `http://localhost:3000/`
 
 
