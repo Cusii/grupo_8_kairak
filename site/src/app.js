@@ -1,9 +1,9 @@
 const dotenv = require("dotenv").config();
 console.log(`Environment: ${process.env.NODE_ENV}`);
+//console.log(dotenv.parsed);
 if (dotenv.error) {
 	throw dotenv.error;
 }
-console.log(dotenv.parsed);
 
 const createError = require("http-errors");
 const express = require("express");

@@ -80,16 +80,16 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING		
 		},
 		price: {
-			type: Sequelize.DECIMAL(7,2),
+			type: DataTypes.DECIMAL(7,2),
 			allowNull: false
 		},
 		year: {
 			allowNull: false,
-			type: Sequelize.INTEGER
+			type: DataTypes.INTEGER
 		},
 		length: {
 			allowNull: false,
-			type: Sequelize.INTEGER
+			type: DataTypes.INTEGER
 		},
 		image: {
 			allowNull: false,
@@ -105,11 +105,11 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		genreId: {
 			allowNull: false,
-			type: Sequelize.INTEGER
+			type: DataTypes.INTEGER
 		},
 		categoryId: {
 			allowNull: false,
-			type: Sequelize.INTEGER
+			type: DataTypes.INTEGER
 		},
 		status: {
 			type: DataTypes.BOOLEAN,
