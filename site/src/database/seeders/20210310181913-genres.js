@@ -1,21 +1,21 @@
 'use strict';
 
 const names = [
-	'acción', 
-	'aventura',
-	'comedia',
-	'comedia romántica',
-	'drama',
-	'terror',
-	'musical',
-	'ciencia ficción',
-	'bélica',
-	'western',
-	'suspenso',
-	'thriller',
-	'crimen',
-	'romance',
-	'animación'
+	'Acción', 
+	'Aventura',
+	'Comedia',
+	'Comedia romántica',
+	'Drama',
+	'Terror',
+	'Musical',
+	'Ciencia ficción',
+	'Bélica',
+	'Western',
+	'Suspenso',
+	'Thriller',
+	'Crimen',
+	'Romance',
+	'Animación'
 ];
 const genres = [];
 
