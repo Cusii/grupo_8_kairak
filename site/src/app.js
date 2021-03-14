@@ -15,7 +15,7 @@ const db = require('./database/models/index');
 
 const usersRouter = require("./routes/usersRouter");
 const indexRouter = require("./routes/indexRouter");
-const carritoRouter = require("./routes/carritoRouter");
+const cartRouter = require("./routes/cartRouter");
 const moviesRouter = require("./routes/moviesRouter");
 const adminRouter = require("./routes/adminRouter");
 const genresRouter = require("./routes/genresRouter");
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(methodOverride("_method"));
 
 app.use("/", indexRouter);
-app.use("/carrito", carritoRouter);
+app.use("/carrito", cartRouter);
 app.use("/users", usersRouter);
 app.use("/movies", moviesRouter);
 app.use("/admin", adminRouter);

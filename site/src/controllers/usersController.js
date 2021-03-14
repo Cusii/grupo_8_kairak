@@ -136,7 +136,7 @@ module.exports = {
                 })    
             }
 
-            let passHash = bcrypt.hashSync(password.trim(), 12)
+            let passHash = bcrypt.hashSync(password.trim(), 12);
 
             let newUser = await db.User.create({
                 firstName: first_name,
@@ -153,15 +153,7 @@ module.exports = {
         } catch (error) {
             res.render('error', {error})
         }      
-    },
-
-    usersList: (req, res) => {
-        res.render('usersList', {
-            title: 'Kairak',
-            users,
-            css: 'styleFormularios'
-        })
-    },
+    },    
 
     showProfile: async (req, res) => {
         try {

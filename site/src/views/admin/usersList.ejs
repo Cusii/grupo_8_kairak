@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <%- include('partials/headAdmin')  %>
 
     <body class="bg-white">
@@ -22,13 +22,13 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        <%= user.first_name %>
-                                            <%= user.last_name %>
+                                        <%= user.firstName %>
+                                            <%= user.lastName %>
                                     </h5>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <%= user.role %>
+                                        <%= user.role.name %>
                                     </li>
                                 </ul>
                                 <div class="btn-group mx-auto mt-3" role="group">

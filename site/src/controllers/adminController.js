@@ -1,7 +1,8 @@
 const { getUsers, setUsers } = require('../data/users')
 const fs = require('fs');
-
 const bcrypt = require('bcrypt');
+const db = require('../database/models');
+
 
 const users = getUsers();
 module.exports = {
@@ -11,73 +12,100 @@ module.exports = {
         })
 
     },
-    listUser: (req, res) => {
-        res.render('admin/usersList', {
-            title: 'Kairak',
-            users,
-            css: 'styleFormularios'
-        })
+    listUser: async (req, res) => {
+        try {
+            let users = await db.User.findAll({
+                include : {
+                    association : "role"
+                }
+            });
+
+            res.render('admin/usersList', {
+                title: 'Kairak',
+                users,
+                css: 'styleFormularios'
+            })
+
+        } catch (error) {
+            res.render('error', {error})
+        }
+        
 
     },
+
     register: (req, res) => {
-        res.render('admin/crearUser')
+        res.render('admin/createUser', {
+            title: 'Crear usuario',
+            css: ''
+        })
     },
-    proccesRegister: (req, res, next) => {
-        const { first_name, last_name, email, password, role, avatar } = req.body
+
+    proccesRegister: async (req, res, next) => {
+        const { first_name, last_name, email, password, role } = req.body
 
         let avatarPath = req.files[0];
-
-        if (!email) {
-            return res.redirect('/users/registro')
-
-        }
-
-        let result = users.find(user => user.email === email)
-        if (result) {
-            return res.render('registro', {
-                error: 'El usuario ya existe',
-                title: "kairak",
-                css: ''
-            })
-        }
-
-        let lastID = 1;
-        users.forEach(user => {
-            if (user.id > lastID) {
-                lastID = user.id
-            }
-        });
-
-        let passHash = bcrypt.hashSync(password.trim(), 12)
-
         if (!avatarPath) {
             avatarPath = 'avatar-default.png';
         } else {
             avatarPath = req.files[0].filename;
         }
 
-        let user = {
-            id: lastID + 1,
-            first_name: first_name.trim(),
-            last_name: last_name.trim(),
-            email: email.trim(),
-            password: passHash,
-            role: "user",
-            avatar: avatarPath
+
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    email: email
+                }
+            });
+            
+            if (user) {
+                return res.render('admin/createUser', {
+                    title: 'Crear usuario',
+                    css: ''
+                })
+            }
+
+            let passHash = bcrypt.hashSync(password.trim(), 12);
+
+            let newUser = await db.User.create({
+                firstName: first_name,
+                lastName: last_name,
+                email,
+                password: passHash,
+                avatar: avatarPath,
+                roleId: role,
+                createdAt: new Date()
+            });
+
+            res.redirect('/admin/users/list')
+
+        } catch (error) {
+            res.render('error', {error})
         }
-        users.push(user);
-        setUsers(users);
-        res.redirect('/admin//users/list')
-    },
-    edittUser: (req, res) => {
-
-        const user = users.find(auto => auto.id === +req.params.id)
-        res.render('admin/userEdit', {
-            user,
-            css: ''
-        })
 
     },
+
+    editUser: async (req, res) => {
+
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                },
+                include : {
+                    association : "role"
+                }
+            });
+
+            res.render('admin/userEdit', {
+                user,
+                css: ''
+            })
+        } catch (error) {
+            res.render('error', {error})
+        }    
+    },
+
     updateUser: (req, res) => {
 
         const { first_name, last_name, email, password, role, avatar } = req.body
@@ -93,51 +121,23 @@ module.exports = {
             }
         })
         setUsers(users);
-        res.redirect('/admin//users/list')
+        res.redirect('/admin/users/list')
 
     },
-    deleteUser: (req, res) => {
 
-        users.forEach(user => {
-            if (user.id === +req.params.id) {
-                let eliminar = users.indexOf(user);
-                users.splice(eliminar, 1)
-            }
-        });
-        setUsers(users);
-        res.redirect('/admin//users/list')
+    deleteUser: async (req, res) => {
 
-    },
-    loginAdmin: (req, res) => {
-        res.render('login')
-    },
-    proccesLogin: (req, res) => {
+        try {
+            await db.User.destroy({
+                where: {
+                    id: +req.params.id
+                }
+            });
 
-        const { email, password } = req.body
+            res.redirect('/admin/users/list')
+        } catch (error) {
+            res.render('error', {error})
+        }        
 
-        let result = users.find(user => user.email === email)
-
-        if (result) {
-            if (bcrypt.compareSync(password, result.password)) {
-                return res.redirect('/admin/index')
-                    /*   if (result.rol == 'admin') {
-                          return res.redirect('/admin/index')
-                      } else {
-                          return res.redirect('/')
-                      } */
-            } else {
-                res.render('login', {
-                    title: 'Kairak',
-                    css: '',
-                    error: 'contraseña invalida'
-                })
-            }
-        } else {
-            res.render('login', {
-                title: 'Kairak',
-                css: '',
-                error: 'mail invalido'
-            })
-        }
-    },
+    }    
 }

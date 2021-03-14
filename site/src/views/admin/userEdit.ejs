@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <%- include('partials/headAdmin') %>
 
     <body class="bg-white">
@@ -9,7 +9,7 @@
 
                     <div class=" text-center ">
                         <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h4>Ediar usuario</h4>
+                        <h4>Editar usuario</h4>
                         <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
                     </div>
                     <form class="container" action="/admin/users/update/<%=user.id%>?_method=PUT" method="POST">
@@ -22,22 +22,14 @@
                             <div class="row mx-auto mb-3 ">
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" nombre" name="first_name" value="<%= user.first_name%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="Nombre" name="firstName" value="<%= user.firstName%>">
                                 </div>
                             </div>
 
                             <div class="row mx-auto mb-3 ">
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" apellido" name="last_name" value="<%= user.last_name%>">
-
-                                </div>
-                            </div>
-
-                            <div class="row mx-auto mb-3 ">
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" correo" name="email" value="<%= user.email%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="Apellido" name="lastName" value="<%= user.lastName%>">
 
                                 </div>
                             </div>
@@ -45,7 +37,15 @@
                             <div class="row mx-auto mb-3 ">
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" contraseña" name="password" value="<%= user.password%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="email" name="email" value="<%= user.email%>">
+
+                                </div>
+                            </div>
+
+                            <div class="row mx-auto mb-3 ">
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="contraseña" name="password" value="<%= user.password%>">
 
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                             <div class="row mx-auto mb-3">
                                 <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" rol" name="role" value="<%= user.role%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="rol" name="role" value="<%= user.role.name%>">
 
 
                                 </div>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="row mx-auto pb-5">
-                                <a class="btn col-6 col-xl-4 bg-danger mx-auto" href="/admin//users/list">volver</a>
+                                <a class="btn col-6 col-xl-4 bg-danger mx-auto" href="/admin/users/list">volver</a>
                                 <div class="col-6 col-xl-4 mx-auto">
                                     <button class="btn col-12 btn btn-primary" type="submit">Guardar cambios</button>
                                 </div>

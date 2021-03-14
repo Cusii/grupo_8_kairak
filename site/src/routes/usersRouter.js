@@ -11,6 +11,4 @@ router.get('/register', usersController.register);
 router.post('/register', uploadImg.any(), usersController.processRegister);
 router.get('/profile/:id', usersController.showProfile);
 
-//router.get('/lista', usersController.usersList);
-
 module.exports = router;
