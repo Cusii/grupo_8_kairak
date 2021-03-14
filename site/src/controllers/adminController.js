@@ -6,7 +6,7 @@ const db = require('../database/models');
 
 const users = getUsers();
 module.exports = {
-    indexAdmin: (req, res) => {
+    index: (req, res) => {
         res.render('admin/indexAdmin', {
             css: 'styleFormularios'
         })
@@ -88,6 +88,8 @@ module.exports = {
     editUser: async (req, res) => {
 
         try {
+            let roles = await db.Role.findAll();
+
             let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
@@ -99,8 +101,9 @@ module.exports = {
 
             res.render('admin/editUser', {
                 title: 'Editar usuario',
+                css: '',
                 user,
-                css: ''
+                roles
             })
         } catch (error) {
             res.render('error', {error})
@@ -110,6 +113,7 @@ module.exports = {
     updateUser: async (req, res) => {
 
         const { first_name, last_name, email, password, role } = req.body
+        const imgFile = req.file;        
 
         try {
             let user = db.User.findOne({
@@ -119,7 +123,14 @@ module.exports = {
                 include : {
                     association : "role"
                 }
-            });
+            });            
+
+            if (imgFile) {
+                if (fs.existsSync(path.join('public', 'images', 'movies', user.avatar))) {
+                    fs.unlinkSync(path.join('public', 'images', 'movies', user.avatar));
+                }
+                user.avatar = req.file.filename
+            }
 
             await db.User.update({
                 id: +req.params.id,
@@ -128,7 +139,7 @@ module.exports = {
                 email: email,
                 password: password,
                 roleId: role,
-                avatar: avatar,
+                avatar: user.avatar,
                 createdAt: user.createdAt
             }, {
                 where: {
@@ -145,6 +156,16 @@ module.exports = {
     deleteUser: async (req, res) => {
 
         try {
+            let userToDelete = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            if (fs.existsSync(path.join('public', 'images', 'movies', userToDelete.avatar))) {
+                fs.unlinkSync(path.join('public', 'images', 'movies', userToDelete.avatar));
+            }
+
             await db.User.destroy({
                 where: {
                     id: +req.params.id
