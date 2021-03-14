@@ -9,10 +9,10 @@
 
                     <div class=" text-center ">
                         <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h4>Editar usuario</h4>
+                        <h4><%= title %> </h4>
                         <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
                     </div>
-                    <form class="container" action="/admin/users/update/<%=user.id%>?_method=PUT" method="POST">
+                    <form class="container" action="/admin/users/update/<%=user.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
                         <div class=" bg-white border border-1">
                             <div class="logo-person mb-3">
                                 <img src="/images/logo-person.png " class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">
@@ -22,14 +22,14 @@
                             <div class="row mx-auto mb-3 ">
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="Nombre" name="firstName" value="<%= user.firstName%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="Nombre" name="first_name" value="<%= user.firstName%>">
                                 </div>
                             </div>
 
                             <div class="row mx-auto mb-3 ">
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="Apellido" name="lastName" value="<%= user.lastName%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="Apellido" name="last_name" value="<%= user.lastName%>">
 
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                             <div class="row mx-auto mb-3">
                                 <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="rol" name="role" value="<%= user.role.name%>">
+                                    <input type="text" class="form-control" id="nomFirs" placeholder="rol" name="role" value="<%= user.role.id%>">
 
 
                                 </div>

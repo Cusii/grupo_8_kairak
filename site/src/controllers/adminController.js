@@ -67,7 +67,7 @@ module.exports = {
 
             let passHash = bcrypt.hashSync(password.trim(), 12);
 
-            let newUser = await db.User.create({
+            await db.User.create({
                 firstName: first_name,
                 lastName: last_name,
                 email,
@@ -97,7 +97,8 @@ module.exports = {
                 }
             });
 
-            res.render('admin/userEdit', {
+            res.render('admin/editUser', {
+                title: 'Editar usuario',
                 user,
                 css: ''
             })
@@ -106,23 +107,39 @@ module.exports = {
         }    
     },
 
-    updateUser: (req, res) => {
+    updateUser: async (req, res) => {
 
-        const { first_name, last_name, email, password, role, avatar } = req.body
-        users.forEach(user => {
-            if (user.id === +req.params.id) {
-                user.id = +req.params.id;
-                user.first_name = first_name;
-                user.last_name = last_name;
-                user.email = email;
-                user.password = password;
-                user.role = role;
-                user.avatar = avatar
-            }
-        })
-        setUsers(users);
-        res.redirect('/admin/users/list')
+        const { first_name, last_name, email, password, role } = req.body
 
+        try {
+            let user = db.User.findOne({
+                where: {
+                    id: +req.params.id
+                },
+                include : {
+                    association : "role"
+                }
+            });
+
+            await db.User.update({
+                id: +req.params.id,
+                firstName: first_name,
+                lastName: last_name,
+                email: email,
+                password: password,
+                roleId: role,
+                avatar: avatar,
+                createdAt: user.createdAt
+            }, {
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            res.redirect('/admin/users/list')
+        } catch (error) {
+            res.render('error', {error})
+        }
     },
 
     deleteUser: async (req, res) => {
