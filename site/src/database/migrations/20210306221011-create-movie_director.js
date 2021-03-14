@@ -8,11 +8,11 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			director_id: {
+			movie_id: {
 				allowNull: false,
 				type: Sequelize.INTEGER
 			},
-			movie_id: {
+			director_id: {
 				allowNull: false,
 				type: Sequelize.INTEGER
 			},
