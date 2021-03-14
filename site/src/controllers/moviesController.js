@@ -1,10 +1,76 @@
 const fs = require('fs');
 const path = require('path');
+const db = require('../database/models');
 const moviesDB = require('../data/movies');
 const movies = moviesDB.getMovies();
 
 module.exports = {
-    getMovies: (req, res) => {
+    showMovies: async (req, res) => {
+        try {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
+
+            let movies = await db.Movie.findAll({
+                where: {
+                    status: 1
+                }
+            });
+
+            res.render('movies', {
+                title: 'Nuestras Películas',
+                css: '',
+                categories,
+                genres,
+                movies
+            })
+
+        } catch (error) {
+            res.render('error', {error});
+        }
+    },
+
+    showMovie: async (req, res) => {
+        try {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
+
+            let movie = await db.Movie.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            res.render('movieDetail', {
+                title: movie.title,
+                css: 'movieStyle',
+                categories,
+                genres,
+                movies,
+                movie
+            })
+
+        } catch (error) {
+            res.render('error', {error});
+        }
+    },
+
+
+    /* Admin */
+    getMovies: async (req, res) => {
+        let movies = await db.Movie.findAll({
+            where: {
+                status: 1
+            }
+        });
+
         res.render('admin/moviesList', {
             title: 'nuestras peliculas',
             css: '',
@@ -12,7 +78,7 @@ module.exports = {
         })
     },
 
-    detail: (req, res) => {
+    /* detail: (req, res) => {
         const id = Number(req.params.id);
 
         let movie = movies.find(movie => movie.id === id);
@@ -24,7 +90,7 @@ module.exports = {
             movie
         });
 
-    },
+    }, */
 
     toCreateMovie: (req, res) => {
         res.render('admin/createMovie', {

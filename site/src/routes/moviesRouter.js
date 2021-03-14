@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { createMovie, deleteMovie, detail, getMovies, toCreateMovie, toEditMovie, updateMovie } = require('../controllers/moviesController');
+const { createMovie, deleteMovie, detail, getMovies, toCreateMovie, toEditMovie, updateMovie, showMovies, showMovie } = require('../controllers/moviesController');
 
 const uploadImg = require('../middlewares/uploadMovieImage');
 
@@ -11,8 +11,10 @@ router.route('/')
 
 router.route('/create').get(toCreateMovie);
 
+router.route('/show').get(showMovies);
+router.route('/show/:id').get(showMovie);
+
 router.route('/:id')
-    .get(detail)
     .put(uploadImg.single('img-movie'), updateMovie)
     .delete(deleteMovie)
 

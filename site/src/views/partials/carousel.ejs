@@ -2,7 +2,7 @@
     <div class="content-all">
         <div class="content-carrusel">
             <% for( let index = 0; index < 10; index++ ) { %>
-                <figure><a href="/movies/<%= movies[index].id %>"><img  src="/images/movies/<%= movies[index].image %> "></a></figure>
+                <figure><a href="/movies/show/<%= movies[index].id %>"><img  src="/images/movies/<%= movies[index].image %> "></a></figure>
             
             <% } %>            
         </div>

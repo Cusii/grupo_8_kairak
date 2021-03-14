@@ -1,9 +1,7 @@
-//const moviesDB = require('../data/movies');
-const db = require('../database/models')
-//const movies = moviesDB.getMovies();
+const db = require('../database/models');
 
 module.exports = {
-    index: async (req, res) => {
+    getSales: async (req, res) => {
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -11,32 +9,28 @@ module.exports = {
                 ]
             });
             let genres = await db.Genre.findAll();
-            let movies = await db.Movie.findAll({
+
+            let sales = await db.MovieSale.findAll({
                 where: {
                     status: 1
                 }
             });
 
-            //let mostSawMovies;
-            //let sales = 
-            
+            let movies =  [];
+            if (sales.length > 0) {
+                movies = await sales.getMovies();                
+            }
 
-
-            //let premiereMovies = await movies.;
-
-            res.render('index', {
-                title: 'Kairak',
+            res.render('movies', {
+                title: 'Nuestras ofertas',
                 css: '',
-                movies,
                 categories,
-                genres
+                genres,
+                movies
             })
             
         } catch (error) {
             res.render('error', {error});
         }
-
-
-        
     }
 }

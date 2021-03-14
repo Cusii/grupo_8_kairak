@@ -18,6 +18,9 @@ const indexRouter = require("./routes/indexRouter");
 const carritoRouter = require("./routes/carritoRouter");
 const moviesRouter = require("./routes/moviesRouter");
 const adminRouter = require("./routes/adminRouter");
+const genresRouter = require("./routes/genresRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
+const salesRouter = require("./routes/salesRouter");
 
 const app = express();
 // view engine setup
@@ -28,7 +31,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(methodOverride("_method"));
 
 app.use("/", indexRouter);
@@ -36,6 +39,9 @@ app.use("/carrito", carritoRouter);
 app.use("/users", usersRouter);
 app.use("/movies", moviesRouter);
 app.use("/admin", adminRouter);
+app.use("/categories", categoriesRouter);
+app.use("/genres", genresRouter);
+app.use("/sales", salesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

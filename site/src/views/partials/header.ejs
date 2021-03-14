@@ -20,13 +20,43 @@
                                 <ul class="navbar-nav mx-auto me-auto mb-2 mb-lg-0">
 
                                     <li class="nav-item">
-                                        <a href="" class="nav-link text-white">Inicio</a>
+                                        <a href="/" class="nav-link text-white">Inicio</a>
                                     </li>
+
                                     <li class="nav-item">
-                                        <a href="" class="nav-link text-white">Favoritas</a>
+                                        <a href="/movies/show" class="nav-link text-white">Peliculas</a>
                                     </li>
+                                    
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Generos
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                                            <% genres.forEach(genre => { %>
+                                                <li><a class="dropdown-item" href="/genres/<%= genre.id %> "><%- genre.name %> </a></li>                                             
+                                            <% }) %>                                            
+                                        </ul>
+                                    </li>
+                                    
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Categorias
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                                            <% categories.forEach(category => { %>
+                                                <li><a class="dropdown-item" href="/categories/<%= category.id %> "><%= category.name %> </a></li>                                             
+                                            <% }) %>                                            
+                                        </ul>
+                                    </li>                                          
+
+                                  
+
+                                      
+
+
+                                    
                                     <li class="nav-item">
-                                        <a href="" class="nav-link text-white">Descuento</a>
+                                        <a href="/sales" class="nav-link text-white">Ofertas</a>
                                     </li>
                                 </ul>
                             </div>
