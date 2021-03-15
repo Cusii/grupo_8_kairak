@@ -17,6 +17,9 @@ module.exports = {
             let category = await db.Category.findOne({
                 where: {
                     id: +req.params.id
+                },
+                include: {
+                    association: "movies"
                 }
             });
 
@@ -43,16 +46,14 @@ module.exports = {
                 
                 default:
                     break;
-            }
-    
-            let movies =  await category.getMovies();
+            }    
 
             res.render('movies', {
                 title: category.name,
                 css: '',
                 categories,
                 genres,
-                movies
+                movies: category.movies
             })
         } catch (error) {
             res.render('error', {error});

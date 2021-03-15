@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
+const { Op } = require("sequelize");
 const moviesDB = require('../data/movies');
 const movies = moviesDB.getMovies();
 
@@ -63,89 +64,186 @@ module.exports = {
     },
 
 
-    /* Admin */
+    /**************************** ADMIN ****************************/
     getMovies: async (req, res) => {
-        let movies = await db.Movie.findAll({
-            where: {
-                status: 1
+        try {
+            let movies = await db.Movie.findAll({
+                where: {
+                    status: 1
+                }
+            });
+    
+            res.render('admin/moviesList', {
+                title: 'nuestras peliculas',
+                css: '',
+                movies
+            })
+        } catch (error) {
+            res.render('error', {error});
+        }
+        
+    },
+    getMovie: async (req, res) => {
+        try {
+            let movie = await db.Movie.findOne({
+                where: {
+                    id: +req.params.id
+                },
+                include : {
+                    association : "genre",
+                    association : "category",
+                    association: "sales"
+                }
+            });
+
+            res.render('admin/movieDetail', {
+                title: movie.title,
+                css: 'movieStyle',                
+                movie
+            });
+        } catch (error) {
+            
+        }
+    },  
+
+    toCreateMovie: async (req, res) => {
+        try {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
+
+            res.render('admin/createMovie', {
+                title: 'Agregar pelicula',
+                css: 'formStyles',
+                categories,
+                genres
+            })
+        } catch (error) {
+            res.render('error', {error});
+        }        
+    },
+
+    createMovie: async (req, res, next) => {
+        const { title, description, price, year, length, category, genre, trailerPath, moviePath } = req.body;
+
+        try {
+            let oldMovie = await db.Movie.findOne({
+                where: {
+                    title: title.toLowerCase()
+                }
+            });
+
+            if (oldMovie) {
+                if (oldMovie.status === 0) {
+                    await db.Movie.update({
+                        title: title.toLowerCase(),
+                        description: description,
+                        price: price,
+                        year: year,
+                        length: length,
+                        image: req.file.filename,
+                        trailerPath: trailerPath,
+                        moviePath: moviePath,
+                        genreId: genre,
+                        categoryId: category,
+                        status: 1,
+                        createdAt: oldMovie.createdAt
+                    }, {
+                        where: {
+                            id: oldMovie.id
+                        }
+                    });
+                } else {
+                    //pelicula ya existe
+                }
             }
-        });
 
-        res.render('admin/moviesList', {
-            title: 'nuestras peliculas',
-            css: '',
-            movies
-        })
+            let newMovie = await db.Movie.create({
+                title: title.toLowerCase(),
+                description: description,
+                price: price,
+                year: year,
+                length: length,
+                image: req.file.filename,
+                trailerPath: trailerPath,
+                moviePath: moviePath,
+                genreId: genre,
+                categoryId: category,
+                status: 1,
+                createdAt: new Date()
+            });
+
+            res.redirect(`/movies/${newMovie.id}`);
+        } catch (error) {
+            res.render('error', {error});
+        }        
     },
 
-    /* detail: (req, res) => {
-        const id = Number(req.params.id);
+    toEditMovie: async (req, res) => {
+        try {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
 
-        let movie = movies.find(movie => movie.id === id);
+            let movie = await db.Movie.findOne({
+                where: {
+                    id: +req.params.id
+                },
+                include : {
+                    association : "genre",
+                    association : "category",
+                    association: "sales"
+                }
+            });
 
-        res.render('movieDetail', {
-            title: movie.title,
-            css: 'movieStyle',
-            movies,
-            movie
-        });
+            
+            res.render('admin/editMovie', {
+                title: movie.title,
+                css: 'formStyles',
+                categories,
+                genres,
+                movie
+            });
 
-    }, */
-
-    toCreateMovie: (req, res) => {
-        res.render('admin/createMovie', {
-            title: 'Agregar pelicula',
-            css: 'formStyles'
-        })
+        } catch (error) {
+            res.render('error', {error});
+        }        
     },
 
-    createMovie: (req, res, next) => {
-        const { title, description, price, year, length, category, genre, trailer, movie } = req.body;
-
-        let lastID = 0;
-        movies.forEach(movie => {
-            if (movie.id > lastID) {
-                lastID = movie.id
-            }
-        });
-        lastID++;
-
-        const newMovie = {
-            id: lastID,
-            title: title.trim(),
-            description: description.trim(),
-            price: +price,
-            year: year,
-            length: +length,
-            category: category,
-            genre: genre,
-            image: req.file.filename,
-            trailer: trailer.trim(),
-            movie: movie.trim()
-        };
-
-        movies.push(newMovie);
-
-        moviesDB.setMovies(movies);
-
-        res.redirect(`/movies/${newMovie.id}`);
-    },
-
-    toEditMovie: (req, res) => {
-        const movie = movies.find(movie => movie.id === +req.params.id);
-
-        res.render('admin/editMovie', {
-            title: movie.title,
-            css: 'formStyles',
-            movie
-        });
-    },
-
-    updateMovie: (req, res, next) => {
+    updateMovie: async (req, res, next) => {
         const id = +req.params.id;
-        const { title, description, price, year, length, category, genre } = req.body;
+        const { title, description, price, year, length, category, genre, trailerPath, moviePath } = req.body;
         const imgFile = req.file;
         let imagePath = "";
+
+        try {
+            await db.Movie.update({
+                title: title.toLowerCase(),
+                description: description,
+                price: price,
+                year: year,
+                length: length,
+                image: req.file.filename,
+                trailer: trailerPath,
+                movie: moviePath,
+                genreId: genre,
+                categoryId: category,
+                status: 1,
+                createdAt: movieToDelete.createdAt
+            },{
+                where: {
+                    id: +req.params.id
+                }
+            });
+        } catch (error) {
+            res.render('error', {error});
+        }
 
         movies.forEach(movie => {
             if (movie.id === id) {
@@ -175,22 +273,75 @@ module.exports = {
         res.redirect(`/movies/${id}`);
     },
 
-    deleteMovie: (req, res) => {
+    deleteMovie: async (req, res) => {
         const id = Number(req.params.id);
 
-        movies.forEach(movie => {
-            if (movie.id === id) {
-                if (fs.existsSync(path.join('public', 'images', 'movies', movie.image))) {
-                    fs.unlinkSync(path.join('public', 'images', 'movies', movie.image));
+        const t = await sequelize.transaction();
+
+        try {
+            let rents = await db.Rent.findAll({
+                where: {
+                    movieId: id,
+                    status: 1
                 }
-                let movieToDelete = movies.indexOf(movie);
-                movies.splice(movieToDelete, 1);
+            });
+
+            if (!rents) {
+                let movieToDelete = await db.Movie.findOne({
+                    where: {
+                        id: id
+                    }
+                });
+    
+                let sale = await db.MovieSale.findOne({
+                    where: {
+                        movieId: id,
+                        status: 1
+                    }
+                });  
+                
+    
+                await db.Movie.update({
+                    title: movieToDelete.title,
+                    description: movieToDelete.description,
+                    price: movieToDelete.price,
+                    year: movieToDelete.year,
+                    length: movieToDelete.length,
+                    image: movieToDelete.image,
+                    trailerPath: movieToDelete.trailerPath,
+                    moviePath: movieToDelete.moviePath,
+                    genreId: movieToDelete.genreId,
+                    categoryId: movieToDelete.categoryId,
+                    status: 0,
+                    createdAt: movieToDelete.createdAt
+                },{
+                    where: {
+                        id: id
+                    }
+                }, { transaction: t });
+
+                await db.MovieSale.update({
+                    id: sale.id,
+                    movieId: id,
+                    discount: sale.discount,
+                    status: 0,
+                    createdAt: sale.createdAt,
+                    expiredAt: new Date()
+                },{
+                    where: {
+                        movieId: id
+                    }
+                }, { transaction: t })
+
+                await t.commit();
+            } else {
+                
             }
-        });
 
-        moviesDB.setMovies(movies);
-
-        res.redirect('/movies');
-
+            res.redirect('/movies');
+        } catch (error) {
+            await t.rollback();
+            res.render('error', {error})
+        }
     }
 }

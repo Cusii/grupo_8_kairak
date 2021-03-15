@@ -18,17 +18,18 @@ module.exports = {
             let genre = await db.Genre.findOne({
                 where: {
                     id: +req.params.id
+                },
+                include: {
+                    association: "movies"
                 }
-            });
-    
-            let movies =  await genre.getMovies();
+            });      
 
             res.render('movies', {
                 title: genre.name,
                 css: '',
                 genres,
                 categories,
-                movies
+                movies: genre.movies
             })
         } catch (error) {
             res.render('error', {error});

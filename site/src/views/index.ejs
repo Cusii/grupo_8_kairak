@@ -15,24 +15,24 @@
                             <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                         </div>
                         <div class="row">
-                            <% for( let index = 0; index < 4; index++ ) { %>
+                            <% for( let index = 0; index < 4 && index < mostSawMovies.length; index++ ) { %>
                                 <div class="col-12 col-md-4 col-lg-3">
                                     <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
                                         <div class="card-header bg-transparent  text-center">
                                             <h4>
-                                                <%= movies[index].title %>
+                                                <%= mostSawMovies[index].movie.title %>
                                             </h4>
                                         </div>
                                         <div class="card-body text-secondary ">
-                                            <a href="/movies/show/<%= movies[index].id %> ">
-                                                    <img src="/images/movies/<%= movies[index].image %>" alt="" width="100%">
+                                            <a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
+                                                    <img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
                                                 </a>
                                         </div>
                                         <div class="card-footer bg-transparent row">
                                             <p class="col-6 mt-2">
-                                                $<%= movies[index].price %>
+                                                $<%= mostSawMovies[index].movie.price %>
                                             </p>
-                                            <a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+                                            <a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
                                         </div>
 
                                     </div>
@@ -51,7 +51,7 @@
                             <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                         </div>
                         <div class="row">
-                            <% for( let index = 0; index < 4; index++ ) { %>
+                            <% for( let index = 0; index < 4 && index < movies.length; index++ ) { %>
                                 <div class=" col-12 col-md-4 col-lg-3 ">
                                     <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
                                         <div class="card-header bg-transparent ">
@@ -85,24 +85,24 @@
                             <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
                         </div>
                         <div class="row">
-                            <% for( let index = 0; index < 4; index++ ) { %>
+                            <% for( let index = 0; index < 4 && index < sales.length; index++ ) { %>
                                 <div class=" col-12 col-md-4 col-lg-3 ">
                                     <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
                                         <div class="card-header bg-transparent ">
                                             <h4>
-                                                <%= movies[index].title %>
+                                                <%= sales[index].movie.title %>
                                             </h4>
                                         </div>
                                         <div class="card-body text-secondary ">
-                                            <a href="/movies/show/<%= movies[index].id %> ">
-                                                    <img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
+                                            <a href="/movies/show/<%= sales[index].movie.id %> ">
+                                                    <img src="images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
                                                 </a>
                                         </div>
                                         <div class="card-footer bg-transparent row">
                                             <p class="col-6 mt-2">
-                                                $<%= movies[index].price %>
+                                                $<%= sales[index].movie.price %>
                                             </p>
-                                            <a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+                                            <a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
                                         </div>
 
                                     </div>

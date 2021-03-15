@@ -33,12 +33,12 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.STRING
 			},
-			trailer: {
+			trailer_path: {
 				allowNull: false,
 				type: Sequelize.STRING,
 				unique: true
 			},
-			movie: {
+			movie_path: {
 				allowNull: false,
 				type: Sequelize.STRING,
 				unique: true

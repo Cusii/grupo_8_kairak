@@ -1,7 +1,7 @@
 const db = require('../database/models');
 
 module.exports = {
-    getSales: async (req, res) => {
+    showSales: async (req, res) => {
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -13,14 +13,18 @@ module.exports = {
             let sales = await db.MovieSale.findAll({
                 where: {
                     status: 1
+                },
+                include: {
+                    association: "movie"
                 }
             });
 
-            let movies =  [];
-            if (sales.length > 0) {
-                movies = await sales.getMovies();                
-            }
+            let movies = [];
+            sales.forEach(sale => {
+                movies.push(sale.movie)
+            });
 
+            
             res.render('movies', {
                 title: 'Nuestras ofertas',
                 css: '',

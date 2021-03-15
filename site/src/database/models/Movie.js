@@ -95,11 +95,11 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			type: DataTypes.STRING		
 		},
-		trailer: {
+		trailerPath: {
 			allowNull: false,
 			type: DataTypes.STRING		
 		},
-		movie: {
+		moviePath: {
 			allowNull: false,
 			type: DataTypes.STRING		
 		},

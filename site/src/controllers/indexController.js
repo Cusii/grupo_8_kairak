@@ -17,8 +17,23 @@ module.exports = {
                 }
             });
 
-            //let mostSawMovies;
-            //let sales = 
+            let mostSawMovies = await db.RentedMovie.findAll({
+                order: [
+                    ['counter', 'ASC']
+                ],
+                include: {
+                    association: "movie"
+                }
+            });
+
+            let sales = await db.MovieSale.findAll({
+                where: {
+                    status: 1
+                },
+                include: {
+                    association: "movie"
+                }
+            });
             
 
 
@@ -29,7 +44,9 @@ module.exports = {
                 css: '',
                 movies,
                 categories,
-                genres
+                genres,
+                sales,
+                mostSawMovies
             })
             
         } catch (error) {
