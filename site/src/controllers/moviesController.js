@@ -46,7 +46,12 @@ module.exports = {
             let movie = await db.Movie.findOne({
                 where: {
                     id: +req.params.id
-                }
+                },
+                include : [
+                    {  association : "genre" },
+                    { association : "category" },
+                    { association: "sales" }                
+                ]
             });
 
             res.render('movieDetail', {
@@ -89,11 +94,11 @@ module.exports = {
                 where: {
                     id: +req.params.id
                 },
-                include : {
-                    association : "genre",
-                    association : "category",
-                    association: "sales"
-                }
+                include : [
+                    {  association : "genre" },
+                    { association : "category" },
+                    { association: "sales" }                
+                ]
             });
 
             res.render('admin/movieDetail', {
@@ -128,18 +133,43 @@ module.exports = {
 
     createMovie: async (req, res, next) => {
         const { title, description, price, year, length, category, genre, trailerPath, moviePath } = req.body;
+        let id = 0
 
         try {
             let oldMovie = await db.Movie.findOne({
                 where: {
-                    title: title.toLowerCase()
+                    title: title.toLowerCase().trim()
                 }
             });
+            
+            if (!oldMovie.isNewRecord && oldMovie.status == 1) {
+                console.log('La pelicula ya existe');
+            } else {
+                await db.Movie.upsert({
+                    title: title.toLowerCase().trim(),
+                    description: description,
+                    price: price,
+                    year: year,
+                    length: length,
+                    image: req.file.filename,
+                    trailerPath: trailerPath,
+                    moviePath: moviePath,
+                    genreId: genre,
+                    categoryId: category,
+                    status: 1,
+                    createdAt: oldMovie.createdAt
+                }, {
+                    where: {
+                        id: oldMovie.id
+                    }
+                })
+            }
+            
 
-            if (oldMovie) {
-                if (oldMovie.status === 0) {
+            /* if (!oldMovie.isNewRecord) {
+                if (oldMovie.status == 0) {
                     await db.Movie.update({
-                        title: title.toLowerCase(),
+                        title: title.toLowerCase().trim(),
                         description: description,
                         price: price,
                         year: year,
@@ -156,27 +186,31 @@ module.exports = {
                             id: oldMovie.id
                         }
                     });
+
+                    id = oldMovie.id
                 } else {
-                    //pelicula ya existe
+                    //pelicula ya esta disponible
                 }
-            }
+            } else {
+                let newMovie = await db.Movie.create({
+                    title: title.toLowerCase().trim(),
+                    description: description,
+                    price: price,
+                    year: year,
+                    length: length,
+                    image: req.file.filename,
+                    trailerPath: trailerPath,
+                    moviePath: moviePath,
+                    genreId: genre,
+                    categoryId: category,
+                    status: 1,
+                    createdAt: new Date()
+                });
 
-            let newMovie = await db.Movie.create({
-                title: title.toLowerCase(),
-                description: description,
-                price: price,
-                year: year,
-                length: length,
-                image: req.file.filename,
-                trailerPath: trailerPath,
-                moviePath: moviePath,
-                genreId: genre,
-                categoryId: category,
-                status: 1,
-                createdAt: new Date()
-            });
+                id = newMovie.id
+            } */    
 
-            res.redirect(`/movies/${newMovie.id}`);
+            res.redirect(`/movies/${id}`);
         } catch (error) {
             res.render('error', {error});
         }        
@@ -195,11 +229,11 @@ module.exports = {
                 where: {
                     id: +req.params.id
                 },
-                include : {
-                    association : "genre",
-                    association : "category",
-                    association: "sales"
-                }
+                include : [
+                    {  association : "genre" },
+                    { association : "category" },
+                    { association: "sales" }                
+                ]
             });
 
             
@@ -217,66 +251,45 @@ module.exports = {
     },
 
     updateMovie: async (req, res, next) => {
-        const id = +req.params.id;
-        const { title, description, price, year, length, category, genre, trailerPath, moviePath } = req.body;
+        const { title, description, price, year, length, category, genre, trailerPath, moviePath, image } = req.body;
         const imgFile = req.file;
-        let imagePath = "";
+        let imagePath = image;
+
+        if (imgFile) {
+            if (fs.existsSync(path.join('public', 'images', 'movies', movie.image))) {
+                fs.unlinkSync(path.join('public', 'images', 'movies', movie.image));
+            }
+            imagePath = req.file.filename
+        }
 
         try {
             await db.Movie.update({
-                title: title.toLowerCase(),
+                title: title.toLowerCase().trim(),
                 description: description,
                 price: price,
                 year: year,
                 length: length,
-                image: req.file.filename,
+                image: imagePath,
                 trailer: trailerPath,
                 movie: moviePath,
                 genreId: genre,
-                categoryId: category,
-                status: 1,
-                createdAt: movieToDelete.createdAt
+                categoryId: category
             },{
                 where: {
                     id: +req.params.id
                 }
             });
+
+            res.redirect(`/movies/${req.params.id}`);
         } catch (error) {
             res.render('error', {error});
-        }
-
-        movies.forEach(movie => {
-            if (movie.id === id) {
-                imagePath = movie.image;
-
-                if (imgFile) {
-                    if (fs.existsSync(path.join('public', 'images', 'movies', movie.image))) {
-                        fs.unlinkSync(path.join('public', 'images', 'movies', movie.image));
-                    }
-                    imagePath = req.file.filename
-                }
-
-                movie.id = id;
-                movie.title = title;
-                movie.description = description;
-                movie.price = price;
-                movie.year = year;
-                movie.length = length;
-                movie.category = category;
-                movie.genre = genre;
-                movie.image = imagePath;
-            }
-        });
-
-        moviesDB.setMovies(movies);
-
-        res.redirect(`/movies/${id}`);
+        }        
     },
 
     deleteMovie: async (req, res) => {
         const id = Number(req.params.id);
 
-        const t = await sequelize.transaction();
+        const t = await db.sequelize.transaction();
 
         try {
             let rents = await db.Rent.findAll({
@@ -286,12 +299,7 @@ module.exports = {
                 }
             });
 
-            if (!rents) {
-                let movieToDelete = await db.Movie.findOne({
-                    where: {
-                        id: id
-                    }
-                });
+            if (rents.length === 0) {   
     
                 let sale = await db.MovieSale.findOne({
                     where: {
@@ -301,41 +309,29 @@ module.exports = {
                 });  
                 
     
-                await db.Movie.update({
-                    title: movieToDelete.title,
-                    description: movieToDelete.description,
-                    price: movieToDelete.price,
-                    year: movieToDelete.year,
-                    length: movieToDelete.length,
-                    image: movieToDelete.image,
-                    trailerPath: movieToDelete.trailerPath,
-                    moviePath: movieToDelete.moviePath,
-                    genreId: movieToDelete.genreId,
-                    categoryId: movieToDelete.categoryId,
-                    status: 0,
-                    createdAt: movieToDelete.createdAt
+                await db.Movie.update({                    
+                    status: 0
                 },{
                     where: {
                         id: id
                     }
                 }, { transaction: t });
 
-                await db.MovieSale.update({
-                    id: sale.id,
-                    movieId: id,
-                    discount: sale.discount,
-                    status: 0,
-                    createdAt: sale.createdAt,
-                    expiredAt: new Date()
-                },{
-                    where: {
-                        movieId: id
-                    }
-                }, { transaction: t })
+                if (sales.length > 0) {
+                    await db.MovieSale.update({
+                        status: 0,
+                        expiredAt: new Date()
+                    },{
+                        where: {
+                            movieId: id,
+                            id: sale.id
+                        }
+                    }, { transaction: t })
+                }                
 
                 await t.commit();
             } else {
-                
+                console.log("No se puede eliminar la pelicula, actualmente está en uso por usuarios");
             }
 
             res.redirect('/movies');

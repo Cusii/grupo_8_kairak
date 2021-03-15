@@ -19,46 +19,61 @@
                             <div class="row mx-auto mb-5 ">
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title">
+                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title" required>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3 " type="text" placeholder="Genero" name="genre">
+                                    <select name="genre" class="form-control" required>
+                                        <% genres.forEach(genre => { %>
+                                            <option value="<%= genre.id%>" ><%= genre.name%></option>                                         
+                                        <% }) %>                                        
+                                    </select>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Precio" name="price">
+                                    <input class="form-control mb-3" type="text" placeholder="Precio" name="price" required>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3 " type="text" placeholder="Edad" name="category">
+                                    <select name="category" class="form-control" required>
+                                        <% categories.forEach(category => { %>
+                                            <option value="<%= category.id%>" ><%= category.name%></option>                                         
+                                        <% }) %>                                        
+                                    </select>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Duracion" name="length">
+                                    <input class="form-control mb-3" type="number" placeholder="Duracion" name="length" required>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Trailer" name="trailerPath">
+                                    <input class="form-control mb-3" type="text" placeholder="Año de estreno" name="year" required>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Pelicula" name="moviePath">
+                                    <input class="form-control mb-3" type="text" placeholder="Trailer" name="trailerPath" required>
+                                </div>
+
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="text" placeholder="Pelicula" name="moviePath" required>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie"> Subir foto
+                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie" required> Subir foto
                                     </div>
 
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
-                                    <textarea class="form-control" rows="3" name="description"></textarea>
+                                    <textarea class="form-control" rows="3" name="description" required></textarea>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
                                     <button class="btn btn-primary s" type="submit">Guardar</button>
+                                </div>
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">                                    
+                                    <a href="/movies" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
                                 </div>
                             </div>
 

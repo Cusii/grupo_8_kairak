@@ -6,7 +6,7 @@ const movies = [
 		description: 'While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.',
 		price: 110.1,
 		year: 2016,
-		length: 1,
+		length: 128,
 		image: 'la-la-land.jpg',
 		trailer_path: 'https://www.youtube.com/embed/EDvJBDXV2tA',
 		movie_path: 'https://www.youtube.com/embed/EDvJBDXV2tA',

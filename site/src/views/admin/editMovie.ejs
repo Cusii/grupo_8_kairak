@@ -26,14 +26,22 @@
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <input class="form-control mb-3 " type="text" placeholder="Nombre" name="title" value="<%= movie.title %>">
                                 </div>
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3  " type="text" placeholder="Genero" name="genre" value="<%= movie.genre %>">
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">                                    
+                                    <select name="genre" class="form-control">
+                                        <% genres.forEach(genre => { %>
+                                            <option value="<%= genre.id%>" <%- movie.genreId === genre.id ? "selected" : null %> ><%= genre.name%></option>                                         
+                                        <% }) %>                                        
+                                    </select>
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <input class="form-control mb-3 " type="text" placeholder="Precio" name="price" value="<%= movie.price %>">
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3  " type="text" placeholder="Edad" name="category" value="<%= movie.category %>">
+                                    <select name="category" class="form-control">
+                                        <% categories.forEach(category => { %>
+                                            <option value="<%= category.id%>" <%- movie.categoryId === category.id ? "selected" : null %> ><%= category.name%></option>                                         
+                                        <% }) %>                                        
+                                    </select>
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <input class="form-control mb-3 " type="text" placeholder="Duracion" name="length" value="<%= movie.length %>">
@@ -42,10 +50,10 @@
                                     <input class="form-control mb-3 " type="text" placeholder="Trailer" name="trailerPath" value="<%= movie.trailerPath %>">
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3 " type="text" placeholder="Pelicula" name="moviePath" value="<%= movie.moviePath %>">
+                                    <input class="form-control mb-3 " type="text" placeholder="Imagen" name="image" value="<%= movie.image %>">
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3 " type="text" placeholder="Trailer" name="trailerPath" value="<%= movie.trailerPath %>">
+                                    <input class="form-control mb-3 " type="text" placeholder="Pelicula" name="moviePath" value="<%= movie.moviePath %>">
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
