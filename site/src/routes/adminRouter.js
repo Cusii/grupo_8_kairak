@@ -6,7 +6,7 @@ const adminController = require('../controllers/adminController')
 const uploadImg = require('../middlewares/uploadUserImage');
 
 
-router.get('/index', adminController.index)
+router.get('/', adminController.index)
 router.get('/users/list', adminController.listUser)
 
 router.get('/users/create', adminController.register)

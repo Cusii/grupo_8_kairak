@@ -27,17 +27,23 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', {error})
+            res.render('error', {error});
         }
-        
-
     },
 
-    register: (req, res) => {
-        res.render('admin/createUser', {
-            title: 'Crear usuario',
-            css: ''
-        })
+    register: async (req, res) => {
+        try {
+            let roles = await db.Role.findAll();
+
+            res.render('admin/createUser', {
+                title: 'Crear nuevo usuario',
+                css: '',
+                roles
+            })
+        } catch (error) {
+            res.render('error', {error});
+        }
+        
     },
 
     proccesRegister: async (req, res, next) => {
