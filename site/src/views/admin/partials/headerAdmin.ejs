@@ -1,8 +1,8 @@
 <header>
     <nav class="container">
         <div class="row">
-            <img class="col-4" src="/images/kairak-logo.svg" alt="logo" width="30%">
-            <div class="col-3 ">
+            <img class="col-3" src="/images/kairak-logo.svg" alt="logo" width="30%">
+            <div class="col-2 ">
                 <li class="nav-item ">
                     <a class="nav-link dropdown-toggle dropdown btn bg-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Control de Usuarios
@@ -15,7 +15,7 @@
 
 
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle dropdown btn bg-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Control de Peliculas
@@ -31,11 +31,24 @@
             <div class="col-2">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle dropdown btn bg-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Control de Ofertas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li><a class="dropdown-item" href="/sales/show">Listar ofertas vigentes</a></li>
+                        <li><a class="dropdown-item" href="/sales/create">Cargar oferta</a></li>
+
+                    </ul>
+                </li>
+            </div>
+            <div class="col-2">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle dropdown btn bg-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         ADMIN
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a class="dropdown-item" href="/admin/index">Vista Admin</a></li>
+                        <li><a class="dropdown-item" href="/admin">Vista Admin</a></li>
                         <li><a class="dropdown-item" href="/">Vista Usuario</a></li>
 
                     </ul>
