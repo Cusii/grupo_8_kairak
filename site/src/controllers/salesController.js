@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const { Op } = require("sequelize");
 
 module.exports = {
     showSales: async (req, res) => {
@@ -83,24 +84,102 @@ module.exports = {
         }
     },
 
-    toCreateSale: (req, res) => {
-        res.render('admin/createSale');
+    toCreateSale: async (req, res) => {
+        try {
+            let sales = await db.MovieSale.findAll({
+                where: {
+                    status: 1
+                }
+            });
+
+            let idsMovieSale = [];
+            sales.forEach(sale => {
+                idsMovieSale.push(sale.id);
+            });
+
+            let movies = await db.Movie.findAll({
+                where: {
+                    status: 1,
+                    [Op.notBetween]: idsMovieSale
+                }
+            });
+
+            res.render('admin/createSale', {
+                title: 'Cargar nueva oferta',
+                css: '',
+                movies
+            });
+        } catch (error) {
+            res.render('error', {error});
+        }
+        
     },
 
     createSale: async (req, res) => {
-        res.redirect('/sales/show');
+        const { discount, movieId,  expiredAt } = req.body;
+
+        try {
+            let newSale = await db.MovieSale.create({
+                discount,
+                movieId,
+                expiredAt,
+                status: 1
+            })
+            res.redirect(`/sales/show/${newSale.id}`);
+        } catch (error) {
+            res.render('error', {error});
+        }
     },
 
-    editSale: (req, res) => {
-        res.render('admin/editSale');
+    editSale: async (req, res) => {
+        try {
+            let sale = await db.MovieSale.findOne({
+                where: {
+                    id: +req.params.id
+                },
+                include: {
+                    association: "movie"
+                }
+            });
+
+            res.render('/admin/editSale',{
+                title: 'Editar oferta',
+                sale
+            });
+        } catch (error) {
+            res.render('error', {error});
+        }
     },
 
     updateSale: async (req, res) => {
-        res.redirect('/sales/show');
+        const { discount, /* createdAt, */ expiredAt } = req.body;
+        try {
+            let sale = await db.MovieSale.update({
+                discount,
+                expiredAt 
+            }, {
+                where: {id: +req.params.id }
+            })
+            res.redirect(`/sales/show/${sale.id}`);
+        } catch (error) {
+            res.render('error', {error});
+        }
     },
 
     deleteSale: async (req, res) => {
-        res.redirect('/sales/show');
+        try {
+            await db.MovieSale.update({
+                status: 0,
+                expiredAt: new Date()
+            },{
+                where: {
+                    id: +req.params.id    
+                }
+            });
+            res.redirect('/sales/show');
+        } catch (error) {
+            res.render('error', {error});
+        }
     }
 
 }

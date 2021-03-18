@@ -11,6 +11,6 @@ router.get('/create', toCreateSale);
 router.post('/create', createSale);
 router.get('/edit/:id', editSale);
 router.put('/edit/:id', updateSale);
-router.delete('/create', deleteSale);
+router.delete('/delete/:id', deleteSale);
 
 module.exports = router;

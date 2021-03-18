@@ -79,7 +79,7 @@ module.exports = {
             });
     
             res.render('admin/moviesList', {
-                title: 'nuestras peliculas',
+                title: 'Nuestras Películas',
                 css: '',
                 movies
             })
@@ -142,32 +142,10 @@ module.exports = {
                 }
             });
             
-            if (!oldMovie.isNewRecord && oldMovie.status == 1) {
-                console.log('La pelicula ya existe');
-            } else {
-                await db.Movie.upsert({
-                    title: title.toLowerCase().trim(),
-                    description: description,
-                    price: price,
-                    year: year,
-                    length: length,
-                    image: req.file.filename,
-                    trailerPath: trailerPath,
-                    moviePath: moviePath,
-                    genreId: genre,
-                    categoryId: category,
-                    status: 1,
-                    createdAt: oldMovie.createdAt
-                }, {
-                    where: {
-                        id: oldMovie.id
-                    }
-                })
-            }
-            
+            id = oldMovie.id;         
 
-            /* if (!oldMovie.isNewRecord) {
-                if (oldMovie.status == 0) {
+            if (oldMovie.isNewRecord === false) {
+                if (oldMovie.status == false) {
                     await db.Movie.update({
                         title: title.toLowerCase().trim(),
                         description: description,
@@ -189,7 +167,10 @@ module.exports = {
 
                     id = oldMovie.id
                 } else {
-                    //pelicula ya esta disponible
+                    fs.unlinkSync(path.join('public', 'images', 'movies', req.file.filename));
+                    console.log('La pelicula ya existe');
+                    //provisorio
+                    return res.redirect('/movies/create');
                 }
             } else {
                 let newMovie = await db.Movie.create({
@@ -208,7 +189,7 @@ module.exports = {
                 });
 
                 id = newMovie.id
-            } */    
+            }    
 
             res.redirect(`/movies/${id}`);
         } catch (error) {

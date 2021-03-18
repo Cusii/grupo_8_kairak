@@ -14,7 +14,13 @@ module.exports = {
             let movies = await db.Movie.findAll({
                 where: {
                     status: 1
-                }
+                },
+                include: {
+                    association: "rating"
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
             });
 
             let mostSawMovies = await db.RentedMovie.findAll({
@@ -51,9 +57,6 @@ module.exports = {
             
         } catch (error) {
             res.render('error', {error});
-        }
-
-
-        
+        }        
     }
 }

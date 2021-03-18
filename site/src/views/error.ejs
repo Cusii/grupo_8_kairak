@@ -1,4 +1,17 @@
-<h1><%= error.message %></h1>
-<h1><%= /* message */ %></h1>
-<h2><%= /* error.status */ %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="es">
+<% title = '404' %>
+<% css = '' %> 
+<%- include('partials/head') %>
+
+<body>
+    <img src="/images/error-404-not-found.jpg" alt="" width="60%">
+    <h1><%= error.message %></h1>
+    <h1><%= /* message */ %></h1>
+    <h2><%= /* error.status */ %></h2>
+    <pre><%= error.stack %></pre>
+
+    <%- include('partials/scripts')  %>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/headAdmin')  %>
+
+    <body class="bg-white ">
+        <%- include('partials/headerAdmin') %>
+
+            <section class="container bg-light pb-5">
+                <article class="box-center">
+
+                    <div class=" text-center mb-5">
+                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                        <h4><%= title %> </h4>
+                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+                    </div>
+
+                    <form action="/sales/edit/<%= sale.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="container mb-5">
+                        <div class=" bg-white mb-5 border border-1 pt-5">
+                            <img src="/images/movies/<%= sale.movie.image %>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="425px">
+                            <div class="row mx-auto mb-5 ">
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <h5>Película: <%= sale.movie.title %></h5>                                    
+                                </div>
+                                
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <h5>Precio original: <%= sale.movie.price %></h5>
+                                </div>
+                                
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3 " type="number" placeholder="Descuento" name="discount" min="1" max="100" value="<%= sale.discount %>" required>
+                                </div>
+                                <!-- <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="date" placeholder="Fecha de inicio" name="createdAt" required>
+                                </div> -->
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <input class="form-control mb-3" type="date" min="2021-03-16" placeholder="Fecha de vencimiento" name="expiredAt" required>
+                                </div>                                
+                                
+                                
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <button class=" col-5 btn btn-primary mt-3" type="submit">Actualizar</button>
+                                </div>
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                    <a href="/sales/show" class=" col-5 btn btn-danger mt-3 mx-auto">Volver</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </article>
+            </section>
+
+
+            <%- include('partials/scriptsAdmin')  %>
+    </body>
+
+</html>

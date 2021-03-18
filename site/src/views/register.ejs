@@ -31,7 +31,7 @@
                                             <div class="row mx-auto mb-3 ">
                                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                                    <input type="text" class="form-control" id="nomFirs" placeholder="nombre" name="first_name" required>
+                                                    <input type="text" class="form-control" placeholder="nombre" name="first_name" required>
                                                 </div>
                                             </div>
 
@@ -39,7 +39,7 @@
                                             <div class="row mx-auto mb-3 ">
                                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                                    <input type="text" class="form-control" id="nomFirs" placeholder="apellido" name="last_name" required>
+                                                    <input type="text" class="form-control" placeholder="apellido" name="last_name" required>
 
                                                 </div>
                                             </div>
@@ -47,7 +47,7 @@
                                             <div class="row mx-auto mb-3 ">
                                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
 
-                                                    <input type="text" class="form-control" id="nomFirs" placeholder="email" name="email" required>
+                                                    <input type="email" class="form-control" placeholder="email" name="email" required>
 
                                                 </div>
                                             </div>
@@ -55,44 +55,37 @@
                                             <div class="row mx-auto mb-3">
                                                 <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                                                    <input type="password" class="form-control" id="nomFirs" placeholder="contraseña" name="password" required>
+                                                    <input type="password" class="form-control" placeholder="contraseña" name="password" required>
 
                                                 </div>
                                             </div>
                                             <div class="row mx-auto mb-5">
                                                 <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 ">
-
                                                     <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                                        <input type="file" id="nomFirs" class="input-file" value="" name="avatar"> Subir foto
+                                                        <input type="file" class="input-file" value="" name="avatar"> Subir foto
                                                     </div>
-
-
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div class="row mx-auto pb-5 pt-4">
-
                                             <button class="mx-auto col-4 col-md-5 btn btn-primary mb-5 " type="submit ">Guardar</button>
-                                            <a href="/users/login" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">volver</a>
+                                            <a href="/users/login" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
 
                                             <% if (typeof error != 'undefined') { %>
                                                 <div class="alert alert-danger ">
                                                     <span><%= error %> </span>
                                                 </div>
-                                                <% } %>
+                                            <% } %>
 
                                         </div>
                                     </form>
 
-
-
-
                                 </article>
                             </section>
 
-                            <%- include('partials/footer') %>
-                                <%- include('partials/scripts')  %>
+        <%- include('partials/footer') %>
+        <%- include('partials/scripts')  %>
     </body>
 
 </html>

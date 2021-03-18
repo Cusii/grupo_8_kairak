@@ -49,33 +49,21 @@ module.exports = {
                     association: "role"
                 }
             });
-            if (user) {
 
+            if (user) {
                 if (bcrypt.compareSync(password, user.password)) {
                     if (user.role.id === role_admin) {
-                        req.session.userLogin = {
-                            id: user.id,
-                            mail: user.email,
-                            rol: user.role.id,
-                            nombre: user.first_name
-                        }
                         return res.redirect('/admin')
-
                     } else {
-                        req.session.userLogin = {
-                            id: user.id,
-                            mail: user.email
-                        }
-                        return res.redirect('/')
-
-                    }
+                        return res.redirect(`/users/profile/${user.id}`)
+                    }                              
                 } else {
                     res.render('login', {
                         title: 'Kairak',
                         css: '',
                         error: 'contraseña invalida',
                         genres,
-                        categories
+                    categories
                     })
                 }
             } else {
@@ -141,7 +129,7 @@ module.exports = {
             if (user) {
                 return res.render('register', {
                     error: 'El usuario ya existe',
-                    title: "kairak",
+                    title: "Kairak",
                     css: '',
                     genres,
                     categories
