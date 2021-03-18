@@ -1,7 +1,7 @@
 <header>
     <nav class="container">
         <div class="row">
-            <img class="col-3" src="/images/kairak-logo.svg" alt="logo" width="30%">
+            <a class="col-4" href="/admin"><img src="/images/kairak-logo.svg" alt="logo" width="100%"></a>
             <div class="col-2 ">
                 <li class="nav-item ">
                     <a class="nav-link dropdown-toggle dropdown btn bg-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,12 +44,12 @@
             <div class="col-2">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle dropdown btn bg-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ADMIN
+                        <%= userLogin.id %>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a class="dropdown-item" href="/admin">Vista Admin</a></li>
                         <li><a class="dropdown-item" href="/">Vista Usuario</a></li>
+                        <li><a class="dropdown-item" href="/users/logout">Cerrar sesion</a></li>
 
                     </ul>
                 </li>

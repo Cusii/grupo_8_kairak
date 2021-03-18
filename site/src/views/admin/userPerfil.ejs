@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/headAdmin')  %>
+
+    <body class="bg-white ">
+        <%- include('partials/headerAdmin')  %>
+            <main class="container bg-light pb-5">
+                <div class="row mx-auto pb-5">
+                    <div class="card mx-auto" style="width: 50%">
+                        <img src="/images/logo-person.png" class="card-img-top" alt="...">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <%= user.first_name %>
+                                    <%= user.last_name %>
+                            </h5>
+                        </div>
+                        <ul class="list-group list-group-flush ">
+                            <li class="list-group-item">
+                                <p class="card-text">
+                                    <%= user.role %>
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <p>
+                                    <%= user.email %>
+                                </p>
+                            </li>
+                            <li class="list-group-item pb-5">info</li>
+                        </ul>
+                        <div class="mx-auto">
+                            <a href="/admin//users/list" class="btn btn-danger ">Volver</a>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </main>
+
+
+            <%- include('partials/scriptsAdmin')  %>
+
+
+    </body>
+
+</html>

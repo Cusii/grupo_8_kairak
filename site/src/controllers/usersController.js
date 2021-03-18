@@ -1,12 +1,13 @@
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
 
+
 //const { getUsers, sendUsers } = require('../data/users')
 
 //const users = getUsers();
 
 module.exports = {
-    login: async (req, res) => {
+    login: async(req, res) => {
 
         try {
             let categories = await db.Category.findAll({
@@ -24,11 +25,11 @@ module.exports = {
                 categories
             })
         } catch (error) {
-            res.render('error', {error})
+            res.render('error', { error })
         }
-        
+
     },
-    processLogin: async (req, res) => {
+    processLogin: async(req, res) => {
         const { email, password } = req.body
         const role_admin = 1;
 
@@ -44,26 +45,37 @@ module.exports = {
                 where: {
                     email: email
                 },
-                include : {
-                    association : "role"
+                include: {
+                    association: "role"
                 }
             });
-
-
             if (user) {
+
                 if (bcrypt.compareSync(password, user.password)) {
                     if (user.role.id === role_admin) {
-                        return res.redirect('/admin/index')
+                        req.session.userLogin = {
+                            id: user.id,
+                            mail: user.email,
+                            rol: user.role.id,
+                            nombre: user.first_name
+                        }
+                        return res.redirect('/admin')
+
                     } else {
-                        return res.redirect(`/users/profile/${user.id}`)
-                    }                              
+                        req.session.userLogin = {
+                            id: user.id,
+                            mail: user.email
+                        }
+                        return res.redirect('/')
+
+                    }
                 } else {
                     res.render('login', {
                         title: 'Kairak',
                         css: '',
                         error: 'contraseña invalida',
                         genres,
-                    categories
+                        categories
                     })
                 }
             } else {
@@ -74,13 +86,13 @@ module.exports = {
                     genres,
                     categories
                 })
-            }            
+            }
         } catch (error) {
-            res.render('error', {error})
+            res.render('error', { error })
         }
     },
 
-    register: async (req, res) => {
+    register: async(req, res) => {
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -96,12 +108,12 @@ module.exports = {
                 categories
             })
         } catch (error) {
-            res.render('error', {error})
+            res.render('error', { error })
         }
-        
+
     },
 
-    processRegister: async (req, res, next) => {
+    processRegister: async(req, res, next) => {
         const role_user = 2;
         const { first_name, last_name, email, password } = req.body
 
@@ -111,7 +123,7 @@ module.exports = {
         } else {
             avatarPath = req.files[0].filename;
         }
-        
+
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -133,7 +145,7 @@ module.exports = {
                     css: '',
                     genres,
                     categories
-                })    
+                })
             }
 
             let passHash = bcrypt.hashSync(password.trim(), 12);
@@ -151,26 +163,31 @@ module.exports = {
             res.redirect('/users/login')
 
         } catch (error) {
-            res.render('error', {error})
-        }      
-    },    
+            res.render('error', { error })
+        }
+    },
+    logout: (req, res) => {
+        // delete req.session.userAdmin
+        req.session.destroy()
+        res.redirect('/')
+    },
 
-    showProfile: async (req, res) => {
+    showProfile: async(req, res) => {
         try {
             let categories = await db.Category.findAll({
                 order: [
                     ['id', 'ASC']
                 ]
             });
-            
+
             let genres = await db.Genre.findAll();
 
             let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
                 },
-                include : {
-                    association : "role"
+                include: {
+                    association: "role"
                 }
             });
 
@@ -179,10 +196,10 @@ module.exports = {
                 css: 'styleFormularios',
                 user,
                 genres,
-                categories    
+                categories
             })
         } catch (error) {
-            res.render('error', {error})
-        }       
+            res.render('error', { error })
+        }
     }
 }

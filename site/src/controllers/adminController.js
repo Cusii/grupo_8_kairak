@@ -2,6 +2,7 @@ const { getUsers, setUsers } = require('../data/users')
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
+const path = require('path')
 
 
 const users = getUsers();
@@ -12,11 +13,11 @@ module.exports = {
         })
 
     },
-    listUser: async (req, res) => {
+    listUser: async(req, res) => {
         try {
             let users = await db.User.findAll({
-                include : {
-                    association : "role"
+                include: {
+                    association: "role"
                 }
             });
 
@@ -27,11 +28,11 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', {error});
+            res.render('error', { error });
         }
     },
 
-    register: async (req, res) => {
+    register: async(req, res) => {
         try {
             let roles = await db.Role.findAll();
 
@@ -41,12 +42,12 @@ module.exports = {
                 roles
             })
         } catch (error) {
-            res.render('error', {error});
+            res.render('error', { error });
         }
-        
+
     },
 
-    proccesRegister: async (req, res, next) => {
+    proccesRegister: async(req, res, next) => {
         const { first_name, last_name, email, password, role } = req.body
 
         let avatarPath = req.files[0];
@@ -63,7 +64,7 @@ module.exports = {
                     email: email
                 }
             });
-            
+
             if (user) {
                 return res.render('admin/createUser', {
                     title: 'Crear usuario',
@@ -86,12 +87,12 @@ module.exports = {
             res.redirect('/admin/users/list')
 
         } catch (error) {
-            res.render('error', {error})
+            res.render('error', { error })
         }
 
     },
 
-    editUser: async (req, res) => {
+    editUser: async(req, res) => {
 
         try {
             let roles = await db.Role.findAll();
@@ -100,8 +101,8 @@ module.exports = {
                 where: {
                     id: +req.params.id
                 },
-                include : {
-                    association : "role"
+                include: {
+                    association: "role"
                 }
             });
 
@@ -112,24 +113,24 @@ module.exports = {
                 roles
             })
         } catch (error) {
-            res.render('error', {error})
-        }    
+            res.render('error', { error })
+        }
     },
 
-    updateUser: async (req, res) => {
+    updateUser: async(req, res) => {
 
         const { first_name, last_name, email, password, role } = req.body
-        const imgFile = req.file;        
+        const imgFile = req.file;
 
         try {
             let user = db.User.findOne({
                 where: {
                     id: +req.params.id
                 },
-                include : {
-                    association : "role"
+                include: {
+                    association: "role"
                 }
-            });            
+            });
 
             if (imgFile) {
                 if (fs.existsSync(path.join('public', 'images', 'movies', user.avatar))) {
@@ -155,11 +156,11 @@ module.exports = {
 
             res.redirect('/admin/users/list')
         } catch (error) {
-            res.render('error', {error})
+            res.render('error', { error })
         }
     },
 
-    deleteUser: async (req, res) => {
+    deleteUser: async(req, res) => {
 
         try {
             let userToDelete = await db.User.findOne({
@@ -180,8 +181,8 @@ module.exports = {
 
             res.redirect('/admin/users/list')
         } catch (error) {
-            res.render('error', {error})
-        }        
+            res.render('error', { error })
+        }
 
-    }    
+    }
 }
