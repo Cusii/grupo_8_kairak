@@ -11,3 +11,7 @@
 ## :pushpin: Sprint 3: wireframes + bocetos
 
 ![Sprint 3](/retrospective-meetings/sprint-3.png)
+
+## :pushpin: Sprint 4: wireframes + bocetos
+
+![Sprint 4](/retrospective-meetings/sprint-4.png)
