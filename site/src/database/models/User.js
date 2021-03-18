@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: 'userId'
 			});
 
-			User.hasMany(models.RankingMovieUser, {
-				as: 'rankings',
+			User.hasMany(models.RatingMovieUser, {
+				as: 'ratings',
 				foreignKey: 'userId'
 			});
 			

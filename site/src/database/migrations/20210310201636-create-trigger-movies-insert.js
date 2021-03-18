@@ -6,11 +6,11 @@ module.exports = {
 		AFTER INSERT ON movies
 		FOR EACH ROW
 		BEGIN
-			INSERT INTO rankings
+			INSERT INTO ratings
 				SET movie_id = NEW.id,
-					accumulated_ranking = 0,
+					accumulated_rating = 0,
 					total_votes = 0,
-					avg_ranking = 0,
+					avg_rating = 0,
 					created_at = now() ;
 			INSERT INTO rented_movies
 				SET movie_id = NEW.id,

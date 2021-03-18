@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: 'categoryId'
 			});
 
-			Movie.hasOne(models.Ranking, {
-				as: 'ranking',
+			Movie.hasOne(models.Rating, {
+				as: 'rating',
 				foreignKey: 'movieId'
 			});
 
@@ -41,8 +41,8 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: 'movieId'
 			});
 
-			Movie.hasMany(models.RankingMovieUser, {
-				as: 'rankingsByUser',
+			Movie.hasMany(models.RatingMovieUser, {
+				as: 'ratingsByUser',
 				foreignKey: 'movieId'
 			});
 

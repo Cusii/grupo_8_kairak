@@ -3,7 +3,7 @@ const {
 	Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-	class RankingMovieUser extends Model {
+	class RatingMovieUser extends Model {
 		/**
 		 * Helper method for defining associations.
 		 * This method is not a part of Sequelize lifecycle.
@@ -11,18 +11,18 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			RankingMovieUser.belongsTo(models.Movie, {
+			RatingMovieUser.belongsTo(models.Movie, {
 				as: 'movie',
 				foreignKey: 'movieId'	
 			});
 
-			RankingMovieUser.belongsTo(models.User, {
+			RatingMovieUser.belongsTo(models.User, {
 				as: 'user',
 				foreignKey: 'userId'	
 			});
 		}
 	};
-	RankingMovieUser.init({
+	RatingMovieUser.init({
 		id: {
 			allowNull: false,
 			autoIncrement: true,
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
-		ranking: {
+		rating: {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
@@ -47,9 +47,9 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	}, {
 		sequelize,
-		modelName: 'RankingMovieUser',
-		tableName: 'rankings_movies_users',
+		modelName: 'RatingMovieUser',
+		tableName: 'ratings_movies_users',
 		underscored: true
 	});
-	return RankingMovieUser;
+	return RatingMovieUser;
 };
