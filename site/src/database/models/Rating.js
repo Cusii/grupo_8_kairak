@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			Ranking.belongsTo(models.Movie,{
+			Rating.belongsTo(models.Movie,{
 				as: 'movie',
 				foreignKey: 'movieId'
 			})
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
 		updatedAt: DataTypes.DATE,
 	}, {
 		sequelize,
-		modelName: 'rating',
+		modelName: 'Rating',
 		underscored: true
 	});
 	return Rating;
