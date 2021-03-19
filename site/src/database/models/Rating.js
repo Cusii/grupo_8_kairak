@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
-		totalVote: {
+		totalVotes: {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
