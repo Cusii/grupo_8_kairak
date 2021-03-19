@@ -23,6 +23,14 @@ module.exports = {
 
     },
     listUser: async(req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let users = await db.User.findAll({
                 include: {
@@ -33,7 +41,8 @@ module.exports = {
             res.render('admin/usersList', {
                 title: 'Kairak',
                 users,
-                css: 'styleFormularios'
+                css: 'styleFormularios',
+                userAdmin
             })
 
         } catch (error) {
@@ -42,13 +51,22 @@ module.exports = {
     },
 
     register: async(req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let roles = await db.Role.findAll();
 
             res.render('admin/createUser', {
                 title: 'Crear nuevo usuario',
                 css: '',
-                roles
+                roles,
+                userAdmin
             })
         } catch (error) {
             res.render('error', { error });
@@ -65,7 +83,6 @@ module.exports = {
         } else {
             avatarPath = req.files[0].filename;
         }
-
 
         try {
             let user = await db.User.findOne({
@@ -102,6 +119,13 @@ module.exports = {
     },
 
     editUser: async(req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
 
         try {
             let roles = await db.Role.findAll();
@@ -119,7 +143,8 @@ module.exports = {
                 title: 'Editar usuario',
                 css: '',
                 user,
-                roles
+                roles,
+                userAdmin
             })
         } catch (error) {
             res.render('error', { error })

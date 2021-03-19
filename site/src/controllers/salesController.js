@@ -40,6 +40,14 @@ module.exports = {
     },
 
     getSales: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+        
         try {            
             let sales = await db.MovieSale.findAll({
                 where: {
@@ -53,7 +61,8 @@ module.exports = {
             res.render('admin/sales', {
                 title: 'Ofertas vigentes',
                 css: '',
-                sales
+                sales,
+                userAdmin
             })
             
         } catch (error) {
@@ -62,6 +71,13 @@ module.exports = {
     },
 
     getSale: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
         try {            
             let sale = await db.MovieSale.findOne({
                 where: {
@@ -76,7 +92,8 @@ module.exports = {
             res.render('admin/saleDetail', {
                 title: sale.movie.name,
                 css: '',
-                sale
+                sale,
+                userAdmin
             })
             
         } catch (error) {
@@ -85,6 +102,14 @@ module.exports = {
     },
 
     toCreateSale: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let sales = await db.MovieSale.findAll({
                 where: {
@@ -100,14 +125,17 @@ module.exports = {
             let movies = await db.Movie.findAll({
                 where: {
                     status: 1,
-                    [Op.notBetween]: idsMovieSale
+                    id: {
+                        [Op.notBetween]: idsMovieSale
+                    }
                 }
             });
 
             res.render('admin/createSale', {
                 title: 'Cargar nueva oferta',
                 css: '',
-                movies
+                movies,
+                userAdmin
             });
         } catch (error) {
             res.render('error', {error});
@@ -132,6 +160,14 @@ module.exports = {
     },
 
     editSale: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let sale = await db.MovieSale.findOne({
                 where: {
@@ -144,7 +180,8 @@ module.exports = {
 
             res.render('/admin/editSale',{
                 title: 'Editar oferta',
-                sale
+                sale,
+                userAdmin
             });
         } catch (error) {
             res.render('error', {error});

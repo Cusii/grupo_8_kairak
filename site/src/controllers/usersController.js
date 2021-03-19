@@ -57,7 +57,7 @@ module.exports = {
                             id: user.id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            rol: user.role.id
+                            role: user.role.id
                         }
                         return res.redirect('/admin')
                     } else {

@@ -71,6 +71,14 @@ module.exports = {
 
     /**************************** ADMIN ****************************/
     getMovies: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let movies = await db.Movie.findAll({
                 where: {
@@ -81,7 +89,8 @@ module.exports = {
             res.render('admin/moviesList', {
                 title: 'Nuestras Películas',
                 css: '',
-                movies
+                movies,
+                userAdmin
             })
         } catch (error) {
             res.render('error', {error});
@@ -89,6 +98,14 @@ module.exports = {
         
     },
     getMovie: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let movie = await db.Movie.findOne({
                 where: {
@@ -104,7 +121,8 @@ module.exports = {
             res.render('admin/movieDetail', {
                 title: movie.title,
                 css: 'movieStyle',                
-                movie
+                movie,
+                userAdmin
             });
         } catch (error) {
             
@@ -112,6 +130,14 @@ module.exports = {
     },  
 
     toCreateMovie: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -124,7 +150,8 @@ module.exports = {
                 title: 'Agregar pelicula',
                 css: 'formStyles',
                 categories,
-                genres
+                genres,
+                userAdmin
             })
         } catch (error) {
             res.render('error', {error});
@@ -198,6 +225,14 @@ module.exports = {
     },
 
     toEditMovie: async (req, res) => {
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -223,7 +258,8 @@ module.exports = {
                 css: 'formStyles',
                 categories,
                 genres,
-                movie
+                movie,
+                userAdmin
             });
 
         } catch (error) {
