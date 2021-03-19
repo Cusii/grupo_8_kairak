@@ -53,17 +53,24 @@ module.exports = {
             if (user) {
                 if (bcrypt.compareSync(password, user.password)) {
                     if (user.role.id === role_admin) {
+                        req.session.userLogin = {
+                            id: user.id,
+                            rol: user.role.id
+                        }
                         return res.redirect('/admin')
                     } else {
+                        req.session.userLogin = {
+                            id: user.id
+                        }
                         return res.redirect(`/users/profile/${user.id}`)
-                    }                              
+                    }
                 } else {
                     res.render('login', {
                         title: 'Kairak',
                         css: '',
                         error: 'contraseña invalida',
                         genres,
-                    categories
+                        categories
                     })
                 }
             } else {

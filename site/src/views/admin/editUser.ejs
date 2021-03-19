@@ -9,7 +9,9 @@
 
                     <div class=" text-center ">
                         <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h4><%= title %> </h4>
+                        <h4>
+                            <%= title %>
+                        </h4>
                         <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
                     </div>
                     <form class="container" action="/admin/users/update/<%=user.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
@@ -52,7 +54,7 @@
 
                             <div class="row mx-auto mb-3">
                                 <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
-                                    
+
                                     <select name="role" class="form-control">
                                         <% roles.forEach(role => { %>
                                             <option value="<%= role.id%>" <%- user.role.id === role.id ? "selected" : null %> ><%= role.name%></option>                                         
@@ -64,7 +66,7 @@
                             <div class="row mx-auto mb-3">
                                 <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" img" name="avatar" value="<%= user.avatar%>">                                   
+                                    <input type="text" class="form-control" id="nomFirs" placeholder=" img" name="avatar" value="<%= user.avatar%>">
 
                                 </div>
                             </div>
