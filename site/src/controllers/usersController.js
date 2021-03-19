@@ -55,6 +55,8 @@ module.exports = {
                     if (user.role.id === role_admin) {
                         req.session.userLogin = {
                             id: user.id,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
                             rol: user.role.id
                         }
                         return res.redirect('/admin')

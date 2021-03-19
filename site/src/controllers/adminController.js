@@ -8,8 +8,17 @@ const path = require('path')
 const users = getUsers();
 module.exports = {
     index: (req, res) => {
+        console.log(req.session.userLogin);
+        const { id, firstName, lastName, role} = req.session.userLogin;
+        userAdmin = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
         res.render('admin/indexAdmin', {
-            css: 'styleFormularios'
+            css: 'styleFormularios',
+            userAdmin
         })
 
     },
