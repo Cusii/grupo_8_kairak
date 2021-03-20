@@ -4,17 +4,17 @@ const { check, validationResult, body } = require('express-validator')
 module.exports = [
     check('first_name')
     .notEmpty()
-    .withMessage('el mail no puede estar vacio'),
+    .withMessage('El nombre no debe estar vacio'),
 
     check('last_name')
     .notEmpty()
-    .withMessage('el mail no puede estar vacio'),
+    .withMessage('El apellido no debe estar vacio'),
 
     check('email')
     .notEmpty()
-    .withMessage('el mail no puede estar vacio'),
+    .withMessage('El mail no debe estar vacio'),
 
     check('password')
     .notEmpty()
-    .withMessage('la contraseña no puede estar vacio')
+    .withMessage('La contraseña no puede estar vacio')
 ]
