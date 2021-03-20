@@ -13,7 +13,7 @@ router.get('/users/list', adminController.listUser)
 router.get('/users/create', loginCheak, adminController.register)
 router.post('/users/create', uploadImg.any(), adminController.proccesRegister)
 
-router.get('/users/edit/:id', adminController.editUser)
+router.get('/users/edit/:id', loginCheak, adminController.editUser)
 router.put('/users/update/:id', uploadImg.single('avatar'), adminController.updateUser)
 
 router.delete('/users/delete/:id', adminController.deleteUser)

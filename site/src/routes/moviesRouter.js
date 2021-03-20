@@ -5,9 +5,15 @@ const { createMovie, deleteMovie, getMovie, getMovies, toCreateMovie, toEditMovi
 
 const uploadImg = require('../middlewares/uploadMovieImage');
 
+/* 
+router.get('/', getMovies);
+router.post('/', uploadImg.single('img-movie'), createMovie);
+
+router.get('/create', toCreateMovie) */
+
 router.route('/')
     .get(getMovies)
-    .post(uploadImg.single('img-movie'), createMovie);
+    .post(uploadImg.single('img-movie'), [], createMovie);
 
 router.route('/create').get(toCreateMovie);
 

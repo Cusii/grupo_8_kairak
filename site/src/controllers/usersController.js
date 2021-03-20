@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
+const { check, validationResult, body } = require('express-validator')
+
 
 
 //const { getUsers, sendUsers } = require('../data/users')
@@ -30,6 +32,9 @@ module.exports = {
 
     },
     processLogin: async(req, res) => {
+
+        let errors = validationResult(req)
+
         const { email, password } = req.body
         const role_admin = 1;
 
@@ -49,6 +54,18 @@ module.exports = {
                     association: "role"
                 }
             });
+
+            if (!errors.isEmpty()) {
+                return res.render('login', {
+                    errors: errors.mapped(),
+                    title: 'Kairak',
+                    css: '',
+                    genres,
+                    categories
+
+                })
+            }
+
 
             if (user) {
                 if (bcrypt.compareSync(password, user.password)) {
@@ -70,7 +87,6 @@ module.exports = {
                     res.render('login', {
                         title: 'Kairak',
                         css: '',
-                        error: 'contraseña invalida',
                         genres,
                         categories
                     })
@@ -79,7 +95,6 @@ module.exports = {
                 res.render('login', {
                     title: 'Kairak',
                     css: '',
-                    error: 'mail invalido',
                     genres,
                     categories
                 })
@@ -87,6 +102,12 @@ module.exports = {
         } catch (error) {
             res.render('error', { error })
         }
+    },
+
+    logout: (req, res) => {
+        // delete req.session.userAdmin
+        req.session.destroy()
+        res.redirect('/')
     },
 
     register: async(req, res) => {
@@ -111,6 +132,19 @@ module.exports = {
     },
 
     processRegister: async(req, res, next) => {
+        let errors = validationResult(req)
+        res.send(errors)
+        if (!errors.isEmpty()) {
+            return res.render('login', {
+                errors: errors.mapped(),
+                title: 'Kairak',
+                css: '',
+                genres,
+                categories
+            })
+        }
+
+
         const role_user = 2;
         const { first_name, last_name, email, password } = req.body
 
@@ -163,11 +197,7 @@ module.exports = {
             res.render('error', { error })
         }
     },
-    logout: (req, res) => {
-        // delete req.session.userAdmin
-        req.session.destroy()
-        res.redirect('/')
-    },
+
 
     showProfile: async(req, res) => {
         try {

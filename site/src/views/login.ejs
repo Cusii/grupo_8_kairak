@@ -28,11 +28,13 @@
                                             <div class=" mx-auto col-10 col-md-8  pb-3  mb-3">
 
                                                 <input type="email" class="form-control " placeholder="Email" name="email">
+                                                <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.email)?errors.email.msg: ""%> </span>
 
                                             </div>
                                             <div class="mx-auto col-10 col-md-8 pb-3 mb-3">
 
                                                 <input type="password" class="form-control " placeholder="Contraseña" name="password">
+                                                <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.password)?errors.password.msg: ""%> </span>
 
                                             </div>
                                             <div class="row mx-auto pb-5">
