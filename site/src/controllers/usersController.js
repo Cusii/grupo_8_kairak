@@ -35,7 +35,8 @@ module.exports = {
 
         let errors = validationResult(req)
 
-        const { email, password } = req.body
+        const { email, password, recordar } = req.body
+
         const role_admin = 1;
 
         try {
@@ -69,6 +70,7 @@ module.exports = {
 
             if (user) {
                 if (bcrypt.compareSync(password, user.password)) {
+
                     if (user.role.id === role_admin) {
                         req.session.userLogin = {
                             id: user.id,
@@ -76,10 +78,23 @@ module.exports = {
                             lastName: user.lastName,
                             role: user.role.id
                         }
+                        if (recordar != 'undefined') {
+                            res.cookie('userLogin', req.session.userLogin, {
+                                maxAge: 1000 * 60
+                            })
+                        }
                         return res.redirect('/admin')
                     } else {
                         req.session.userLogin = {
-                            id: user.id
+                            id: user.id,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+
+                        }
+                        if (recordar != 'undefined') {
+                            res.cookie('userLogin', req.session.userLogin, {
+                                maxAge: 1000 * 60
+                            })
                         }
                         return res.redirect(`/users/profile/${user.id}`)
                     }
@@ -105,8 +120,13 @@ module.exports = {
     },
 
     logout: (req, res) => {
-        // delete req.session.userAdmin
-        req.session.destroy()
+
+        if (req.cookies.userLogin) {
+            res.cookie('userLogin', '', { maxAge: -1 });
+        }
+
+        delete req.session.userLogin
+            // req.session.destroy()
         res.redirect('/')
     },
 
@@ -133,7 +153,7 @@ module.exports = {
 
     processRegister: async(req, res, next) => {
         let errors = validationResult(req)
-        res.send(errors)
+
         if (!errors.isEmpty()) {
             return res.render('login', {
                 errors: errors.mapped(),

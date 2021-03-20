@@ -92,14 +92,15 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
-                                <a class="dropdown-item" href="/users/profile">
-                                   Perfil <%= userLogin.nombre %> 
+                                <a class="dropdown-item" href="/users/profile/<%=userLogin.id%> ">
+                                    <%= userLogin.firstName %>
+                                        <%= userLogin.lastName %>
                             </li>
-                            <% if (userLogin.rol == '1') { %>
+                            <% if (userLogin.role == '1') { %>
                                 <li><a class="dropdown-item" href="/admin"> admin</a></li>
 
-                            <% } %>
-                                <li><a class="dropdown-item" href="/users/logout">Cerrar sesion</a></li>
+                                <% } %>
+                                    <li><a class="dropdown-item" href="/users/logout">Cerrar sesion</a></li>
                         </ul>
                     </li>
                 </ul>

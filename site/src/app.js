@@ -12,9 +12,10 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const methodOverride = require("method-override");
 const session = require('express-session')
-const db = require('./database/models/index');
 
+const db = require('./database/models/index');
 const localsCheck = require('./middlewares/localsCheak')
+
 
 const usersRouter = require("./routes/usersRouter");
 const indexRouter = require("./routes/indexRouter");
@@ -24,6 +25,7 @@ const adminRouter = require("./routes/adminRouter");
 const genresRouter = require("./routes/genresRouter");
 const categoriesRouter = require("./routes/categoriesRouter");
 const salesRouter = require("./routes/salesRouter");
+const coockieCheak = require("./middlewares/coockieCheak");
 
 const app = express();
 // view engine setup
@@ -38,7 +40,9 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(methodOverride("_method"));
 app.use(session({ secret: 'kairak' }))
 
+
 app.use(localsCheck)
+app.use(coockieCheak)
 
 app.use("/", indexRouter);
 app.use("/carrito", cartRouter);
