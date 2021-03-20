@@ -167,11 +167,11 @@ module.exports = {
                 where: {
                     title: title.toLowerCase().trim()
                 }
-            });
+            });            
             
-            id = oldMovie.id;         
-
-            if (oldMovie.isNewRecord === false) {
+            
+            if (oldMovie) {
+                id = oldMovie.id;
                 if (oldMovie.status == false) {
                     await db.Movie.update({
                         title: title.toLowerCase().trim(),
