@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { check, validationResult, body } = require('express-validator')
-
 
 const usersController = require('../controllers/usersController');
 const uploadImg = require('../middlewares/uploadUserImage');
-const validationLogin = require('../middlewares/validations/validationLogin')
-const validationRegister = require('../middlewares/validations/validationRegister')
+const validationLogin = require('../validations/validationLogin')
+const validationRegister = require('../validations/validationRegister')
 
 /* GET users listing. */
 router.get('/login', usersController.login);

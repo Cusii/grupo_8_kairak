@@ -155,6 +155,13 @@ module.exports = {
         let errors = validationResult(req)
 
         if (!errors.isEmpty()) {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
+            
             return res.render('login', {
                 errors: errors.mapped(),
                 title: 'Kairak',
