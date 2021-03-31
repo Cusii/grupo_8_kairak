@@ -9,7 +9,7 @@ const validationRegister = require('../validations/validationRegister')
 
 
 router.get('/', loginCheak, adminController.index)
-router.get('/users/list', adminController.listUser)
+router.get('/users/list', loginCheak, adminController.listUser)
 
 router.get('/users/create', loginCheak, adminController.register)
 router.post('/users/create', validationRegister, uploadImg.any(), adminController.proccesRegister)

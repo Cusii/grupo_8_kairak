@@ -40,9 +40,8 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(methodOverride("_method"));
 app.use(session({ secret: 'kairak' }))
 
-
-app.use(localsCheck)
 app.use(coockieCheak)
+app.use(localsCheck)
 
 app.use("/", indexRouter);
 app.use("/carrito", cartRouter);

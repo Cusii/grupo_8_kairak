@@ -4,9 +4,12 @@ const db = require('../database/models');
 const { Op } = require("sequelize");
 const moviesDB = require('../data/movies');
 const movies = moviesDB.getMovies();
+const { check, validationResult, body } = require('express-validator')
+
+
 
 module.exports = {
-    showMovies: async (req, res) => {
+    showMovies: async(req, res) => {
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -30,11 +33,11 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', {error});
+            res.render('error', { error });
         }
     },
 
-    showMovie: async (req, res) => {
+    showMovie: async(req, res) => {
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -47,10 +50,10 @@ module.exports = {
                 where: {
                     id: +req.params.id
                 },
-                include : [
-                    {  association : "genre" },
-                    { association : "category" },
-                    { association: "sales" }                
+                include: [
+                    { association: "genre" },
+                    { association: "category" },
+                    { association: "sales" }
                 ]
             });
 
@@ -64,14 +67,18 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', {error});
+            res.render('error', { error });
         }
     },
+    search: async(req, res) => {
+        console.log(req.body);
+        res.send(req.query)
 
+    },
 
     /**************************** ADMIN ****************************/
-    getMovies: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
+    getMovies: async(req, res) => {
+        const { id, firstName, lastName, role } = req.session.userLogin;
         userAdmin = {
             id,
             firstName,
@@ -85,7 +92,7 @@ module.exports = {
                     status: 1
                 }
             });
-    
+
             res.render('admin/moviesList', {
                 title: 'Nuestras Películas',
                 css: '',
@@ -93,12 +100,12 @@ module.exports = {
                 userAdmin
             })
         } catch (error) {
-            res.render('error', {error});
+            res.render('error', { error });
         }
-        
+
     },
-    getMovie: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
+    getMovie: async(req, res) => {
+        const { id, firstName, lastName, role } = req.session.userLogin;
         userAdmin = {
             id,
             firstName,
@@ -111,26 +118,26 @@ module.exports = {
                 where: {
                     id: +req.params.id
                 },
-                include : [
-                    {  association : "genre" },
-                    { association : "category" },
-                    { association: "sales" }                
+                include: [
+                    { association: "genre" },
+                    { association: "category" },
+                    { association: "sales" }
                 ]
             });
 
             res.render('admin/movieDetail', {
                 title: movie.title,
-                css: 'movieStyle',                
+                css: 'movieStyle',
                 movie,
                 userAdmin
             });
         } catch (error) {
-            
-        }
-    },  
 
-    toCreateMovie: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
+        }
+    },
+
+    toCreateMovie: async(req, res) => {
+        const { id, firstName, lastName, role } = req.session.userLogin;
         userAdmin = {
             id,
             firstName,
@@ -154,11 +161,30 @@ module.exports = {
                 userAdmin
             })
         } catch (error) {
-            res.render('error', {error});
-        }        
+            res.render('error', { error });
+        }
     },
 
-    createMovie: async (req, res, next) => {
+    createMovie: async(req, res, next) => {
+        let errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
+
+            return res.render('admin/createMovie', {
+                errors: errors.mapped(),
+                title: 'Kairak',
+                css: 'formStyles',
+                genres,
+                categories,
+                userAdmin
+            })
+        }
+
         const { title, description, price, year, length, category, genre, trailerPath, moviePath } = req.body;
         let id = 0
 
@@ -167,9 +193,9 @@ module.exports = {
                 where: {
                     title: title.toLowerCase().trim()
                 }
-            });            
-            
-            
+            });
+
+
             if (oldMovie) {
                 id = oldMovie.id;
                 if (oldMovie.status == false) {
@@ -216,16 +242,16 @@ module.exports = {
                 });
 
                 id = newMovie.id
-            }    
+            }
 
             res.redirect(`/movies/${id}`);
         } catch (error) {
-            res.render('error', {error});
-        }        
+            res.render('error', { error });
+        }
     },
 
-    toEditMovie: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
+    toEditMovie: async(req, res) => {
+        const { id, firstName, lastName, role } = req.session.userLogin;
         userAdmin = {
             id,
             firstName,
@@ -245,14 +271,14 @@ module.exports = {
                 where: {
                     id: +req.params.id
                 },
-                include : [
-                    {  association : "genre" },
-                    { association : "category" },
-                    { association: "sales" }                
+                include: [
+                    { association: "genre" },
+                    { association: "category" },
+                    { association: "sales" }
                 ]
             });
 
-            
+
             res.render('admin/editMovie', {
                 title: movie.title,
                 css: 'formStyles',
@@ -263,11 +289,11 @@ module.exports = {
             });
 
         } catch (error) {
-            res.render('error', {error});
-        }        
+            res.render('error', { error });
+        }
     },
 
-    updateMovie: async (req, res, next) => {
+    updateMovie: async(req, res, next) => {
         const { title, description, price, year, length, category, genre, trailerPath, moviePath, image } = req.body;
         const imgFile = req.file;
         let imagePath = image;
@@ -291,7 +317,7 @@ module.exports = {
                 movie: moviePath,
                 genreId: genre,
                 categoryId: category
-            },{
+            }, {
                 where: {
                     id: +req.params.id
                 }
@@ -299,11 +325,11 @@ module.exports = {
 
             res.redirect(`/movies/${req.params.id}`);
         } catch (error) {
-            res.render('error', {error});
-        }        
+            res.render('error', { error });
+        }
     },
 
-    deleteMovie: async (req, res) => {
+    deleteMovie: async(req, res) => {
         const id = Number(req.params.id);
 
         const t = await db.sequelize.transaction();
@@ -316,19 +342,19 @@ module.exports = {
                 }
             });
 
-            if (rents.length === 0) {   
-    
+            if (rents.length === 0) {
+
                 let sale = await db.MovieSale.findOne({
                     where: {
                         movieId: id,
                         status: 1
                     }
-                });  
-                
-    
-                await db.Movie.update({                    
+                });
+
+
+                await db.Movie.update({
                     status: 0
-                },{
+                }, {
                     where: {
                         id: id
                     }
@@ -338,13 +364,13 @@ module.exports = {
                     await db.MovieSale.update({
                         status: 0,
                         expiredAt: new Date()
-                    },{
+                    }, {
                         where: {
                             movieId: id,
                             id: sale.id
                         }
                     }, { transaction: t })
-                }                
+                }
 
                 await t.commit();
             } else {
@@ -354,7 +380,7 @@ module.exports = {
             res.redirect('/movies');
         } catch (error) {
             await t.rollback();
-            res.render('error', {error})
+            res.render('error', { error })
         }
     }
 }

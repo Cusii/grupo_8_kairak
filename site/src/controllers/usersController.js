@@ -154,6 +154,8 @@ module.exports = {
     processRegister: async(req, res, next) => {
         let errors = validationResult(req)
 
+
+
         if (!errors.isEmpty()) {
             let categories = await db.Category.findAll({
                 order: [
@@ -161,11 +163,11 @@ module.exports = {
                 ]
             });
             let genres = await db.Genre.findAll();
-            
-            return res.render('login', {
+
+            return res.render('register', {
                 errors: errors.mapped(),
                 title: 'Kairak',
-                css: '',
+                css: 'formStyles',
                 genres,
                 categories
             })
@@ -183,6 +185,7 @@ module.exports = {
         }
 
         try {
+
             let categories = await db.Category.findAll({
                 order: [
                     ['id', 'ASC']
@@ -200,12 +203,11 @@ module.exports = {
                 return res.render('register', {
                     error: 'El usuario ya existe',
                     title: "Kairak",
-                    css: '',
+                    css: 'formStyles',
                     genres,
                     categories
                 })
             }
-
             let passHash = bcrypt.hashSync(password.trim(), 12);
 
             let newUser = await db.User.create({

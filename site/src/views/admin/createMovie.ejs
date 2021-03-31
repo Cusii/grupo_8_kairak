@@ -19,11 +19,13 @@
                             <div class="row mx-auto mb-5 ">
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title" required>
+                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title">
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.title)?errors.title.msg: ""%> </span>
+
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <select name="genre" class="form-control" required>
+                                    <select name="genre" class="form-control">
                                         <% genres.forEach(genre => { %>
                                             <option value="<%= genre.id%>" ><%= genre.name%></option>                                         
                                         <% }) %>                                        
@@ -31,11 +33,12 @@
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Precio" name="price" required>
+                                    <input class="form-control mb-3" type="text" placeholder="Precio" name="price">
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.price)?errors.price.msg: ""%> </span>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <select name="category" class="form-control" required>
+                                    <select name="category" class="form-control">
                                         <% categories.forEach(category => { %>
                                             <option value="<%= category.id%>" ><%= category.name%></option>                                         
                                         <% }) %>                                        
@@ -43,36 +46,42 @@
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="number" placeholder="Duracion" name="length" required>
+                                    <input class="form-control mb-3" type="number" placeholder="Duracion" name="length">
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.length)?errors.length.msg: ""%> </span>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Año de estreno" name="year" required>
+                                    <input class="form-control mb-3" type="text" placeholder="Año de estreno" name="year">
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.year)?errors.year.msg: ""%> </span>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Trailer" name="trailerPath" required>
+                                    <input class="form-control mb-3" type="text" placeholder="Trailer" name="trailerPath">
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.trailerPath)?errors.trailerPath.msg: ""%> </span>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Pelicula" name="moviePath" required>
+                                    <input class="form-control mb-3" type="text" placeholder="Pelicula" name="moviePath">
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.moviePath)?errors.moviePath.msg: ""%> </span>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie" required> Subir foto
+                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie"> Subir foto
+
                                     </div>
 
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
-                                    <textarea class="form-control" rows="3" name="description" required></textarea>
+                                    <textarea class="form-control" rows="3" name="description"></textarea>
+                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.description)?errors.description.msg: ""%> </span>
                                 </div>
 
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
                                     <button class="btn btn-primary s" type="submit">Guardar</button>
                                 </div>
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">                                    
+                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
                                     <a href="/movies" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
                                 </div>
                             </div>

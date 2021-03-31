@@ -11,7 +11,8 @@ router.get('/login', usersController.login);
 router.post('/login', validationLogin, usersController.processLogin);
 router.get('/logout', usersController.logout)
 router.get('/register', usersController.register);
-router.post('/register', validationRegister, uploadImg.any(), usersController.processRegister);
+router.post('/register', uploadImg.any(), validationRegister, usersController.processRegister);
 router.get('/profile/:id', usersController.showProfile);
+
 
 module.exports = router;

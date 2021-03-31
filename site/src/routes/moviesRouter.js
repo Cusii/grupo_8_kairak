@@ -1,19 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const { createMovie, deleteMovie, getMovie, getMovies, toCreateMovie, toEditMovie, updateMovie, showMovies, showMovie } = require('../controllers/moviesController');
+const { createMovie, deleteMovie, getMovie, getMovies, search, showMovie, showMovies, toCreateMovie, toEditMovie, updateMovie } = require('../controllers/moviesController');
 
 const uploadImg = require('../middlewares/uploadMovieImage');
+const validationMovie = require('../validations/validationMovie')
 
-/* 
-router.get('/', getMovies);
-router.post('/', uploadImg.single('img-movie'), createMovie);
-
-router.get('/create', toCreateMovie) */
 
 router.route('/')
     .get(getMovies)
-    .post(uploadImg.single('img-movie'), [], createMovie);
+    .post(uploadImg.single('img-movie'), validationMovie, createMovie);
 
 router.route('/create').get(toCreateMovie);
 
@@ -26,6 +22,8 @@ router.route('/:id')
     .delete(deleteMovie)
 
 router.route('/:id/edit').get(toEditMovie);
+
+router.route('/search').get(search);
 
 
 module.exports = router;
