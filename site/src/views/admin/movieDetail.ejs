@@ -2,98 +2,94 @@
 <html lang="es">
 <%- include('partials/headAdmin')  %>
 
-    <body class="bg-while">
-        <%- include('partials/headerAdmin')  %>
+<body class="bg-while">
+	<%- include('partials/headerAdmin')  %>
 
-            <main class="container bg-light">
-                <div class=" col-12">
+	<main class="container bg-light">
+		<div class=" col-12">
 
-                    <div class=" text-center ">
-                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h2>
-                            <%= movie.title %>
-                        </h2>
-                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                    </div>
+			<div class=" text-center ">
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				<h2><%= movie.title %></h2>
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+			</div>
 
-                    <div class="row mb-3">
-                        <div class="col-12 col-lg-6">
-                            <a href="" class=""><iframe width="100%" height="300px" src="<%= movie.trailerPath %> "
-											frameborder="0"
-											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-											allowfullscreen></iframe></a>
-                        </div>
+			<div class="row mb-3">
+				<div class="col-12 col-lg-6">
+					<a href="" class=""><iframe width="100%" height="300px" src="<%= movie.trailerPath %> "
+									frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen></iframe></a>
+				</div>
 
-                        <div class=" mx-auto bg-white col-6">
-                            <img src="/images/movies/<%= movie.image%>" alt="imagen" width="500">
-                        </div>
+				<div class=" mx-auto bg-white col-6">
+					<img src="/images/movies/<%= movie.image%>" alt="imagen" width="500">
+				</div>
 
-                        <div class=" col-6 col-lg-6 text-center">
-                            <h4 class="titulo-detalle">
-                                $
-                                <%= movie.price %>
-                            </h4>
-                            <div class=" d-block d-sm-block d-md-block d-lg-none col-lg-2">
-                                <button class=" col-12 justify-content-end btn bg-primary text-white">Alquilar  movil</button>
-                            </div>
-                            
-                            
+				<div class=" col-6 col-lg-6 text-center">
+					<h4 class="titulo-detalle">$<%= movie.price %></h4>
+					<div class=" d-block d-sm-block d-md-block d-lg-none col-lg-2">
+						<button class=" col-12 justify-content-end btn bg-primary text-white">Alquilar  movil</button>
+					</div>				
 
-                        </div>
-                        <div class="col-lg-2 d-none d-sm-none d-md-none d-lg-block ">
-                            <form action="/movies/<%= movie.id %>/edit">
-                                <button class="col-12 btn btn-sm btn-primary mb-2" type="submit">Editar</button>
-                            </form>
-                        </div>
+				</div>
+				<div class="col-lg-2 d-none d-sm-none d-md-none d-lg-block ">
+					<form action="/movies/<%= movie.id %>/edit">
+						<button class="col-12 btn btn-sm btn-primary mb-2" type="submit">Editar</button>
+					</form>
+				</div>
 
-                        
-                        <div class="col-lg-2 d-none d-sm-none d-md-none d-lg-block">                            
-                            <form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
-                                <button class=" col-12 btn btn-sm btn-danger mb-2" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class=" row ">
-                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="50%" />
-                            <h5 class="col-4 col-md-6  border-descripcion">Genero</h5>
-                            <p class="col-8 col-md-6 bg-white text-dark border-detalles">
-                                <%= movie.genre.name %>
-                            </p>
-                            <h5 class="col-4 col-md-6  border-descripcion">Público</h5>
-                            <p class="col-8 col-md-6 bg-white text-dark border-detalles">
-                                <%= movie.category.name %>
-                            </p>
-                            <h5 class="col-4 col-md-6   border-descripcion">Año de estreno</h5>
-                            <p class="col-8 col-md-6 bg-white  text-dark border-detalles">
-                                <%= movie.year %>
-                            </p>
-                            <h5 class="col-4 col-md-6  border-descripcion">Duración</h5>
-                            <p class="col-8 col-md-6 bg-white text-dark border-detalles">
-                                <%= movie.length %> minutos
-                            </p>
-                            <h5 class="col-4 col-md-6   border-descripcion"> Description</h5>
-                            <p class="col-8 col-md-6 bg-white  text-dark border-detalles">
-                                <%= movie.description %>
-                            </p>
-                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				
+				<div class="col-lg-2 d-none d-sm-none d-md-none d-lg-block">                            
+					<form action="/movies/<%= movie.id %>?_method=DELETE" method="POST">
+						<button class=" col-12 btn btn-sm btn-danger mb-2" type="submit">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+									<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+							</svg>
+						</button>
+					</form>
+				</div>
+				<div class="col-lg-2 d-none d-sm-none d-md-none d-lg-block ">
+					<form action="/movies/">
+						<button class="col-12 btn btn-sm btn-warning mb-2" type="submit">Volver</button>
+					</form>
+				</div>
+			</div>
+			<div class="container">
+				<div class=" row ">
+					<hr class="mx-auto m-12" size="5" noshade="noshade" width="50%" />
+					<h5 class="col-4 col-md-6  border-descripcion">Genero</h5>
+					<p class="col-8 col-md-6 bg-white text-dark border-detalles">
+						<%= movie.genre.name %>
+					</p>
+					<h5 class="col-4 col-md-6  border-descripcion">Público</h5>
+					<p class="col-8 col-md-6 bg-white text-dark border-detalles">
+						<%= movie.category.name %>
+					</p>
+					<h5 class="col-4 col-md-6   border-descripcion">Año de estreno</h5>
+					<p class="col-8 col-md-6 bg-white  text-dark border-detalles">
+						<%= movie.year %>
+					</p>
+					<h5 class="col-4 col-md-6  border-descripcion">Duración</h5>
+					<p class="col-8 col-md-6 bg-white text-dark border-detalles">
+						<%= movie.length %> minutos
+					</p>
+					<h5 class="col-4 col-md-6   border-descripcion"> Description</h5>
+					<p class="col-8 col-md-6 bg-white  text-dark border-detalles">
+						<%= movie.description %>
+					</p>
+					<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 
-                        </div>
-                    </div>
+				</div>
+			</div>
 
 
-                </div>
+		</div>
 
 
-            </main>
+	</main>
 
-
-            <%- include('partials/scriptsAdmin')  %>
-
-    </body>
+	<%- include('partials/scriptsAdmin')  %>
+</body>
 
 </html>

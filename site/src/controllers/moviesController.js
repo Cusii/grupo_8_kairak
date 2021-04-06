@@ -155,7 +155,7 @@ module.exports = {
 
             res.render('admin/createMovie', {
                 title: 'Agregar pelicula',
-                css: 'formStyles',
+                css: 'forms',
                 categories,
                 genres,
                 userAdmin
@@ -178,7 +178,7 @@ module.exports = {
             return res.render('admin/createMovie', {
                 errors: errors.mapped(),
                 title: 'Kairak',
-                css: 'formStyles',
+                css: 'forms',
                 genres,
                 categories,
                 userAdmin
@@ -281,7 +281,7 @@ module.exports = {
 
             res.render('admin/editMovie', {
                 title: movie.title,
-                css: 'formStyles',
+                css: 'forms',
                 categories,
                 genres,
                 movie,

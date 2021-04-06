@@ -2,60 +2,72 @@
 <html lang="es">
 <%- include('partials/headAdmin')  %>
 
-    <body class="bg-white mb-5">
-        <%- include('partials/headerAdmin') %>
+<body class="bg-white mb-5">
+	<%- include('partials/headerAdmin') %>
 
-            <section class="container bg-light mb-5 pb-5">
-                <article class="box-center mb-5">
+	<section class="container bg-light mb-5 pb-5">
+		<article class="box-center mb-5">
 
-                    <div class=" text-center mb-5">
-                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h4><%= title %> </h4>
-                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
-                    </div>
+			<div class=" text-center mb-5">
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				<h4><%= title %></h4>
+				<hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+			</div>
 
-                    <form action="/sales/create" method="POST"  class="container mb-5">
-                        <div class=" bg-white mb-5 border border-1 pt-5">
-                            <div class="row mx-auto mb-5 ">
+			<form action="/sales/create" id="form" method="POST"  class="container mb-5">
+				<div class=" bg-white mb-5 border border-1 pt-5">
+					<div class="row mx-auto mb-5 form_group">
+						
+						<!-- movie -->
+						<div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+							<label>Pelicula</label>
+							<select name="movieId" class="form-control" required>
+								<% movies.forEach(movie => { %>
+									<option value="<%= movie.id%>" ><%= movie.title%></option>                                         
+								<% }) %>                                        
+							</select>
+						</div>
 
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title" required>
-                                </div>
+						<!-- discount -->
+						<div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_discount">
+							<label>Descuento</label>
+							<input class="form-control mb-3" type="number" placeholder="Descuento" name="discount" id="discount" min="1" max="100">
+							<i class="form_validation_status fas fa-times-circle"></i>
+                            <p class="form_error_input">El descuento debe ser mayor a 0 y menor o igual a 100</p>
+						</div>                                
 
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <select name="movieId" class="form-control" required>
-                                        <% movies.forEach(movie => { %>
-                                            <option value="<%= movie.id%>" ><%= movie.title%></option>                                         
-                                        <% }) %>                                        
-                                    </select>
-                                </div>
+						<!-- <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+							<input class="form-control mb-3" type="date" placeholder="Fecha de inicio" name="createdAt" required>
+						</div> -->
 
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="number" placeholder="Descuento" name="discount" min="1" max="100"  required>
-                                </div>                                
+						<!-- expiredAt -->
+						<div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_expiredAt">
+							<label>Fecha de vencimiento</label>
+							<input class="form-control mb-3" type="date" id="expiredAt" placeholder="Fecha de vencimiento" name="expiredAt">
+							<i class="form_validation_status fas fa-times-circle"></i>
+                            <p class="form_error_input">La fecha de expiración no debe ser menor a la fecha actual</p>
+						</div>
 
-                                <!-- <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="date" placeholder="Fecha de inicio" name="createdAt" required>
-                                </div> -->
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="date" min="2021-03-16" placeholder="Fecha de vencimiento" name="expiredAt" required>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
-                                    <button class="btn btn-primary s" type="submit">Guardar</button>
-                                </div>
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">                                    
-                                    <a href="/sales/show" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
-                                </div>
+						<div class="row mx-auto pb-5 pt-4">
+                            <div class="form_message" id="form_message">
+                                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor complete el formulario correctamente. </p>
                             </div>
                         </div>
-                    </form>
 
-                </article>
-            </section>
+						<div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
+							<button class="btn btn-primary s" type="submit">Guardar</button>
+						</div>
+						<div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">                                    
+							<a href="/sales/show" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</article>
+	</section>
 
-            <%- include('partials/scriptsAdmin')  %>
-    </body>
+	<%- include('partials/scriptsAdmin')  %>
+	<script src="/javascripts/saleForm.js"></script>
+</body>
 
 </html>

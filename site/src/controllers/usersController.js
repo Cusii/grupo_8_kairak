@@ -141,7 +141,7 @@ module.exports = {
 
             res.render('register', {
                 title: 'Kairak',
-                css: 'formStyles',
+                css: 'forms',
                 genres,
                 categories
             })
@@ -167,7 +167,7 @@ module.exports = {
             return res.render('register', {
                 errors: errors.mapped(),
                 title: 'Kairak',
-                css: 'formStyles',
+                css: 'forms',
                 genres,
                 categories
             })
@@ -203,7 +203,7 @@ module.exports = {
                 return res.render('register', {
                     error: 'El usuario ya existe',
                     title: "Kairak",
-                    css: 'formStyles',
+                    css: 'forms',
                     genres,
                     categories
                 })

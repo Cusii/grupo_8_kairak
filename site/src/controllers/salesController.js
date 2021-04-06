@@ -133,7 +133,7 @@ module.exports = {
 
             res.render('admin/createSale', {
                 title: 'Cargar nueva oferta',
-                css: '',
+                css: 'forms',
                 movies,
                 userAdmin
             });

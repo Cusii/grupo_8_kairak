@@ -2,132 +2,132 @@
 <html lang="es">
 <%- include('partials/head')  %>
 
-    <body class="bg-white">
+<body class="bg-white">
 
-        <% if (typeof userLogin != 'undefined') { %>
+	<% if (typeof userLogin != 'undefined') { %>
+		<%- include('partials/headerUser')  %>
+	<% } else { %>
+		<%- include('partials/header')  %>
+	<% } %>
 
-            <%- include('partials/headerUser')  %>
+	<main class="container bg-light">
+		<%- include('partials/carousel')  %>
 
-                <% } else { %>
-                    <%- include('partials/header')  %>
-                        <% } %>
+		<section class="las-mas-vistas">
 
-                            <main class="container bg-light">
-                                <%- include('partials/carousel')  %>
+			<div class=" text-center ">
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				<h2>Las más vistas del mes</h2>
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+			</div>
+			<div class="row">
+				<% for( let index = 0; index < 4 && index < mostSawMovies.length; index++ ) { %>
+					<div class="col-12 col-md-4 col-lg-3">
+						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+							<div class="card-header bg-transparent  text-center">
+								<h4><%= mostSawMovies[index].movie.title %></h4>
+							</div>
+							<div class="card-body text-secondary ">
+								<a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
+									<img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
+								</a>
+							</div>
+							<div class="card-footer bg-transparent row">
+								<p class="col-6 mt-2">
+									$<%= mostSawMovies[index].movie.price %>
+								</p>
+								<a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
+							</div>
 
-                                    <section class="las-mas-vistas">
+						</div>
 
-                                        <div class=" text-center ">
-                                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                            <h2>Las más vistas del mes</h2>
-                                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                        </div>
-                                        <div class="row">
-                                            <% for( let index = 0; index < 4 && index < mostSawMovies.length; index++ ) { %>
-                                                <div class="col-12 col-md-4 col-lg-3">
-                                                    <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
-                                                        <div class="card-header bg-transparent  text-center">
-                                                            <h4>
-                                                                <%= mostSawMovies[index].movie.title %>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="card-body text-secondary ">
-                                                            <a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
-                                                    <img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
-                                                </a>
-                                                        </div>
-                                                        <div class="card-footer bg-transparent row">
-                                                            <p class="col-6 mt-2">
-                                                                $
-                                                                <%= mostSawMovies[index].movie.price %>
-                                                            </p>
-                                                            <a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
-                                                        </div>
+					</div>
 
-                                                    </div>
+					<% } %>
+			</div>
 
-                                                </div>
+		</section>
 
-                                                <% } %>
-                                        </div>
+		<section class="estrenos">
+			<div class=" text-center">
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				<h2>Estrenos</h2>
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+			</div>
+			<div class="row">
+				<% for( let index = 0; index < 4 && index < movies.length; index++ ) { %>
+					<div class=" col-12 col-md-4 col-lg-3 ">
+						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+							<div class="card-header bg-transparent ">
+								<h4>
+									<%= movies[index].title %>
+								</h4>
+							</div>
+							<div class="card-body text-secondary ">
+								<a href="/movies/show/<%= movies[index].id %> ">
+									<img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
+								</a>
+							</div>
+							<div>                                                            
+								<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? star-checked : null %>" ></span>
+								<span class="fa fa-star <%= movies[index].rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+								<span class="fa fa-star <%= movies[index].rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+								<span class="fa fa-star <%= movies[index].rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+								<span class="fa fa-star <%= movies[index].rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+							</div>
+							<div class="card-footer bg-transparent row">
+								<p class="col-6 mt-2">
+									$
+									<%= movies[index].price %>
+								</p>
+								<a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+							</div>
 
-                                    </section>
+						</div>
 
-                                    <section class="estrenos">
-                                        <div class=" text-center">
-                                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                            <h2>Estrenos</h2>
-                                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                        </div>
-                                        <div class="row">
-                                            <% for( let index = 0; index < 4 && index < movies.length; index++ ) { %>
-                                                <div class=" col-12 col-md-4 col-lg-3 ">
-                                                    <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
-                                                        <div class="card-header bg-transparent ">
-                                                            <h4>
-                                                                <%= movies[index].title %>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="card-body text-secondary ">
-                                                            <a href="/movies/show/<%= movies[index].id %> ">
-                                                    <img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
-                                                </a>
-                                                        </div>
-                                                        <div class="card-footer bg-transparent row">
-                                                            <p class="col-6 mt-2">
-                                                                $
-                                                                <%= movies[index].price %>
-                                                            </p>
-                                                            <a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
-                                                        </div>
+					</div>
+					<% } %>
+			</div>
+		</section>
 
-                                                    </div>
+		<section class="promocion">
+			<div class=" text-center">
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				<h2>Promocion</h2>
+				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+			</div>
+			<div class="row">
+				<% for( let index = 0; index < 4 && index < sales.length; index++ ) { %>
+					<div class=" col-12 col-md-4 col-lg-3 ">
+						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+							<div class="card-header bg-transparent ">
+								<h4>
+									<%= sales[index].movie.title %>
+								</h4>
+							</div>
+							<div class="card-body text-secondary ">
+								<a href="/movies/show/<%= sales[index].movie.id %> ">
+						<img src="images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
+					</a>
+							</div>
+							<div class="card-footer bg-transparent row">
+								<p class="col-6 mt-2">
+									$
+									<%= sales[index].movie.price %>
+								</p>
+								<a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
+							</div>
 
-                                                </div>
-                                                <% } %>
-                                        </div>
-                                    </section>
+						</div>
 
-                                    <section class="promocion">
-                                        <div class=" text-center">
-                                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                            <h2>Promocion</h2>
-                                            <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                        </div>
-                                        <div class="row">
-                                            <% for( let index = 0; index < 4 && index < sales.length; index++ ) { %>
-                                                <div class=" col-12 col-md-4 col-lg-3 ">
-                                                    <div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
-                                                        <div class="card-header bg-transparent ">
-                                                            <h4>
-                                                                <%= sales[index].movie.title %>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="card-body text-secondary ">
-                                                            <a href="/movies/show/<%= sales[index].movie.id %> ">
-                                                    <img src="images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
-                                                </a>
-                                                        </div>
-                                                        <div class="card-footer bg-transparent row">
-                                                            <p class="col-6 mt-2">
-                                                                $
-                                                                <%= sales[index].movie.price %>
-                                                            </p>
-                                                            <a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
-                                                        </div>
+					</div>
+					<% } %>
+			</div>
+		</section>
 
-                                                    </div>
+	</main>
 
-                                                </div>
-                                                <% } %>
-                                        </div>
-                                    </section>
-
-                            </main>
-
-                            <%- include('partials/scripts')  %>
-
-                                <%- include('partials/footer')  %>
-    </body>
-
+	<%- include('partials/scripts')  %>
+	<%- include('partials/footer')  %>
+</body>
 </html>

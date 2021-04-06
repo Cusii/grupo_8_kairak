@@ -2,98 +2,134 @@
 <html lang="es">
 <%- include('partials/headAdmin')  %>
 
-    <body class="bg-white mb-5">
-        <%- include('partials/headerAdmin') %>
+<body class="bg-white mb-5">
+    <%- include('partials/headerAdmin') %>
 
-            <section class="container bg-light mb-5 pb-5">
-                <article class="box-center mb-5">
+    <section class="container bg-light mb-5 pb-5">
+        <article class="box-center mb-5">
 
-                    <div class=" text-center mb-5">
-                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h4>Cargar nueva pelicula</h4>
-                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+            <div class=" text-center mb-5">
+                <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                <h4>Cargar nueva pelicula</h4>
+                <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+            </div>
+
+            <form action="/movies" id="form" method="POST" enctype="multipart/form-data" class="container mb-5">
+                <div class=" bg-white mb-5 border border-1 pt-5">
+                    <div class="row mx-auto mb-5 ">
+
+                        <!-- movie title -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_title">
+                            <label for="title">Título</label>
+                            <input class="form-control mb-3 form_input" type="text" placeholder="Nombre" name="title" id="title">
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.title)?errors.title.msg: ""%> </span>
+                            <p class="form_error_input">El nombre debe contener entre 2 y 20 caracteres. Solo puede contener letras, coma, dos puntos y guión medio.</p>
+                        </div>
+
+                        <!-- genre -->
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                            <label for="genre">Genero</label>
+                            <select name="genre" class="form-control">
+                                <% genres.forEach(genre => { %>
+                                    <option value="<%= genre.id%>" ><%= genre.name%></option>                                         
+                                <% }) %>                                        
+                            </select>
+                        </div>
+
+                        <!-- price -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_price">
+                            <label for="price">Precio</label>
+                            <input class="form-control mb-3 form_input" type="text" placeholder="Precio" name="price" id="price">
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.price)?errors.price.msg: ""%> </span>
+                            <p class="form_error_input">La precio debe ser mayor a cero</p>
+                        </div>
+
+                        <!-- category -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                            <select name="category" class="form-control">
+                                <% categories.forEach(category => { %>
+                                    <option value="<%= category.id%>" ><%= category.name%></option>                                         
+                                <% }) %>                                        
+                            </select>
+                        </div>
+
+                        <!-- length -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_length">
+                            <label for="length">Duración (minutos):</label>
+                            <input class="form-control mb-3 form_input" type="number" placeholder="Duracion" name="length" id="length">
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.length)?errors.length.msg: ""%> </span>
+                            <p class="form_error_input">La duración debe ser mayor a 0. Solo admite números</p>
+                        </div>
+
+                        <!-- year -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_year">
+                            <label for="year">Año de estreno</label>
+                            <input class="form-control mb-3 form_input" type="text" placeholder="Año de estreno" name="year" id="year">
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.year)?errors.year.msg: ""%> </span>
+                            <p class="form_error_input">El año debe tener el formato YYYY. Solo admite números</p>
+                        </div>
+
+                        <!-- trailerPath -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_trailerPath">
+                            <label for="trailerPath">Path del trailer</label>
+                            <input class="form-control mb-3 form_input" type="text" placeholder="Trailer" name="trailerPath" id="trailerPath">
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.trailerPath)?errors.trailerPath.msg: ""%> </span>
+                            <p class="form_error_input">Ingrese un link valido</p>
+                        </div>
+
+                        <!-- movie link -->
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_moviePath">
+                            <label for="moviePath">Path de la película</label>
+                            <input class="form-control mb-3 form_input" type="text" placeholder="Pelicula" name="moviePath" id="moviePath">
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.moviePath)?errors.moviePath.msg: ""%> </span>
+                            <p class="form_error_input">Ingrese un link valido</p>
+                        </div>
+
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                            <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
+                                <label for="img-movie">Imagen</label>
+                                <input type="file" class="input-file form-control mb-3" type="file" value="" name="img-movie">
+                            </div>
+                        </div>
+
+                        <!-- description -->
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 mb-5 form_group_input" id="group_description">
+                            <label for="description">Sinopsis</label>
+                            <textarea class="form-control form_input" rows="3" name="description" id="description"></textarea>
+                            <i class="form_validation_status fas fa-times-circle"></i>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.description)?errors.description.msg: ""%> </span>
+                            <p class="form_error_input">La sinopsis debe contener entre 20 y 400 caracteres</p>
+                        </div>
+
+                        <div class="row mx-auto pb-5 pt-4">
+							<div class="form_message" id="form_message">
+								<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor complete el formulario correctamente. </p>
+							</div>
+						</div>
+
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
+                            <button class="btn btn-primary s" type="submit">Guardar</button>
+                        </div>
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
+                            <a href="/movies" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
+                        </div>
                     </div>
 
-                    <form action="/movies" method="POST" enctype="multipart/form-data" class="container mb-5">
-                        <div class=" bg-white mb-5 border border-1 pt-5">
-                            <div class="row mx-auto mb-5 ">
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Nombre" name="title">
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.title)?errors.title.msg: ""%> </span>
-
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <select name="genre" class="form-control">
-                                        <% genres.forEach(genre => { %>
-                                            <option value="<%= genre.id%>" ><%= genre.name%></option>                                         
-                                        <% }) %>                                        
-                                    </select>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Precio" name="price">
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.price)?errors.price.msg: ""%> </span>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <select name="category" class="form-control">
-                                        <% categories.forEach(category => { %>
-                                            <option value="<%= category.id%>" ><%= category.name%></option>                                         
-                                        <% }) %>                                        
-                                    </select>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="number" placeholder="Duracion" name="length">
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.length)?errors.length.msg: ""%> </span>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Año de estreno" name="year">
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.year)?errors.year.msg: ""%> </span>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Trailer" name="trailerPath">
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.trailerPath)?errors.trailerPath.msg: ""%> </span>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <input class="form-control mb-3" type="text" placeholder="Pelicula" name="moviePath">
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.moviePath)?errors.moviePath.msg: ""%> </span>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-                                    <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie"> Subir foto
-
-                                    </div>
-
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
-                                    <textarea class="form-control" rows="3" name="description"></textarea>
-                                    <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.description)?errors.description.msg: ""%> </span>
-                                </div>
-
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
-                                    <button class="btn btn-primary s" type="submit">Guardar</button>
-                                </div>
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  mb-5">
-                                    <a href="/movies" class="mx-auto col-4 col-md-3 btn btn-danger mb-5 ">Volver</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
+                </div>
+            </form>
 
 
-                </article>
-            </section>
+        </article>
+    </section>
 
-            <%- include('partials/scriptsAdmin')  %>
-    </body>
+    <%- include('partials/scriptsAdmin')  %>
+    <script src="/javascripts/movieForm.js"></script>
+</body>
 
 </html>

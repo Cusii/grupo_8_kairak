@@ -64,7 +64,7 @@ module.exports = {
 
             res.render('admin/createUser', {
                 title: 'Crear nuevo usuario',
-                css: '',
+                css: 'forms',
                 roles,
                 userAdmin
             })

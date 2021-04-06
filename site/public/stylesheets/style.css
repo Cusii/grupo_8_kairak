@@ -11,6 +11,10 @@ a {
     background: radial-gradient(ellipse at center, #000000, #48545A);
 }
 
+.star-checked {
+    color: orange;
+}
+
 
 /* HEADER */
 
