@@ -1,5 +1,13 @@
 const db = require('../database/models');
+const { format } = require('date-fns');
 const { Op } = require("sequelize");
+const wa_link = process.env.WA
+
+
+const calculateSalePrice = (price, discount) => {
+    let newPrice = price - (discount * price /100);
+    return parseFloat(Math.round(newPrice * 100) / 100).toFixed(2);
+}
 
 module.exports = {
     showSales: async (req, res) => {
@@ -9,29 +17,32 @@ module.exports = {
                     ['id', 'ASC']
                 ]
             });
-            let genres = await db.Genre.findAll();
+            let genres = await db.Genre.findAll();            
 
-            let sales = await db.MovieSale.findAll({
+            let moviesWithSales = await db.Movie.findAll({
                 where: {
                     status: 1
                 },
-                include: {
-                    association: "movie"
-                }
+                include: [
+                    {
+                        association: 'sales',
+                        where:{ status: 1 },
+                        required: true
+                    },
+                    {
+                        association: 'rating'
+                    }
+                ]
             });
-
-            let movies = [];
-            sales.forEach(sale => {
-                movies.push(sale.movie)
-            });
-
             
             res.render('movies', {
                 title: 'Nuestras ofertas',
                 css: '',
                 categories,
                 genres,
-                movies
+                movies: moviesWithSales,
+                wa_link,
+                calculateSalePrice
             })
             
         } catch (error) {
@@ -40,13 +51,23 @@ module.exports = {
     },
 
     getSales: async (req, res) => {
+        /* let userAdmin;
+        if (req.session.userLogin) {
+            const { id, firstName, lastName, role} = req.session.userLogin;
+            userAdmin = {
+                id,
+                firstName,
+                lastName,
+                role
+            }
+        } */
         const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+            userAdmin = {
+                id,
+                firstName,
+                lastName,
+                role
+            }
         
         try {            
             let sales = await db.MovieSale.findAll({
@@ -56,13 +77,25 @@ module.exports = {
                 include: {
                     association: "movie"
                 }
-            }); 
+            });
+
+            let salesMapped = sales.map((sale) => {
+                console.log(sale);
+                sale.expiredAt = format(new Date(sale.expiredAt), 'dd-MM-yyyy')
+                console.log(sale);
+                return sale;
+            });
+
+            let formatDate = (date) => {
+                return format(new Date(date), 'dd-MM-yyyy')                
+            }
             
             res.render('admin/sales', {
                 title: 'Ofertas vigentes',
                 css: '',
                 sales,
-                userAdmin
+                userAdmin,
+                formatDate
             })
             
         } catch (error) {

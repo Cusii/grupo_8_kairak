@@ -2,6 +2,13 @@
 const db = require('../database/models')
 //const movies = moviesDB.getMovies();
 
+const wa_link = process.env.WA;
+
+const calculateSalePrice = (price, discount) => {
+    let newPrice = price - (discount * price /100);
+    return parseFloat(Math.round(newPrice * 100) / 100).toFixed(2);
+}
+
 module.exports = {
     index: async (req, res) => {
         try {
@@ -11,13 +18,19 @@ module.exports = {
                 ]
             });
             let genres = await db.Genre.findAll();
+
             let movies = await db.Movie.findAll({
                 where: {
                     status: 1
                 },
-                include: {
-                    association: "rating"
-                },
+                include: [
+                    { association: "rating" },
+                    {
+                        association: 'sales',
+                        where: {status:1},
+                        required: false
+                    }
+                ],
                 order: [
                     ['createdAt', 'DESC']
                 ]
@@ -28,22 +41,36 @@ module.exports = {
                     ['counter', 'ASC']
                 ],
                 include: {
-                    association: "movie"
+                    association: "movie",
+                    where: {
+                        status: 1
+                    },
+                    include: [
+                        {
+                            association: "rating"
+                        },
+                        {
+                            association: "sales",
+                            where: {status: 1},
+                            required: false
+                        }
+                    ]                    
                 }
-            });
+            });            
 
             let sales = await db.MovieSale.findAll({
                 where: {
                     status: 1
                 },
                 include: {
-                    association: "movie"
+                    association: "movie",
+                    where: { status: 1 },
+                    include: {
+                        association: 'rating'
+                    },
+                    required: true
                 }
-            });
-            
-
-
-            //let premiereMovies = await movies.;
+            });                
 
             res.render('index', {
                 title: 'Kairak',
@@ -52,7 +79,9 @@ module.exports = {
                 categories,
                 genres,
                 sales,
-                mostSawMovies
+                mostSawMovies,
+                wa_link,
+                calculateSalePrice
             })
             
         } catch (error) {

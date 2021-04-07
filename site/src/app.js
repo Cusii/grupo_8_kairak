@@ -44,7 +44,7 @@ app.use(coockieCheak)
 app.use(localsCheck)
 
 app.use("/", indexRouter);
-app.use("/carrito", cartRouter);
+app.use("/cart", cartRouter);
 app.use("/users", usersRouter);
 app.use("/movies", moviesRouter);
 app.use("/admin", adminRouter);

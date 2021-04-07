@@ -2,78 +2,68 @@
 <html lang="es">
 <%- include('partials/head')  %>
 
-    <body class="bg-white">
-        <% if (typeof userLogin != 'undefined') { %>
+<body class="bg-white">
+	<% if (typeof userLogin != 'undefined') { %>
+		<%- include('partials/headerUser')  %>
+	<% } else { %>
+		<%- include('partials/header')  %>
+	<% } %>
 
-            <%- include('partials/headerUser')  %>
+	<section class="container bg-light pb-5">
 
-                <% } else { %>
-                    <%- include('partials/header')  %>
-                        <% } %>
+		<div class=" text-center ">
+			<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+			<h4>Iniciar Sesión</h4>
+			<hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
+		</div>
 
-                            <section class="container bg-light pb-5">
+		<form action="/users/login" method="POST">
+			<div class=" bg-white border border-1">
+				<div class="card-body border border-1">
+					<img src="/images/logo-person.png" class="img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo" width="150px">
 
+					<div class=" mx-auto col-10 col-md-8  pb-3  mb-3">
+						<input type="email" class="form-control " placeholder="Email" name="email">
+						<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.email)?errors.email.msg: ""%> </span>
+					</div>
 
-                                <div class=" text-center ">
-                                    <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                                    <h4>Iniciar Sesión</h4>
-                                    <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
-                                </div>
+					<div class="mx-auto col-10 col-md-8 pb-3 mb-3">
+						<input type="password" class="form-control " placeholder="Contraseña" name="password">
+						<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.password)?errors.password.msg: ""%> </span>
+					</div>
 
-                                <form action="/users/login" method="POST">
-                                    <div class=" bg-white border border-1">
-                                        <div class="card-body border border-1">
-                                            <img src="/images/logo-person.png" class="img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo" width="150px">
+					<div class="mx-auto col-10 col-md-8 pb-3 mb-3">
+						<div class="form-check form-switch">
+							<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="recordar">
+							<label class="form-check-label" for="flexSwitchCheckDefault">Recordarme</label>
+						</div>
+					</div>
 
-                                            <div class=" mx-auto col-10 col-md-8  pb-3  mb-3">
+					<div class="row mx-auto pb-5">
 
-                                                <input type="email" class="form-control " placeholder="Email" name="email">
-                                                <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.email)?errors.email.msg: ""%> </span>
+						<div class="row mx-auto pb-5">
 
-                                            </div>
-                                            <div class="mx-auto col-10 col-md-8 pb-3 mb-3">
+							<button class="mx-auto col-4 col-md-5 btn btn-primary mb-5 " type="submit">Iniciar sesión</button>
+							<a href="/users/register" class="mx-auto col-4 col-md-5 btn btn-primary mb-5 ">Registrarse</a>
 
-                                                <input type="password" class="form-control " placeholder="Contraseña" name="password">
-                                                <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.password)?errors.password.msg: ""%> </span>
+							<% if (typeof error != 'undefined') { %>
+								<div class="alert alert-danger ">
+									<span><%= error %> </span>
+								</div>
+							<% } %>
 
-                                            </div>
-                                            <div class="mx-auto col-10 col-md-8 pb-3 mb-3">
+							<a href="# " class="mx-auto text-center pb-"> Olvide mi contraseña</a>
+						</div>
+					</div>
 
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="recordar">
-                                                    <label class="form-check-label" for="flexSwitchCheckDefault">Recordarme</label>
-                                                </div>
+				</div>
+			</div>
+		</form>
 
-                                            </div>
-                                            <div class="row mx-auto pb-5">
+	</section>
 
-
-                                                <div class="row mx-auto pb-5">
-
-                                                    <button class="mx-auto col-4 col-md-5 btn btn-primary mb-5 " type="submit">Iniciar sesión</button>
-                                                    <a href="/users/register" class="mx-auto col-4 col-md-5 btn btn-primary mb-5 ">Registrarse</a>
-
-
-
-                                                    <% if (typeof error != 'undefined') { %>
-                                                        <div class="alert alert-danger ">
-                                                            <span><%= error %> </span>
-                                                        </div>
-                                                        <% } %>
-
-                                                            <a href="# " class="mx-auto text-center pb-"> Olvide mi contraseña</a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                </form>
-
-                            </section>
-
-                            <%- include('partials/scripts')  %>
-
-                                <%- include('partials/footer')  %>
-    </body>
+	<%- include('partials/scripts')  %>
+	<%- include('partials/footer')  %>
+</body>
 
 </html>

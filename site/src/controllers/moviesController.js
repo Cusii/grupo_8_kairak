@@ -5,8 +5,12 @@ const { Op } = require("sequelize");
 const moviesDB = require('../data/movies');
 const movies = moviesDB.getMovies();
 const { check, validationResult, body } = require('express-validator')
+const wa_link = process.env.WA
 
-
+const calculateSalePrice = (price, discount) => {
+    let newPrice = price - (discount * price /100);
+    return parseFloat(Math.round(newPrice * 100) / 100).toFixed(2);
+}
 
 module.exports = {
     showMovies: async(req, res) => {
@@ -21,7 +25,17 @@ module.exports = {
             let movies = await db.Movie.findAll({
                 where: {
                     status: 1
-                }
+                },
+                include: [
+                    {
+                        association: "rating"
+                    },
+                    {
+                        association: "sales",
+                        where: {status: 1},
+                        required: false
+                    }
+                ]    
             });
 
             res.render('movies', {
@@ -29,7 +43,9 @@ module.exports = {
                 css: '',
                 categories,
                 genres,
-                movies
+                movies,
+                wa_link,
+                calculateSalePrice
             })
 
         } catch (error) {
@@ -63,7 +79,8 @@ module.exports = {
                 categories,
                 genres,
                 movies,
-                movie
+                movie,
+                wa_link
             })
 
         } catch (error) {

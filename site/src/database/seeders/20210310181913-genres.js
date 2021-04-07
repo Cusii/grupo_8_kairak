@@ -2,20 +2,21 @@
 
 const names = [
 	'Acción', 
+	'Animación',
 	'Aventura',
+	'Bélica',
+	'Ciencia ficción',
 	'Comedia',
 	'Comedia romántica',
-	'Drama',
-	'Terror',
-	'Musical',
-	'Ciencia ficción',
-	'Bélica',
-	'Western',
-	'Suspenso',
-	'Thriller',
 	'Crimen',
+	'Documental',
+	'Drama',
+	'Musical',
 	'Romance',
-	'Animación'
+	'Suspenso',
+	'Terror',
+	'Thriller',
+	'Western',
 ];
 const genres = [];
 

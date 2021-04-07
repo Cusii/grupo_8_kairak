@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
 const { check, validationResult, body } = require('express-validator')
-
+const wa_link = process.env.WA
 
 
 //const { getUsers, sendUsers } = require('../data/users')
@@ -24,7 +24,8 @@ module.exports = {
                 texto: 'lorem*3',
                 css: '',
                 genres,
-                categories
+                categories,
+                wa_link
             })
         } catch (error) {
             res.render('error', { error })
@@ -62,8 +63,8 @@ module.exports = {
                     title: 'Kairak',
                     css: '',
                     genres,
-                    categories
-
+                    categories,
+                    wa_link
                 })
             }
 
@@ -111,7 +112,8 @@ module.exports = {
                     title: 'Kairak',
                     css: '',
                     genres,
-                    categories
+                    categories,
+                    wa_link
                 })
             }
         } catch (error) {
@@ -143,7 +145,8 @@ module.exports = {
                 title: 'Kairak',
                 css: 'forms',
                 genres,
-                categories
+                categories,
+                wa_link
             })
         } catch (error) {
             res.render('error', { error })
@@ -169,7 +172,8 @@ module.exports = {
                 title: 'Kairak',
                 css: 'forms',
                 genres,
-                categories
+                categories,
+                wa_link
             })
         }
 
@@ -252,7 +256,8 @@ module.exports = {
                 css: 'styleFormularios',
                 user,
                 genres,
-                categories
+                categories,
+                wa_link
             })
         } catch (error) {
             res.render('error', { error })
