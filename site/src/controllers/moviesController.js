@@ -69,7 +69,11 @@ module.exports = {
                 include: [
                     { association: "genre" },
                     { association: "category" },
-                    { association: "sales" }
+                    {
+                        association: "sales",
+                        where: {status: 1},
+                        required: false
+                    }
                 ]
             });
 
@@ -88,12 +92,50 @@ module.exports = {
         }
     },
     search: async(req, res) => {
-        console.log(req.body);
-        res.send(req.query)
+        console.log(req.query.search);        
+        const search = req.query.search.trim().toLowerCase();
 
+        let categories = await db.Category.findAll({
+            order: [
+                ['id', 'ASC']
+            ]
+        });
+        let genres = await db.Genre.findAll();
+        
+        const moviesFilter = await db.Movie.findAll({
+            include: [
+                { association: "genre", required: true },
+                { association: "rating", required: true },
+                {
+                    association: "sales",
+                    where: {status: 1},
+                    required: false
+                }
+            ],
+            where: {
+                [Op.and]: [
+                    { status: 1 },
+                    {[Op.or]: [                        
+                        { '$genre.name$': { [Op.like]: `%${search}%` } },
+                        { title: { [Op.like]: `%${search}%` } }
+                    ]}
+                ]
+            },
+        });
+
+        res.render('movies', {
+            title: `Resultados de la busqueda: ${search} `,
+            css: '',
+            categories,
+            genres,
+            movies: moviesFilter,
+            wa_link,
+            calculateSalePrice
+        })
     },
 
     /**************************** ADMIN ****************************/
+
     getMovies: async(req, res) => {
         const { id, firstName, lastName, role } = req.session.userLogin;
         userAdmin = {
@@ -107,14 +149,25 @@ module.exports = {
             let movies = await db.Movie.findAll({
                 where: {
                     status: 1
-                }
+                },
+                include: [
+                    { association: "genre" },
+                    { association: "category" },
+                    { association: "rating" },
+                    {
+                        association: "sales",
+                        where: {status: 1},
+                        required: false
+                    }
+                ]
             });
 
             res.render('admin/moviesList', {
                 title: 'Nuestras Películas',
                 css: '',
                 movies,
-                userAdmin
+                userAdmin,
+                calculateSalePrice
             })
         } catch (error) {
             res.render('error', { error });
@@ -146,7 +199,8 @@ module.exports = {
                 title: movie.title,
                 css: 'movieStyle',
                 movie,
-                userAdmin
+                userAdmin,
+                calculateSalePrice
             });
         } catch (error) {
 
