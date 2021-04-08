@@ -15,10 +15,10 @@ module.exports = {
 
 	down: async (queryInterface, Sequelize) => {
 		await queryInterface.sequelize.query(`ALTER TABLE ratings 
-		DROP CHECK check_ratings_accumulatedrating`);
+		DROP CONSTRAINT check_ratings_accumulatedrating`);
 		await queryInterface.sequelize.query(`ALTER TABLE ratings 
-		DROP CHECK check_ratings_totalvotes`);
+		DROP CONSTRAINT check_ratings_totalvotes`);
 		await queryInterface.sequelize.query(`ALTER TABLE ratings 
-		DROP CHECK check_ratings_avgrating`);
+		DROP CONSTRAINT check_ratings_avgrating`);
 	}
 };

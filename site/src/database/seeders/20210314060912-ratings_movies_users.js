@@ -4,7 +4,9 @@ const ratings_movies_users = [
 	{
 		movie_id: 4,
 		user_id: 1,
-		rating: 3
+		rent_id: 1,
+		rating: 3,
+		done: true
 	}
 ];
 

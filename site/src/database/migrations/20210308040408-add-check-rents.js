@@ -9,6 +9,6 @@ module.exports = {
 
 	down: async (queryInterface, Sequelize) => {
 		await queryInterface.sequelize.query(`ALTER TABLE rents 
-		DROP CHECK check_rents_amount`);
+		DROP CONSTRAINT check_rents_amount`);
 	}
 };

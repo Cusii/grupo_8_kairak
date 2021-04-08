@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
 				as: 'user',
 				foreignKey: 'userId'	
 			});
+
+			RatingMovieUser.belongsTo(models.Rent, {
+				as: 'rent',
+				foreignKey: 'rentId'	
+			});
 		}
 	};
 	RatingMovieUser.init({
@@ -37,8 +42,20 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
+		rentId: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
 		rating: {
 			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		done: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false
+		},
+		createdAt: {
+			type: DataTypes.DATE,
 			allowNull: false
 		},
 		createdAt: {

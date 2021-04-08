@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
 				as: 'user',
 				foreignKey: 'userId'	
 			});
+
+			Rent.hasMany(models.RatingMovieUser, {
+				as: 'ratings',
+				foreignKey: 'rentId'
+			});
 		}
 	};
 	Rent.init({
