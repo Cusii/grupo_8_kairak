@@ -26,8 +26,22 @@
 					<img src="/images/movies/<%= movie.image%>" alt="imagen" width="500">
 				</div>
 
-				<div class=" col-6 col-lg-6 text-center">
-					<h4 class="titulo-detalle">$<%= movie.price %></h4>
+				<div> 
+					<span class="fa fa-star <%= movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+					<span class="fa fa-star <%= movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+					<span class="fa fa-star <%= movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+					<span class="fa fa-star <%= movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+					<span class="fa fa-star <%= movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+				</div>
+
+				<div class=" col-6 col-lg-6 text-center">					
+					<% if (movie.sales.length > 0) { %>
+						<h4 class="col-6 mt-2 price-line">$<%= movie.price %></h4>
+						<p class="col-6 mt-2 discount"><%= movie.sales[0].discount %>%</p>
+						<h4 class="col-6 mt-2">$<%= calculateSalePrice(movie.price, movie.sales[0].discount)%> </h4>
+						<% } else { %>										
+							<h4 class="col-6 mt-2">$<%= movie.price %></h4>
+					<% } %>
 					<div class=" d-block d-sm-block d-md-block d-lg-none col-lg-2">
 						<button class=" col-12 justify-content-end btn bg-primary text-white">Alquilar  movil</button>
 					</div>				

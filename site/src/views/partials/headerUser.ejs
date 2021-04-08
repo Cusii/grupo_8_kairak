@@ -90,13 +90,12 @@
                             <li>
                                 <a class="dropdown-item" href="/users/profile/<%=userLogin.id%> ">
                                     <%= userLogin.firstName %>
-                                        <%= userLogin.lastName %>
+                                </a>
                             </li>
                             <% if (userLogin.role == '1') { %>
-                                <li><a class="dropdown-item" href="/admin"> admin</a></li>
-
-                                <% } %>
-                                    <li><a class="dropdown-item" href="/users/logout">Cerrar sesion</a></li>
+                                <li><a class="dropdown-item" href="/admin"> Vista Administrador</a></li>
+                            <% } %>
+                                <li><a class="dropdown-item" href="/users/logout">Cerrar sesion</a></li>
                         </ul>
                     </li>
                 </ul>

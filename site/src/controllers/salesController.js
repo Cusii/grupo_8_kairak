@@ -10,6 +10,9 @@ const calculateSalePrice = (price, discount) => {
 }
 
 module.exports = {
+    /**
+     * Retorna una lista con las ofertas vigentes
+     */
     showSales: async (req, res) => {
         try {
             let categories = await db.Category.findAll({
@@ -50,6 +53,9 @@ module.exports = {
         }
     },
 
+    /**
+     * Retorna una lista con las ofertas vigentes (vista admin)
+     */
     getSales: async (req, res) => {
         /* let userAdmin;
         if (req.session.userLogin) {
@@ -75,7 +81,12 @@ module.exports = {
                     status: 1
                 },
                 include: {
-                    association: "movie"
+                    association: "movie",
+                    where: { status: 1 },
+                    include: {
+                        association: 'rating'
+                    },
+                    required: true
                 }
             });
 
@@ -103,6 +114,9 @@ module.exports = {
         }
     },
 
+    /**
+     * Retorna el detalle de una oferta vigente (vista admin)
+     */
     getSale: async (req, res) => {
         const { id, firstName, lastName, role} = req.session.userLogin;
         userAdmin = {
@@ -118,7 +132,12 @@ module.exports = {
                     id: +req.params.id
                 },
                 include: {
-                    association: "movie"
+                    association: "movie",
+                    where: { status: 1 },
+                    include: {
+                        association: 'rating'
+                    },
+                    required: true
                 }
             });
             
@@ -134,6 +153,9 @@ module.exports = {
         }
     },
 
+    /**
+     * Renderiza el formulario de creación de oferta
+     */
     toCreateSale: async (req, res) => {
         const { id, firstName, lastName, role} = req.session.userLogin;
         userAdmin = {
@@ -176,6 +198,9 @@ module.exports = {
         
     },
 
+    /**
+     * Crea una nueva oferta
+     */
     createSale: async (req, res) => {
         const { discount, movieId,  expiredAt } = req.body;
 
@@ -192,6 +217,9 @@ module.exports = {
         }
     },
 
+    /**
+     * Renderiza el formulario de edición de una oferta
+     */
     editSale: async (req, res) => {
         const { id, firstName, lastName, role} = req.session.userLogin;
         userAdmin = {
@@ -221,6 +249,9 @@ module.exports = {
         }
     },
 
+    /**
+     * Actualiza una oferta
+     */
     updateSale: async (req, res) => {
         const { discount, /* createdAt, */ expiredAt } = req.body;
         try {
@@ -236,6 +267,9 @@ module.exports = {
         }
     },
 
+    /**
+     * Elimina una oferta
+     */
     deleteSale: async (req, res) => {
         try {
             await db.MovieSale.update({

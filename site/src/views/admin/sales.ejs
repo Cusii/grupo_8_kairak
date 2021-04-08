@@ -12,47 +12,60 @@
 		</div>                
 
 		<div class="row ">
-			<% sales.forEach(sale=> { %>
-				<div class="col-12 col-md-4 col-lg-3 mb-3">
-					<div class="card mx-auto" style="width: 98%">
-						<img src="/images/movies/<%= sale.movie.image %> " class="card-img-top" alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">
-								<%= sale.movie.title %>
-							</h5>
-							<p class="card-text">
-								Precio original: $<%= sale.movie.price %>
-							</p>
-							<p class="card-text">
-								Descuento: <%= sale.discount %>%
-							</p>
-							<p class="card-text">
-								Precio final: $<%= sale.movie.price - (sale.discount * sale.movie.price /100) %>
-							</p>
-							<p class="card-text">
-								Desde: <%= sale.createAt %>
-							</p>
-							<p class="card-text">
-								Hasta: <%= sale.expiredAt %>
-							</p>
-
+			<% if (sales.length > 0) { %>
+				<% sales.forEach(sale=> { %>
+					<div class="col-12 col-md-4 col-lg-3 mb-3">
+						<div class="card mx-auto" style="width: 98%">
+							<img src="/images/movies/<%= sale.movie.image %> " class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">
+									<%= sale.movie.title %>
+								</h5>
+	
+								<div> 
+									<span class="fa fa-star <%= sale.movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+									<span class="fa fa-star <%= sale.movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+									<span class="fa fa-star <%= sale.movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+									<span class="fa fa-star <%= sale.movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+									<span class="fa fa-star <%= sale.movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+								</div>
+	
+								<p class="card-text">
+									Precio original: $<%= sale.movie.price %>
+								</p>
+								<p class="card-text">
+									Descuento: <%= sale.discount %>%
+								</p>
+								<p class="card-text">
+									Precio final: $<%= sale.movie.price - (sale.discount * sale.movie.price /100) %>
+								</p>
+								<p class="card-text">
+									Desde: <%= sale.createAt %>
+								</p>
+								<p class="card-text">
+									Hasta: <%= sale.expiredAt %>
+								</p>
+	
+							</div>
+							<ul class="list-group list-group-flush">                                    
+								<form action="/sales/edit/<%= sale.id %>">
+									<button class="col-12 btn btn-sm btn-outline-primary mb-2" type="submit">Editar oferta</button>
+								</form>
+								<form action="/sales/delete/<%= sale.id %>?_method=DELETE" method="POST">
+									<button class=" col-12 btn btn-sm btn-outline-danger mb-2" type="submit">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+												<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+										</svg>
+									</button>
+								</form>
+							</ul>
 						</div>
-						<ul class="list-group list-group-flush">                                    
-							<form action="/sales/edit/<%= sale.id %>">
-								<button class="col-12 btn btn-sm btn-outline-primary mb-2" type="submit">Editar oferta</button>
-							</form>
-							<form action="/sales/delete/<%= sale.id %>?_method=DELETE" method="POST">
-								<button class=" col-12 btn btn-sm btn-outline-danger mb-2" type="submit">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-											<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-									</svg>
-								</button>
-							</form>
-						</ul>
 					</div>
-				</div>
-
-			<% }) %>
+	
+				<% }) %>
+			<% } else { %>
+				<h4>No se encontraron ofertas vigentes</h4>
+			<% } %>
 
 		</div>
 

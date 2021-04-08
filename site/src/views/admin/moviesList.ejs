@@ -20,12 +20,22 @@
                                     <h5 class="card-title">
                                         <%= movie.title %>
                                     </h5>
-                                    <p class="card-text">
-                                        $
-                                        <%= movie.price %>
-                                    </p>
 
+                                    <div> 
+                                        <span class="fa fa-star <%= movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+                                        <span class="fa fa-star <%= movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+                                        <span class="fa fa-star <%= movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+                                        <span class="fa fa-star <%= movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+                                        <span class="fa fa-star <%= movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+                                    </div>
 
+                                    <% if (movie.sales.length > 0) { %>
+										<p class="col-6 mt-2 price-line">$<%= movie.price %></p> 
+										<p class="col-6 mt-2 discount"><%= movie.sales[0].discount %>%</p>
+										<p class="col-6 mt-2">$<%= calculateSalePrice(movie.price, movie.sales[0].discount)%> </p>
+										<% } else { %>										
+											<p class="col-6 mt-2">$<%= movie.price %></p>
+									<% } %>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <a href="/movies/<%= movie.id %>" class=" btn btn-outline-success fs-6 mb-2">Ver más</a>

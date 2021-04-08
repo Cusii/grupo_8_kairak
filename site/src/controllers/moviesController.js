@@ -191,7 +191,12 @@ module.exports = {
                 include: [
                     { association: "genre" },
                     { association: "category" },
-                    { association: "sales" }
+                    { association: "rating" },
+                    {
+                        association: "sales",
+                        where: {status: 1},
+                        required: false
+                    }
                 ]
             });
 
