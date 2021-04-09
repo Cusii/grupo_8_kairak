@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 			});
 
 			User.hasMany(models.RatingMovieUser, {
-				as: 'ratinsgByRent',
+				as: 'ratingsByRent',
 				foreignKey: 'userId'
 			});
 			

@@ -263,7 +263,7 @@ module.exports = {
     },
 
     getRentsByUser: async(req, res) => {
-        console.log('LOGGGGGGGGGGGGGGGGGGGGGGGGGG'+req.params);
+        
         try {
             let categories = await db.Category.findAll({
                 order: [
@@ -282,15 +282,17 @@ module.exports = {
                         association: "rents",
                         where: { status: 1},
                         required: true,
-                        include: {
-                            association: 'movie'
-                        }
-                    },
-                    {
-                        association: 'ratinsgByRent',
+                        include: [
+                            {
+                                association: 'movie'
+                            },
+                            {
+                                association: 'ratingByRent',
+                            }
+                        ]
                     }
                 ]
-            });
+            });            
 
             res.render('rents', {
                 title: 'Mis alquileres',

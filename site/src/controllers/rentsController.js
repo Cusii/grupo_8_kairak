@@ -57,7 +57,7 @@ module.exports = {
 
     rateMovie: async (req, res) => {
         const rentID = +req.params.id;
-        const { rating } = req.body.rating
+        const { rating } = req.body;
 
         const { id, firstName, lastName, role } = req.session.userLogin;
         let user = {

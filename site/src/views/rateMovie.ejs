@@ -15,7 +15,7 @@
 				
 				<form action="/rents/<%= rent.id %>?_method=PUT" method="POST">
 					<div class="row">
-						<select class="col-6" name="rating">
+						<select name="rating" class="col-6">
 							<% ratingScale.forEach(rating => { %>				
 							<option value="<%= rating.num %>">
 								<%= rating.name %>

@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
 				foreignKey: 'userId'	
 			});
 
-			Rent.hasMany(models.RatingMovieUser, {
-				as: 'ratinsgByRent',
+			Rent.hasOne(models.RatingMovieUser, {
+				as: 'ratingByRent',
 				foreignKey: 'rentId'
 			});
 		}

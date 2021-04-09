@@ -18,7 +18,8 @@ module.exports = {
 			},
 			rent_id: {
 				allowNull: false,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
+				unique: true
 			},
 			rating: {
 				allowNull: false,
