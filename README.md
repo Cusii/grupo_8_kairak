@@ -25,6 +25,7 @@
 - Situarse en la carpeta site (donde se encuentra el package.json): `cd grupo_8_kairak/site`
 - Instalar las dependencias: `npm install`
 - Crear y configurar archivo .env en la carpeta site
+- Para habilitar MySQL para correr eventos, ejecutar `SET GLOBAL event_scheduler = ON;` (en caso de no tenerlo habilitado anteriormente)
 - Ubicarse en la carpeta site y ejecutar los siguientes comandos para la base de datos MySQL:
   - `npx sequelize-cli db:create`
   - `npx sequelize-cli db:migrate`

@@ -476,7 +476,7 @@ module.exports = {
                     }
                 }, { transaction: t });
 
-                if (sales.length > 0) {
+                if (sale) {
                     await db.MovieSale.update({
                         status: 0,
                         expiredAt: new Date()
