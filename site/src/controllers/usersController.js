@@ -281,7 +281,7 @@ module.exports = {
                     {
                         association: "rents",
                         where: { status: 1},
-                        required: true,
+                        required: false,
                         include: [
                             {
                                 association: 'movie'
