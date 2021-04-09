@@ -1,22 +1,22 @@
 const express = require('express');
-const router = express.Router(); //trae el metodo router
+const router = express.Router();
 
-const adminController = require('../controllers/adminController')
+const adminController = require('../controllers/adminController');
 
 const uploadImg = require('../middlewares/uploadUserImage');
-const loginCheak = require('../middlewares/loginCheak');
+const adminCheck = require('../middlewares/adminCheck');
 const validationRegister = require('../validations/validationRegister')
 
 
-router.get('/', loginCheak, adminController.index)
-router.get('/users/list', loginCheak, adminController.listUser)
+router.get('/', adminCheck, adminController.index)
+router.get('/users/list', adminCheck, adminController.listUser)
 
-router.get('/users/create', loginCheak, adminController.register)
-router.post('/users/create', validationRegister, uploadImg.any(), adminController.proccesRegister)
+router.get('/users/create', adminCheck, adminController.register)
+router.post('/users/create', adminCheck, validationRegister, uploadImg.any(), adminController.proccesRegister)
 
-router.get('/users/edit/:id', loginCheak, adminController.editUser)
-router.put('/users/update/:id', uploadImg.single('avatar'), adminController.updateUser)
+router.get('/users/edit/:id', adminCheck, adminController.editUser)
+router.put('/users/update/:id', adminCheck, uploadImg.single('avatar'), adminController.updateUser)
 
-router.delete('/users/delete/:id', adminController.deleteUser)
+router.delete('/users/delete/:id', adminCheck, adminController.deleteUser)
 
 module.exports = router;

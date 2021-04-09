@@ -69,6 +69,7 @@ module.exports = {
                 include: [
                     { association: "genre" },
                     { association: "category" },
+                    { association: "rating" },
                     {
                         association: "sales",
                         where: {status: 1},
@@ -84,7 +85,8 @@ module.exports = {
                 genres,
                 movies,
                 movie,
-                wa_link
+                wa_link,
+                calculateSalePrice
             })
 
         } catch (error) {
@@ -132,13 +134,51 @@ module.exports = {
             wa_link,
             calculateSalePrice
         })
+    },   
+
+    watchMovie: async (req, res) => {
+        const { id, firstName, lastName, role } = req.session.userLogin;
+        let user = {
+            id,
+            firstName,
+            lastName,
+            role
+        }
+
+        try {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+            let genres = await db.Genre.findAll();
+
+            let movie = await db.Movie.findOne({
+                where: {
+                    id: +req.params.id
+                }                
+            });
+
+            res.render('watchMovie', {
+                title: movie.title,
+                css: 'movieStyle',
+                categories,
+                genres,
+                movie,
+                wa_link,
+                userLogin: user
+            })
+
+        } catch (error) {
+            res.render('error', { error });
+        }
     },
 
     /**************************** ADMIN ****************************/
 
     getMovies: async(req, res) => {
         const { id, firstName, lastName, role } = req.session.userLogin;
-        userAdmin = {
+        let userAdmin = {
             id,
             firstName,
             lastName,
@@ -176,7 +216,7 @@ module.exports = {
     },
     getMovie: async(req, res) => {
         const { id, firstName, lastName, role } = req.session.userLogin;
-        userAdmin = {
+        let userAdmin = {
             id,
             firstName,
             lastName,
@@ -214,7 +254,7 @@ module.exports = {
 
     toCreateMovie: async(req, res) => {
         const { id, firstName, lastName, role } = req.session.userLogin;
-        userAdmin = {
+        let userAdmin = {
             id,
             firstName,
             lastName,
@@ -328,7 +368,7 @@ module.exports = {
 
     toEditMovie: async(req, res) => {
         const { id, firstName, lastName, role } = req.session.userLogin;
-        userAdmin = {
+        let userAdmin = {
             id,
             firstName,
             lastName,
@@ -458,5 +498,7 @@ module.exports = {
             await t.rollback();
             res.render('error', { error })
         }
-    }
+    },
+
+    
 }

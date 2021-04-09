@@ -47,11 +47,11 @@
 								</div>
 								<div class="card-footer bg-transparent row">
 									<% if (movie.sales.length > 0) { %>
-										<p class="col-6 mt-2 price-line">$<%= movie.price %></p>
-										<p class="col-6 mt-2 discount"><%= movie.sales[0].discount %>%</p>
-										<p class="col-6 mt-2">$<%= calculateSalePrice(movie.price, movie.sales[0].discount)%> </p>
+										<h6 class="col-6 mt-2 price-line">$<%= movie.price %></h6>
+										<h6 class="col-6 mt-2 discount"><%= movie.sales[0].discount %>%</h6>
+										<h5 class="col-6 mt-2">$<%= calculateSalePrice(movie.price, movie.sales[0].discount)%> </h5>
 										<% } else { %>										
-											<p class="col-6 mt-2">$<%= movie.price %></p>
+											<h5 class="col-6 mt-2">$<%= movie.price %></h5>
 									<% } %>
 									
 									<a href="/movies/show/<%= movie.id %>" class="btn col-6">Detalles</a>

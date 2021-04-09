@@ -1,7 +1,7 @@
 'use strict';
 
-let date = new Date();
-date.setDate(date.getDate() + 15);
+/* let date = new Date();
+date.setDate(date.getDate() + 15); */
 
 const rents = [
 	{
@@ -9,8 +9,14 @@ const rents = [
 		movie_id: 5,
 		status: 1,
 		amount: 255,
-		transaction: 1,
-		expired_at: date
+		transaction: 1
+	},
+	{
+		user_id: 1,
+		movie_id: 4,
+		status: 1,
+		amount: 205,
+		transaction: 1
 	}
 ];
 

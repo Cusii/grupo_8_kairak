@@ -10,7 +10,7 @@ const movies = [
 		image: 'la-la-land.jpg',
 		trailer_path: 'https://www.youtube.com/embed/EDvJBDXV2tA',
 		movie_path: 'https://www.youtube.com/embed/EDvJBDXV2tA',
-		genre_id: 7,
+		genre_id: 11,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()
@@ -38,7 +38,7 @@ const movies = [
 		image: 'joker-2019.jpg',
 		trailer_path: 'https://www.youtube.com/embed/8ZZ1l7QCVGE',
 		movie_path: 'https://www.youtube.com/embed/8ZZ1l7QCVGE',
-		genre_id: 12,
+		genre_id: 15,
 		category_id: 5,
 		status: 1,
 		created_at: new Date()
@@ -52,7 +52,7 @@ const movies = [
 		image: 'cars-2.jpg',
 		trailer_path: 'https://www.youtube.com/embed/PiMXLiNINJ8',
 		movie_path: 'https://www.youtube.com/embed/PiMXLiNINJ8',
-		genre_id: 15,
+		genre_id: 2,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()
@@ -66,7 +66,7 @@ const movies = [
 		image: 'el-rey-leon-2019.jpg',
 		trailer_path: 'https://www.youtube.com/embed/mb79ctR-E-c',
 		movie_path: 'https://www.youtube.com/embed/mb79ctR-E-c',
-		genre_id: 15,
+		genre_id: 2,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()
@@ -80,7 +80,7 @@ const movies = [
 		image: 'toy-story-4.jpg',
 		trailer_path: 'https://www.youtube.com/embed/f33yJZ5uOpU',
 		movie_path: 'https://www.youtube.com/embed/f33yJZ5uOpU',
-		genre_id: 15,
+		genre_id: 2,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()
@@ -94,7 +94,7 @@ const movies = [
 		image: 'cars.jpg',
 		trailer_path: 'https://www.youtube.com/embed/wTF4G7pXBB8',
 		movie_path: 'https://www.youtube.com/embed/wTF4G7pXBB8',
-		genre_id: 15,
+		genre_id: 2,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()
@@ -108,7 +108,7 @@ const movies = [
 		image: 'bloodshot.jpeg',
 		trailer_path: 'https://www.youtube.com/embed/5nOea-_3iKI',
 		movie_path: 'https://www.youtube.com/embed/5nOea-_3iKI',
-		genre_id: 8,
+		genre_id: 5,
 		category_id: 4,
 		status: 1,
 		created_at: new Date()
@@ -122,7 +122,7 @@ const movies = [
 		image: 'el-rey-leon-1994.jpg',
 		trailer_path: 'https://www.youtube.com/embed/bjJvvrKl83M',
 		movie_path: 'https://www.youtube.com/embed/bjJvvrKl83M',
-		genre_id: 15,
+		genre_id: 2,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()
@@ -136,7 +136,7 @@ const movies = [
 		image: 'toy-story.jpg',
 		trailer_path: 'https://www.youtube.com/embed/VhCDgv4x_pU',
 		movie_path: 'https://www.youtube.com/embed/VhCDgv4x_pU',
-		genre_id: 15,
+		genre_id: 2,
 		category_id: 1,
 		status: 1,
 		created_at: new Date()

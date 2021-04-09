@@ -57,16 +57,7 @@ module.exports = {
      * Retorna una lista con las ofertas vigentes (vista admin)
      */
     getSales: async (req, res) => {
-        /* let userAdmin;
-        if (req.session.userLogin) {
-            const { id, firstName, lastName, role} = req.session.userLogin;
-            userAdmin = {
-                id,
-                firstName,
-                lastName,
-                role
-            }
-        } */
+        
         const { id, firstName, lastName, role} = req.session.userLogin;
             userAdmin = {
                 id,

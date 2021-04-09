@@ -34,7 +34,18 @@ module.exports = {
     },
     processLogin: async(req, res) => {
 
-        let errors = validationResult(req)
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.render('login', {
+                errors: errors.mapped(),
+                title: 'Kairak',
+                css: '',
+                genres,
+                categories,
+                wa_link
+            })
+        }
 
         const { email, password, recordar } = req.body
 
@@ -55,18 +66,7 @@ module.exports = {
                 include: {
                     association: "role"
                 }
-            });
-
-            if (!errors.isEmpty()) {
-                return res.render('login', {
-                    errors: errors.mapped(),
-                    title: 'Kairak',
-                    css: '',
-                    genres,
-                    categories,
-                    wa_link
-                })
-            }
+            });   
 
 
             if (user) {
@@ -156,8 +156,6 @@ module.exports = {
 
     processRegister: async(req, res, next) => {
         let errors = validationResult(req)
-
-
 
         if (!errors.isEmpty()) {
             let categories = await db.Category.findAll({
@@ -262,5 +260,49 @@ module.exports = {
         } catch (error) {
             res.render('error', { error })
         }
+    },
+
+    getRentsByUser: async(req, res) => {
+        console.log('LOGGGGGGGGGGGGGGGGGGGGGGGGGG'+req.params);
+        try {
+            let categories = await db.Category.findAll({
+                order: [
+                    ['id', 'ASC']
+                ]
+            });
+
+            let genres = await db.Genre.findAll();
+
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                },
+                include: [    
+                    {
+                        association: "rents",
+                        where: { status: 1},
+                        required: true,
+                        include: {
+                            association: 'movie'
+                        }
+                    },
+                    {
+                        association: 'ratinsgByRent',
+                    }
+                ]
+            });
+
+            res.render('rents', {
+                title: 'Mis alquileres',
+                css: '',
+                user,
+                genres,
+                categories,
+                wa_link
+            })
+        } catch (error) {
+            res.render('error', { error })
+        }
+        
     }
 }

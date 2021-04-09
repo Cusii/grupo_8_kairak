@@ -14,8 +14,9 @@ const methodOverride = require("method-override");
 const session = require('express-session')
 
 const db = require('./database/models/index');
-const localsCheck = require('./middlewares/localsCheak')
 
+const localsCheck = require('./middlewares/localsCheck')
+const cookieCheck = require("./middlewares/cookieCheck");
 
 const usersRouter = require("./routes/usersRouter");
 const indexRouter = require("./routes/indexRouter");
@@ -25,7 +26,8 @@ const adminRouter = require("./routes/adminRouter");
 const genresRouter = require("./routes/genresRouter");
 const categoriesRouter = require("./routes/categoriesRouter");
 const salesRouter = require("./routes/salesRouter");
-const coockieCheak = require("./middlewares/coockieCheak");
+const rentsRouter = require('./routes/rentsRouter');
+
 
 const app = express();
 // view engine setup
@@ -40,7 +42,7 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use(methodOverride("_method"));
 app.use(session({ secret: 'kairak' }))
 
-app.use(coockieCheak)
+app.use(cookieCheck)
 app.use(localsCheck)
 
 app.use("/", indexRouter);
@@ -51,6 +53,7 @@ app.use("/admin", adminRouter);
 app.use("/categories", categoriesRouter);
 app.use("/genres", genresRouter);
 app.use("/sales", salesRouter);
+app.use("/rents", rentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

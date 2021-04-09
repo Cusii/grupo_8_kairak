@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head')  %>
+
+<body class="bg-white">
+	<%- include('partials/headerUser')  %>
+
+	<main>
+		<div class="embed-responsive embed-responsive-16by9 iframe-wrapper">
+			<iframe width="560" height="315" src="<%= movie.moviePath %> " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+
+	</main>
+
+	
+		<%- include('partials/scripts')  %>
+		<%- include('partials/footer')  %>
+</body>
+
+</html>

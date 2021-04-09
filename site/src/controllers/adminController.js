@@ -7,9 +7,9 @@ const path = require('path')
 
 const users = getUsers();
 module.exports = {
-    index: (req, res) => {
-        console.log(req.session.userLogin);
+    index: (req, res) => {        
         const { id, firstName, lastName, role} = req.session.userLogin;
+        
         userAdmin = {
             id,
             firstName,
@@ -197,7 +197,7 @@ module.exports = {
     deleteUser: async(req, res) => {
 
         try {
-            let userToDelete = await db.User.findOne({
+                let userToDelete = await db.User.findOne({
                 where: {
                     id: +req.params.id
                 }
