@@ -36,7 +36,7 @@ module.exports = {
 			expired_at: {
 				allowNull: false,
 				type: Sequelize.DATE,
-				defaultValue: Sequelize.literal('DATE_ADD(now(), INTERVAL 3 DAY)')
+				//defaultValue: Sequelize.literal('DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 3 DAY)')
 			}
 		});
 		await queryInterface.addConstraint('rents', {
