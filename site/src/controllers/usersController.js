@@ -65,7 +65,7 @@ module.exports = {
                             id: user.id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-
+                            role: user.role.id
                         }
                         if (recordar != 'undefined') {
                             res.cookie('userLogin', req.session.userLogin, {
@@ -173,7 +173,14 @@ module.exports = {
                 createdAt: new Date()
             });
 
-            res.redirect('/users/login')
+            req.session.userLogin = {
+                id: newUser.id,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                role: newUser.role
+            }
+
+            return res.redirect(`/users/${newUser.id}`)
 
         } catch (error) {
             res.render('error', { error })
@@ -235,5 +242,129 @@ module.exports = {
             res.render('error', { error })
         }
         
+    },
+
+    editProfile: async (req, res) => {
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            res.render('editProfile',{
+                title: 'Editar perfil',
+                css: '',
+                user,
+            });
+            
+        } catch (error) {
+            res.render('error', { error })
+        }
+        
+    },
+
+    updateProfile: async (req, res) => {
+        const { first_name, last_name, email, password, role } = req.body
+        const imgFile = req.file;
+
+        try {
+            let user = db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            if (imgFile) {
+                if (fs.existsSync(path.join('public', 'images', 'movies', user.avatar))) {
+                    fs.unlinkSync(path.join('public', 'images', 'movies', user.avatar));
+                }
+                user.avatar = req.file.filename
+            }
+
+            await db.User.update({
+                id: +req.params.id,
+                firstName: first_name,
+                lastName: last_name,
+                email: email,
+                password: password,
+                roleId: role,
+                avatar: user.avatar
+            }, {
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            res.redirect(`/users/${+req.params.id}`)
+        } catch (error) {
+            res.render('error', { error })
+        }    
+    },
+
+    changePassword: async (req,res) => {
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            res.render('changePass',{
+                title: 'Cambiar contraseña',
+                css: '',
+                user,
+            });
+            
+        } catch (error) {
+            res.render('error', { error })
+        }
+    },
+
+    updatePassword: async (req,res) => {
+        const { currentPassword, newPassword, confirmPassword } = req.body
+
+        try {
+            let user = db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            if (newPassword.trim() == confirmPassword.trim()) {
+                if (bcrypt.compareSync(currentPassword, user.password)) {
+                    await db.User.update({                
+                        password: password,                
+                    }, {
+                        where: {
+                            id: +req.params.id
+                        }
+                    });
+
+                    res.render('changePass',{
+                        title: 'Cambiar contraseña',
+                        css: '',
+                        user,
+                    });
+                } else {
+                    //pass actual incorrecta
+                    res.render('changePass',{
+                        title: 'Cambiar contraseña',
+                        css: '',
+                        user,
+                    });
+                }
+            } else {
+                // pass no coinciden
+                res.render('changePass',{
+                title: 'Cambiar contraseña',
+                css: '',
+                user,
+                });
+            }
+            
+        } catch (error) {
+            res.render('error', { error })
+        }
     }
 }
