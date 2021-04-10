@@ -29,7 +29,7 @@
                                           Generos
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                                            <% genres.forEach(genre => { %>
+                                            <% Genres.forEach(genre => { %>
                                                 <li>
                                                     <a class="dropdown-item" href="/genres/<%= genre.id %> ">
                                                         <%- genre.name %>
@@ -44,7 +44,7 @@
                                           Público
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                                            <% categories.forEach(category => { %>
+                                            <% Categories.forEach(category => { %>
                                                 <li>
                                                     <a class="dropdown-item" href="/categories/<%= category.id %> ">
                                                         <%= category.name %>

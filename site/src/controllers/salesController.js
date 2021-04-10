@@ -1,13 +1,7 @@
 const db = require('../database/models');
 const { format } = require('date-fns');
 const { Op } = require("sequelize");
-const wa_link = process.env.WA
-
-
-const calculateSalePrice = (price, discount) => {
-    let newPrice = price - (discount * price /100);
-    return parseFloat(Math.round(newPrice * 100) / 100).toFixed(2);
-}
+const calculateSalePrice = require('../functions/calculateSalePrice');
 
 module.exports = {
     /**
@@ -15,13 +9,6 @@ module.exports = {
      */
     showSales: async (req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();            
-
             let moviesWithSales = await db.Movie.findAll({
                 where: {
                     status: 1
@@ -41,10 +28,7 @@ module.exports = {
             res.render('movies', {
                 title: 'Nuestras ofertas',
                 css: '',
-                categories,
-                genres,
                 movies: moviesWithSales,
-                wa_link,
                 calculateSalePrice
             })
             

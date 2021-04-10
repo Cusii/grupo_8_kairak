@@ -1,5 +1,4 @@
 const db = require('../database/models');
-const wa_link = process.env.WA;
 
 const ratingScale = [
     {num: 1, name: 'Mala'},
@@ -23,13 +22,6 @@ module.exports = {
         }
 
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let rent = await db.Rent.findOne(
                 {
                     where: { id: rentID },
@@ -43,11 +35,8 @@ module.exports = {
                 title: rent.movie.title,
                 css: '',
                 ratingScale,
-                genres,
-                categories,
                 rent,
-                user,
-                wa_link
+                user
             });
 
         } catch (error) {

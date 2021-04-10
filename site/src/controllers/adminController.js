@@ -5,7 +5,6 @@ const db = require('../database/models');
 const path = require('path')
 
 
-const users = getUsers();
 module.exports = {
     index: (req, res) => {        
         const { id, firstName, lastName, role} = req.session.userLogin;

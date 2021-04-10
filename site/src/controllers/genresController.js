@@ -1,10 +1,5 @@
 const db = require('../database/models');
-const wa_link = process.env.WA;
-
-const calculateSalePrice = (price, discount) => {
-    let newPrice = price - (discount * price /100);
-    return parseFloat(Math.round(newPrice * 100) / 100).toFixed(2);
-}
+const calculateSalePrice = require('../functions/calculateSalePrice');
 
 module.exports = {
     getGenres: (req, res) => {
@@ -13,11 +8,7 @@ module.exports = {
 
     getGenre: async(req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
+            
             let genres = await db.Genre.findAll();
 
 
@@ -47,10 +38,7 @@ module.exports = {
             res.render('movies', {
                 title: genre.name,
                 css: '',
-                genres,
-                categories,
-                movies: genre.movies,
-                wa_link,
+                movies: genre.movies,                
                 calculateSalePrice
             })
         } catch (error) {

@@ -1,31 +1,16 @@
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
-const { check, validationResult, body } = require('express-validator')
-const wa_link = process.env.WA
+const { check, validationResult, body } = require('express-validator');
 
-
-//const { getUsers, sendUsers } = require('../data/users')
-
-//const users = getUsers();
 
 module.exports = {
     login: async(req, res) => {
 
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             res.render('login', {
                 title: 'Kairak',
                 texto: 'lorem*3',
-                css: '',
-                genres,
-                categories,
-                wa_link
+                css: ''
             })
         } catch (error) {
             res.render('error', { error })
@@ -40,10 +25,7 @@ module.exports = {
             return res.render('login', {
                 errors: errors.mapped(),
                 title: 'Kairak',
-                css: '',
-                genres,
-                categories,
-                wa_link
+                css: ''
             })
         }
 
@@ -52,13 +34,6 @@ module.exports = {
         const role_admin = 1;
 
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let user = await db.User.findOne({
                 where: {
                     email: email
@@ -102,18 +77,13 @@ module.exports = {
                 } else {
                     res.render('login', {
                         title: 'Kairak',
-                        css: '',
-                        genres,
-                        categories
+                        css: ''
                     })
                 }
             } else {
                 res.render('login', {
                     title: 'Kairak',
-                    css: '',
-                    genres,
-                    categories,
-                    wa_link
+                    css: ''
                 })
             }
         } catch (error) {
@@ -134,19 +104,9 @@ module.exports = {
 
     register: async(req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             res.render('register', {
                 title: 'Kairak',
-                css: 'forms',
-                genres,
-                categories,
-                wa_link
+                css: 'forms'
             })
         } catch (error) {
             res.render('error', { error })
@@ -157,21 +117,12 @@ module.exports = {
     processRegister: async(req, res, next) => {
         let errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
+        if (!errors.isEmpty()) {            
 
             return res.render('register', {
                 errors: errors.mapped(),
                 title: 'Kairak',
-                css: 'forms',
-                genres,
-                categories,
-                wa_link
+                css: 'forms'
             })
         }
 
@@ -232,14 +183,6 @@ module.exports = {
 
     showProfile: async(req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-
-            let genres = await db.Genre.findAll();
-
             let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
@@ -252,10 +195,7 @@ module.exports = {
             res.render('profile', {
                 title: 'Kairak',
                 css: 'styleFormularios',
-                user,
-                genres,
-                categories,
-                wa_link
+                user
             })
         } catch (error) {
             res.render('error', { error })
@@ -265,14 +205,6 @@ module.exports = {
     getRentsByUser: async(req, res) => {
         
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-
-            let genres = await db.Genre.findAll();
-
             let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
@@ -298,9 +230,6 @@ module.exports = {
                 title: 'Mis alquileres',
                 css: '',
                 user,
-                genres,
-                categories,
-                wa_link
             })
         } catch (error) {
             res.render('error', { error })

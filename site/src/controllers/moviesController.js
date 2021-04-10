@@ -2,26 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const db = require('../database/models');
 const { Op } = require("sequelize");
-const moviesDB = require('../data/movies');
-const movies = moviesDB.getMovies();
-const { check, validationResult, body } = require('express-validator')
-const wa_link = process.env.WA
-
-const calculateSalePrice = (price, discount) => {
-    let newPrice = price - (discount * price /100);
-    return parseFloat(Math.round(newPrice * 100) / 100).toFixed(2);
-}
+const { check, validationResult, body } = require('express-validator');
+const calculateSalePrice = require('../functions/calculateSalePrice');
 
 module.exports = {
     showMovies: async(req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let movies = await db.Movie.findAll({
                 where: {
                     status: 1
@@ -41,10 +27,7 @@ module.exports = {
             res.render('movies', {
                 title: 'Nuestras Películas',
                 css: '',
-                categories,
-                genres,
                 movies,
-                wa_link,
                 calculateSalePrice
             })
 
@@ -55,13 +38,6 @@ module.exports = {
 
     showMovie: async(req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let movie = await db.Movie.findOne({
                 where: {
                     id: +req.params.id
@@ -81,11 +57,8 @@ module.exports = {
             res.render('movieDetail', {
                 title: movie.title,
                 css: 'movieStyle',
-                categories,
-                genres,
                 movies,
                 movie,
-                wa_link,
                 calculateSalePrice
             })
 
@@ -96,44 +69,40 @@ module.exports = {
     search: async(req, res) => {
         console.log(req.query.search);        
         const search = req.query.search.trim().toLowerCase();
-
-        let categories = await db.Category.findAll({
-            order: [
-                ['id', 'ASC']
-            ]
-        });
-        let genres = await db.Genre.findAll();
         
-        const moviesFilter = await db.Movie.findAll({
-            include: [
-                { association: "genre", required: true },
-                { association: "rating", required: true },
-                {
-                    association: "sales",
-                    where: {status: 1},
-                    required: false
-                }
-            ],
-            where: {
-                [Op.and]: [
-                    { status: 1 },
-                    {[Op.or]: [                        
-                        { '$genre.name$': { [Op.like]: `%${search}%` } },
-                        { title: { [Op.like]: `%${search}%` } }
-                    ]}
-                ]
-            },
-        });
-
-        res.render('movies', {
-            title: `Resultados de la busqueda: ${search} `,
-            css: '',
-            categories,
-            genres,
-            movies: moviesFilter,
-            wa_link,
-            calculateSalePrice
-        })
+        try {
+            const moviesFilter = await db.Movie.findAll({
+                include: [
+                    { association: "genre", required: true },
+                    { association: "rating", required: true },
+                    {
+                        association: "sales",
+                        where: {status: 1},
+                        required: false
+                    }
+                ],
+                where: {
+                    [Op.and]: [
+                        { status: 1 },
+                        {[Op.or]: [                        
+                            { '$genre.name$': { [Op.like]: `%${search}%` } },
+                            { title: { [Op.like]: `%${search}%` } }
+                        ]}
+                    ]
+                },
+            });
+    
+            res.render('movies', {
+                title: `Resultados de la busqueda: ${search} `,
+                css: '',
+                movies: moviesFilter,
+                calculateSalePrice
+            })
+        } catch (error) {
+            res.render('error', { error });
+        }
+        
+        
     },   
 
     watchMovie: async (req, res) => {
@@ -146,13 +115,6 @@ module.exports = {
         }
 
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let movie = await db.Movie.findOne({
                 where: {
                     id: +req.params.id
@@ -162,11 +124,8 @@ module.exports = {
             res.render('watchMovie', {
                 title: movie.title,
                 css: 'movieStyle',
-                categories,
-                genres,
                 movie,
-                wa_link,
-                userLogin: user
+                //userLogin: user
             })
 
         } catch (error) {
@@ -262,18 +221,9 @@ module.exports = {
         }
 
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             res.render('admin/createMovie', {
                 title: 'Agregar pelicula',
                 css: 'forms',
-                categories,
-                genres,
                 userAdmin
             })
         } catch (error) {
@@ -284,19 +234,10 @@ module.exports = {
     createMovie: async(req, res, next) => {
         let errors = validationResult(req)
         if (!errors.isEmpty()) {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             return res.render('admin/createMovie', {
                 errors: errors.mapped(),
                 title: 'Kairak',
                 css: 'forms',
-                genres,
-                categories,
                 userAdmin
             })
         }
@@ -376,13 +317,6 @@ module.exports = {
         }
 
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let movie = await db.Movie.findOne({
                 where: {
                     id: +req.params.id
@@ -398,8 +332,6 @@ module.exports = {
             res.render('admin/editMovie', {
                 title: movie.title,
                 css: 'forms',
-                categories,
-                genres,
                 movie,
                 userAdmin
             });
