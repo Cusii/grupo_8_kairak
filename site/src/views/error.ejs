@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<% title = '404' %>
+<% title = 'Not Found' %>
 <% css = '' %> 
 <%- include('partials/head') %>
 
-<body>
-    <img src="/images/error-404-not-found.jpg" alt="" width="60%">
-    <h1><%= error.message %></h1>
-    <h1><%= /* message */ %></h1>
-    <h2><%= /* error.status */ %></h2>
-    <pre><%= error.stack %></pre>
+<body>    
+    <img src="/images/error-404-not-found.jpg" alt="" class="center-img" width="60%">
+
 
     <%- include('partials/scripts')  %>
 </body>

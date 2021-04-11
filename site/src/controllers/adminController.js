@@ -101,9 +101,9 @@ module.exports = {
             let passHash = bcrypt.hashSync(password.trim(), 12);
 
             let newUser = await db.User.create({
-                firstName: first_name,
-                lastName: last_name,
-                email,
+                firstName: first_name.trim(),
+                lastName: last_name.trim(),
+                email: email.trim().toLowerCase(),
                 password: passHash,
                 avatar: avatarPath,
                 roleId: role,

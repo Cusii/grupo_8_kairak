@@ -18,7 +18,11 @@
 				<hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90%" />
 			</div>
 
-
+			<% if (typeof error != 'undefined') { %>
+				<div class="alert alert-danger ">
+					<span><%= error %> </span>
+				</div>
+			<% } %>
 
 			<form class="container" id="form" action="/users/register" method="POST" enctype="multipart/form-data">
 				<div class=" bg-white border border-1 ">

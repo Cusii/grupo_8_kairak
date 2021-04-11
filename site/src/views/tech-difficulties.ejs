@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<% title = 'Not Found' %>
+<% css = '' %> 
+<%- include('partials/head') %>
+
+<body>
+    <% if (typeof userLogin != 'undefined') { %>
+		<%- include('partials/headerUser')  %>
+	<% } else { %>
+		<%- include('partials/header')  %>
+	<% } %>
+
+    <img src="/images/technical-difficulties.jpg" alt="" class="center-img" width="60%">
+
+
+    <%- include('partials/footer')  %>
+    <%- include('partials/scripts')  %>
+</body>
+
+</html>

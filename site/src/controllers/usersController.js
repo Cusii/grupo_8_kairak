@@ -3,6 +3,7 @@ const db = require('../database/models');
 const { check, validationResult, body } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
+const mailer = require('../handlers/mailer');
 
 
 module.exports = {
@@ -140,14 +141,6 @@ module.exports = {
         }
 
         try {
-
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
-
             let user = await db.User.findOne({
                 where: {
                     email: email
@@ -159,21 +152,26 @@ module.exports = {
                     error: 'El usuario ya existe',
                     title: "Kairak",
                     css: 'forms',
-                    genres,
-                    categories
+                    error: 'El email ya pertenece a un usuario'
                 })
             }
             let passHash = bcrypt.hashSync(password.trim(), 12);
 
             let newUser = await db.User.create({
-                firstName: first_name,
-                lastName: last_name,
-                email,
+                firstName: first_name.trim(),
+                lastName: last_name.trim(),
+                email: email.trim().toLowerCase(),
                 password: passHash,
                 avatar: avatarPath,
                 roleId: role_user,
                 createdAt: new Date()
             });
+
+            //send email
+            const subject = 'Bienvenido a Kairak ✔';
+            const url = `${req.protocol}://${req.headers.host}`;
+            const fileName = 'welcome';
+            await mailer.sendEmail(newUser, subject, url, fileName);
 
             req.session.userLogin = {
                 id: newUser.id,
@@ -185,7 +183,9 @@ module.exports = {
             return res.redirect(`/users/${newUser.id}`)
 
         } catch (error) {
-            res.render('error', { error })
+            console.log(error.message);
+            console.log(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
