@@ -221,6 +221,11 @@ module.exports = {
                 include: [    
                     {
                         association: "rents",
+                        attributes: [
+                            'id',
+                            'status',
+                            [db.sequelize.fn('date_format', db.sequelize.col('expired_at'), '%d-%m-%Y %H:%i'), 'expiredAt']
+                        ],
                         where: { status: 1},
                         required: false,
                         include: [

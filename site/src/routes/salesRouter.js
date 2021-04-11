@@ -7,8 +7,8 @@ const adminCheck = require('../middlewares/adminCheck');
 
 router.get('/', showSales);
 
-router.get('/show', getSales);
-router.get('/show/:id', getSale);
+router.get('/show', adminCheck, getSales);
+router.get('/show/:id', adminCheck, getSale);
 router.get('/create', adminCheck, toCreateSale);
 router.post('/create', adminCheck, createSale);
 router.get('/edit/:id', adminCheck, editSale);

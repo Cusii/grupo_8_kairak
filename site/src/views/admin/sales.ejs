@@ -37,10 +37,10 @@
 									Descuento: <%= sale.discount %>%
 								</p>
 								<p class="card-text">
-									Precio final: $<%= sale.movie.price - (sale.discount * sale.movie.price /100) %>
+									Precio final: $<%= calculateSalePrice(sale.movie.price, sale.discount) %>
 								</p>
 								<p class="card-text">
-									Desde: <%= sale.createAt %>
+									Desde: <%= sale.createdAt %>
 								</p>
 								<p class="card-text">
 									Hasta: <%= sale.expiredAt %>

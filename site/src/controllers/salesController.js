@@ -1,5 +1,4 @@
 const db = require('../database/models');
-const { format } = require('date-fns');
 const { Op } = require("sequelize");
 const calculateSalePrice = require('../functions/calculateSalePrice');
 
@@ -52,6 +51,15 @@ module.exports = {
         
         try {            
             let sales = await db.MovieSale.findAll({
+                attributes:[
+                    'id',
+                    'movie_id',
+                    'discount',
+                    'status',
+                    [db.sequelize.fn('date_format', db.sequelize.col('MovieSale.created_at'), '%d-%m-%Y %H:%i'), 'createdAt'],
+                    [db.sequelize.fn('date_format', db.sequelize.col('expired_at'), '%d-%m-%Y'), 'expiredAt'],
+                    'updated_at'
+                ],
                 where: {
                     status: 1
                 },
@@ -63,25 +71,14 @@ module.exports = {
                     },
                     required: true
                 }
-            });
-
-            let salesMapped = sales.map((sale) => {
-                console.log(sale);
-                sale.expiredAt = format(new Date(sale.expiredAt), 'dd-MM-yyyy')
-                console.log(sale);
-                return sale;
-            });
-
-            let formatDate = (date) => {
-                return format(new Date(date), 'dd-MM-yyyy')                
-            }
+            });      
             
             res.render('admin/sales', {
                 title: 'Ofertas vigentes',
                 css: '',
                 sales,
                 userAdmin,
-                formatDate
+                calculateSalePrice
             })
             
         } catch (error) {
@@ -214,7 +211,7 @@ module.exports = {
                 }
             });
 
-            res.render('/admin/editSale',{
+            res.render('admin/editSale',{
                 title: 'Editar oferta',
                 sale,
                 userAdmin
