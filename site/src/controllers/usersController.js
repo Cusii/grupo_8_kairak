@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
 const { check, validationResult, body } = require('express-validator');
+const fs = require('fs');
+const path = require('path');
 
 
 module.exports = {
@@ -200,7 +202,7 @@ module.exports = {
             });
 
             res.render('profile', {
-                title: 'Kairak',
+                title:  `Perfil ${user.firstName}`,
                 css: 'styleFormularios',
                 user
             })
@@ -325,7 +327,7 @@ module.exports = {
         const { currentPassword, newPassword, confirmPassword } = req.body
 
         try {
-            let user = db.User.findOne({
+            let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
                 }
@@ -333,33 +335,36 @@ module.exports = {
 
             if (newPassword.trim() == confirmPassword.trim()) {
                 if (bcrypt.compareSync(currentPassword, user.password)) {
+                    let passHash = bcrypt.hashSync(newPassword.trim(), 12);
+
                     await db.User.update({                
-                        password: password,                
+                        password: passHash,                
                     }, {
                         where: {
                             id: +req.params.id
                         }
-                    });
-
+                    });    
+                    
+                    res.render('profile', {
+                        title: `Perfil ${user.firstName}`,
+                        css: 'styleFormularios',
+                        user,
+                        success: 'Contraseña actualizada exitosamente'
+                    })
+                } else {                    
                     res.render('changePass',{
                         title: 'Cambiar contraseña',
                         css: '',
                         user,
-                    });
-                } else {
-                    //pass actual incorrecta
-                    res.render('changePass',{
-                        title: 'Cambiar contraseña',
-                        css: '',
-                        user,
+                        error: 'Contraseña actual incorrecta'
                     });
                 }
-            } else {
-                // pass no coinciden
+            } else {                
                 res.render('changePass',{
                 title: 'Cambiar contraseña',
                 css: '',
                 user,
+                error: 'La nueva contraseña y su confirmación no coinciden'
                 });
             }
             

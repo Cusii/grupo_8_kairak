@@ -2,77 +2,70 @@
 <html lang="es">
 <%- include('partials/headAdmin')  %>
 
-    <body class="bg-white">
-        <%- include('partials/headerAdmin')  %>
+<body class="bg-white">
+	<%- include('partials/headerAdmin')  %>
 
-            <div class="container bg-light">
-                <div class=" text-center ">
-                    <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                    <h2>Vista de todos los usuarios</h2>
-                    <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                </div>
+	<div class="container bg-light">
+		<div class=" text-center ">
+			<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+			<h2>Vista de todos los usuarios</h2>
+			<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+		</div>
 
-                <div class="row">
-                    <% users.forEach(user => {%>
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <div class="card mx-auto" style="width: 98%; ">
-                                <a href="/users/<%= user.id %> ">
-                                    <img src="/images/users/<%= user.avatar %>" class="card-img-top" alt="...">
-                                </a>
+		<div class="row">
+			<% users.forEach(user => {%>
+				<div class="col-12 col-md-4 col-lg-3">
+					<div class="card mx-auto" style="width: 98%; ">                                
+						<img src="/images/users/<%= user.avatar %>" class="card-img-top" alt="...">                                
 
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= user.role.name %>
-                                    </h5>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        Nombre:
-                                        <%= user.firstName %>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Apellido:
-                                        <%= user.lastName %>
-                                    </li>
-                                </ul>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <%= user.role.name %>
-                                    </li>
-                                </ul>
-                                <div class="btn-group mx-auto mt-3" role="group">
+						<div class="card-body">
+							<h5 class="card-title">
+								Rol: <%= user.role.name %>
+							</h5>
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								Nombre:
+								<%= user.firstName %>
+							</li>
+							<li class="list-group-item">
+								Apellido:
+								<%= user.lastName %>
+							</li>
+						</ul>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								email:
+								<%= user.email %>
+							</li>
+						</ul>
+						<div class="btn-group mx-auto mt-3" role="group">
 
-                                    <form action="/admin/users/edit/<%= user.id %> ">
-                                        <button class="card-link btn btn-outline-primary" type="submit">Editar</button>
-                                    </form>
-                                    <form action="">
-                                        <button class="btn" type="submit"></button>
-                                    </form>
-
-                                    <form action="/admin/users/delete/<%= user.id %>?_method=DELETE" method="POST">
-                                        <button class="card-link btn btn-outline-danger">Eliminar</button>
-                                    </form>
-
-                                </div>
-                                <div class="card-body">
-
-                                </div>
-                            </div>
-                            <br>
-                        </div>
-
-                        <% });  %>
-
-                </div>
-            </div>
+							<form action="/admin/users/<%= user.id %>/edit">
+								<button class="card-link btn btn-outline-primary" type="submit">Editar</button>
+							</form>
+							
+							<% if (user.id != 1) { %>
+								<form action="/admin/users/<%= user.id %>/delete?_method=DELETE" method="POST">
+									<button class="card-link btn btn-outline-danger">Eliminar</button>
+								</form>                                     
+							<% } %>
 
 
+						</div>
+						<div class="card-body">
 
+						</div>
+					</div>
+					<br>
+				</div>
 
+				<% });  %>
 
-            <%- include('partials/scriptsAdmin')  %>
+		</div>
+	</div>
 
-
-    </body>
+	<%- include('partials/scriptsAdmin')  %>
+</body>
 
 </html>

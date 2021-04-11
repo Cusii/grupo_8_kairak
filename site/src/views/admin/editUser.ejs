@@ -2,89 +2,93 @@
 <html lang="es">
 <%- include('partials/headAdmin') %>
 
-    <body class="bg-white">
-        <%- include('partials/headerAdmin') %>
-            <section class="container bg-light pb-5">
-                <article class="box-center">
+<body class="bg-white">
+    <%- include('partials/headerAdmin') %>
 
-                    <div class=" text-center ">
-                        <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-                        <h4>
-                            <%= title %>
-                        </h4>
-                        <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+    <section class="container bg-light pb-5">
+        <article class="box-center">
+
+            <div class=" text-center ">
+                <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                <h4>
+                    <%= title %>
+                </h4>
+                <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+            </div>
+            
+            <form class="container" action="/admin/users/<%=user.id%>/update?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class=" bg-white border border-1">
+                    <div class="logo-person mb-3">
+                        <img src="/images/users/<%= user.avatar%>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">
                     </div>
-                    <form class="container" action="/admin/users/update/<%=user.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
-                        <div class=" bg-white border border-1">
-                            <div class="logo-person mb-3">
-                                <img src="/images/logo-person.png " class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">
-                            </div>
 
 
-                            <div class="row mx-auto mb-3 ">
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                    <div class="row mx-auto mb-3 ">
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                            <label for="first_name">Nombre</label>
+                            <input type="text" class="form-control"  placeholder="Nombre" name="first_name" value="<%= user.firstName%>">
+                        </div>
+                    </div>
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="Nombre" name="first_name" value="<%= user.firstName%>">
-                                </div>
-                            </div>
+                    <div class="row mx-auto mb-3 ">
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                            <label for="last_name">Apellido</label>
+                            <input type="text" class="form-control"  placeholder="Apellido" name="last_name" value="<%= user.lastName%>">
 
-                            <div class="row mx-auto mb-3 ">
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                        </div>
+                    </div>
 
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="Apellido" name="last_name" value="<%= user.lastName%>">
+                    <div class="row mx-auto mb-3 ">
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control"  placeholder="email" name="email" value="<%= user.email%>">
 
-                                </div>
-                            </div>
+                        </div>
+                    </div>
 
-                            <div class="row mx-auto mb-3 ">
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="email" name="email" value="<%= user.email%>">
-
-                                </div>
-                            </div>
-
-                            <div class="row mx-auto mb-3 ">
-                                <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
-
-                                    <input type="text" class="form-control" id="nomFirs" placeholder="contraseña" name="password" value="<%= user.password%>">
-
-                                </div>
-                            </div>
-
-                            <div class="row mx-auto mb-3">
-                                <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
-
-                                    <select name="role" class="form-control">
-                                        <% roles.forEach(role => { %>
-                                            <option value="<%= role.id%>" <%- user.role.id === role.id ? "selected" : null %> ><%= role.name%></option>                                         
-                                        <% }) %>                                        
-                                    </select>
-
-                                </div>
-                            </div>
-                            <div class="row mx-auto mb-3">
-                                <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
-
-                                    <input type="text" class="form-control" id="nomFirs" placeholder=" img" name="avatar" value="<%= user.avatar%>">
-
-                                </div>
-                            </div>
-                            <div class="row mx-auto pb-5">
-                                <a class="btn col-6 col-xl-4 bg-danger mx-auto" href="/admin/users/list">volver</a>
-                                <div class="col-6 col-xl-4 mx-auto">
-                                    <button class="btn col-12 btn btn-primary" type="submit">Guardar cambios</button>
-                                </div>
+                    <% if (userLogin.id == user.id) { %>
+                        <div class="row mx-auto mb-3 ">
+                            <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
+                                <a href="/users/<%= user.id %>/pass" class="btn btn-secondary">Cambiar contraseña</a>
                             </div>
                         </div>
+                    <% } %>                    
 
-                    </form>
+                    <div class="row mx-auto mb-3">
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
 
-                </article>
-            </section>
+                            <% if (user.id != 1) { %>
+                                <label for="role">Rol</label>
+                                <select name="role" class="form-control">
+                                    <% roles.forEach(role => { %>
+                                        <option value="<%= role.id%>" <%- user.role.id === role.id ? "selected" : null %> ><%= role.name%></option>                                         
+                                    <% }) %>                                        
+                                </select>
+                            <% } %>
+                        </div>
+                    </div>
 
+                    <div class="row mx-auto mb-3">
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                            <label for="img" class="btn btn-secondary">Cambiar avatar</label>
+                            <input type="file" id="img" class="form-control" style="visibility:hidden;" name="avatar" value="<%= user.avatar%>">
+                        </div>
+                    </div>
+                    
+                    <div class="row mx-auto pb-5">
+                        <a class="btn col-6 col-xl-4 bg-danger mx-auto" href="/admin/users/list">Volver</a>
+                        <div class="col-6 col-xl-4 mx-auto">
+                            <button class="btn col-12 btn btn-primary" type="submit">Guardar cambios</button>
+                        </div>
+                    </div>
+                </div>
 
-            <%- include('partials/scriptsAdmin')  %>
-    </body>
+            </form>
+
+        </article>
+    </section>
+
+    <%- include('partials/scriptsAdmin')  %>
+</body>
 
 </html>

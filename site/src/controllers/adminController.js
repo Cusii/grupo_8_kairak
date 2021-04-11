@@ -93,13 +93,14 @@ module.exports = {
             if (user) {
                 return res.render('admin/createUser', {
                     title: 'Crear usuario',
-                    css: ''
+                    css: '',
+                    error: 'El email ya pertenece a un usuario'
                 })
             }
 
             let passHash = bcrypt.hashSync(password.trim(), 12);
 
-            await db.User.create({
+            let newUser = await db.User.create({
                 firstName: first_name,
                 lastName: last_name,
                 email,
@@ -109,7 +110,7 @@ module.exports = {
                 createdAt: new Date()
             });
 
-            res.redirect('/admin/users/list')
+            res.redirect(`/admin/users/${newUser.id}`);
 
         } catch (error) {
             res.render('error', { error })
@@ -217,5 +218,98 @@ module.exports = {
             res.render('error', { error })
         }
 
+    },
+
+    changePassword: async (req,res) => {
+        if (userLogin.id == +req.params.id) {
+            try {
+                let user = await db.User.findOne({
+                    where: {
+                        id: +req.params.id
+                    }
+                });
+    
+                res.render('admin/changePassword',{
+                    title: 'Cambiar contraseña',
+                    css: '',
+                    user,
+                });
+                
+            } catch (error) {
+                res.render('error', { error })
+            }
+        } else {
+            res.redirect('/admin/users/list')
+        }
+        
+    },
+
+    updatePassword: async (req,res) => {
+        const { currentPassword, newPassword, confirmPassword } = req.body;        
+
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            if (newPassword.trim() == confirmPassword.trim()) {
+                if (bcrypt.compareSync(currentPassword, user.password)) {
+                    let passHash = bcrypt.hashSync(newPassword.trim(), 12);
+
+                    await db.User.update({                
+                        password: passHash,                
+                    }, {
+                        where: {
+                            id: +req.params.id
+                        }
+                    });
+                    
+                    res.render('editUser', {
+                        title: 'Editar usuario',
+                        css: '',
+                        user,
+                        success: 'Contraseña actualizada exitosamente'
+                    })
+                } else {                    
+                    res.render('admin/changePassword',{
+                        title: 'Cambiar contraseña',
+                        css: '',
+                        user,
+                        error: 'Contraseña actual incorrecta'
+                    });
+                }
+            } else {                
+                res.render('admin/changePassword',{
+                title: 'Cambiar contraseña',
+                css: '',
+                user,
+                error: 'La nueva contraseña y su confirmación no coinciden'
+                });
+            }
+            
+        } catch (error) {
+            res.render('error', { error })
+        }
+    },
+
+    getUser: async (req, res) => {
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+
+            res.render('admin/userProfile',{
+                title: `Perfil ${user.id}`,
+                css: '',
+                user,
+            });
+            
+        } catch (error) {
+            res.render('error', { error })
+        }
     }
 }

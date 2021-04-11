@@ -12,28 +12,36 @@
 	<main class="container bg-light pb-5">
 		<div class="row mx-auto pb-5">
 			<div class="card mx-auto" style="width: 50%">
-				<img src="/images/logo-person.png" class="card-img-top" alt="...">
+
+				<% if (typeof success != 'undefined') { %>
+					<div class="alert alert-success">
+						<span><%= success %> </span>
+					</div>
+				<% } %>
+
 				<div class="card-header">
-					<h5 class="card-title">
+					<img src="/images/users/<%=user.avatar%>" class="card-img-top" alt="user">
+					<h3 class="card-title">
 						<%= user.first_name %>
 						<%= user.last_name %>
-					</h5>
+					</h3>
 				</div>
 				<ul class="list-group list-group-flush ">
 					<li class="list-group-item">
-						<p class="card-text">
+						<h3 class="card-text">
 							<%- user.firstName + " " + user.lastName %>
-						</p>
+						</h3>
 					</li>
 					<li class="list-group-item">
-						<p>
+						<h6>
 							<%= user.email %>
-						</p>
-					</li>
-					<li class="list-group-item pb-5">info</li>
+						</h6>
+					</li>					
 				</ul>
 				<div class="mx-auto">
 					<a href="/" class="btn btn-danger ">Volver</a>
+					<a href="/users/<%= user.id %>/edit" class="btn btn-success">Editar perfil</a>
+					<a href="/users/<%= user.id %>/pass" class="btn btn-secondary">Cambiar contraseña</a>
 				</div>
 			</div>
 		</div>
