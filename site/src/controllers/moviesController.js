@@ -38,6 +38,7 @@ module.exports = {
 
     showMovie: async(req, res) => {
         try {
+            
             let movie = await db.Movie.findOne({
                 where: {
                     id: +req.params.id
@@ -56,8 +57,7 @@ module.exports = {
 
             res.render('movieDetail', {
                 title: movie.title,
-                css: 'movieStyle',
-                movies,
+                css: 'movieStyle',    
                 movie,
                 calculateSalePrice
             })
