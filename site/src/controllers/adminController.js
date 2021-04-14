@@ -203,8 +203,8 @@ module.exports = {
                 }
             });
 
-            if (fs.existsSync(path.join('public', 'images', 'movies', userToDelete.avatar))) {
-                fs.unlinkSync(path.join('public', 'images', 'movies', userToDelete.avatar));
+            if (fs.existsSync(path.join('public', 'images', 'users', userToDelete.avatar))) {
+                fs.unlinkSync(path.join('public', 'images', 'users', userToDelete.avatar));
             }
 
             await db.User.destroy({
@@ -215,7 +215,9 @@ module.exports = {
 
             res.redirect('/admin/users/list')
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render('tech-difficulties');
         }
 
     },

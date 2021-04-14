@@ -9,7 +9,8 @@ module.exports = {
 			references: {
 			  	table: 'users',
 			  	field: 'id'
-			}
+			},
+			onDelete: 'CASCADE'
 		});
 	},
 

@@ -46,9 +46,36 @@
 							</form>
 							
 							<% if (user.id != 1) { %>
-								<form action="/admin/users/<%= user.id %>/delete?_method=DELETE" method="POST">
+								<!-- Button trigger modal -->
+								<button type="button" class="card-link btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= user.id %>">
+									Eliminar
+								</button>
+								
+								<!-- Modal -->
+								<div class="modal fade" id="staticBackdrop<%= user.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+									<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+										<h5 class="modal-title" id="staticBackdropLabel"><%= user.email %></h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<p>¿Desea eliminar este usuario?</p>
+										</div>
+										<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+										<form action="/admin/users/<%= user.id %>/delete?_method=DELETE" method="POST">
+											<button class="btn btn-danger">Confirmar</button>
+										</form>
+										</div>
+									</div>
+									</div>
+								</div>
+
+
+								<!-- <form action="/admin/users//delete?_method=DELETE" method="POST">
 									<button class="card-link btn btn-outline-danger">Eliminar</button>
-								</form>                                     
+								</form> -->                                     
 							<% } %>
 
 
