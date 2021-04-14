@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head') %>
+
+<body class="bg-white">
+    <% if (typeof userLogin != 'undefined') { %>
+		<%- include('partials/headerUser')  %>
+	<% } else { %>
+		<%- include('partials/header')  %>
+	<% } %>
+
+    <main>
+        <section class="container bg-light pb-5">
+            <article class="box-center">
+                <div class=" text-center">
+                    <hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+                    <h4>
+                        <%= title %>
+                    </h4>
+                    <hr class="mx-auto m-12 " size="5 " noshade="noshade " width="100% " />
+                </div>
+                <form class="container" action="/users/recover" method="POST">
+                    <div class=" bg-white border border-1">
+    
+                        <% if (typeof error != 'undefined') { %>
+                            <div class="alert alert-danger ">
+                                <span><%= error %> </span>
+                            </div>
+                        <% } %>                  
+    
+                        <!-- email -->
+                        <div class="row mx-auto mb-3" style="margin-top: 2rem">
+                            <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">                            
+                                <input type="email" class="form-control" id="recipient-name" placeholder="Ingrese su email" name="email">
+                            </div>
+                        </div>               
+                        
+                        
+                        <div class="row mx-auto pb-5">
+                            <a class="btn col-6 col-xl-4 bg-danger mx-auto" href="/users/login">Volver</a>
+                            <div class="col-6 col-xl-4 mx-auto">
+                                <button class="btn col-12 btn btn-primary" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                </form>
+    
+            </article>
+        </section>
+
+
+    </main>
+
+
+    <%- include('partials/scripts')  %>
+	<%- include('partials/footer')  %>
+</body>
+
+</html>

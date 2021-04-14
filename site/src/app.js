@@ -15,7 +15,7 @@ const session = require('express-session')
 
 const db = require('./database/models/index');
 
-const localsCheck = require('./middlewares/localsCheck');
+const localCheck = require('./middlewares/localCheck');
 const cookieCheck = require("./middlewares/cookieCheck");
 const menuMiddleware = require('./middlewares/menuMiddleware');
 
@@ -44,7 +44,7 @@ app.use(methodOverride("_method"));
 app.use(session({ secret: 'kairak' }))
 app.use(menuMiddleware);
 app.use(cookieCheck);
-app.use(localsCheck);
+app.use(localCheck);
 
 app.use("/", indexRouter);
 app.use("/cart", cartRouter);

@@ -3,7 +3,7 @@ const {
 	Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-	class RentedMovie extends Model {
+	class TmpResetPass extends Model {
 		/**
 		 * Helper method for defining associations.
 		 * This method is not a part of Sequelize lifecycle.
@@ -11,38 +11,37 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			// define association here
-			RentedMovie.belongsTo(models.Movie, {
-				as: 'movie',
-				foreignKey: 'movieId'
+			TmpResetPass.belongsTo(models.User, {
+				as: 'user',
+				foreignKey: 'userId'
 			})
 		}
 	};
-	RentedMovie.init({
+	TmpResetPass.init({
 		id: {
 			allowNull: false,
 			autoIncrement: true,
 			primaryKey: true,
 			type: DataTypes.INTEGER
 		},
-		movieId: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			unique: true
-		},
-		counter: {
+		userId: {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
-		createdAt: {
+		token: {
+			allowNull: false,
+			type: DataTypes.STRING		
+		},
+		expirationDate: {
 			type: DataTypes.DATE,
 			allowNull: false
-		},
-		updatedAt: DataTypes.DATE,
+		}
 	}, {
 		sequelize,
-		modelName: 'RentedMovie',
-		tableName: 'rented_movies',
-		underscored: true
+		modelName: 'TmpResetPass',
+		tableName: 'tmp_reset_pass',
+		underscored: true,
+		timestamps: false
 	});
-	return RentedMovie;
+	return TmpResetPass;
 };

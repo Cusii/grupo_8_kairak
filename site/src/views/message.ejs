@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head')  %>
+
+<body class="bg-white">
+	<% if (typeof userLogin != 'undefined') { %>
+		<%- include('partials/headerUser')  %>
+	<% } else { %>
+		<%- include('partials/header')  %>
+	<% } %>
+
+    <main>
+        <div class="container bg-light pb-5">
+            <section class="container bg-light pb-5">    
+                <div class="text-center">                
+                    <h4><%= message %> </h4>                
+                </div>   
+            </section>
+        </div>
+
+    </main>
+
+	<%- include('partials/scripts')  %>
+	<%- include('partials/footer')  %>	
+	
+</body>
+
+</html>

@@ -4,7 +4,8 @@ const { check, validationResult, body } = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const mailer = require('../handlers/mailer');
-
+const crypto = require('crypto');
+const { Op } = require("sequelize");
 
 module.exports = {
     login: async(req, res) => {
@@ -167,7 +168,7 @@ module.exports = {
                 createdAt: new Date()
             });
 
-            //send email
+            
             const subject = 'Bienvenido a Kairak ✔';
             const url = `${req.protocol}://${req.headers.host}`;
             const fileName = 'welcome';
@@ -266,21 +267,34 @@ module.exports = {
             });
             
         } catch (error) {
-            res.render('error', { error })
+            console.log(error.message);
+            console.log(error.stack);
+            res.render('error', { error });
         }
         
     },
 
-    updateProfile: async (req, res) => {
-        const { first_name, last_name, email, password, role } = req.body
+    updateProfile: async (req, res, next) => {
+        const { first_name, last_name } = req.body
         const imgFile = req.file;
 
+        let errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.render('editProfile', {
+                title: 'Editar perfil',
+                errors: errors.mapped(),
+                css: ''
+            })
+        }    
+
         try {
-            let user = db.User.findOne({
+            let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
                 }
-            });
+            });   
+
 
             if (imgFile) {
                 if (fs.existsSync(path.join('public', 'images', 'movies', user.avatar))) {
@@ -293,9 +307,6 @@ module.exports = {
                 id: +req.params.id,
                 firstName: first_name,
                 lastName: last_name,
-                email: email,
-                password: password,
-                roleId: role,
                 avatar: user.avatar
             }, {
                 where: {
@@ -305,7 +316,9 @@ module.exports = {
 
             res.redirect(`/users/${+req.params.id}`)
         } catch (error) {
-            res.render('error', { error })
+            console.log(error.message);
+            console.log(error.stack);
+            res.render('tech-difficulties');
         }    
     },
 
@@ -376,5 +389,148 @@ module.exports = {
         } catch (error) {
             res.render('error', { error })
         }
+    },
+
+    toRecoverPassword: async(req,res) => {
+        res.render('recoverAccount', {
+            title: 'Reestablecer contraseña',
+            css: ''
+        });
+    },
+
+    recoverPassword: async (req, res) => {
+        const { email } = req.body;
+
+        try {
+            const user = await db.User.findOne({
+                where: {
+                    email: email
+                }
+            });
+
+            if (user) {
+                const token = crypto.randomBytes(20).toString('hex');
+                const expirationTime = Date.now() + (1000*60*60);
+
+                let tmpReset = await db.TmpResetPass.findOne({
+                    where: {
+                        userId: user.id
+                    }
+                });
+
+                if (tmpReset) {
+                    tmpReset.token = token;
+                    tmpReset.expirationDate = expirationTime;
+                    tmpReset.save();
+                } else {
+                    await db.TmpResetPass.create({
+                        userId: user.id,
+                        token: token,
+                        expirationDate: expirationTime
+                    });
+                }    
+
+                const resetUrl = `${req.protocol}://${req.headers.host}/users/reset/${token}`;
+                //console.log(resetUrl);
+                              
+                await mailer.sendEmail(user,
+                    'Restablezca la contraseña de su cuenta',
+                    resetUrl,
+                    'reset-password'
+                );
+
+                res.render('message', {
+                    title:'Restablecer contraseña',
+                    message: 'Se ha enviado un email para restablecer contraseña. Por favor revise su correo electrónico. '
+                })
+            } else {
+                res.render('recoverAccount', {
+                    title: 'Reestablecer contraseña',
+                    css: '',
+                    error: `${email} no pertenece a un usuario registrado`
+                });                
+            }
+
+        } catch (error) {
+            console.log(error.message);
+            console.log(error.stack);
+            res.render('tech-difficulties');
+        }        
+    },
+
+    toResetPassword: async (req, res) => {
+        const { token } = req.params;
+
+        try {
+            const tmp = await db.TmpResetPass.findOne({
+                where: {
+                    token: token,
+                    expirationDate: {
+                        [Op.gte]: Date.now() 
+                    }
+                }
+            });
+
+            if (tmp) {
+                const user = await db.User.findOne({
+                    where: {
+                        id: tmp.userId
+                    }
+                });
+
+                res.render('resetPassword', {
+                    title:'Restablecer contraseña',
+                    user
+                })
+            } else {
+                res.render('recoverAccount', {
+                    title:'Restablecer contraseña',
+                    error: `Token no valido. Intentelo nuevamente`
+                })
+            }    
+            
+        } catch (error) {
+            console.log(error.message);
+            console.log(error.stack);
+            res.render('tech-difficulties');
+        }
+
+        
+    },
+
+    resetPassword: async(req,res) => {
+        const { newPassword } = req.body;
+
+        try {
+            let user = await db.User.findOne({
+                where: {
+                    id: +req.params.id
+                }
+            });
+            user.password = bcrypt.hashSync(newPassword.trim(), 12);
+            await user.save();
+            
+            let tmpReset = await db.TmpResetPass.findOne({
+                where: {
+                    userId: user.id
+                }
+            });
+            tmpReset.expirationDate = Date.now();
+            await tmpReset.save();
+            
+            const url = `${req.protocol}://${req.headers.host}`;
+            await mailer.sendEmail(user,
+                'Se ha cambiado su contraseña ✔',
+                url,
+                'confirm-reset-password'
+            );
+
+            res.redirect('/users/login');
+        } catch (error) {
+            console.log(error.message);
+            console.log(error.stack);
+            res.render('tech-difficulties');
+        }
+        
     }
 }

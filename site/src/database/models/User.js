@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
 				as: 'ratingsByRent',
 				foreignKey: 'userId'
 			});
+
+			User.hasOne(models.TmpResetPass, {
+				as: 'resetPass',
+				foreignKey: 'userId'
+			})
 			
 		}
 	};

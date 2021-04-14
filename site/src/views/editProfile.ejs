@@ -20,10 +20,16 @@
                         <img src="/images/users/<%=user.avatar%>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">
                     </div>
 
+                    <div class="row mx-auto mb-3 ">
+                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
+                            <input type="text" class="form-control" placeholder="email" name="email" value="<%= user.email%>" readonly>
+                        </div>
+                    </div>                    
 
                     <div class="row mx-auto mb-3 ">
                         <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
-                            <input type="text" class="form-control" placeholder="Nombre" name="first_name" value="<%= user.firstName%>">                        </div>
+                            <input type="text" class="form-control" placeholder="Nombre" name="first_name" value="<%= user.firstName%>">  
+                        </div>
                     </div>
 
                     <div class="row mx-auto mb-3 ">
@@ -31,17 +37,12 @@
                             <input type="text" class="form-control" placeholder="Apellido" name="last_name" value="<%= user.lastName%>">
                         </div>
                     </div>
-
-                    <div class="row mx-auto mb-3 ">
-                        <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
-                            <input type="text" class="form-control" placeholder="email" name="email" value="<%= user.email%>">
-                        </div>
-                    </div>                    
                     
                     <div class="row mx-auto mb-3">
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
                             <label for="avatar" class="btn btn-secondary">Cambiar avatar</label>
                             <input type="file" id="avatar" class="form-control" style="visibility:hidden;" name="avatar">
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.avatar)?errors.avatar.msg: ""%> </span>
                         </div>
                     </div>
                     <div class="row mx-auto pb-5">

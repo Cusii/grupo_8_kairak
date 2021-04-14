@@ -6,7 +6,7 @@ const adminController = require('../controllers/adminController');
 const uploadImg = require('../middlewares/uploadUserImage');
 const adminCheck = require('../middlewares/adminCheck');
 const validationRegister = require('../validations/validationRegister');
-const passCheck = require('../middlewares/passCheck');
+const changePassCheck = require('../middlewares/changePassCheck');
 
 
 router.get('/', adminCheck, adminController.index);
@@ -22,7 +22,7 @@ router.put('/users/:id/update', adminCheck, uploadImg.single('avatar'), adminCon
 
 router.delete('/users/:id/delete', adminCheck, adminController.deleteUser);
 
-router.get('/users/:id/pass', adminCheck, passCheck, adminController.changePassword);
-router.put('/users/:id/pass', adminCheck, passCheck, adminController.updatePassword);
+router.get('/users/:id/pass', adminCheck, changePassCheck, adminController.changePassword);
+router.put('/users/:id/pass', adminCheck, changePassCheck, adminController.updatePassword);
 
 module.exports = router;
