@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {    
+window.addEventListener('load', ()=>{ 
 
     document.getElementById("img").onchange = function(e) {        
         let reader = new FileReader();
@@ -12,9 +12,8 @@ window.addEventListener("load", () => {
             image.src = reader.result;
         
             preview.innerHTML = '';
-            preview.innerHTML = `<img src="${image.src}" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">`;
+            preview.innerHTML = `<img src="${image.src}" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="425px">`;
             //preview.append(image);
         };
     }
-
 })

@@ -18,7 +18,7 @@
             
             <form class="container" action="/admin/users/<%=user.id%>/update?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class=" bg-white border border-1">
-                    <div class="logo-person mb-3">
+                    <div class="logo-person mb-3" id="preview-img">
                         <img src="/images/users/<%= user.avatar%>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">
                     </div>
 
@@ -33,7 +33,7 @@
                     <div class="row mx-auto mb-3 ">
                         <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                             <label for="last_name">Apellido</label>
-                            <input type="text" class="form-control"  placeholder="Apellido" name="last_name" value="<%= user.lastName%>" readonly>
+                            <input type="text" class="form-control"  placeholder="Apellido" name="last_name" value="<%= user.lastName%>" >
 
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="row mx-auto mb-3 ">
                         <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control"  placeholder="email" name="email" value="<%= user.email%>">
+                            <input type="text" class="form-control"  placeholder="email" name="email" value="<%= user.email%>" readonly>
 
                         </div>
                     </div>
@@ -89,6 +89,7 @@
     </section>
 
     <%- include('partials/scriptsAdmin')  %>
+    <script src="/javascripts/editUser.js"></script>
 </body>
 
 </html>

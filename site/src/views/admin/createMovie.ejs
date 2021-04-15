@@ -100,9 +100,11 @@
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
                             <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
                                 <label for="img-movie">Imagen</label>
-                                <input type="file" class="input-file form-control mb-3" type="file" value="" name="img-movie">
+                                <input type="file" id="img" class="input-file form-control mb-3" type="file" value="" name="img-movie">
                             </div>
+                            <div id="preview-img"></div>
                         </div>
+
 
                         <!-- description -->
                         <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 mb-5 form_group_input" id="group_description">
@@ -135,7 +137,7 @@
     </section>
 
     <%- include('partials/scriptsAdmin')  %>
-     <script src="/javascripts/movie.js"></script> 
+    <script src="/javascripts/movie.js"></script> 
 </body>
 
 </html>

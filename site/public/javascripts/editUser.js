@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {    
+window.addEventListener('load', ()=>{ 
 
     document.getElementById("img").onchange = function(e) {        
         let reader = new FileReader();
@@ -16,5 +16,4 @@ window.addEventListener("load", () => {
             //preview.append(image);
         };
     }
-
 })

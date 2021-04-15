@@ -16,7 +16,9 @@
 
                     <form action="/movies/<%= movie.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="container mb-5">
                         <div class=" bg-white mb-5 border border-1 pt-5">
-                            <img src="/images/movies/<%= movie.image %>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="425px">
+                            <div id="preview-img">
+                                <img src="/images/movies/<%= movie.image %>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="425px">
+                            </div>
                             <div class="row mx-auto mb-5 ">
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <input class="form-control mb-3 " type="text" placeholder="Nombre" name="title" value="<%= movie.title %>">
@@ -52,7 +54,7 @@
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
                                     <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
-                                        <input type="file" id="nomFirs" class="input-file form-control mb-3" type="file" value="" name="img-movie"> Subir foto
+                                        <input type="file" id="img" class="input-file form-control mb-3" type="file" value="" name="img-movie"> Subir foto
                                     </div>
                                 </div>
                                 <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6  ">
@@ -73,7 +75,8 @@
             </section>
 
 
-            <%- include('partials/scriptsAdmin')  %>
+        <%- include('partials/scriptsAdmin')  %>
+        <script src="/javascripts/editMovie.js"></script>
     </body>
 
 </html>
