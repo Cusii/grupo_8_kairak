@@ -113,14 +113,6 @@ module.exports = {
     },   
 
     watchMovie: async (req, res) => {
-        const { id, firstName, lastName, role } = req.session.userLogin;
-        let user = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
-
         try {
             let movie = await db.Movie.findOne({
                 where: {
@@ -132,7 +124,6 @@ module.exports = {
                 title: movie.title,
                 css: 'movieStyle',
                 movie,
-                //userLogin: user
             })
 
         } catch (error) {
@@ -224,7 +215,7 @@ module.exports = {
     createMovie: async(req, res, next) => {
         let errors = validationResult(req);
 
-        if (!errors.isEmpty() && req.fileValidationError) {
+        if (!errors.isEmpty() || req.fileValidationError) {
             let auxError = errors.mapped();
             auxError.image = {
                 msg: req.fileValidationError
@@ -232,7 +223,7 @@ module.exports = {
 
             return res.render('admin/createMovie', {
                 errors: auxError,
-                title: 'Kairak',
+                title: 'Agregar pelicula',
                 css: 'forms',
             })
         }
@@ -274,8 +265,16 @@ module.exports = {
                 } else {
                     fs.unlinkSync(path.join('public', 'images', 'movies', req.file.filename));
                     console.log('La pelicula ya existe');
-                    //provisorio
-                    return res.redirect('/movies/create');
+                    
+                    let auxError = errors.mapped();
+                    auxError.newMovie = {
+                        msg: 'La película ya existe'
+                    }
+                    return res.render('admin/createMovie', {
+                        errors: auxError,
+                        title: 'Agregar pelicula',
+                        css: 'forms',
+                    })
                 }
             } else {
                 let newMovie = await db.Movie.create({
@@ -451,8 +450,36 @@ module.exports = {
 
                 await t.commit();
             } else {
-                //provisorio
-                console.log("No se puede eliminar la pelicula, actualmente está en uso por usuarios");
+                let deleteError = "No se puede eliminar esta pelicula, actualmente está alquilada por usuarios";
+                try {
+                    let movies = await db.Movie.findAll({
+                        where: {
+                            status: 1
+                        },
+                        include: [
+                            { association: "genre" },
+                            { association: "category" },
+                            { association: "rating" },
+                            {
+                                association: "sales",
+                                where: {status: 1},
+                                required: false
+                            }
+                        ]
+                    });
+        
+                    res.render('admin/moviesList', {
+                        title: 'Nuestras Películas',
+                        css: '',
+                        movies,
+                        deleteError,
+                        calculateSalePrice
+                    })
+                } catch (error) {
+                    console.error(error.message);
+                    console.error(error.stack);
+                    res.render("tech-difficulties");
+                }
             }
 
             res.redirect('/movies');

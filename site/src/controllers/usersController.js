@@ -317,10 +317,10 @@ module.exports = {
             });   
 
 
-            if (imgFile) {
+            if (imgFile && !user.avatar != 'avatar-default.png') {    
                 if (fs.existsSync(path.join('public', 'images', 'users', user.avatar))) {
                     fs.unlinkSync(path.join('public', 'images', 'users', user.avatar));
-                }
+                }               
                 user.avatar = req.file.filename
             }
 

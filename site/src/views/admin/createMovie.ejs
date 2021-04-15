@@ -18,6 +18,12 @@
                 <div class=" bg-white mb-5 border border-1 pt-5">
                     <div class="row mx-auto mb-5 ">
 
+                        <% if (typeof errors != 'undefined' &&  errors.newMovie) { %>
+                            <div class="alert alert-danger ">
+                                <span><%= errors.newMovie.msg %> </span>
+                            </div>
+                        <% } %>
+
                         <!-- movie title -->
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_title">
                             <label for="title">Título</label>
