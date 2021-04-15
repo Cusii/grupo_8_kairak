@@ -191,7 +191,7 @@ module.exports = {
                 }
             });
 
-            if (imgFile) {
+            if (imgFile && user.avatar != 'avatar-default.png') {
                 if (fs.existsSync(path.join('public', 'images', 'movies', user.avatar))) {
                     fs.unlinkSync(path.join('public', 'images', 'movies', user.avatar));
                 }
@@ -229,8 +229,10 @@ module.exports = {
                 }
             });
 
-            if (fs.existsSync(path.join('public', 'images', 'users', userToDelete.avatar))) {
-                fs.unlinkSync(path.join('public', 'images', 'users', userToDelete.avatar));
+            if (userToDelete.avatar != 'avatar-default.png') {
+                if (fs.existsSync(path.join('public', 'images', 'users', userToDelete.avatar))) {
+                    fs.unlinkSync(path.join('public', 'images', 'users', userToDelete.avatar));
+                }    
             }
 
             await db.User.destroy({
