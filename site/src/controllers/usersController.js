@@ -466,7 +466,8 @@ module.exports = {
 
                 res.render('message', {
                     title:'Restablecer contraseña',
-                    message: 'Se ha enviado un email para restablecer la contraseña. Por favor revise su correo electrónico. '
+                    message: 'Se ha enviado un email para restablecer la contraseña. Por favor revise su correo electrónico. ',
+                    css: 'message'
                 })
             } else {
                 res.render('recoverAccount', {

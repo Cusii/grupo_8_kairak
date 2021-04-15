@@ -19,6 +19,12 @@ a {
 	text-align: center;
 }
 
+.kairak-footer{
+	position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
 
 /* HEADER */
 
