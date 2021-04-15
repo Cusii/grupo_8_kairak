@@ -17,25 +17,30 @@
 			<hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
 		</div>
 
-		<form action="/users/login" method="POST">
+		<form action="/users/login" method="POST" id="formLogin">
 			<div class=" bg-white border border-1">
 				<div class="card-body border border-1">
 					<img src="/images/logo-person.png" class="img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo" width="150px">
 
 					<div class=" mx-auto col-10 col-md-8  pb-3  mb-3">
-						<input type="email" class="form-control " placeholder="Email" name="email">
+						<input type="email" class="form-control " placeholder="Email" name="email" id="mail">
+						<span class="text-danger" id="errorMail" ></span>
 						<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.email)?errors.email.msg: ""%> </span>
+						
 					</div>
 
 					<div class="mx-auto col-10 col-md-8 pb-3 mb-3">
-						<input type="password" class="form-control " placeholder="Contraseña" name="password">
+						<input type="password" class="form-control " placeholder="Contraseña" name="password" id="password">
+						<span class="text-danger" id="errorPassword"></span>
 						<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.password)?errors.password.msg: ""%> </span>
+
 					</div>
 
 					<div class="mx-auto col-10 col-md-8 pb-3 mb-3">
 						<div class="form-check form-switch">
 							<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="recordar">
 							<label class="form-check-label" for="flexSwitchCheckDefault">Recordarme</label>
+
 						</div>
 					</div>
 

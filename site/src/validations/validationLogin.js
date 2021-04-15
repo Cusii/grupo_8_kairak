@@ -8,7 +8,7 @@ module.exports = [
     .isEmail()
     .withMessage('El mail no es valido'),
 
-    check('password')
+ /*    check('password')
     .notEmpty()
-    .withMessage('Ingrese una contraseña')
+    .withMessage('Ingrese una contraseña') */
 ]
