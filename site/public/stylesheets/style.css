@@ -166,6 +166,11 @@ header {
 	transition: all 300ms;
 }
 
+.content-carrusel figure img {
+	width: 100%;
+	height: 100%;
+}
+
 @keyframes rotar {
 	from {
 		transform: rotateY(0deg);
