@@ -50,7 +50,7 @@ module.exports = {
         const rentID = +req.params.id;
         const { rating } = req.body;
 
-        const { userID } = req.session.userLogin.id;    
+        const userID = req.session.userLogin.id;    
 
         try {
             await db.RatingMovieUser.update({
