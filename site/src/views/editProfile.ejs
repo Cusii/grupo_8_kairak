@@ -16,7 +16,7 @@
             </div>
             <form class="container" action="/users/<%=user.id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class=" bg-white border border-1">
-                    <div class="logo-person mb-3">
+                    <div class="logo-person mb-3" id="preview-img">
                         <img src="/images/users/<%=user.avatar%>" class=" img-logo-person img-fluid m-3 rounded mx-auto d-block " alt="logo " width="150px">
                     </div>
 
@@ -42,7 +42,7 @@
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
                             <label for="avatar" class="btn btn-secondary">Cambiar avatar</label>
                             <input type="file" id="avatar" class="form-control" style="visibility:hidden;" name="avatar">
-                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.avatar)?errors.avatar.msg: ""%> </span>
+                            <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.avatar)?errors.avatar.msg: ""%> </span>                            
                         </div>
                     </div>
                     <div class="row mx-auto pb-5">
@@ -60,6 +60,7 @@
 
     <%- include('partials/scripts')  %>
 	<%- include('partials/footer')  %>
+    <script src="/javascripts/editProfile.js"></script>
 </body>
 
 </html>
