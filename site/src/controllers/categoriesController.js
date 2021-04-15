@@ -9,12 +9,6 @@ module.exports = {
 
     getCategory: async (req, res) => {
         try {
-            let categories = await db.Category.findAll({
-                order: [
-                    ['id', 'ASC']
-                ]
-            });
-            let genres = await db.Genre.findAll();
 
             let category = await db.Category.findOne({
                 where: {
@@ -67,13 +61,13 @@ module.exports = {
             res.render('movies', {
                 title: category.name,
                 css: '',
-                categories,
-                genres,
                 movies: category.movies,                
                 calculateSalePrice
             })
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     }
 }

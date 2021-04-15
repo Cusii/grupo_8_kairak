@@ -67,7 +67,9 @@ module.exports = {
             })
             
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }        
     }
 }

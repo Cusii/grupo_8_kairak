@@ -7,28 +7,14 @@ const path = require('path')
 
 module.exports = {
     index: (req, res) => {        
-        const { id, firstName, lastName, role} = req.session.userLogin;
         
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
         res.render('admin/indexAdmin', {
             css: 'styleFormularios',
-            userAdmin
         })
 
     },
-    listUser: async(req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+
+    listUser: async(req, res) => {    
 
         try {
             let users = await db.User.findAll({
@@ -40,23 +26,17 @@ module.exports = {
             res.render('admin/usersList', {
                 title: 'Kairak',
                 users,
-                css: 'styleFormularios',
-                userAdmin
+                css: 'styleFormularios'
             })
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
-    register: async(req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+    register: async(req, res) => {    
 
         try {
             let roles = await db.Role.findAll();
@@ -65,16 +45,33 @@ module.exports = {
                 title: 'Crear nuevo usuario',
                 css: 'forms',
                 roles,
-                userAdmin
             })
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
 
     },
 
     proccesRegister: async(req, res, next) => {
         const { first_name, last_name, email, password, role } = req.body
+
+        let errors = validationResult(req);
+        
+        if (!errors.isEmpty() && req.fileValidationError) {
+            let auxError = errors.mapped();
+            auxError.image = {
+                msg: req.fileValidationError
+            }
+           
+            return res.render('admin/createUser', {
+                errors: auxError,
+                title: 'Crear nuevo usuario',
+                css: 'forms',
+                roles,
+            });
+        }
 
         let avatarPath = req.files[0];
         if (!avatarPath) {
@@ -113,19 +110,14 @@ module.exports = {
             res.redirect(`/admin/users/${newUser.id}`);
 
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
 
     },
 
-    editUser: async(req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+    editUser: async(req, res) => {    
 
         try {
             let roles = await db.Role.findAll();
@@ -144,17 +136,50 @@ module.exports = {
                 css: '',
                 user,
                 roles,
-                userAdmin
             })
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     updateUser: async(req, res) => {
-
         const { first_name, last_name, email, password, role } = req.body
         const imgFile = req.file;
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty() && req.fileValidationError) {
+            let auxError = errors.mapped();
+            auxError.image = {
+                msg: req.fileValidationError
+            }
+
+            try {
+                let roles = await db.Role.findAll();
+
+                let user = await db.User.findOne({
+                    where: {
+                        id: +req.params.id
+                    },
+                    include: {
+                        association: "role"
+                    }
+                });
+
+                return res.render('admin/editUser', {
+                    title: 'Editar usuario',
+                    css: '',
+                    user,
+                    roles,
+                    errors: auxError,
+                })
+            } catch (error) {
+                console.error(error.message);
+                console.error(error.stack);
+                res.render("tech-difficulties");
+            }    
+        }
 
         try {
             let user = db.User.findOne({
@@ -190,12 +215,13 @@ module.exports = {
 
             res.redirect('/admin/users/list')
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     deleteUser: async(req, res) => {
-
         try {
                 let userToDelete = await db.User.findOne({
                 where: {
@@ -238,7 +264,9 @@ module.exports = {
                 });
                 
             } catch (error) {
-                res.render('error', { error })
+                console.error(error.message);
+                console.error(error.stack);
+                res.render("tech-difficulties");
             }
         } else {
             res.redirect('/admin/users/list')
@@ -292,7 +320,9 @@ module.exports = {
             }
             
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -311,7 +341,9 @@ module.exports = {
             });
             
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     }
 }

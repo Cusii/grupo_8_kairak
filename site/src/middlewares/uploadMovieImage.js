@@ -17,7 +17,8 @@ const fileFilter = (req, file, cb) => {
         cb(null, true);
     } else {
         req.fileValidationError = "Por favor ingrese formatos permitidos: .png, .jpg and .jpeg";
-        cb(null, false, req.fileValidationError);     
+        cb(null, false, req.fileValidationError);
+        console.log(req.fileValidationError);
     }
 }
 

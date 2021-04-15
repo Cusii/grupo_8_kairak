@@ -40,7 +40,9 @@ module.exports = {
             });
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -48,13 +50,7 @@ module.exports = {
         const rentID = +req.params.id;
         const { rating } = req.body;
 
-        const { id, firstName, lastName, role } = req.session.userLogin;
-        let user = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+        const { userID } = req.session.userLogin.id;    
 
         try {
             await db.RatingMovieUser.update({
@@ -67,10 +63,12 @@ module.exports = {
             });
 
             
-            res.redirect(`/users/${user.id}/rents`);            
+            res.redirect(`/users/${userID}/rents`);            
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     }
 }

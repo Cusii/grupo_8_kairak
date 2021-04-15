@@ -8,9 +8,6 @@ module.exports = {
 
     getGenre: async(req, res) => {
         try {
-            
-            let genres = await db.Genre.findAll();
-
 
             let genre = await db.Genre.findOne({
                 where: {
@@ -42,7 +39,9 @@ module.exports = {
                 calculateSalePrice
             })
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     }
 }

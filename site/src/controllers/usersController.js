@@ -17,7 +17,9 @@ module.exports = {
                 css: ''
             })
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
 
     },
@@ -91,7 +93,9 @@ module.exports = {
                 })
             }
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -113,18 +117,27 @@ module.exports = {
                 css: 'forms'
             })
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
 
     },
 
     processRegister: async(req, res, next) => {
-        let errors = validationResult(req)
+        let errors = validationResult(req);
+        console.log(req.fileValidationError);
 
-        if (!errors.isEmpty()) {            
+        
+        if (!errors.isEmpty() && req.fileValidationError) {
+            let auxError = errors.mapped();
+            auxError.image = {
+                msg: req.fileValidationError
+            }
+            
 
             return res.render('register', {
-                errors: errors.mapped(),
+                errors: auxError,
                 title: 'Kairak',
                 css: 'forms'
             })
@@ -184,12 +197,11 @@ module.exports = {
             return res.redirect(`/users/${newUser.id}`)
 
         } catch (error) {
-            console.log(error.message);
-            console.log(error.stack);
+            console.error(error.message);
+            console.error(error.stack);
             res.render("tech-difficulties");
         }
     },
-
 
     showProfile: async(req, res) => {
         try {
@@ -208,7 +220,9 @@ module.exports = {
                 user
             })
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -247,7 +261,9 @@ module.exports = {
                 user,
             })
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
         
     },
@@ -267,9 +283,9 @@ module.exports = {
             });
             
         } catch (error) {
-            console.log(error.message);
-            console.log(error.stack);
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
         
     },
@@ -280,10 +296,15 @@ module.exports = {
 
         let errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
+        if (!errors.isEmpty() && req.fileValidationError) {
+            let auxError = errors.mapped();
+            auxError.image = {
+                msg: req.fileValidationError
+            }
+
             return res.render('editProfile', {
                 title: 'Editar perfil',
-                errors: errors.mapped(),
+                errors: auxError,
                 css: ''
             })
         }    
@@ -297,8 +318,8 @@ module.exports = {
 
 
             if (imgFile) {
-                if (fs.existsSync(path.join('public', 'images', 'movies', user.avatar))) {
-                    fs.unlinkSync(path.join('public', 'images', 'movies', user.avatar));
+                if (fs.existsSync(path.join('public', 'images', 'users', user.avatar))) {
+                    fs.unlinkSync(path.join('public', 'images', 'users', user.avatar));
                 }
                 user.avatar = req.file.filename
             }
@@ -316,9 +337,9 @@ module.exports = {
 
             res.redirect(`/users/${+req.params.id}`)
         } catch (error) {
-            console.log(error.message);
-            console.log(error.stack);
-            res.render('tech-difficulties');
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }    
     },
 
@@ -337,7 +358,9 @@ module.exports = {
             });
             
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -387,7 +410,9 @@ module.exports = {
             }
             
         } catch (error) {
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -441,7 +466,7 @@ module.exports = {
 
                 res.render('message', {
                     title:'Restablecer contraseña',
-                    message: 'Se ha enviado un email para restablecer contraseña. Por favor revise su correo electrónico. '
+                    message: 'Se ha enviado un email para restablecer la contraseña. Por favor revise su correo electrónico. '
                 })
             } else {
                 res.render('recoverAccount', {
@@ -452,9 +477,9 @@ module.exports = {
             }
 
         } catch (error) {
-            console.log(error.message);
-            console.log(error.stack);
-            res.render('tech-difficulties');
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }        
     },
 
@@ -490,9 +515,9 @@ module.exports = {
             }    
             
         } catch (error) {
-            console.log(error.message);
-            console.log(error.stack);
-            res.render('tech-difficulties');
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
 
         
@@ -527,9 +552,9 @@ module.exports = {
 
             res.redirect('/users/login');
         } catch (error) {
-            console.log(error.message);
-            console.log(error.stack);
-            res.render('tech-difficulties');
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
         
     }

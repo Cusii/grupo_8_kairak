@@ -32,7 +32,9 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -63,9 +65,12 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
+
     search: async(req, res) => {
         console.log(req.query.search);        
         const search = req.query.search.trim().toLowerCase();
@@ -99,7 +104,9 @@ module.exports = {
                 calculateSalePrice
             })
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
         
         
@@ -129,20 +136,15 @@ module.exports = {
             })
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     /**************************** ADMIN ****************************/
 
-    getMovies: async(req, res) => {
-        const { id, firstName, lastName, role } = req.session.userLogin;
-        let userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+    getMovies: async(req, res) => {   
 
         try {
             let movies = await db.Movie.findAll({
@@ -165,23 +167,17 @@ module.exports = {
                 title: 'Nuestras Películas',
                 css: '',
                 movies,
-                userAdmin,
                 calculateSalePrice
             })
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
 
     },
-    getMovie: async(req, res) => {
-        const { id, firstName, lastName, role } = req.session.userLogin;
-        let userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
 
+    getMovie: async(req, res) => {
         try {
             let movie = await db.Movie.findOne({
                 where: {
@@ -203,42 +199,41 @@ module.exports = {
                 title: movie.title,
                 css: 'movieStyle',
                 movie,
-                userAdmin,
                 calculateSalePrice
             });
         } catch (error) {
-
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     toCreateMovie: async(req, res) => {
-        const { id, firstName, lastName, role } = req.session.userLogin;
-        let userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
-
         try {
             res.render('admin/createMovie', {
                 title: 'Agregar pelicula',
                 css: 'forms',
-                userAdmin
             })
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     createMovie: async(req, res, next) => {
-        let errors = validationResult(req)
-        if (!errors.isEmpty()) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty() && req.fileValidationError) {
+            let auxError = errors.mapped();
+            auxError.image = {
+                msg: req.fileValidationError
+            }
+
             return res.render('admin/createMovie', {
-                errors: errors.mapped(),
+                errors: auxError,
                 title: 'Kairak',
                 css: 'forms',
-                userAdmin
             })
         }
 
@@ -303,18 +298,13 @@ module.exports = {
 
             res.redirect(`/movies/${id}`);
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
-    toEditMovie: async(req, res) => {
-        const { id, firstName, lastName, role } = req.session.userLogin;
-        let userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+    toEditMovie: async(req, res) => {    
 
         try {
             let movie = await db.Movie.findOne({
@@ -333,11 +323,12 @@ module.exports = {
                 title: movie.title,
                 css: 'forms',
                 movie,
-                userAdmin
             });
 
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -345,6 +336,42 @@ module.exports = {
         const { title, description, price, year, length, category, genre, trailerPath, moviePath, image } = req.body;
         const imgFile = req.file;
         let imagePath = image;
+
+        let errors = validationResult(req);
+        console.log(req.fileValidationError);
+
+        
+        if (!errors.isEmpty() && req.fileValidationError) {
+            let auxError = errors.mapped();
+            auxError.image = {
+                msg: req.fileValidationError
+            }
+            
+            try {
+                let movie = await db.Movie.findOne({
+                    where: {
+                        id: +req.params.id
+                    },
+                    include: [
+                        { association: "genre" },
+                        { association: "category" },
+                        { association: "sales" }
+                    ]
+                });    
+    
+                res.render('admin/editMovie', {
+                    title: movie.title,
+                    css: 'forms',
+                    movie,
+                    errors: auxError,
+                });
+    
+            } catch (error) {
+                console.error(error.message);
+                console.error(error.stack);
+                res.render("tech-difficulties");
+            }    
+        }
 
         if (imgFile) {
             if (fs.existsSync(path.join('public', 'images', 'movies', movie.image))) {
@@ -373,7 +400,9 @@ module.exports = {
 
             res.redirect(`/movies/${req.params.id}`);
         } catch (error) {
-            res.render('error', { error });
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -422,15 +451,16 @@ module.exports = {
 
                 await t.commit();
             } else {
+                //provisorio
                 console.log("No se puede eliminar la pelicula, actualmente está en uso por usuarios");
             }
 
             res.redirect('/movies');
         } catch (error) {
             await t.rollback();
-            res.render('error', { error })
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
-    },
-
-    
+    },    
 }

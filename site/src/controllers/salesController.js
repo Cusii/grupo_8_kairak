@@ -32,22 +32,16 @@ module.exports = {
             })
             
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     /**
      * Retorna una lista con las ofertas vigentes (vista admin)
      */
-    getSales: async (req, res) => {
-        
-        const { id, firstName, lastName, role} = req.session.userLogin;
-            userAdmin = {
-                id,
-                firstName,
-                lastName,
-                role
-            }
+    getSales: async (req, res) => {    
         
         try {            
             let sales = await db.MovieSale.findAll({
@@ -77,12 +71,13 @@ module.exports = {
                 title: 'Ofertas vigentes',
                 css: '',
                 sales,
-                userAdmin,
                 calculateSalePrice
             })
             
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -90,13 +85,7 @@ module.exports = {
      * Retorna el detalle de una oferta vigente (vista admin)
      */
     getSale: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+        
         try {            
             let sale = await db.MovieSale.findOne({
                 where: {
@@ -117,25 +106,19 @@ module.exports = {
                 title: sale.movie.name,
                 css: '',
                 sale,
-                userAdmin
             })
             
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
     /**
      * Renderiza el formulario de creación de oferta
      */
-    toCreateSale: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
+    toCreateSale: async (req, res) => {    
 
         try {
             let sales = await db.MovieSale.findAll({
@@ -162,10 +145,11 @@ module.exports = {
                 title: 'Cargar nueva oferta',
                 css: 'forms',
                 movies,
-                userAdmin
             });
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
         
     },
@@ -185,7 +169,9 @@ module.exports = {
             })
             res.redirect(`/sales/show/${newSale.id}`);
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -193,13 +179,6 @@ module.exports = {
      * Renderiza el formulario de edición de una oferta
      */
     editSale: async (req, res) => {
-        const { id, firstName, lastName, role} = req.session.userLogin;
-        userAdmin = {
-            id,
-            firstName,
-            lastName,
-            role
-        }
 
         try {
             let sale = await db.MovieSale.findOne({
@@ -214,10 +193,11 @@ module.exports = {
             res.render('admin/editSale',{
                 title: 'Editar oferta',
                 sale,
-                userAdmin
             });
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -235,7 +215,9 @@ module.exports = {
             })
             res.redirect(`/sales/show/${sale.id}`);
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     },
 
@@ -254,7 +236,9 @@ module.exports = {
             });
             res.redirect('/sales/show');
         } catch (error) {
-            res.render('error', {error});
+            console.error(error.message);
+            console.error(error.stack);
+            res.render("tech-difficulties");
         }
     }
 
