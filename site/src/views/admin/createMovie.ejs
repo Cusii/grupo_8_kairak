@@ -25,8 +25,8 @@
                         <% } %>
 
                         <!-- movie title -->
-                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_title">
-                            <label for="title">Título</label>
+                        <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input " id="group_title">
+                            <label for="title">Título <strong class="text-danger">*</strong></label> 
                             <input class="form-control mb-3 form_input" type="text" placeholder="Nombre" name="title" id="title">
                             <span class="text-danger" id="errorTitle" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.title)?errors.title.msg: ""%> </span>
@@ -35,7 +35,7 @@
 
                         <!-- genre -->
                         <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6">
-                            <label for="genre">Genero</label>
+                            <label for="genre">Genero <strong class="text-danger">*</strong></label>
                             <select name="genre" class="form-control">
                                 <% Genres.forEach(genre => { %>
                                     <option value="<%= genre.id%>" ><%= genre.name%></option>                                         
@@ -45,7 +45,7 @@
 
                         <!-- price -->
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_price">
-                            <label for="price">Precio</label>
+                            <label for="price">Precio <strong class="text-danger">*</strong></label>
                             <input class="form-control mb-3 form_input" type="text" placeholder="Precio" name="price" id="price">
                             <span class="text-danger" id="errorPrice" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.price)?errors.price.msg: ""%> </span>
@@ -63,7 +63,7 @@
 
                         <!-- length -->
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_length">
-                            <label for="length">Duración (minutos):</label>
+                            <label for="length">Duración (minutos): <strong class="text-danger">*</strong></label>
                             <input class="form-control mb-3 form_input" type="number" placeholder="Duracion" name="length" id="length">
                             <span class="text-danger" id="errorLength" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.length)?errors.length.msg: ""%> </span>
@@ -72,7 +72,7 @@
 
                         <!-- year -->
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_year">
-                            <label for="year">Año de estreno</label>
+                            <label for="year">Año de estreno <strong class="text-danger">*</strong></label>
                             <input class="form-control mb-3 form_input" type="text" placeholder="Año de estreno" name="year" id="year">
                             <span class="text-danger" id="errorYear" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.year)?errors.year.msg: ""%> </span>
@@ -81,7 +81,7 @@
 
                         <!-- trailerPath -->
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_trailerPath">
-                            <label for="trailerPath">Path del trailer</label>
+                            <label for="trailerPath">Path del trailer <strong class="text-danger">*</strong></label>
                             <input class="form-control mb-3 form_input" type="text" placeholder="Trailer" name="trailerPath" id="trailerPath">
                             <span class="text-danger" id="errorTrailer" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.trailerPath)?errors.trailerPath.msg: ""%> </span>
@@ -90,7 +90,7 @@
 
                         <!-- movie link -->
                         <div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" id="group_moviePath">
-                            <label for="moviePath">Path de la película</label>
+                            <label for="moviePath">Path de la película <strong class="text-danger">*</strong></label>
                             <input class="form-control mb-3 form_input" type="text" placeholder="Pelicula" name="moviePath" id="moviePath">
                             <span class="text-danger" id="errorPath" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.moviePath)?errors.moviePath.msg: ""%> </span>
@@ -101,14 +101,16 @@
                             <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
                                 <label for="img-movie">Imagen</label>
                                 <input type="file" id="img" class="input-file form-control mb-3" type="file" value="" name="img-movie">
+                               
                             </div>
+                            <p class="text-danger">* Campos obligatorios</p>
                             <div id="preview-img"></div>
                         </div>
 
 
                         <!-- description -->
                         <div class=" mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 mb-5 form_group_input" id="group_description">
-                            <label for="description">Sinopsis</label>
+                            <label for="description">Sinopsis <strong class="text-danger">*</strong></label>
                             <textarea class="form-control form_input" rows="3" name="description" id="description"></textarea>
                             <span class="text-danger" id="errorDescription" ></span>
                             <span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.description)?errors.description.msg: ""%> </span>

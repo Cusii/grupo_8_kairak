@@ -23,11 +23,11 @@
 			<div class="row">
 				<% for( let index = 0; index < 4 && index < mostSawMovies.length; index++ ) { %>
 					<div class="col-12 col-md-4 col-lg-3">
-						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
+						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;" >
 							<div class="card-header bg-transparent  text-center">
 								<h4><%= mostSawMovies[index].movie.title %></h4>
 							</div>
-							<div class="card-body text-secondary ">
+							<div class="card-body  text-secondary "style="height: 200px;">
 								<a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
 									<img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
 								</a>
@@ -39,16 +39,19 @@
 								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
 								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
 							</div>
-							<div class="card-footer bg-transparent row">
-								<% if (mostSawMovies[index].movie.sales.length > 0) { %>
-									<h6 class="col-6 mt-2 price-line">$<%= mostSawMovies[index].movie.price %></h6>
-									<h6 class="col-6 mt-2 discount"><%= mostSawMovies[index].movie.sales[0].discount %>%</h6>
-									<h5 class="col-6 mt-2">$<%= calculateSalePrice(mostSawMovies[index].movie.price, mostSawMovies[index].movie.sales[0].discount)%> </h5>
-									<% } else { %>
-										<h5 class="col-6 mt-2">$<%= mostSawMovies[index].movie.price %></h5>
-								<% } %>
-																
-								<a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
+							<div class="card-footer container bg-transparent"style="height: 100px;">
+								<div class="row">
+									<% if (mostSawMovies[index].movie.sales.length > 0) { %>
+										<h6 class="col-6 mt-2 price-line">$<%= mostSawMovies[index].movie.price %></h6>
+										<h6 class="col-6 mt-2 discount"><%= mostSawMovies[index].movie.sales[0].discount %>%</h6>
+										<h5 class="col-6 mt-2">$<%= calculateSalePrice(mostSawMovies[index].movie.price, mostSawMovies[index].movie.sales[0].discount)%> </h5>
+										<% } else { %>
+											<h5 class="col-6 mt-2">$<%= mostSawMovies[index].movie.price %></h5>
+									<% } %>
+																	
+									<a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
+								</div>
+							
 							</div>
 
 						</div>
@@ -75,7 +78,7 @@
 									<%= movies[index].title %>
 								</h4>
 							</div>
-							<div class="card-body text-secondary ">
+							<div class="card-body text-secondary "style="height: 200px;">
 								<a href="/movies/show/<%= movies[index].id %> ">
 									<img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
 								</a>
@@ -87,15 +90,19 @@
 								<span class="fa fa-star <%= movies[index].rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
 								<span class="fa fa-star <%= movies[index].rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
 							</div>
-							<div class="card-footer bg-transparent row">
-								<% if (movies[index].sales.length > 0) { %>
-									<h6 class="col-6 mt-2 price-line">$<%= movies[index].price %></h6>
-									<h6 class="col-6 mt-2 discount"><%= movies[index].sales[0].discount %>%</h6>
-									<h5 class="col-6 mt-2">$<%= calculateSalePrice(movies[index].price, movies[index].sales[0].discount)%> </h5>
-									<% } else { %>										
-										<h5 class="col-6 mt-2">$<%= movies[index].price %></h5>
-								<% } %>
-								<a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+							<div class="card-footer bg-transparent container"style="height: 100px;">
+								<div class="row">
+									<% if (movies[index].sales.length > 0) { %>
+										<h6 class="col-6 mt-2 price-line">$<%= movies[index].price %></h6>
+										<h6 class="col-6 mt-2 discount"><%= movies[index].sales[0].discount %>%</h6>
+										<h5 class="col-6 mt-2">$<%= calculateSalePrice(movies[index].price, movies[index].sales[0].discount)%> </h5>
+										<% } else { %>										
+											<h5 class="col-6 mt-2">$<%= movies[index].price %></h5>
+									<% } %>
+									<a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+
+								</div>
+								
 							</div>
 
 						</div>
@@ -120,7 +127,7 @@
 									<%= sales[index].movie.title %>
 								</h4>
 							</div>
-							<div class="card-body text-secondary ">
+							<div class="card-body text-secondary "style="height: 200px;">
 								<a href="/movies/show/<%= sales[index].movie.id %> ">
 									<img src="images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
 								</a>
@@ -132,11 +139,15 @@
 								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
 								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
 							</div>
-							<div class="card-footer bg-transparent row">
-								<h6 class="col-6 mt-2 price-line">$<%= sales[index].movie.price %></h6>
+							<div class="card-footer bg-transparent container"style="height: 100px;">
+								<div class="row">
+									<h6 class="col-6 mt-2 price-line">$<%= sales[index].movie.price %></h6>
 								<h6 class="col-6 mt-2 discount"><%= sales[index].discount %>%</h6>
 								<h5 class="col-6 mt-2">$<%= calculateSalePrice(sales[index].movie.price, sales[index].discount)%> </h5>	
 								<a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
+
+								</div>
+								
 							</div>
 
 						</div>

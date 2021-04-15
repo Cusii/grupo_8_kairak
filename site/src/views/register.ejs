@@ -26,25 +26,28 @@
 
 			<form class="container" id="formRegister" action="/users/register" method="POST" enctype="multipart/form-data">
 				<div class=" bg-white border border-1 ">
-					<div class="logo-person mb-3" id="preview-img">
+					<div class="logo-person " id="preview-img">
 						<img src="/images/logo-person.png " class=" img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo" width="150px">
 					</div>
 
 
 					<!-- first name -->
-					<div class="row mx-auto mb-3 form_group" id="group_first_name">
-						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input">
-							<input type="text" class="form-control form_input" placeholder="nombre" name="first_name" id="first_name">
+					<div class="row mx-auto  form_group" id="group_first_name">
+						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input  text-danger">
+							
+							<input type="text" class="form-control form_input" placeholder="nombre" name="first_name" id="first_name">	*
 							<span class="text-danger" id="errorFirst_name" ></span>
 							<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.first_name)?errors.first_name.msg: ""%> </span>
 							<p class="form_error_input">El nombre debe tener entre 2 y 20 caracteres. Solo puede contener letras.</p>
+						
 						</div>
+					
 					</div>
 
 					<!-- last name -->
-					<div class="row mx-auto mb-3 form_group" id="group_last_name">
-						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input">
-							<input type="text" class="form-control form_input" placeholder="apellido" name="last_name" id="last_name">
+					<div class="row mx-auto  form_group" id="group_last_name">
+						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input  text-danger">
+							<input type="text" class="form-control form_input" placeholder="apellido" name="last_name" id="last_name">*
 							<span class="text-danger" id="errorLast_name" ></span>
 							<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.last_name)?errors.last_name.msg: ""%> </span>
 					
@@ -53,9 +56,9 @@
 					</div>
 
 					<!-- email -->
-					<div class="row mx-auto mb-3 form_group" id="group_email">
-						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input">
-							<input type="email" class="form-control form_input" placeholder="email" name="email" id="email">
+					<div class="row mx-auto  form_group" id="group_email">
+						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input  text-danger" >
+							<input type="email" class="form-control form_input" placeholder="email" name="email" id="email">*
 							<span class="text-danger" id="errorEmail" ></span>
 							<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.email)?errors.email.msg: ""%> </span>
 			
@@ -63,9 +66,9 @@
 					</div>
 
 					<!-- password -->
-					<div class="row mx-auto mb-3 form_group" id="group_password">
-						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" >
-							<input type="password" class="form-control form_input" placeholder="contraseña" name="password" id="password">
+					<div class="row mx-auto  form_group" id="group_password">
+						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input text-danger" >
+							<input type="password" class="form-control form_input" placeholder="contraseña" name="password" id="password">*
 							<span class="text-danger" id="errorPassword" ></span>
 							<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.password)?errors.password.msg: ""%> </span>
 						
@@ -73,20 +76,27 @@
 					</div>
 
 					<!-- password 2 -->
-					<div class="row mx-auto mb-3 form_group" id="group_password2">
-						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input" >
-							<input type="password" class="form-control form_input" placeholder="repetir contraseña" name="password2" id="password2">
+					<div class="row mx-auto  form_group" id="group_password2">
+						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group_input  text-danger" >
+							<input type="password" class="form-control form_input" placeholder="repetir contraseña" name="password2" id="password2">*
 							<span class="text-danger" id="errorPassword2" ></span>
 						
 						</div>
 					</div>
 
-					<div class="row mx-auto mb-3">
+					<div class="row mx-auto ">
 						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group" id="grupo_terms">
 							<label class="form_label">
 								<input class="form_checkbox" type="checkbox" name="terms" id="terms">
 								Acepto los Terminos y Condiciones
+								
 							</label>
+							<p class="text-danger">* Campos obligatorios</p>
+						</div>
+					</div>
+					<div class="row mx-auto ">
+						<div class="mx-auto col-sm-10 col-md-9 col-lg-8 col-xl-6 form_group" id="grupo_terms">
+							
 						</div>
 					</div>
 
