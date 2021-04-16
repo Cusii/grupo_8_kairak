@@ -6,47 +6,50 @@
 	<%- include('partials/headerUser')  %>
 
 	<main class="container bg-light">
-		<div class=" col-12">
-
-			<div class=" text-center ">
-				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-				<h2>
-					<%= title %>
-				</h2>
-				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
-			</div>
-			
-			<% if (user.rents.length > 0 ) { %>
-				<% user.rents.forEach(rent => { %>			
-
-					<div class="row row-cols-1 row-cols-md-2 g-4">
-						<div class="col">
-							<div class="card">
-								<img src="/images/movies/<%= rent.movie.image %>" class="card-img-top" alt="<%= rent.movie.title %>">
-								<div class="card-body">
-									<h5 class="card-title"><%= rent.movie.title %></h5>
-									<p class="card-text"><small class="text-muted">Disponible hasta: <%= rent.expiredAt %></small></p>
-								</div>								
-									<a class="col-12 btn btn-sm btn-primary mb-2" href="/movies/watch/<%= rent.movie.id %>" >Ver pelicula</a>				
-									<% if (rent.ratingByRent.done == 0) { %>
-					
-										<a class="col-12 btn btn-sm btn btn-success mb-2" href="/rents/<%= rent.id %>">Calificar</a>					
-					  
-									<% } %>
-							</div>
-						</div>
-					</div>				 
-				<% }) %>
-			<% } else { %>
-				<div style="text-align: center; padding-top: 5em">				
-					<h4>No tiene alquileres disponibles</h4>
-					<div style="width:100%;height:0;padding-bottom:43%;position:relative;">
-						<img src="/images/confused-pulp-fiction.gif" alt="">
-					</div>
-				</div>				
-			<% } %>				
+		<section >
+			<div class="col-12 text-center">
+	
+				<div class=" text-center ">
+					<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+					<h2>
+						<%= title %>
+					</h2>
+					<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
+				</div>
+				
+				<% if (user.rents.length > 0 ) { %>
+					<% user.rents.forEach(rent => { %>			
+	
+						<div class="row row-cols-1 row-cols-md-2 g-4" style="padding-bottom: 2%;">
+							<div class="col-6">
+								<div class="card">
+									<img src="/images/movies/<%= rent.movie.image %>" class="card-img-top" alt="<%= rent.movie.title %>">
+									<div class="card-body">
+										<h5 class="card-title"><%= rent.movie.title %></h5>
+										<p class="card-text"><small class="text-muted">Disponible hasta: <%= rent.expiredAt %></small></p>
+									</div>								
+										<a class="col-12 btn btn-sm btn-primary mb-2" href="/movies/watch/<%= rent.movie.id %>" >Ver pelicula</a>				
+										<% if (rent.ratingByRent.done == 0) { %>
 						
-		</div>
+											<a class="col-12 btn btn-sm btn btn-success mb-2" href="/rents/<%= rent.id %>">Calificar</a>					
+						  
+										<% } %>
+								</div>
+							</div>
+						</div>				 
+					<% }) %>
+				<% } else { %>
+					<div style="text-align: center; padding-top: 5em">				
+						<h4>No tiene alquileres disponibles</h4>
+						<div style="width:100%;height:0;padding-bottom:30%;position:relative;">
+							<img src="/images/confused-pulp-fiction.gif" alt="">
+						</div>
+					</div>				
+				<% } %>				
+							
+			</div>
+
+		</section>
 	</main>
 
 	<%- include('partials/scripts')  %>

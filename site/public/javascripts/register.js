@@ -7,7 +7,7 @@ window.addEventListener('load', ()=>{
 		first_name: /^[a-zA-ZÀ-ÿ\s]{2,20}$/,
 		last_name: /^[a-zA-ZÀ-ÿ\s]{2,20}$/,
 		email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-		password: /^.{8,16}$/ ,
+		password: /[a-zA-Z0-9_.+-]{8,16}$/ ,
 		img:/(.jpg|.jpeg|.png)$/i
  
 	}

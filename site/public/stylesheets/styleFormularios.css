@@ -41,3 +41,7 @@ article.box-center {
     padding: 0px 0px 0px 0px;
     text-align: center;
 }
+
+.avatar-container img {
+    height: 30%;
+}

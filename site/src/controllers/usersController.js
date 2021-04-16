@@ -288,7 +288,7 @@ module.exports = {
 
             res.render('editProfile',{
                 title: 'Editar perfil',
-                css: '',
+                css: 'profile',
                 user,
             });
             
@@ -315,7 +315,7 @@ module.exports = {
             return res.render('editProfile', {
                 title: 'Editar perfil',
                 errors: auxError,
-                css: ''
+                css: 'profile'
             })
         }    
 
@@ -365,7 +365,7 @@ module.exports = {
 
             res.render('changePass',{
                 title: 'Cambiar contraseña',
-                css: '',
+                css: 'password',
                 user,
             });
             
@@ -398,16 +398,23 @@ module.exports = {
                         }
                     });    
                     
-                    res.render('profile', {
-                        title: `Perfil ${user.firstName}`,
-                        css: 'styleFormularios',
-                        user,
-                        success: 'Contraseña actualizada exitosamente'
+                    
+                    if (req.cookies.userLogin) {
+                        res.cookie('userLogin', '', { maxAge: -1 });
+                    }
+            
+                    delete req.session.userLogin
+                    
+                    res.render('login', {
+                        title: 'Kairak',
+                        texto: '',
+                        css: '',
+                        successMessage: 'Contraseña actualizada exitosamente'
                     })
                 } else {                    
                     res.render('changePass',{
                         title: 'Cambiar contraseña',
-                        css: '',
+                        css: 'password',
                         user,
                         error: 'Contraseña actual incorrecta'
                     });
@@ -415,7 +422,7 @@ module.exports = {
             } else {                
                 res.render('changePass',{
                 title: 'Cambiar contraseña',
-                css: '',
+                css: 'password',
                 user,
                 error: 'La nueva contraseña y su confirmación no coinciden'
                 });
@@ -431,7 +438,7 @@ module.exports = {
     toRecoverPassword: async(req,res) => {
         res.render('recoverAccount', {
             title: 'Restablecer contraseña',
-            css: ''
+            css: 'password'
         });
     },
 
@@ -484,7 +491,7 @@ module.exports = {
             } else {
                 res.render('recoverAccount', {
                     title: 'Restablecer contraseña',
-                    css: '',
+                    css: 'password',
                     error: `${email} no pertenece a un usuario registrado`
                 });                
             }
@@ -518,12 +525,14 @@ module.exports = {
 
                 res.render('resetPassword', {
                     title:'Restablecer contraseña',
-                    user
+                    user,
+                    css: 'password'
                 })
             } else {
                 res.render('recoverAccount', {
                     title:'Restablecer contraseña',
-                    error: `Token no valido. Intentelo nuevamente`
+                    error: `Token no valido. Intentelo nuevamente`,
+                    css: 'password'
                 })
             }    
             

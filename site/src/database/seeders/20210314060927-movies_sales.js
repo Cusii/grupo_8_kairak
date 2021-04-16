@@ -22,7 +22,7 @@ const movies_sales = [
 		expired_at: addDays(new Date(), 30)
 	},
 	{
-		movie_id: 2,
+		movie_id: 4,
 		discount: 32,
 		status: 1,
 		created_at: new Date(),

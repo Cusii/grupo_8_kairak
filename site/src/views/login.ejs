@@ -17,6 +17,12 @@
 			<hr class="mx-auto m-12 " size="5 " noshade="noshade " width="90% " />
 		</div>
 
+		<% if (typeof successMessage != 'undefined') { %>
+			<div class="alert alert-success">
+				<span><%= successMessage %> </span>
+			</div>
+		<% } %>
+
 		<form action="/users/login" method="POST" id="formLogin">
 			<div class=" bg-white border border-1">
 				<div class="card-body border border-1">

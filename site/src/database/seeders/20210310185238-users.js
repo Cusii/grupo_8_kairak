@@ -3,10 +3,10 @@
 const bcrypt = require('bcrypt');
 
 const admin = {
-	first_name: 'Admin',
+	first_name: 'Kairak',
 	last_name: 'Admin',
 	email: 'admin@kairak.com',
-	password: bcrypt.hashSync('admin',12),
+	password: bcrypt.hashSync('admin123',12),
 	avatar: 'avatar-default.png',
 	role_id: 1,
 	created_at: new Date()
