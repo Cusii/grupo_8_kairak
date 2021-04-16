@@ -292,7 +292,7 @@ module.exports = {
 
     updateProfile: async (req, res, next) => {
         const { first_name, last_name } = req.body
-        const imgFile = req.file;
+        const imgFile = req.file.filename;
 
         let errors = validationResult(req)
 
@@ -317,10 +317,12 @@ module.exports = {
             });   
 
 
-            if (imgFile && user.avatar != 'avatar-default.png') {    
-                if (fs.existsSync(path.join('public', 'images', 'users', user.avatar))) {
-                    fs.unlinkSync(path.join('public', 'images', 'users', user.avatar));
-                }               
+            if (imgFile) {
+                if (user.avatar != 'avatar-default.png') {
+                    if (fs.existsSync(path.join('public', 'images', 'users', user.avatar))) {
+                        fs.unlinkSync(path.join('public', 'images', 'users', user.avatar));
+                    }
+                }                              
                 user.avatar = req.file.filename
             }
 
@@ -418,7 +420,7 @@ module.exports = {
 
     toRecoverPassword: async(req,res) => {
         res.render('recoverAccount', {
-            title: 'Reestablecer contraseña',
+            title: 'Restablecer contraseña',
             css: ''
         });
     },
@@ -471,7 +473,7 @@ module.exports = {
                 })
             } else {
                 res.render('recoverAccount', {
-                    title: 'Reestablecer contraseña',
+                    title: 'Restablecer contraseña',
                     css: '',
                     error: `${email} no pertenece a un usuario registrado`
                 });                
