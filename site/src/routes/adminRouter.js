@@ -5,7 +5,7 @@ const adminController = require('../controllers/adminController');
 
 const uploadImg = require('../middlewares/uploadUserImage');
 const adminCheck = require('../middlewares/adminCheck');
-const validationRegister = require('../validations/validationRegister');
+const validationCreateUser = require('../validations/validationCreateUser');
 const validationEditProfile = require('../validations/validationEditProfile');
 const validationChange = require('../validations/validationChange');
 const changePassCheck = require('../middlewares/changePassCheck');
@@ -15,7 +15,7 @@ router.get('/', adminCheck, adminController.index);
 router.get('/users/list', adminCheck, adminController.listUser);
 
 router.get('/users/create', adminCheck, adminController.register);
-router.post('/users/create', adminCheck, uploadImg.any(), validationRegister, adminController.proccesRegister);
+router.post('/users/create', adminCheck, uploadImg.any(), /* validationCreateUser , */ adminController.proccesRegister);
 
 router.get('/users/:id', adminCheck, adminController.getUser);
 

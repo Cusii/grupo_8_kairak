@@ -6,7 +6,11 @@
 
 <body>
     <% if (typeof userLogin != 'undefined') { %>
-		<%- include('partials/headerUser')  %>
+        <% if (userLogin.role == 1) { %>
+            <%- include('partials/headerAdmin') %>
+        <% } else { %>
+            <%- include('partials/headerUser')  %>
+        <% } %>		
 	<% } else { %>
 		<%- include('partials/header')  %>
 	<% } %>

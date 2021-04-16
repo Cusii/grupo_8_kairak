@@ -2,7 +2,8 @@ const { getUsers, setUsers } = require('../data/users')
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const db = require('../database/models');
-const path = require('path')
+const path = require('path');
+const { check, validationResult, body } = require('express-validator')
 
 
 module.exports = {
@@ -335,6 +336,9 @@ module.exports = {
             let user = await db.User.findOne({
                 where: {
                     id: +req.params.id
+                },
+                include: {
+                    association: "role"
                 }
             });
 
