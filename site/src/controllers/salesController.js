@@ -26,7 +26,7 @@ module.exports = {
             
             res.render('movies', {
                 title: 'Nuestras ofertas',
-                css: '',
+                css: 'movies',
                 movies: moviesWithSales,
                 calculateSalePrice
             })

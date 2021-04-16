@@ -60,7 +60,7 @@ module.exports = {
 
             res.render('movies', {
                 title: category.name,
-                css: '',
+                css: 'movies',
                 movies: category.movies,                
                 calculateSalePrice
             })

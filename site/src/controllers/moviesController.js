@@ -26,7 +26,7 @@ module.exports = {
 
             res.render('movies', {
                 title: 'Nuestras Películas',
-                css: '',
+                css: 'movies',
                 movies,
                 calculateSalePrice
             })
@@ -99,7 +99,7 @@ module.exports = {
     
             res.render('movies', {
                 title: `Resultados de la busqueda: ${search} `,
-                css: '',
+                css: 'movies',
                 movies: moviesFilter,
                 calculateSalePrice
             })
