@@ -207,13 +207,13 @@ module.exports = {
     updateSale: async (req, res) => {
         const { discount, /* createdAt, */ expiredAt } = req.body;
         try {
-            let sale = await db.MovieSale.update({
+            await db.MovieSale.update({
                 discount,
                 expiredAt 
             }, {
                 where: {id: +req.params.id }
             })
-            res.redirect(`/sales/show/${sale.id}`);
+            res.redirect(`/sales/show`);
         } catch (error) {
             console.error(error.message);
             console.error(error.stack);
