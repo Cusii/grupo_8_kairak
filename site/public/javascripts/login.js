@@ -10,7 +10,7 @@ window.addEventListener('load', ()=>{
     inputEmail.addEventListener('blur',()=>{
         switch (true) {
             case !inputEmail.value:
-                errorMail.innerHTML = 'El campo nombre es obligatorio'
+                errorMail.innerHTML = 'Este campo es obligatorio'
                 inputEmail.classList.add('is-invalid')
                 break;
                 /*  
@@ -28,7 +28,7 @@ window.addEventListener('load', ()=>{
     inputPassword.addEventListener('blur',()=>{
         switch (true) {
             case !inputPassword.value:
-                errorPassword.innerHTML = 'El campo nombre es obligatorio'
+                errorPassword.innerHTML = 'Este campo es obligatorio'
                 inputPassword.classList.add('is-invalid')
                 break;
             default:

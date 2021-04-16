@@ -8,26 +8,26 @@ module.exports = [
 
     check('price')
     .notEmpty()
-    .withMessage('Ingrese un precio'),
+    .withMessage('Ingrese el precio'),
 
     check('length')
     .notEmpty()
-    .withMessage('Indique la duracion'),
+    .withMessage('Ingrese la duracion'),
 
     check('year')
     .notEmpty()
-    .withMessage('Indique el año de estreno'),
+    .withMessage('Ingrese el año de estreno'),
 
     check('trailerPath')
     .notEmpty()
-    .withMessage('Agregue link del trailer'),
+    .withMessage('Ingrese link del trailer'),
 
     check('moviePath')
     .notEmpty()
-    .withMessage('Agregar pelicula'),
+    .withMessage('Ingrese link de la pelicula'),
 
     check('description')
     .notEmpty()
-    .withMessage('Agregue descripcion'),
+    .withMessage('Ingrese una sinopsis'),
 
 ]

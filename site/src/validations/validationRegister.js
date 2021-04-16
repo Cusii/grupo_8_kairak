@@ -18,30 +18,36 @@ module.exports = [
     .notEmpty()
     .withMessage('Ingrese un email')
     .isEmail()
-    .withMessage('El mail no es valido'),
-    //poner valido y no repetido
+    .withMessage('El email no es valido'),
+
+    body('email')
+    .custom( function(value) {
+        return db.User.findOne({
+            where: {
+                email: value,
+            }
+        })
+        .then( user => {
+            if(user) {
+                return Promise.reject('Este email ya está registrado')
+            }
+        })
+    }),
+    
 
     check('password')
     .notEmpty()
     .withMessage('Ingrese contraseña')
     .isLength({ min: 8, max: undefined })
-    .withMessage('El nombre debe tener mas de 8 caracteres'),
+    .withMessage('La contraseña debe tener mas de 8 caracteres'),    
 
-    /*   body('email').custom(value => {
-
-          let user = db.User.findOne({
-              where: {
-                  email: email
-              }
-          } === value());
-
-          if (user) {
-              return false
-          } else {
-              return true
-          }
-
-      })
-      .withMessage('El mail ya esta en uso') */
+    body('password2')
+    .custom((value,{req}) => {
+        if(value != req.body.password){
+            return false
+        }
+        return true
+    })
+    .withMessage("Las contraseñas no coinciden")
 
 ]

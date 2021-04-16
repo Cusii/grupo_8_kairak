@@ -17,6 +17,7 @@ window.addEventListener('load', ()=>{
 
     let formularioRegister = qs ('#formRegister');
     console.log(formularioRegister.elements);
+    console.log(formularioRegister.elements[3].value);
 
     let inputFirst_name = formularioRegister.elements[0]
     let inputLast_name = formularioRegister.elements[1]
@@ -88,7 +89,7 @@ window.addEventListener('load', ()=>{
                 break;
             case !expressions.password.test(inputPassword.value):
                     inputPassword.classList.add('is-invalid')
-                    errorPassword.innerHTML = 'mas de 8 caracteres' 
+                    errorPassword.innerHTML = 'Debe contener mas de 8 caracteres' 
                      break;
             default:
                 errorPassword.innerHTML= ''
@@ -100,12 +101,12 @@ window.addEventListener('load', ()=>{
     inputPassword2.addEventListener('blur',()=>{
         switch (true) {
             case !inputPassword2.value:
-                errorPassword2.innerHTML = 'Este campo es obligatorios'
+                errorPassword2.innerHTML = 'Este campo es obligatorio'
                 inputPassword2.classList.add('is-invalid')
                 break;
                 case inputPassword2.value !== inputPassword.value:
                     inputPassword2.classList.add('is-invalid')
-                    errorPassword2.innerHTML = 'La contraseña debe ser la misma' 
+                    errorPassword2.innerHTML = 'La contraseña deben coincidir' 
                    
                      break;
                /*  case !expressions.password.test(inputPassword2.value):

@@ -26,16 +26,19 @@ module.exports = {
     processLogin: async(req, res) => {
 
         let errors = validationResult(req);
+        const { email, password, recordar } = req.body;
+        const errUser = { email };
 
         if (!errors.isEmpty()) {
             return res.render('login', {
                 errors: errors.mapped(),
                 title: 'Kairak',
-                css: ''
+                css: '',
+                errUser
             })
         }
 
-        const { email, password, recordar } = req.body
+        
 
         const role_admin = 1;
 
@@ -128,6 +131,13 @@ module.exports = {
         let errors = validationResult(req);
         console.log(req.fileValidationError);
 
+        const role_user = 2;
+        const { first_name, last_name, email, password } = req.body
+        const errUser = {
+            first_name,
+            last_name,
+            email
+        }
         
         if (!errors.isEmpty() || req.fileValidationError) {
             let auxError = errors.mapped();
@@ -139,13 +149,13 @@ module.exports = {
             return res.render('register', {
                 errors: auxError,
                 title: 'Kairak',
-                css: 'forms'
+                css: 'forms',
+                errUser
             })
         }
 
 
-        const role_user = 2;
-        const { first_name, last_name, email, password } = req.body
+        
 
         let avatarPath = req.files[0];
         if (!avatarPath) {
@@ -292,7 +302,7 @@ module.exports = {
 
     updateProfile: async (req, res, next) => {
         const { first_name, last_name } = req.body
-        const imgFile = req.file.filename;
+        const imgFile = req.file;
 
         let errors = validationResult(req)
 

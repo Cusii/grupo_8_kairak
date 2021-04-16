@@ -23,7 +23,8 @@
 					<img src="/images/logo-person.png" class="img-logo-person img-fluid m-3 rounded mx-auto d-block" alt="logo" width="150px">
 
 					<div class=" mx-auto col-10 col-md-8  pb-3  mb-3">
-						<input type="email" class="form-control " placeholder="Email" name="email" id="mail">
+						<input type="email" class="form-control " placeholder="Email" name="email" id="mail"
+						value="<%= (typeof errUser != 'undefined') ? errUser.email : null %>">
 						<span class="text-danger" id="errorMail" ></span>
 						<span class="text-danger"><%= (typeof errors != 'undefined' &&  errors.email)?errors.email.msg: ""%> </span>
 						
