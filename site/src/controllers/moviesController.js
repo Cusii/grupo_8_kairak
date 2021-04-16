@@ -340,7 +340,7 @@ module.exports = {
         console.log(req.fileValidationError);
 
         
-        if (!errors.isEmpty() && req.fileValidationError) {
+        if (!errors.isEmpty() || req.fileValidationError) {
             let auxError = errors.mapped();
             auxError.image = {
                 msg: req.fileValidationError
