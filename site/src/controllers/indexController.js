@@ -59,7 +59,7 @@ module.exports = {
 
             res.render('index', {
                 title: 'Kairak',
-                css: '',
+                css: 'index',
                 movies,
                 sales,
                 mostSawMovies,

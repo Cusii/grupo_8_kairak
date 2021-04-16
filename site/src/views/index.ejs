@@ -13,147 +13,307 @@
 	<main class="container bg-light">
 		<%- include('partials/carousel')  %>
 
-		<section class="las-mas-vistas">
-
+		<section class="movies-section">
 			<div class=" text-center ">
 				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 				<h2>Las más vistas</h2>
 				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 			</div>
-			<div class="row">
-				<% for( let index = 0; index < 4 && index < mostSawMovies.length; index++ ) { %>
-					<div class="col-12 col-md-4 col-lg-3">
-						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;" >
-							<div class="card-header bg-transparent  text-center">
-								<h4><%= mostSawMovies[index].movie.title %></h4>
-							</div>
-							<div class="card-body  text-secondary "style="height: 200px;">
-								<a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
-									<img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
-								</a>
-							</div>
-							<div class="center-stars">                                                            
-								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
-								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
-								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
-								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
-								<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
-							</div>
-							<div class="card-footer container bg-transparent"style="height: 100px;">
-								<div class="row">
-									<% if (mostSawMovies[index].movie.sales.length > 0) { %>
-										<h6 class="col-6 mt-2 price-line">$<%= mostSawMovies[index].movie.price %></h6>
-										<h6 class="col-6 mt-2 discount"><%= mostSawMovies[index].movie.sales[0].discount %>%</h6>
-										<h5 class="col-6 mt-2">$<%= calculateSalePrice(mostSawMovies[index].movie.price, mostSawMovies[index].movie.sales[0].discount)%> </h5>
-										<% } else { %>
-											<h5 class="col-6 mt-2">$<%= mostSawMovies[index].movie.price %></h5>
-									<% } %>
-																	
-									<a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
-								</div>
+			<div class="row">				
+
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">					
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="row">
+							<% for( let index = 0; index < 4 && index < mostSawMovies.length; index++ ) { %>
 							
+								<div class="card col-12 col-md-4 col-lg-3">
+									<div class="card-header bg-transparent text-center">
+										<h4><%= mostSawMovies[index].movie.title %></h4>
+									</div>
+									<div class="card-body  text-secondary "style="height: 200px;">
+										<a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
+											<img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
+										</a>
+									</div>
+									<div class="center-stars">                                                            
+										<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+										<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+										<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+										<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+										<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+									</div>
+									<div class="card-footer container bg-transparent"style="height: 100px;">
+										<div class="row">
+											<% if (mostSawMovies[index].movie.sales.length > 0) { %>
+												<h6 class="col-6 mt-2 price-line">$<%= mostSawMovies[index].movie.price %></h6>
+												<h6 class="col-6 mt-2 discount"><%= mostSawMovies[index].movie.sales[0].discount %>%</h6>
+												<h5 class="col-6 mt-2">$<%= calculateSalePrice(mostSawMovies[index].movie.price, mostSawMovies[index].movie.sales[0].discount)%> </h5>
+												<% } else { %>
+													<h5 class="col-6 mt-2">$<%= mostSawMovies[index].movie.price %></h5>
+											<% } %>
+																			
+											<a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
+										</div>
+									
+									</div>
+								</div>						
+		
+							<% } %>
 							</div>
-
 						</div>
-
+						<% if (mostSawMovies.length >=4) { %>
+							<div class="carousel-item">
+								<div class="row">
+								<% for( let index = 4; index < 8 && index < mostSawMovies.length; index++ ) { %>
+								
+									<div class="card col-12 col-md-4 col-lg-3">
+										<div class="card-header bg-transparent text-center">
+											<h4><%= mostSawMovies[index].movie.title %></h4>
+										</div>
+										<div class="card-body  text-secondary "style="height: 200px;">
+											<a href="/movies/show/<%= mostSawMovies[index].movie.id %> ">
+												<img src="/images/movies/<%= mostSawMovies[index].movie.image %>" alt="" width="100%">
+											</a>
+										</div>
+										<div class="center-stars">                                                            
+											<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+											<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+											<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+											<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+											<span class="fa fa-star <%= mostSawMovies[index].movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+										</div>
+										<div class="card-footer container bg-transparent"style="height: 100px;">
+											<div class="row">
+												<% if (mostSawMovies[index].movie.sales.length > 0) { %>
+													<h6 class="col-6 mt-2 price-line">$<%= mostSawMovies[index].movie.price %></h6>
+													<h6 class="col-6 mt-2 discount"><%= mostSawMovies[index].movie.sales[0].discount %>%</h6>
+													<h5 class="col-6 mt-2">$<%= calculateSalePrice(mostSawMovies[index].movie.price, mostSawMovies[index].movie.sales[0].discount)%> </h5>
+													<% } else { %>
+														<h5 class="col-6 mt-2">$<%= mostSawMovies[index].movie.price %></h5>
+												<% } %>
+																				
+												<a href="/movies/show/<%= mostSawMovies[index].movie.id %>" class="btn col-6">Detalles</a>
+											</div>
+										
+										</div>
+									</div>						
+			
+								<% } %>
+								</div>
+							</div>				  
+						 
+						<% } %>
 					</div>
-
-					<% } %>
+					<button class="carousel-control-prev" style="opacity: 0;" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" style="opacity: 0;" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				
 			</div>
 
 		</section>
 
-		<section class="estrenos">
+		<section class="movies-section">
 			<div class=" text-center">
 				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 				<h2>Estrenos</h2>
 				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 			</div>
 			<div class="row">
-				<% for( let index = 0; index < 4 && index < movies.length; index++ ) { %>
-					<div class=" col-12 col-md-4 col-lg-3 ">
-						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
-							<div class="card-header bg-transparent ">
-								<h4>
-									<%= movies[index].title %>
-								</h4>
+				
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">					
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="row">
+								<% for( let index = 0; index < 4 && index < movies.length; index++ ) { %>
+							
+								<div class="card col-12 col-md-4 col-lg-3">
+									<div class="card-header bg-transparent text-center">
+										<h4><%= movies[index].title %></h4>
+									</div>
+									<div class="card-body  text-secondary "style="height: 200px;">
+										<a href="/movies/show/<%= movies[index].id %>">
+											<img src="/images/movies/<%= movies[index].image %>" alt="" width="100%">
+										</a>
+									</div>
+									<div class="center-stars">                                                            
+										<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+										<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span> 
+										<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+										<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+										<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span>       
+									</div>
+									<div class="card-footer container bg-transparent"style="height: 100px;">
+										<div class="row">
+											<% if (movies[index].sales.length > 0) { %>
+												<h6 class="col-6 mt-2 price-line">$<%= movies[index].price %></h6>
+												<h6 class="col-6 mt-2 discount"><%= movies[index].sales[0].discount %>%</h6>
+												<h5 class="col-6 mt-2">$<%= calculateSalePrice(movies[index].price, movies[index].sales[0].discount)%> </h5>
+												<% } else { %>
+													<h5 class="col-6 mt-2">$<%= movies[index].price %></h5>
+											<% } %>
+																			
+											<a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+										</div>
+									
+									</div>
+								</div>						
+		
+								<% } %>
 							</div>
-							<div class="card-body text-secondary "style="height: 200px;">
-								<a href="/movies/show/<%= movies[index].id %> ">
-									<img src="images/movies/<%= movies[index].image %>" alt="" width="100%">
-								</a>
-							</div>
-							<div class="center-stars">                                                            
-								<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
-								<span class="fa fa-star <%= movies[index].rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
-								<span class="fa fa-star <%= movies[index].rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
-								<span class="fa fa-star <%= movies[index].rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
-								<span class="fa fa-star <%= movies[index].rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
-							</div>
-							<div class="card-footer bg-transparent container"style="height: 100px;">
-								<div class="row">
-									<% if (movies[index].sales.length > 0) { %>
-										<h6 class="col-6 mt-2 price-line">$<%= movies[index].price %></h6>
-										<h6 class="col-6 mt-2 discount"><%= movies[index].sales[0].discount %>%</h6>
-										<h5 class="col-6 mt-2">$<%= calculateSalePrice(movies[index].price, movies[index].sales[0].discount)%> </h5>
-										<% } else { %>										
-											<h5 class="col-6 mt-2">$<%= movies[index].price %></h5>
-									<% } %>
-									<a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
-
-								</div>
-								
-							</div>
-
 						</div>
-
+						<% if (movies.length >=4) { %>
+							<div class="carousel-item">
+								<div class="row">
+									<% for( let index = 4; index < 8 && index < movies.length; index++ ) { %>
+								
+										<div class="card col-12 col-md-4 col-lg-3">
+											<div class="card-header bg-transparent text-center">
+												<h4><%= movies[index].title %></h4>
+											</div>
+											<div class="card-body  text-secondary "style="height: 200px;">
+												<a href="/movies/show/<%= movies[index].id %>">
+													<img src="/images/movies/<%= movies[index].image %>" alt="" width="100%">
+												</a>
+											</div>
+											<div class="center-stars">                                                            
+												<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+												<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span> 
+												<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+												<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+												<span class="fa fa-star <%= movies[index].rating.avgRating >= 1 ? 'star-checked' : null %>"></span>       
+											</div>
+											<div class="card-footer container bg-transparent"style="height: 100px;">
+												<div class="row">
+													<% if (movies[index].sales.length > 0) { %>
+														<h6 class="col-6 mt-2 price-line">$<%= movies[index].price %></h6>
+														<h6 class="col-6 mt-2 discount"><%= movies[index].sales[0].discount %>%</h6>
+														<h5 class="col-6 mt-2">$<%= calculateSalePrice(movies[index].price, movies[index].sales[0].discount)%> </h5>
+														<% } else { %>
+															<h5 class="col-6 mt-2">$<%= movies[index].price %></h5>
+													<% } %>
+																					
+													<a href="/movies/show/<%= movies[index].id %>" class="btn col-6">Detalles</a>
+												</div>
+											
+											</div>
+										</div>						
+				
+										<% } %>
+								</div>
+							</div>				  
+						 
+						<% } %>
 					</div>
-					<% } %>
+					<button class="carousel-control-prev" style="opacity: 0;" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" style="opacity: 0;" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				
 			</div>
 		</section>
 
-		<section class="promocion">
+		<section class="movies-section">
 			<div class=" text-center">
 				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 				<h2>Promociones</h2>
 				<hr class="mx-auto m-12" size="5" noshade="noshade" width="100%" />
 			</div>
 			<div class="row">
-				<% for( let index = 0; index < 4 && index < sales.length; index++ ) { %>
-					<div class=" col-12 col-md-4 col-lg-3 ">
-						<div class="card  mb-3 mx-auto border border-2" style="width: 98%;">
-							<div class="card-header bg-transparent ">
-								<h4>
-									<%= sales[index].movie.title %>
-								</h4>
-							</div>
-							<div class="card-body text-secondary "style="height: 200px;">
-								<a href="/movies/show/<%= sales[index].movie.id %> ">
-									<img src="images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
-								</a>
-							</div>
-							<div class="center-stars">                                                            
-								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
-								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
-								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
-								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
-								<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
-							</div>
-							<div class="card-footer bg-transparent container"style="height: 100px;">
-								<div class="row">
-									<h6 class="col-6 mt-2 price-line">$<%= sales[index].movie.price %></h6>
-								<h6 class="col-6 mt-2 discount"><%= sales[index].discount %>%</h6>
-								<h5 class="col-6 mt-2">$<%= calculateSalePrice(sales[index].movie.price, sales[index].discount)%> </h5>	
-								<a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
-
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">					
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="row">
+								<% for( let index = 0; index < 4 && index < sales.length; index++ ) { %>
+							
+								<div class="card col-12 col-md-4 col-lg-3">
+									<div class="card-header bg-transparent text-center">
+										<h4><%= sales[index].movie.title %></h4>
+									</div>
+									<div class="card-body  text-secondary "style="height: 200px;">
+										<a href="/movies/show/<%= sales[index].movie.id %>">
+											<img src="/images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
+										</a>
+									</div>
+									<div class="center-stars">                                                            
+										<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+										<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span> 
+										<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+										<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+										<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span>       
+									</div>
+									<div class="card-footer container bg-transparent"style="height: 100px;">
+										<div class="row">											
+											<h6 class="col-6 mt-2 price-line">$<%= sales[index].movie.price %></h6>
+											<h6 class="col-6 mt-2 discount"><%= sales[index].discount %>%</h6>
+											<h5 class="col-6 mt-2">$<%= calculateSalePrice(sales[index].movie.price, sales[index].discount)%> </h5>	
+											<a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
+										</div>
+									
+									</div>
 								</div>
-								
+		
+								<% } %>
 							</div>
-
 						</div>
-
+						<% if (sales.length >=4) { %>
+							<div class="carousel-item">
+								<div class="row">
+									<% for( let index = 4; index < 8 && index < sales.length; index++ ) { %>
+								
+										<div class="card col-12 col-md-4 col-lg-3">
+											<div class="card-header bg-transparent text-center">
+												<h4><%= sales[index].movie.title %></h4>
+											</div>
+											<div class="card-body  text-secondary "style="height: 200px;">
+												<a href="/movies/show/<%= sales[index].movie.id %>">
+													<img src="/images/movies/<%= sales[index].movie.image %>" alt="" width="100%">
+												</a>
+											</div>
+											<div class="center-stars">                                                            
+												<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+												<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span> 
+												<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+												<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span>
+												<span class="fa fa-star <%= sales[index].movie.rating.avgRating >= 1 ? 'star-checked' : null %>"></span>       
+											</div>
+											<div class="card-footer container bg-transparent"style="height: 100px;">
+												<div class="row">											
+													<h6 class="col-6 mt-2 price-line">$<%= sales[index].movie.price %></h6>
+													<h6 class="col-6 mt-2 discount"><%= sales[index].discount %>%</h6>
+													<h5 class="col-6 mt-2">$<%= calculateSalePrice(sales[index].movie.price, sales[index].discount)%> </h5>	
+													<a href="/movies/show/<%= sales[index].movie.id %>" class="btn col-6">Detalles</a>
+												</div>
+											
+											</div>
+										</div>
+				
+										<% } %>
+								</div>
+							</div>				  
+						 
+						<% } %>
 					</div>
-				<% } %>
+					<button class="carousel-control-prev" style="opacity: 0;" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" style="opacity: 0;" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
 			</div>
 		</section>
 
