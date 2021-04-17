@@ -54,7 +54,10 @@ module.exports = {
                         association: 'rating'
                     },
                     required: true
-                }
+                },
+                order: [
+                    ['discount', 'DESC']
+                ]
             });                
 
             res.render('index', {
