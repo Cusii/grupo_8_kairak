@@ -18,37 +18,71 @@
                 <% } %> 
 
                 <div class="row ">
+                    <table class="table">
+                        <thead class="bg-dark text-white">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Puntuacion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Descuento</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        
                     <% movies.forEach(movie=> { %>
-                        <div class="col-12 col-md-4 col-lg-3 mb-3">
-                            <div class="card mx-auto" style="width: 98%">
-                                <img src="/images/movies/<%= movie.image %> " class="card-img-top" alt="..." />
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= movie.title %>
-                                    </h5>
-
+                       
+                            <tbody>
+                              <tr>
+                                <!--     Puesto -->
+                                <th scope="row">
+                                    
+                                    <%= movie.id %>  
+                                </th>
+                                 <!--     Nombre -->
+                                <td>
+                                     <%= movie.title %>
+                                </td>
+                                 <!--     Puntuacion -->
+                                <td> 
                                     <div> 
-                                        <span class="fa fa-star <%= movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
-                                        <span class="fa fa-star <%= movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
-                                        <span class="fa fa-star <%= movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
-                                        <span class="fa fa-star <%= movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
-                                        <span class="fa fa-star <%= movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
+                                    <span class="fa fa-star <%= movie.rating.avgRating >= 1 ? 'star-checked' : null %>" ></span>
+                                    <span class="fa fa-star <%= movie.rating.avgRating >= 2 ? 'star-checked' : null %>"></span> 
+                                    <span class="fa fa-star <%= movie.rating.avgRating >= 3 ? 'star-checked' : null %>"></span>
+                                    <span class="fa fa-star <%= movie.rating.avgRating >= 4 ? 'star-checked' : null %>"></span>
+                                    <span class="fa fa-star <%= movie.rating.avgRating >= 5 ? 'star-checked' : null %>"></span>       
                                     </div>
-
+                                </td>
+                                <!--     Precio -->
+                                <td>  
+                                									
+                                        <p class="col-6 mt-2">$<%= movie.price %></p>
+                                    
+                                </td>
+                                 <!--     Descuento -->
+                                
+                                 <td>
                                     <% if (movie.sales.length > 0) { %>
-										<p class="col-6 mt-2 price-line">$<%= movie.price %></p> 
-										<p class="col-6 mt-2 discount"><%= movie.sales[0].discount %>%</p>
-										<p class="col-6 mt-2">$<%= calculateSalePrice(movie.price, movie.sales[0].discount)%> </p>
-										<% } else { %>										
-											<p class="col-6 mt-2">$<%= movie.price %></p>
-									<% } %>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <a href="/movies/<%= movie.id %>" class=" btn btn-outline-success fs-6 mb-2">Ver más</a>
-                                    <form action="/movies/<%= movie.id %>/edit">
-                                        <button class="col-12 btn btn-sm btn-outline-primary mb-2" type="submit">Editar</button>
-                                    </form>
+                                       <p>Si</p>
+                                        <% } else { %>										
+                                           <p>No</p>
+                                        <% } %>
 
+                                 </td>
+                                  <!--     Ver mas -->
+                                <td> 
+                                    <a href="/movies/<%= movie.id %>" class=" btn btn-outline-success fs-6 mb-2">Ver más</a>
+                                </td>
+                                 <!--     Editar -->
+                                <td>
+                                     <form action="/movies/<%= movie.id %>/edit">
+                                    <button class="col-12 btn btn-sm btn-outline-primary mb-2" type="submit">Editar</button>
+                                    </form>
+                                </td>
+                                <td> 
+                                     <!--    Borrar -->
                                     <!-- Button trigger modal -->                                    
                                     <button class=" col-12 btn btn-sm btn-outline-danger mb-2" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= movie.id %>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -75,13 +109,17 @@
                                             </div>
                                         </div>
                                         </div>
-                                    </div>                                      
-                                    
-                                </ul>
-                            </div>
-                        </div>
+                                    </div>        
+                                </td>
+                              </tr>
 
                         <% }) %>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <a href="http://localhost:3030/movies" class="btn btn-outline-primary">1</a>
+                </div>
+               
 
                 </div>
 
